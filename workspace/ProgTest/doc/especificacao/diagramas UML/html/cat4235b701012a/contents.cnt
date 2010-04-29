@@ -1,0 +1,384 @@
+<<subsystem>> Avaliação Automática de Trabalhos
+../webviewer/113.jpg
+cat42360fbb036b/cat42360fbb036b.htm
+
+cat42360fbb036b/contents.cnt
+cat42360fbb036b/
+<<subsystem>> Controle de Trabalhos
+../webviewer/113.jpg
+cat42360f6c036b/cat42360f6c036b.htm
+
+cat42360f6c036b/contents.cnt
+cat42360f6c036b/
+<<subsystem>> Controle de Turmas
+../webviewer/113.jpg
+cat42360f71008c/cat42360f71008c.htm
+
+cat42360f71008c/contents.cnt
+cat42360f71008c/
+<<subsystem>> Controle de usuários
+../webviewer/113.jpg
+cat42360f6902ce/cat42360f6902ce.htm
+
+cat42360f6902ce/contents.cnt
+cat42360f6902ce/
+<<subsystem>> Sumissão de Trabalhos
+../webviewer/113.jpg
+cat42360f730177/cat42360f730177.htm
+
+cat42360f730177/contents.cnt
+cat42360f730177/
+Main
+../webviewer/26.jpg
+dgm42360d35009d.htm
+
+
+
+(
+)
+<<Interface>> Testing Tools
+../webviewer/59.jpg
+class4236e37400bb.htm
+
+
+
+(
+CriarProjeto
+../webviewer/34.jpg
+op425569dd0121.htm
+
+
+
+(
+)
+ExecutarCasosTeste
+../webviewer/34.jpg
+op425569ee0003.htm
+
+
+
+(
+)
+RelatórioTeste
+../webviewer/34.jpg
+op425569f60281.htm
+
+
+
+(
+)
+theAvaliador ( Avaliador )
+../webviewer/82.jpg
+../looseends/role423a31cd005d.htm
+
+
+
+)
+Associations
+../webviewer/assoccat.gif
+
+
+
+
+(
+Association (theRealizar Cadastro:Realizar Cadastro) (theusuarios:usuarios)
+../webviewer/81.jpg
+../looseends/ass4235cf3c0196.htm
+
+
+
+(
+Realizar Cadastro ( theRealizar Cadastro )
+../webviewer/82.jpg
+../looseends/role4235cf3d0280.htm
+
+
+
+usuarios ( theusuarios )
+../webviewer/82.jpg
+../looseends/role4235cf3d0282.htm
+
+
+
+)
+Association (theAlterar Cadastro:Alterar Cadastro) (theusuarios:usuarios)
+../webviewer/81.jpg
+../looseends/ass4235cf5802fd.htm
+
+
+
+(
+Alterar Cadastro ( theAlterar Cadastro )
+../webviewer/82.jpg
+../looseends/role4235cf59034b.htm
+
+
+
+usuarios ( theusuarios )
+../webviewer/82.jpg
+../looseends/role4235cf59034d.htm
+
+
+
+)
+Association (theExcluir Cadastro:Excluir Cadastro) (theusuarios:usuarios)
+../webviewer/81.jpg
+../looseends/ass4235cf5d0213.htm
+
+
+
+(
+Excluir Cadastro ( theExcluir Cadastro )
+../webviewer/82.jpg
+../looseends/role4235cf5e0213.htm
+
+
+
+usuarios ( theusuarios )
+../webviewer/82.jpg
+../looseends/role4235cf5e0215.htm
+
+
+
+)
+Association (theVisualizar Dados Cadastro:Visualizar Dados Cadastro) (theusuarios:usuarios)
+../webviewer/81.jpg
+../looseends/ass4235cf800157.htm
+
+
+
+(
+Visualizar Dados Cadastro ( theVisualizar Dados Cadastro )
+../webviewer/82.jpg
+../looseends/role4235cf810167.htm
+
+
+
+usuarios ( theusuarios )
+../webviewer/82.jpg
+../looseends/role4235cf810169.htm
+
+
+
+)
+Association (theAutenticar no sistema:Autenticar no sistema) (theusuarios:usuarios)
+../webviewer/81.jpg
+../looseends/ass4235cf840251.htm
+
+
+
+(
+Autenticar no sistema ( theAutenticar no sistema )
+../webviewer/82.jpg
+../looseends/role4235cf850261.htm
+
+
+
+usuarios ( theusuarios )
+../webviewer/82.jpg
+../looseends/role4235cf850263.htm
+
+
+
+)
+Association (theIncluir alunos Turma:Incluir alunos Turma) (theprofessor:professor)
+../webviewer/81.jpg
+../looseends/ass4235d143038a.htm
+
+
+
+(
+Incluir alunos Turma ( theIncluir alunos Turma )
+../webviewer/82.jpg
+../looseends/role4235d144032c.htm
+
+
+
+professor ( theprofessor )
+../webviewer/82.jpg
+../looseends/role4235d144033c.htm
+
+
+
+)
+<<extend>> (theImportar lista de alunos:Importar lista de alunos) (theIncluir alunos Turma:Incluir alunos Turma)
+../webviewer/81.jpg
+../looseends/ass4235d14d00da.htm
+
+
+
+(
+Importar lista de alunos ( theImportar lista de alunos )
+../webviewer/82.jpg
+../looseends/role4235d14d032c.htm
+
+
+
+Incluir alunos Turma ( theIncluir alunos Turma )
+../webviewer/82.jpg
+../looseends/role4235d14d032e.htm
+
+
+
+)
+<<extend>> (theCadastrar Alunos:Cadastrar Alunos) (theIncluir alunos Turma:Incluir alunos Turma)
+../webviewer/81.jpg
+../looseends/ass4235d151035b.htm
+
+
+
+(
+Cadastrar Alunos ( theCadastrar Alunos )
+../webviewer/82.jpg
+../looseends/role4235d1520222.htm
+
+
+
+Incluir alunos Turma ( theIncluir alunos Turma )
+../webviewer/82.jpg
+../looseends/role4235d1520224.htm
+
+
+
+)
+<<extend>> (theIncluir alunos Turma:Incluir alunos Turma) (theImportar lista de alunos:Importar lista de alunos)
+../webviewer/81.jpg
+../looseends/ass4235d69e0203.htm
+
+
+
+(
+Incluir alunos Turma ( theIncluir alunos Turma )
+../webviewer/82.jpg
+../looseends/role4235d69f00fa.htm
+
+
+
+Importar lista de alunos ( theImportar lista de alunos )
+../webviewer/82.jpg
+../looseends/role4235d69f00fc.htm
+
+
+
+)
+<<extend>> (theIncluir alunos Turma:Incluir alunos Turma) (theCadastrar Alunos:Cadastrar Alunos)
+../webviewer/81.jpg
+../looseends/ass4235d6a3033c.htm
+
+
+
+(
+Incluir alunos Turma ( theIncluir alunos Turma )
+../webviewer/82.jpg
+../looseends/role4235d6a401c5.htm
+
+
+
+Cadastrar Alunos ( theCadastrar Alunos )
+../webviewer/82.jpg
+../looseends/role4235d6a401c7.htm
+
+
+
+)
+Association (theVisualizar Dados Turma:Visualizar Dados Turma) (theprofessor:professor)
+../webviewer/81.jpg
+../looseends/ass4235d780034b.htm
+
+
+
+(
+Visualizar Dados Turma ( theVisualizar Dados Turma )
+../webviewer/82.jpg
+../looseends/role4235d78102fd.htm
+
+
+
+professor ( theprofessor )
+../webviewer/82.jpg
+../looseends/role4235d78102ff.htm
+
+
+
+)
+Association (theAlterar Nota Sugerida pela Avaliação Automática:Alterar Nota Sugerida pela Avaliação Automática) (theprofessor:professor)
+../webviewer/81.jpg
+../looseends/ass4235d8e10280.htm
+
+
+
+(
+Alterar Nota Sugerida pela Avaliação Automática ( theAlterar Nota Sugerida pela Avaliação Automática )
+../webviewer/82.jpg
+../looseends/role4235d8e201a5.htm
+
+
+
+professor ( theprofessor )
+../webviewer/82.jpg
+../looseends/role4235d8e201a7.htm
+
+
+
+)
+<<extend>> (theIncluir Comentário da Avaliação:Incluir Comentário da Avaliação) (theAlterar Nota Sugerida pela Avaliação Automática:Alterar Nota Sugerida pela Avaliação Automática)
+../webviewer/81.jpg
+../looseends/ass4235d92000bb.htm
+
+
+
+(
+Incluir Comentário da Avaliação ( theIncluir Comentário da Avaliação )
+../webviewer/82.jpg
+../looseends/role4235d920032c.htm
+
+
+
+Alterar Nota Sugerida pela Avaliação Automática ( theAlterar Nota Sugerida pela Avaliação Automática )
+../webviewer/82.jpg
+../looseends/role4235d920032e.htm
+
+
+
+)
+Association (theEditar Turma:Editar Turma) (theprofessor:professor)
+../webviewer/81.jpg
+../looseends/ass4235de82036b.htm
+
+
+
+(
+Editar Turma ( theEditar Turma )
+../webviewer/82.jpg
+../looseends/role4235de83036b.htm
+
+
+
+professor ( theprofessor )
+../webviewer/82.jpg
+../looseends/role4235de83036d.htm
+
+
+
+)
+Association (theVisualiza Turma:Visualiza Turma) (themonitor:monitor)
+../webviewer/81.jpg
+../looseends/ass4235ea00032c.htm
+
+
+
+(
+Visualiza Turma ( theVisualiza Turma )
+../webviewer/82.jpg
+../looseends/role4235ea0101b5.htm
+
+
+
+monitor ( themonitor )
+../webviewer/82.jpg
+../looseends/role4235ea0101b7.htm
+
+
+
+)
+)

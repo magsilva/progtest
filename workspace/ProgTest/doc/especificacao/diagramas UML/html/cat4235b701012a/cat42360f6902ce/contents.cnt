@@ -1,0 +1,586 @@
+Main
+../../webviewer/26.jpg
+dgm42360f74034b.htm
+
+
+
+(
+)
+<<Actor>> Aluno
+../../webviewer/41.jpg
+class4236f4590196.htm
+
+
+
+(
+theSubmeter Programas ( Submeter Programas )
+../../webviewer/82.jpg
+../../looseends/role42361d3f02d0.htm
+
+
+
+theSubmeter Casos Teste ( Submeter Casos Teste )
+../../webviewer/82.jpg
+../../looseends/role42361d420244.htm
+
+
+
+the Visualizar Trabalhos (  Visualizar Trabalhos )
+../../webviewer/82.jpg
+../../looseends/role4236f5c60179.htm
+
+
+
+theVisualizar Turmas ( Visualizar Turmas )
+../../webviewer/82.jpg
+../../looseends/role4236f69303da.htm
+
+
+
+theSubmeter Documentação do Programa ( Submeter Documentação do Programa )
+../../webviewer/82.jpg
+../../looseends/role4236247502bf.htm
+
+
+
+theSubmeter Documentação dos Casos de Teste ( Submeter Documentação dos Casos de Teste )
+../../webviewer/82.jpg
+../../looseends/role42362479000f.htm
+
+
+
+theVisualizar Resultados da Avaliação ( Visualizar Resultados da Avaliação )
+../../webviewer/82.jpg
+../../looseends/role4236f55e03ca.htm
+
+
+
+)
+<<Actor>> Monitor
+../../webviewer/41.jpg
+class4236f49d009c.htm
+
+
+
+(
+theAnalisar Trabalhos ( Analisar Trabalhos )
+../../webviewer/82.jpg
+../../looseends/role4236f5f00021.htm
+
+
+
+theVisualiza Resultados Avaliação ( Visualiza Resultados Avaliação )
+../../webviewer/82.jpg
+../../looseends/role4236f5f40021.htm
+
+
+
+theVisualizar Turmas ( Visualizar Turmas )
+../../webviewer/82.jpg
+../../looseends/role4236f6a8030d.htm
+
+
+
+theVisualizar Alunos ( Visualizar Alunos )
+../../webviewer/82.jpg
+../../looseends/role4236f6ac03ca.htm
+
+
+
+)
+<<Actor>> Professor
+../../webviewer/41.jpg
+class4236f4940232.htm
+
+
+
+(
+theCadastrar Trabalhos ( Cadastrar Trabalhos )
+../../webviewer/82.jpg
+../../looseends/role42361b2a0002.htm
+
+
+
+theExcluir Trabalhos ( Excluir Trabalhos )
+../../webviewer/82.jpg
+../../looseends/role42361b30030f.htm
+
+
+
+theAlterar Criterios de Avaliação ( Alterar Criterios de Avaliação )
+../../webviewer/82.jpg
+../../looseends/role4236205503ca.htm
+
+
+
+theAlterar Trabalhos ( Alterar Trabalhos )
+../../webviewer/82.jpg
+../../looseends/role4236f59c00fc.htm
+
+
+
+theVisualizar Dados dos Trabalhos ( Visualizar Dados dos Trabalhos )
+../../webviewer/82.jpg
+../../looseends/role4236f5a0039b.htm
+
+
+
+theExcluir Turma ( Excluir Turma )
+../../webviewer/82.jpg
+../../looseends/role4236f6210204.htm
+
+
+
+theCadastrar Turmas ( Cadastrar Turmas )
+../../webviewer/82.jpg
+../../looseends/role4236f64901b5.htm
+
+
+
+theEditar Turma ( Editar Turma )
+../../webviewer/82.jpg
+../../looseends/role4236f6540224.htm
+
+
+
+theIncluir alunos Turma ( Incluir alunos Turma )
+../../webviewer/82.jpg
+../../looseends/role4236f65a0177.htm
+
+
+
+theVisualizar Dados Turma ( Visualizar Dados Turma )
+../../webviewer/82.jpg
+../../looseends/role4236f660009e.htm
+
+
+
+theExcluir Critérios de Avaliação ( Excluir Critérios de Avaliação )
+../../webviewer/82.jpg
+../../looseends/role4236222d02e0.htm
+
+
+
+theVisualizar Cirtérios de Avaliação ( Visualizar Cirtérios de Avaliação )
+../../webviewer/82.jpg
+../../looseends/role4236223002ff.htm
+
+
+
+theArmazenar Histórico com a Sequência de Submissões ( Armazenar Histórico com a Sequência de Submissões )
+../../webviewer/82.jpg
+../../looseends/role42362561038c.htm
+
+
+
+theVisualizar arquivos submetidos ( Visualizar arquivos submetidos )
+../../webviewer/82.jpg
+../../looseends/role42362656008d.htm
+
+
+
+theAceitar Submissões fora do prazo ( Aceitar Submissões fora do prazo )
+../../webviewer/82.jpg
+../../looseends/role4236f6f20282.htm
+
+
+
+theCadastrar Critérios de Avaliação ( Cadastrar Critérios de Avaliação )
+../../webviewer/82.jpg
+../../looseends/role4236236f033e.htm
+
+
+
+theVisualizar Resultado da Avaliação Automática dos Trabalhos ( Visualizar Resultado da Avaliação Automática dos Trabalhos )
+../../webviewer/82.jpg
+../../looseends/role423623d600ad.htm
+
+
+
+)
+<<Actor>> Usuário Online
+../../webviewer/41.jpg
+class4236f34300da.htm
+
+
+
+(
+theRealizar Cadastro ( Realizar Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f35d02b1.htm
+
+
+
+theAlterar Cadastro ( Alterar Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f360014a.htm
+
+
+
+theExcluir Cadastro ( Excluir Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f36201f6.htm
+
+
+
+theVisualizar Dados Cadastro ( Visualizar Dados Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f36500fc.htm
+
+
+
+theAutenticar no sistema ( Autenticar no sistema )
+../../webviewer/82.jpg
+../../looseends/role4236f3680179.htm
+
+
+
+)
+Alterar Cadastro
+../../webviewer/42.jpg
+uc4235b75a02af.htm
+
+
+
+(
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role4235cf59034b.htm
+
+
+
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role423610b80203.htm
+
+
+
+theUsuário Online ( Usuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f3600148.htm
+
+
+
+)
+(
+)
+Autenticar no sistema
+../../webviewer/42.jpg
+uc4235b8be0242.htm
+
+
+
+(
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role4235cf850261.htm
+
+
+
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role423610c103d8.htm
+
+
+
+theUsuário Online ( Usuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f3680177.htm
+
+
+
+)
+(
+)
+Excluir Cadastro
+../../webviewer/42.jpg
+uc4235b78a00cb.htm
+
+
+
+(
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role4235cf5e0213.htm
+
+
+
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role423610bc003e.htm
+
+
+
+theUsuário Online ( Usuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f36201f4.htm
+
+
+
+)
+(
+)
+Realizar Cadastro
+../../webviewer/42.jpg
+uc4235b71703b9.htm
+
+
+
+(
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role4235cf3d0280.htm
+
+
+
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role423610b5005d.htm
+
+
+
+theUsuário Online ( Usuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f35d02af.htm
+
+
+
+)
+(
+)
+Visualizar Dados Cadastro
+../../webviewer/42.jpg
+uc4235b79b03d8.htm
+
+
+
+(
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role4235cf810167.htm
+
+
+
+theusuarios ( usuarios )
+../../webviewer/82.jpg
+../../looseends/role423610bf003e.htm
+
+
+
+theUsuário Online ( Usuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f36500fa.htm
+
+
+
+)
+(
+)
+Associations
+../../webviewer/assoccat.gif
+
+
+
+
+(
+Association (theRealizar Cadastro:Realizar Cadastro) (theusuarios:usuarios)
+../../webviewer/81.jpg
+../../looseends/ass423610b4009c.htm
+
+
+
+(
+Realizar Cadastro ( theRealizar Cadastro )
+../../webviewer/82.jpg
+../../looseends/role423610b5005d.htm
+
+
+
+usuarios ( theusuarios )
+../../webviewer/82.jpg
+../../looseends/role423610b5005f.htm
+
+
+
+)
+Association (theAlterar Cadastro:Alterar Cadastro) (theusuarios:usuarios)
+../../webviewer/81.jpg
+../../looseends/ass423610b70280.htm
+
+
+
+(
+Alterar Cadastro ( theAlterar Cadastro )
+../../webviewer/82.jpg
+../../looseends/role423610b80203.htm
+
+
+
+usuarios ( theusuarios )
+../../webviewer/82.jpg
+../../looseends/role423610b80205.htm
+
+
+
+)
+Association (theExcluir Cadastro:Excluir Cadastro) (theusuarios:usuarios)
+../../webviewer/81.jpg
+../../looseends/ass423610bb007d.htm
+
+
+
+(
+Excluir Cadastro ( theExcluir Cadastro )
+../../webviewer/82.jpg
+../../looseends/role423610bc003e.htm
+
+
+
+usuarios ( theusuarios )
+../../webviewer/82.jpg
+../../looseends/role423610bc0040.htm
+
+
+
+)
+Association (theVisualizar Dados Cadastro:Visualizar Dados Cadastro) (theusuarios:usuarios)
+../../webviewer/81.jpg
+../../looseends/ass423610be0157.htm
+
+
+
+(
+Visualizar Dados Cadastro ( theVisualizar Dados Cadastro )
+../../webviewer/82.jpg
+../../looseends/role423610bf003e.htm
+
+
+
+usuarios ( theusuarios )
+../../webviewer/82.jpg
+../../looseends/role423610bf0040.htm
+
+
+
+)
+Association (theAutenticar no sistema:Autenticar no sistema) (theusuarios:usuarios)
+../../webviewer/81.jpg
+../../looseends/ass423610c1005d.htm
+
+
+
+(
+Autenticar no sistema ( theAutenticar no sistema )
+../../webviewer/82.jpg
+../../looseends/role423610c103d8.htm
+
+
+
+usuarios ( theusuarios )
+../../webviewer/82.jpg
+../../looseends/role423610c103da.htm
+
+
+
+)
+Association (theRealizar Cadastro:Realizar Cadastro) (theUsuário Online:Usuário Online)
+../../webviewer/81.jpg
+../../looseends/ass4236f35c0196.htm
+
+
+
+(
+Realizar Cadastro ( theRealizar Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f35d02af.htm
+
+
+
+Usuário Online ( theUsuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f35d02b1.htm
+
+
+
+)
+Association (theAlterar Cadastro:Alterar Cadastro) (theUsuário Online:Usuário Online)
+../../webviewer/81.jpg
+../../looseends/ass4236f35f01e4.htm
+
+
+
+(
+Alterar Cadastro ( theAlterar Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f3600148.htm
+
+
+
+Usuário Online ( theUsuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f360014a.htm
+
+
+
+)
+Association (theExcluir Cadastro:Excluir Cadastro) (theUsuário Online:Usuário Online)
+../../webviewer/81.jpg
+../../looseends/ass4236f361033c.htm
+
+
+
+(
+Excluir Cadastro ( theExcluir Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f36201f4.htm
+
+
+
+Usuário Online ( theUsuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f36201f6.htm
+
+
+
+)
+Association (theVisualizar Dados Cadastro:Visualizar Dados Cadastro) (theUsuário Online:Usuário Online)
+../../webviewer/81.jpg
+../../looseends/ass4236f36401c5.htm
+
+
+
+(
+Visualizar Dados Cadastro ( theVisualizar Dados Cadastro )
+../../webviewer/82.jpg
+../../looseends/role4236f36500fa.htm
+
+
+
+Usuário Online ( theUsuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f36500fc.htm
+
+
+
+)
+Association (theAutenticar no sistema:Autenticar no sistema) (theUsuário Online:Usuário Online)
+../../webviewer/81.jpg
+../../looseends/ass4236f36701f4.htm
+
+
+
+(
+Autenticar no sistema ( theAutenticar no sistema )
+../../webviewer/82.jpg
+../../looseends/role4236f3680177.htm
+
+
+
+Usuário Online ( theUsuário Online )
+../../webviewer/82.jpg
+../../looseends/role4236f3680179.htm
+
+
+
+)
+)

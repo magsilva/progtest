@@ -1,0 +1,82 @@
+1253542547859	Rename field 'trabalhos'
+1253542561406	Rename field 'trabalho'
+1253542598281	Rename method 'listarTrabalhos'
+1253641041843	Rename type 'ParserXMLReport'
+1253642061203	Delete element
+1253646976937	Delete element
+1253655947968	Rename local variable 'nodeList'
+1253709256218	Move compilation unit
+1253709321750	Move compilation units
+1253709367906	Move compilation units
+1253709392968	Delete element
+1253709396312	Delete element
+1253709928046	Rename type 'Required'
+1253709991109	Delete element
+1253710355718	Move compilation units
+1253710364953	Delete element
+1253710379671	Rename type 'XMLReport'
+1253711259687	Rename type 'CoverageByCritera'
+1253712316796	Rename type 'Report'
+1253712743875	Move file
+1253712748328	Move file
+1253712774656	Move file
+1253712779375	Move file
+1253712829828	Rename resource 'relatorioCoberturaTemplate.jsp'
+1253712838593	Rename resource 'requiredElementsReport.jsp'
+1253712911593	Rename resource 'requiredElementsReportTemplate.jsp'
+1253712943453	Rename resource 'relatoriosTemplate.jsp'
+1253712987718	Rename resource 'relatorios.jsp'
+1253713006406	Rename resource 'relatorioCobertura.jsp'
+1253713090078	Rename type 'ElementsRequiredReport'
+1253713675921	Rename type 'Reports'
+1253713704250	Delete element
+1253715430796	Delete element
+1253725631312	Rename field 'allDefUses'
+1253727951750	Rename local variable 'criterion'
+1253729929640	Rename type 'CoverageByClass'
+1253729955578	Rename type 'CoverageByCriteria'
+1253729975609	Rename type 'CoverageByMethod'
+1253735967546	Delete element
+1253736234296	Copy compilation unit
+1253736250281	Copy compilation unit
+1253736260265	Copy compilation unit
+1253736271515	Copy compilation unit
+1253736286500	Copy compilation unit
+1253737370281	Move compilation units
+1253737425906	Copy file
+1253737436109	Copy file
+1253737448109	Copy file
+1253737468750	Copy file
+1253737480906	Copy file
+1253737593750	Copy file
+1253737604906	Copy file
+1253737614375	Copy file
+1253737634796	Copy file
+1253737652843	Copy file
+1253821223578	Move compilation unit
+1253821316328	Move compilation unit
+1253821330203	Delete element
+1253821427468	Move compilation unit
+1253821477921	Rename type 'LoginBean'
+1253821734125	Rename type 'NewPassBean'
+1253821770296	Rename type 'NewUserBean'
+1253821859312	Copy compilation unit
+1253821874656	Rename type 'ListarTurmaBean'
+1253822163859	Delete element
+1253824002125	Move compilation unit
+1253825126093	Rename type 'NewProjectBean'
+1253825138625	Rename type 'ImportTestCaseBean'
+1253825164031	Move compilation unit
+1253825182640	Move compilation unit
+1253825241484	Copy compilation units
+1253908473437	Copy compilation unit
+1253908485343	Copy compilation unit
+1253908642484	Copy folder
+1253908648734	Copy folder
+1253908977609	Copy file
+1253908999921	Copy file
+1253909125390	Copy file
+1253909135281	Copy file
+1253909184203	Delete element
+1253909191890	Delete element
+1253910479093	Rename resource 'resultAvaliacaoCoverage.jsp'

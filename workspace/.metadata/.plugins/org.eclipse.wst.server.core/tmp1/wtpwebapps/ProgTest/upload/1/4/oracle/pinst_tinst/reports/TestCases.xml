@@ -1,0 +1,27 @@
+<?xml version='1.0'?>
+<TestCases>
+   <ClassName name="TestSet">
+      <Name value="test1"/>
+      <Status value="success"/>
+   </ClassName>
+   <ClassName name="TestSet">
+      <Name value="test2"/>
+      <Status value="success"/>
+   </ClassName>
+   <ClassName name="TestSet">
+      <Name value="test3"/>
+      <Status value="success"/>
+   </ClassName>
+   <ClassName name="TestSet">
+      <Name value="test4"/>
+      <Status value="success"/>
+   </ClassName>
+   <ClassName name="TestSet">
+      <Name value="test5"/>
+      <Status value="success"/>
+   </ClassName>
+   <ClassName name="TestSet">
+      <Name value="test6"/>
+      <Status value="success"/>
+   </ClassName>
+</TestCases>

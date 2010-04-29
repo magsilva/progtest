@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="49" version="2.0">
+<workbenchAdvisor/>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor" name="database-schema.sql" tooltip="ProgTest/doc/database/database-schema.sql">
+<persistable path="/ProgTest/doc/database/database-schema.sql"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JUnit.java" tooltip="ProgTest/src/progtest/tools/JUnit.java">
+<persistable path="/ProgTest/src/progtest/tools/JUnit.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Jabuti.java" tooltip="ProgTest/src/progtest/tools/Jabuti.java">
+<persistable path="/ProgTest/src/progtest/tools/Jabuti.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.hibernate.ui.xml.editor.HibConfig3CompoundEditor" name="hibernate.cfg.xml" tooltip="ProgTest/src/hibernate.cfg.xml">
+<persistable path="/ProgTest/src/hibernate.cfg.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddStudents.java" tooltip="ProgTest/src/progtest/view/instructor/AddStudents.java">
+<persistable path="/ProgTest/src/progtest/view/instructor/AddStudents.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Querier.java" tooltip="ProgTest/src/progtest/database/Querier.java">
+<persistable path="/ProgTest/src/progtest/database/Querier.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="submitAssignment.jsp" tooltip="ProgTest/web/pages/student/submitAssignment.jsp">
+<persistable path="/ProgTest/web/pages/student/submitAssignment.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="addAssignment.jsp" tooltip="ProgTest/web/pages/instructor/addAssignment.jsp">
+<persistable path="/ProgTest/web/pages/instructor/addAssignment.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="createAssignment.jsp" tooltip="ProgTest/web/pages/instructor/createAssignment.jsp">
+<persistable path="/ProgTest/web/pages/instructor/createAssignment.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="students.jsp" tooltip="ProgTest/web/pages/instructor/students.jsp">
+<persistable path="/ProgTest/web/pages/instructor/students.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="assignments.jsp" tooltip="ProgTest/web/pages/instructor/assignments.jsp">
+<persistable path="/ProgTest/web/pages/instructor/assignments.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AssignmentInfo.java" tooltip="ProgTest/src/progtest/view/student/AssignmentInfo.java">
+<persistable path="/ProgTest/src/progtest/view/student/AssignmentInfo.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="assignmentInfo.jsp" tooltip="ProgTest/web/pages/student/assignmentInfo.jsp">
+<persistable path="/ProgTest/web/pages/student/assignmentInfo.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddAssignment.java" tooltip="ProgTest/src/progtest/view/instructor/AddAssignment.java">
+<persistable path="/ProgTest/src/progtest/view/instructor/AddAssignment.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FileUtil.java" tooltip="ProgTest/src/progtest/util/FileUtil.java">
+<persistable path="/ProgTest/src/progtest/util/FileUtil.java"/>
+</file>
+</mruList>
+</workbench>

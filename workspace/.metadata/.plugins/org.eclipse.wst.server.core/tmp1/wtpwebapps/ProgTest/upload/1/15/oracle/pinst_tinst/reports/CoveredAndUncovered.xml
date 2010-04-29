@@ -1,0 +1,1363 @@
+<?xml version='1.0'?>
+<CoveredAndUncovered>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="4 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,4) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@3, 0,4&gt; &lt;L@2, 0,4&gt; &lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@3, 0,4&gt; &lt;L@2, 0,4&gt; &lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.&lt;init&gt;(III)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.peso()I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v1()I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Aresta.v2()I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="4 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,4) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.&lt;init&gt;(LGrafo;)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.antecessor(I)I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="61 55 25 75 44 14 42 69 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(44,75) (55,61) (69,44) (42,44) (14,42) (0,14) (61,69) (44,55) (55,69) (14,25) (25,14) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 0,61&gt; &lt;L@1, 0,61&gt; &lt;L@0, 0,61&gt; &lt;L@3, 25,(14, 42)&gt; &lt;L@3, 25,(14, 25)&gt; &lt;L@3, 69,61&gt; &lt;L@3, 42,(55, 61)&gt; &lt;L@3, 0,(14, 42)&gt; &lt;L@3, 0,(14, 25)&gt; &lt;L@0.antecessor, 0,25&gt; &lt;L@0, 0,(14, 42)&gt; &lt;L@0, 0,(14, 25)&gt; &lt;L@0, 0,(44, 55)&gt; &lt;L@0, 0,(44, 75)&gt; &lt;L@0.grafo, 0,(14, 42)&gt; &lt;L@0.grafo, 0,(14, 25)&gt; &lt;L@0.grafo, 0,(44, 55)&gt; &lt;L@0.grafo, 0,(44, 75)&gt; &lt;L@3, 69,(44, 75)&gt; &lt;L@3, 69,(44, 55)&gt; &lt;L@3, 42,69&gt; &lt;L@3, 0,25&gt; &lt;L@2, 0,25&gt; &lt;L@2, 0,(55, 69)&gt; &lt;L@2, 0,(55, 61)&gt; &lt;L@0, 0,25&gt; &lt;L@3, 42,61&gt; &lt;L@3, 69,(55, 69)&gt; &lt;L@3, 69,(55, 61)&gt; &lt;L@2[], 25,(55, 69)&gt; &lt;L@2[], 25,(55, 61)&gt; &lt;L@3, 42,(44, 75)&gt; &lt;L@3, 42,(44, 55)&gt; "/>
+      <UncoveredElements value="&lt;L@3, 42,(55, 69)&gt; "/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@3, 0,42&gt; &lt;L@1, 0,(44, 55)&gt; &lt;L@1, 0,(44, 75)&gt; &lt;L@0, 0,(44, 75)&gt; &lt;L@0, 0,(44, 55)&gt; &lt;L@2, 0,42&gt; &lt;L@1, 0,42&gt; &lt;L@3, 69,(55, 61)&gt; &lt;L@3, 69,(55, 69)&gt; &lt;L@0, 0,42&gt; &lt;L@3, 42,75&gt; &lt;L@2[], 25,69&gt; &lt;L@1, 61,(55, 61)&gt; &lt;L@1, 61,(55, 69)&gt; &lt;L@0.antecessor[], 25,(55, 61)&gt; &lt;L@0.antecessor[], 25,(55, 69)&gt; &lt;L@2[], 25,61&gt; &lt;L@3, 69,(44, 75)&gt; &lt;L@3, 69,(44, 55)&gt; &lt;L@3, 42,69&gt; &lt;L@1, 61,(44, 55)&gt; &lt;L@1, 61,(44, 75)&gt; &lt;L@3, 42,61&gt; &lt;L@0.antecessor[], 25,(44, 55)&gt; &lt;L@0.antecessor[], 25,(44, 75)&gt; &lt;L@2[], 25,(55, 61)&gt; &lt;L@2[], 25,(55, 69)&gt; &lt;L@0.antecessor[], 25,42&gt; &lt;L@3, 0,25&gt; &lt;L@2, 0,25&gt; &lt;L@1, 0,25&gt; &lt;L@0, 0,25&gt; &lt;L@3, 25,(14, 42)&gt; &lt;L@3, 25,(14, 25)&gt; &lt;L@3, 42,(55, 61)&gt; &lt;L@2[], 25,(44, 75)&gt; &lt;L@2[], 25,(44, 55)&gt; &lt;L@2[], 25,42&gt; &lt;L@3, 0,(14, 42)&gt; &lt;L@3, 0,(14, 25)&gt; &lt;L@2, 0,(14, 42)&gt; &lt;L@2, 0,(14, 25)&gt; &lt;L@1, 0,(14, 25)&gt; &lt;L@1, 0,(14, 42)&gt; &lt;L@0, 0,(14, 25)&gt; &lt;L@0, 0,(14, 42)&gt; &lt;L@2, 0,75&gt; &lt;L@1, 0,75&gt; &lt;L@0, 0,75&gt; &lt;L@3, 42,(44, 75)&gt; &lt;L@3, 42,(44, 55)&gt; &lt;L@2, 0,69&gt; &lt;L@0, 0,69&gt; &lt;L@3, 69,75&gt; &lt;L@2, 0,61&gt; &lt;L@1, 0,61&gt; &lt;L@0, 0,61&gt; &lt;L@0.antecessor[], 25,(14, 25)&gt; &lt;L@0.antecessor[], 25,(14, 42)&gt; &lt;L@1, 61,75&gt; &lt;L@0.antecessor[], 25,75&gt; &lt;L@2, 0,(55, 61)&gt; &lt;L@2, 0,(55, 69)&gt; &lt;L@1, 0,(55, 61)&gt; &lt;L@0, 0,(55, 61)&gt; &lt;L@0, 0,(55, 69)&gt; &lt;L@3, 25,42&gt; &lt;L@3, 69,61&gt; &lt;L@1, 61,69&gt; &lt;L@0.antecessor[], 25,69&gt; &lt;L@2[], 25,(14, 42)&gt; &lt;L@2[], 25,(14, 25)&gt; &lt;L@2[], 25,75&gt; &lt;L@0.antecessor[], 25,61&gt; &lt;L@2, 0,(44, 75)&gt; &lt;L@2, 0,(44, 55)&gt; "/>
+      <UncoveredElements value="&lt;L@3, 42,(55, 69)&gt; &lt;L@1, 0,69&gt; &lt;L@1, 0,(55, 69)&gt; "/>
+   </Method>
+   <Method name="BuscaEmProfundidade.buscaEmProfundidade()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.d(I)I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.t(I)I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="40 25 84 35 71 0 54 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(54,71) (40,54) (0,84) (0,25) (35,84) (25,35) (40,71) (71,35) (35,40) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@4, 71,(35, 84)&gt; &lt;L@4, 71,(35, 40)&gt; &lt;L@2, 54,84&gt; &lt;L@0.grafo, 0,(0, 84)&gt; &lt;L@0.grafo, 0,(0, 25)&gt; &lt;L@0.antecessor, 0,54&gt; &lt;L@0.grafo, 0,71&gt; &lt;L@0.t, 0,84&gt; &lt;L@1, 0,25&gt; &lt;L@4, 25,(40, 54)&gt; &lt;L@4, 25,(40, 71)&gt; &lt;L@0, 0,25&gt; &lt;L@3, 0,54&gt; &lt;L@2, 0,54&gt; &lt;L@5, 40,54&gt; &lt;L@3, 0,84&gt; &lt;L@1, 0,54&gt; &lt;L@2, 0,84&gt; &lt;L@0, 0,54&gt; &lt;L@1, 0,84&gt; &lt;L@0, 0,84&gt; &lt;L@4, 25,(35, 40)&gt; &lt;L@3, 0,(0, 25)&gt; &lt;L@3, 0,(0, 84)&gt; &lt;L@2, 0,(0, 25)&gt; &lt;L@2, 0,(0, 84)&gt; &lt;L@1, 0,(0, 25)&gt; &lt;L@1, 0,(0, 84)&gt; &lt;L@0.grafo, 0,25&gt; &lt;L@0, 0,(0, 25)&gt; &lt;L@0, 0,(0, 84)&gt; &lt;L@3, 0,(40, 54)&gt; &lt;L@3, 0,(40, 71)&gt; &lt;L@5, 40,(40, 54)&gt; &lt;L@5, 40,(40, 71)&gt; &lt;L@1, 0,71&gt; &lt;L@4, 71,(40, 54)&gt; &lt;L@4, 71,(40, 71)&gt; &lt;L@0, 0,71&gt; &lt;L@0.d, 0,(0, 84)&gt; &lt;L@0.d, 0,(0, 25)&gt; &lt;L@3[], 0,(40, 54)&gt; &lt;L@3[], 0,(40, 71)&gt; "/>
+      <UncoveredElements value="&lt;L@4, 25,(35, 84)&gt; "/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@4, 25,(35, 40)&gt; &lt;L@3, 0,(40, 54)&gt; &lt;L@3, 0,(40, 71)&gt; &lt;L@2, 0,(40, 54)&gt; &lt;L@2, 0,(40, 71)&gt; &lt;L@1, 0,(40, 54)&gt; &lt;L@1, 0,(40, 71)&gt; &lt;L@0, 0,(40, 54)&gt; &lt;L@0, 0,(40, 71)&gt; &lt;L@0.d[], 0,54&gt; &lt;L@3[], 0,71&gt; &lt;L@5, 40,71&gt; &lt;L@4, 71,(40, 54)&gt; &lt;L@4, 71,(40, 71)&gt; &lt;L@0.antecessor[], 54,84&gt; &lt;L@3, 0,(35, 84)&gt; &lt;L@3, 0,(35, 40)&gt; &lt;L@2, 0,(35, 84)&gt; &lt;L@2, 0,(35, 40)&gt; &lt;L@1, 0,(35, 84)&gt; &lt;L@1, 0,(35, 40)&gt; &lt;L@0, 0,(35, 84)&gt; &lt;L@0, 0,(35, 40)&gt; &lt;L@4, 71,(35, 40)&gt; &lt;L@4, 71,(35, 84)&gt; &lt;L@0.d[], 0,(40, 54)&gt; &lt;L@0.d[], 0,(40, 71)&gt; &lt;L@0.antecessor[], 54,71&gt; &lt;L@3, 0,25&gt; &lt;L@2, 0,25&gt; &lt;L@1, 0,25&gt; &lt;L@0, 0,25&gt; &lt;L@3, 0,84&gt; &lt;L@2, 0,84&gt; &lt;L@1, 0,84&gt; &lt;L@0, 0,84&gt; &lt;L@3[], 0,54&gt; &lt;L@0.d[], 0,(35, 84)&gt; &lt;L@0.d[], 0,(35, 40)&gt; &lt;L@4, 25,71&gt; &lt;L@5, 40,54&gt; &lt;L@2, 54,(40, 54)&gt; &lt;L@2, 54,(40, 71)&gt; &lt;L@4, 71,84&gt; &lt;L@3, 0,(0, 25)&gt; &lt;L@3, 0,(0, 84)&gt; &lt;L@2, 0,(0, 84)&gt; &lt;L@2, 0,(0, 25)&gt; &lt;L@1, 0,(0, 84)&gt; &lt;L@1, 0,(0, 25)&gt; &lt;L@0, 0,(0, 84)&gt; &lt;L@0, 0,(0, 25)&gt; &lt;L@3, 0,71&gt; &lt;L@2, 0,71&gt; &lt;L@1, 0,71&gt; &lt;L@2, 54,(35, 84)&gt; &lt;L@2, 54,(35, 40)&gt; &lt;L@0.d[], 0,25&gt; &lt;L@0, 0,71&gt; &lt;L@3[], 0,(40, 54)&gt; &lt;L@3[], 0,(40, 71)&gt; &lt;L@0.d[], 0,84&gt; &lt;L@5, 40,(40, 54)&gt; &lt;L@5, 40,(40, 71)&gt; &lt;L@0.d[], 0,(0, 84)&gt; &lt;L@0.d[], 0,(0, 25)&gt; &lt;L@3[], 0,(35, 84)&gt; &lt;L@3[], 0,(35, 40)&gt; &lt;L@4, 25,54&gt; &lt;L@5, 40,(35, 84)&gt; &lt;L@5, 40,(35, 40)&gt; &lt;L@2, 54,84&gt; &lt;L@0.d[], 0,71&gt; &lt;L@0.antecessor[], 54,(40, 54)&gt; &lt;L@0.antecessor[], 54,(40, 71)&gt; &lt;L@3, 0,54&gt; &lt;L@2, 0,54&gt; &lt;L@1, 0,54&gt; &lt;L@3[], 0,25&gt; &lt;L@0, 0,54&gt; &lt;L@4, 25,(40, 54)&gt; &lt;L@4, 25,(40, 71)&gt; &lt;L@3[], 0,84&gt; &lt;L@5, 40,84&gt; &lt;L@4, 71,54&gt; &lt;L@2, 54,71&gt; &lt;L@0.antecessor[], 54,(35, 40)&gt; &lt;L@0.antecessor[], 54,(35, 84)&gt; &lt;L@3[], 0,(0, 25)&gt; &lt;L@3[], 0,(0, 84)&gt; "/>
+      <UncoveredElements value="&lt;L@4, 25,(35, 84)&gt; &lt;L@4, 25,84&gt; "/>
+   </Method>
+   <Method name="BuscaEmProfundidade.visitaDfs(II[I)I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="4 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,4) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 0,4&gt; &lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 0,4&gt; &lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.&lt;init&gt;(II)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="21 0 20 16 "/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(20,21) (0,20) (16,21) (0,16) "/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2.vertice, 0,(0, 16)&gt; &lt;L@2.vertice, 0,(0, 20)&gt; &lt;L@0.vertice, 0,(0, 20)&gt; &lt;L@0.vertice, 0,(0, 16)&gt; &lt;L@2, 0,(0, 16)&gt; &lt;L@2, 0,(0, 20)&gt; &lt;L@1, 0,(0, 16)&gt; &lt;L@1, 0,(0, 20)&gt; &lt;L@0, 0,(0, 16)&gt; &lt;L@0, 0,(0, 20)&gt; "/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 0,21&gt; &lt;L@1, 0,21&gt; &lt;L@2, 0,20&gt; &lt;L@0, 0,21&gt; &lt;L@1, 0,20&gt; &lt;L@0, 0,20&gt; &lt;L@2, 0,16&gt; &lt;L@1, 0,16&gt; &lt;L@0, 0,16&gt; &lt;L@2, 0,(0, 16)&gt; &lt;L@2, 0,(0, 20)&gt; &lt;L@1, 0,(0, 16)&gt; &lt;L@1, 0,(0, 20)&gt; &lt;L@0, 0,(0, 16)&gt; &lt;L@0, 0,(0, 20)&gt; "/>
+   </Method>
+   <Method name="CelulaG.equals(Ljava/lang/Object;)Z">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="4 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,4) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="CelulaL.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="27 4 46 0 19 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(19,46) (27,19) (19,27) (0,4) (4,19) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 4,27&gt; &lt;L@0.numVertices, 4,(19, 27)&gt; &lt;L@0.numVertices, 4,(19, 46)&gt; &lt;L@0, 0,27&gt; &lt;L@2, 4,(19, 27)&gt; &lt;L@2, 4,(19, 46)&gt; &lt;L@0.adj, 4,27&gt; &lt;L@0, 0,(19, 27)&gt; &lt;L@0, 0,(19, 46)&gt; &lt;L@2, 27,(19, 46)&gt; &lt;L@2, 27,(19, 27)&gt; &lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@0.adj[], 27,46&gt; &lt;L@2, 27,(19, 46)&gt; &lt;L@2, 27,(19, 27)&gt; &lt;L@2, 4,(19, 46)&gt; &lt;L@2, 4,(19, 27)&gt; &lt;L@2, 27,46&gt; &lt;L@2, 4,46&gt; &lt;L@1, 0,(19, 27)&gt; &lt;L@1, 0,(19, 46)&gt; &lt;L@0, 0,(19, 27)&gt; &lt;L@0, 0,(19, 46)&gt; &lt;L@1, 0,46&gt; &lt;L@0, 0,46&gt; &lt;L@0.numVertices, 4,(19, 46)&gt; &lt;L@0.numVertices, 4,(19, 27)&gt; &lt;L@0.numVertices, 4,46&gt; &lt;L@2, 4,27&gt; &lt;L@0.adj, 4,(19, 27)&gt; &lt;L@0.adj, 4,(19, 46)&gt; &lt;L@0.adj, 4,46&gt; &lt;L@1, 0,27&gt; &lt;L@0, 0,27&gt; &lt;L@1, 0,4&gt; &lt;L@0, 0,4&gt; &lt;L@0.numVertices, 4,27&gt; &lt;L@0.adj, 4,27&gt; &lt;L@0.adj[], 27,(19, 27)&gt; &lt;L@0.adj[], 27,(19, 46)&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.&lt;init&gt;(I)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="27 23 0 28 "/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(27,28) (0,23) (23,28) (0,27) "/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0.adj[], 0,(0, 27)&gt; &lt;L@0.adj[], 0,(0, 23)&gt; &lt;L@0.adj, 0,(0, 27)&gt; &lt;L@0.adj, 0,(0, 23)&gt; &lt;L@3, 0,(0, 23)&gt; &lt;L@3, 0,(0, 27)&gt; &lt;L@2, 0,(0, 23)&gt; &lt;L@2, 0,(0, 27)&gt; &lt;L@1, 0,(0, 23)&gt; &lt;L@1, 0,(0, 27)&gt; &lt;L@0, 0,(0, 23)&gt; &lt;L@0, 0,(0, 27)&gt; "/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@3, 0,28&gt; &lt;L@3, 0,27&gt; &lt;L@2, 0,28&gt; &lt;L@1, 0,28&gt; &lt;L@2, 0,27&gt; &lt;L@0, 0,28&gt; &lt;L@1, 0,27&gt; &lt;L@0, 0,27&gt; &lt;L@3, 0,23&gt; &lt;L@2, 0,23&gt; &lt;L@3, 0,(0, 27)&gt; &lt;L@3, 0,(0, 23)&gt; &lt;L@1, 0,23&gt; &lt;L@2, 0,(0, 27)&gt; &lt;L@2, 0,(0, 23)&gt; &lt;L@0, 0,23&gt; &lt;L@1, 0,(0, 27)&gt; &lt;L@1, 0,(0, 23)&gt; &lt;L@0, 0,(0, 27)&gt; &lt;L@0, 0,(0, 23)&gt; "/>
+   </Method>
+   <Method name="Grafo.existeAresta(II)Z">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="40 14 36 71 22 0 30 65 "/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(30,36) (14,22) (22,65) (14,71) (65,14) (0,14) (22,30) (40,36) (36,40) (36,65) "/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 0,30&gt; &lt;L@0, 0,30&gt; &lt;L@3, 30,(36, 65)&gt; &lt;L@3, 30,(36, 40)&gt; &lt;L@2, 0,(14, 71)&gt; &lt;L@2, 0,(14, 22)&gt; &lt;L@0, 0,(14, 71)&gt; &lt;L@0, 0,(14, 22)&gt; &lt;L@2, 65,30&gt; &lt;L@2, 0,40&gt; &lt;L@1, 0,71&gt; &lt;L@1, 0,40&gt; &lt;L@0, 0,40&gt; &lt;L@0.numVertices, 0,(14, 71)&gt; &lt;L@0.numVertices, 0,(14, 22)&gt; &lt;L@2, 65,(14, 71)&gt; &lt;L@2, 65,(14, 22)&gt; &lt;L@3, 40,(36, 65)&gt; &lt;L@3, 40,(36, 40)&gt; &lt;L@2, 65,40&gt; &lt;L@2, 0,(22, 30)&gt; &lt;L@2, 0,(22, 65)&gt; &lt;L@0, 0,(22, 30)&gt; &lt;L@0, 0,(22, 65)&gt; &lt;L@3, 30,40&gt; &lt;L@2, 65,(22, 30)&gt; &lt;L@2, 65,(22, 65)&gt; &lt;L@2, 0,65&gt; "/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 0,(36, 65)&gt; &lt;L@2, 0,(36, 40)&gt; &lt;L@2, 65,(14, 22)&gt; &lt;L@2, 65,(14, 71)&gt; &lt;L@1, 0,(36, 65)&gt; &lt;L@1, 0,(36, 40)&gt; &lt;L@0, 0,(36, 40)&gt; &lt;L@0, 0,(36, 65)&gt; &lt;L@3, 30,(14, 22)&gt; &lt;L@3, 30,(14, 71)&gt; &lt;L@3, 40,(36, 40)&gt; &lt;L@3, 40,(36, 65)&gt; &lt;L@2, 0,65&gt; &lt;L@1, 0,65&gt; &lt;L@0, 0,65&gt; &lt;L@3, 40,65&gt; &lt;L@2, 65,40&gt; &lt;L@2, 0,30&gt; &lt;L@2, 65,71&gt; &lt;L@1, 0,30&gt; &lt;L@3, 30,40&gt; &lt;L@3, 40,30&gt; &lt;L@0, 0,30&gt; &lt;L@3, 30,71&gt; &lt;L@2, 65,(36, 65)&gt; &lt;L@2, 65,(36, 40)&gt; &lt;L@3, 30,(36, 40)&gt; &lt;L@3, 30,(36, 65)&gt; &lt;L@2, 0,(22, 30)&gt; &lt;L@2, 0,(22, 65)&gt; &lt;L@3, 30,65&gt; &lt;L@1, 0,(22, 30)&gt; &lt;L@1, 0,(22, 65)&gt; &lt;L@0, 0,(22, 30)&gt; &lt;L@0, 0,(22, 65)&gt; &lt;L@3, 40,(22, 65)&gt; &lt;L@3, 40,(22, 30)&gt; &lt;L@2, 65,30&gt; &lt;L@2, 0,(14, 71)&gt; &lt;L@2, 0,(14, 22)&gt; &lt;L@1, 0,(14, 71)&gt; &lt;L@1, 0,(14, 22)&gt; &lt;L@3, 40,(14, 22)&gt; &lt;L@3, 40,(14, 71)&gt; &lt;L@2, 65,(22, 30)&gt; &lt;L@2, 65,(22, 65)&gt; &lt;L@0, 0,(14, 22)&gt; &lt;L@0, 0,(14, 71)&gt; &lt;L@3, 30,(22, 65)&gt; &lt;L@3, 30,(22, 30)&gt; &lt;L@2, 0,40&gt; &lt;L@2, 0,71&gt; &lt;L@1, 0,40&gt; &lt;L@1, 0,71&gt; &lt;L@0, 0,40&gt; &lt;L@0, 0,71&gt; &lt;L@3, 40,71&gt; "/>
+   </Method>
+   <Method name="Grafo.grafoTransposto()LGrafo;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="2 124 10 57 0 118 53 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,2) (118,2) (10,53) (57,53) (53,57) (53,118) (2,124) (2,10) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@1, 118,10&gt; &lt;S@java.lang.System.out, 0,57&gt; &lt;L@1, 118,57&gt; &lt;L@2, 10,57&gt; &lt;L@0.adj[], 0,10&gt; &lt;L@1, 118,(2, 124)&gt; &lt;L@1, 118,(2, 10)&gt; &lt;L@1, 0,118&gt; &lt;L@2, 10,(53, 118)&gt; &lt;L@2, 10,(53, 57)&gt; &lt;L@1, 0,10&gt; &lt;L@0, 0,10&gt; &lt;L@0.adj[], 0,57&gt; &lt;L@2, 57,(53, 57)&gt; &lt;L@2, 57,(53, 118)&gt; &lt;L@0, 0,57&gt; &lt;L@1, 0,(2, 10)&gt; &lt;L@0, 0,(2, 124)&gt; &lt;L@0, 0,(2, 10)&gt; &lt;L@2.peso, 0,57&gt; &lt;L@0.adj, 0,10&gt; &lt;S@java.lang.System.out, 0,10&gt; &lt;L@0.numVertices, 0,(2, 124)&gt; &lt;L@0.numVertices, 0,(2, 10)&gt; &lt;L@2.vertice, 0,57&gt; &lt;L@0.adj, 0,57&gt; "/>
+      <UncoveredElements value="&lt;L@1, 0,57&gt; &lt;L@1, 0,(2, 124)&gt; "/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@1, 118,124&gt; &lt;L@1, 118,(2, 10)&gt; &lt;L@1, 118,(2, 124)&gt; &lt;L@1, 0,118&gt; &lt;L@2, 10,118&gt; &lt;L@0, 0,118&gt; &lt;L@1, 118,10&gt; &lt;L@2, 57,(53, 118)&gt; &lt;L@2, 57,(53, 57)&gt; &lt;L@2, 57,(2, 10)&gt; &lt;L@2, 57,10&gt; &lt;L@2, 10,57&gt; &lt;L@0, 0,57&gt; &lt;L@1, 0,(53, 118)&gt; &lt;L@2, 10,(53, 57)&gt; &lt;L@2, 10,(53, 118)&gt; &lt;L@0, 0,(53, 57)&gt; &lt;L@0, 0,(53, 118)&gt; &lt;L@2, 57,118&gt; &lt;L@1, 118,57&gt; &lt;L@1, 118,(53, 57)&gt; &lt;L@1, 118,(53, 118)&gt; &lt;L@2, 10,124&gt; &lt;L@0, 0,124&gt; &lt;L@1, 0,(2, 10)&gt; &lt;L@2, 10,(2, 124)&gt; &lt;L@2, 10,(2, 10)&gt; &lt;L@0, 0,(2, 10)&gt; &lt;L@0, 0,(2, 124)&gt; &lt;L@1, 0,10&gt; &lt;L@0, 0,10&gt; "/>
+      <UncoveredElements value="&lt;L@2, 57,124&gt; &lt;L@2, 57,(2, 124)&gt; &lt;L@1, 0,57&gt; &lt;L@1, 0,(53, 57)&gt; &lt;L@1, 0,124&gt; &lt;L@1, 0,(2, 124)&gt; "/>
+   </Method>
+   <Method name="Grafo.imprime()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.insereAresta(III)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.listaAdjVazia(I)Z">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.numVertices()I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="37 0 17 "/>
+      <UncoveredElements value="36 "/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(17,37) (0,17) "/>
+      <UncoveredElements value="(36,37) (0,36) "/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@0.adj[], 0,(0, 17)&gt; &lt;L@0.adj, 0,(0, 17)&gt; &lt;L@2, 0,17&gt; &lt;L@1, 0,17&gt; &lt;L@2.peso, 0,17&gt; &lt;L@2, 0,(0, 17)&gt; &lt;L@2.vertice, 0,17&gt; &lt;L@1, 0,(0, 17)&gt; &lt;L@0, 0,(0, 17)&gt; "/>
+      <UncoveredElements value="&lt;L@0.adj[], 0,(0, 36)&gt; &lt;L@0.adj, 0,(0, 36)&gt; &lt;L@2, 0,(0, 36)&gt; &lt;L@1, 0,(0, 36)&gt; &lt;L@0, 0,(0, 36)&gt; "/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 0,17&gt; &lt;L@1, 0,17&gt; &lt;L@0, 0,17&gt; &lt;L@2, 0,37&gt; &lt;L@1, 0,37&gt; &lt;L@2, 0,(0, 17)&gt; &lt;L@0, 0,37&gt; &lt;L@1, 0,(0, 17)&gt; &lt;L@0, 0,(0, 17)&gt; "/>
+      <UncoveredElements value="&lt;L@2, 0,36&gt; &lt;L@2, 0,(0, 36)&gt; &lt;L@1, 0,36&gt; &lt;L@1, 0,(0, 36)&gt; &lt;L@0, 0,36&gt; &lt;L@0, 0,(0, 36)&gt; "/>
+   </Method>
+   <Method name="Grafo.primeiroListaAdj(I)LAresta;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="37 36 0 17 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(17,37) (0,17) (36,37) (0,36) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@0.adj[], 0,(0, 17)&gt; &lt;L@0.adj[], 0,(0, 36)&gt; &lt;L@0.adj, 0,(0, 36)&gt; &lt;L@0.adj, 0,(0, 17)&gt; &lt;L@2, 0,17&gt; &lt;L@1, 0,17&gt; &lt;L@2.peso, 0,17&gt; &lt;L@2, 0,(0, 17)&gt; &lt;L@2, 0,(0, 36)&gt; &lt;L@2.vertice, 0,17&gt; &lt;L@1, 0,(0, 17)&gt; &lt;L@1, 0,(0, 36)&gt; &lt;L@0, 0,(0, 17)&gt; &lt;L@0, 0,(0, 36)&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 0,17&gt; &lt;L@1, 0,17&gt; &lt;L@0, 0,17&gt; &lt;L@2, 0,37&gt; &lt;L@1, 0,37&gt; &lt;L@2, 0,36&gt; &lt;L@2, 0,(0, 17)&gt; &lt;L@2, 0,(0, 36)&gt; &lt;L@0, 0,37&gt; &lt;L@1, 0,36&gt; &lt;L@1, 0,(0, 17)&gt; &lt;L@1, 0,(0, 36)&gt; &lt;L@0, 0,36&gt; &lt;L@0, 0,(0, 17)&gt; &lt;L@0, 0,(0, 36)&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.proxAdj(I)LAresta;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="48 47 0 30 "/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(0,47) (30,48) (0,30) (47,48) "/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@4, 0,30&gt; &lt;L@2, 0,30&gt; &lt;L@1, 0,30&gt; &lt;L@0.adj, 0,(0, 30)&gt; &lt;L@0.adj, 0,(0, 47)&gt; &lt;L@4.peso, 0,30&gt; &lt;L@0.adj[], 0,(0, 30)&gt; &lt;L@0.adj[], 0,(0, 47)&gt; &lt;L@4, 0,(0, 47)&gt; &lt;L@4, 0,(0, 30)&gt; &lt;L@3, 0,(0, 47)&gt; &lt;L@3, 0,(0, 30)&gt; &lt;L@2, 0,(0, 30)&gt; &lt;L@2, 0,(0, 47)&gt; &lt;L@1, 0,(0, 47)&gt; &lt;L@1, 0,(0, 30)&gt; &lt;L@0, 0,(0, 47)&gt; &lt;L@0, 0,(0, 30)&gt; "/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@4, 0,30&gt; &lt;L@3, 0,30&gt; &lt;L@2, 0,30&gt; &lt;L@1, 0,30&gt; &lt;L@0, 0,30&gt; &lt;L@4, 0,48&gt; &lt;L@3, 0,48&gt; &lt;L@4, 0,47&gt; &lt;L@2, 0,48&gt; &lt;L@3, 0,47&gt; &lt;L@1, 0,48&gt; &lt;L@2, 0,47&gt; &lt;L@0, 0,48&gt; &lt;L@1, 0,47&gt; &lt;L@0, 0,47&gt; &lt;L@4, 0,(0, 30)&gt; &lt;L@4, 0,(0, 47)&gt; &lt;L@3, 0,(0, 47)&gt; &lt;L@3, 0,(0, 30)&gt; &lt;L@2, 0,(0, 47)&gt; &lt;L@2, 0,(0, 30)&gt; &lt;L@1, 0,(0, 47)&gt; &lt;L@1, 0,(0, 30)&gt; &lt;L@0, 0,(0, 47)&gt; &lt;L@0, 0,(0, 30)&gt; "/>
+   </Method>
+   <Method name="Grafo.retiraAresta(II)LAresta;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="4 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,4) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="15 14 10 0 "/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(0,10) (14,15) (10,15) (0,14) "/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 0,(0, 14)&gt; &lt;L@2, 0,(0, 10)&gt; &lt;L@1, 0,(0, 14)&gt; &lt;L@1, 0,(0, 10)&gt; &lt;L@0, 0,(0, 14)&gt; &lt;L@0, 0,(0, 10)&gt; "/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 0,15&gt; &lt;L@1, 0,15&gt; &lt;L@2, 0,14&gt; &lt;L@0, 0,15&gt; &lt;L@1, 0,14&gt; &lt;L@0, 0,14&gt; &lt;L@2, 0,10&gt; &lt;L@2, 0,(0, 10)&gt; &lt;L@2, 0,(0, 14)&gt; &lt;L@1, 0,10&gt; &lt;L@0, 0,10&gt; &lt;L@1, 0,(0, 10)&gt; &lt;L@1, 0,(0, 14)&gt; &lt;L@0, 0,(0, 10)&gt; &lt;L@0, 0,(0, 14)&gt; "/>
+   </Method>
+   <Method name="Lista.estaNaLista(Ljava/lang/Object;)Z">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="12 33 0 8 "/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(12,8) (8,12) (8,33) (0,8) "/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@1.item, 0,12&gt; &lt;L@1, 0,(8, 33)&gt; &lt;L@1, 0,(8, 12)&gt; &lt;L@1, 0,12&gt; &lt;L@1.prox, 0,12&gt; &lt;L@1, 12,(8, 33)&gt; &lt;L@1, 12,(8, 12)&gt; &lt;S@java.lang.System.out, 0,12&gt; "/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@1, 0,33&gt; &lt;L@0, 0,33&gt; &lt;L@1, 12,(8, 12)&gt; &lt;L@1, 12,(8, 33)&gt; &lt;L@1, 0,(8, 12)&gt; &lt;L@1, 0,(8, 33)&gt; &lt;L@0, 0,(8, 12)&gt; &lt;L@0, 0,(8, 33)&gt; &lt;L@1, 0,12&gt; &lt;L@0, 0,12&gt; &lt;L@1, 12,33&gt; "/>
+   </Method>
+   <Method name="Lista.imprime()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.insere(Ljava/lang/Object;)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="0 "/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.inserePrimeiro(Ljava/lang/Object;)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="55 25 18 47 7 13 39 11 0 "/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(47,18) (25,39) (13,18) (7,13) (7,11) (0,7) (0,11) (18,55) (25,47) (18,25) "/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2.prox, 0,(18, 55)&gt; &lt;L@2.prox, 0,(18, 25)&gt; &lt;L@2.prox, 0,47&gt; &lt;L@2, 47,(25, 47)&gt; &lt;L@2, 47,(25, 39)&gt; &lt;L@2, 13,(25, 47)&gt; &lt;L@2, 13,(25, 39)&gt; &lt;L@0, 0,13&gt; &lt;L@2, 47,39&gt; &lt;L@2.prox, 0,(25, 47)&gt; &lt;L@2.prox, 0,(25, 39)&gt; &lt;L@2, 13,39&gt; &lt;L@1, 0,(7, 13)&gt; &lt;L@1, 0,(7, 11)&gt; &lt;L@2.prox.item, 0,(25, 39)&gt; &lt;L@2.prox.item, 0,(25, 47)&gt; &lt;L@1, 0,(25, 39)&gt; &lt;L@1, 0,(25, 47)&gt; &lt;L@2.prox, 0,39&gt; &lt;L@0, 0,(0, 11)&gt; &lt;L@0, 0,(0, 7)&gt; &lt;L@2, 47,(18, 25)&gt; &lt;L@2, 47,(18, 55)&gt; &lt;L@2, 13,(18, 25)&gt; &lt;L@2, 13,(18, 55)&gt; &lt;L@2, 13,47&gt; &lt;L@2.prox.item, 0,39&gt; &lt;L@0.primeiro, 0,13&gt; "/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 13,39&gt; &lt;L@1, 0,39&gt; &lt;L@0, 0,39&gt; &lt;L@2, 47,(25, 39)&gt; &lt;L@2, 47,(25, 47)&gt; &lt;L@2, 47,55&gt; &lt;L@2, 13,(25, 39)&gt; &lt;L@2, 13,(25, 47)&gt; &lt;L@2, 13,55&gt; &lt;L@1, 0,(25, 39)&gt; &lt;L@1, 0,(25, 47)&gt; &lt;L@0, 0,(25, 39)&gt; &lt;L@0, 0,(25, 47)&gt; &lt;L@1, 0,55&gt; &lt;L@0, 0,55&gt; &lt;L@2, 47,(18, 25)&gt; &lt;L@2, 47,(18, 55)&gt; &lt;L@2, 13,(18, 55)&gt; &lt;L@2, 13,(18, 25)&gt; &lt;L@2, 13,47&gt; &lt;L@1, 0,(7, 11)&gt; &lt;L@1, 0,(7, 13)&gt; &lt;L@1, 0,(18, 25)&gt; &lt;L@1, 0,(18, 55)&gt; &lt;L@0, 0,(7, 11)&gt; &lt;L@0, 0,(7, 13)&gt; &lt;L@0, 0,(18, 55)&gt; &lt;L@0, 0,(18, 25)&gt; &lt;L@1, 0,47&gt; &lt;L@0, 0,47&gt; &lt;L@1, 0,13&gt; &lt;L@0, 0,13&gt; &lt;L@1, 0,(0, 7)&gt; &lt;L@1, 0,(0, 11)&gt; &lt;L@1, 0,11&gt; &lt;L@0, 0,(0, 7)&gt; &lt;L@0, 0,(0, 11)&gt; &lt;L@0, 0,11&gt; &lt;L@2, 47,39&gt; "/>
+   </Method>
+   <Method name="Lista.pesquisa(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.primeiro()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 20 18 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,20) (0,18) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@0.pos.prox, 0,(0, 18)&gt; &lt;L@0.pos.prox, 0,(0, 20)&gt; &lt;L@0.pos, 0,(0, 18)&gt; &lt;L@0.pos, 0,(0, 20)&gt; &lt;L@0, 0,20&gt; &lt;L@0.pos, 0,20&gt; &lt;L@0, 0,(0, 18)&gt; &lt;L@0, 0,(0, 20)&gt; &lt;L@0.pos.item, 0,20&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,18&gt; &lt;L@0.pos, 0,(0, 20)&gt; &lt;L@0.pos, 0,(0, 18)&gt; &lt;L@0.pos, 0,20&gt; &lt;L@0.pos, 0,18&gt; &lt;L@0, 0,(0, 20)&gt; &lt;L@0, 0,(0, 18)&gt; &lt;L@0, 0,20&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.proximo()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="62 33 90 55 26 21 47 7 11 95 0 64 "/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(64,90) (7,21) (55,64) (55,62) (33,55) (26,33) (7,11) (26,55) (0,7) (33,47) (21,26) (0,11) (47,26) (64,95) (90,95) "/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 47,(33, 47)&gt; &lt;L@2, 47,(33, 55)&gt; &lt;L@2, 47,(64, 95)&gt; &lt;L@2, 47,(64, 90)&gt; &lt;L@2, 21,(26, 55)&gt; &lt;L@2, 21,(26, 33)&gt; &lt;L@2, 21,(55, 62)&gt; &lt;L@2, 21,(55, 64)&gt; &lt;L@1, 0,(33, 55)&gt; &lt;L@1, 0,(33, 47)&gt; &lt;L@2, 47,90&gt; &lt;L@0, 0,90&gt; &lt;L@2.prox, 0,(26, 33)&gt; &lt;L@2.prox, 0,(26, 55)&gt; &lt;L@2.prox, 0,(55, 62)&gt; &lt;L@2.prox, 0,(55, 64)&gt; &lt;L@2.prox.item, 0,(33, 55)&gt; &lt;L@2.prox.item, 0,(33, 47)&gt; &lt;L@2, 47,(26, 55)&gt; &lt;L@2, 47,(26, 33)&gt; &lt;L@2, 47,(55, 62)&gt; &lt;L@2, 47,(55, 64)&gt; &lt;L@2, 21,47&gt; &lt;L@4, 64,95&gt; &lt;L@3.prox, 0,(64, 95)&gt; &lt;L@3.prox, 0,(64, 90)&gt; &lt;L@3, 64,(64, 90)&gt; &lt;L@3, 64,(64, 95)&gt; &lt;L@0, 0,21&gt; &lt;L@0.primeiro, 0,21&gt; &lt;L@2.prox, 0,47&gt; &lt;L@3.item, 0,(64, 95)&gt; &lt;L@3.item, 0,(64, 90)&gt; &lt;L@1, 0,(7, 11)&gt; &lt;L@1, 0,(7, 21)&gt; &lt;L@2, 21,(33, 47)&gt; &lt;L@2, 21,(33, 55)&gt; &lt;L@2, 21,(64, 95)&gt; &lt;L@2, 21,(64, 90)&gt; &lt;L@0, 0,(0, 7)&gt; &lt;L@0, 0,(0, 11)&gt; &lt;L@2, 21,90&gt; &lt;L@2.prox, 0,(33, 47)&gt; &lt;L@2.prox, 0,(33, 55)&gt; &lt;L@2.prox, 0,(64, 95)&gt; &lt;L@2.prox, 0,(64, 90)&gt; "/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2, 21,(33, 55)&gt; &lt;L@2, 21,(33, 47)&gt; &lt;L@2, 21,95&gt; &lt;L@2, 21,90&gt; &lt;L@1, 0,(33, 55)&gt; &lt;L@1, 0,(33, 47)&gt; &lt;L@0, 0,(33, 55)&gt; &lt;L@0, 0,(33, 47)&gt; &lt;L@1, 0,95&gt; &lt;L@0, 0,95&gt; &lt;L@2, 21,(26, 55)&gt; &lt;L@2, 21,(26, 33)&gt; &lt;L@2, 47,(64, 90)&gt; &lt;L@2, 47,(64, 95)&gt; &lt;L@2, 47,62&gt; &lt;L@1, 0,90&gt; &lt;L@0, 0,90&gt; &lt;L@1, 0,(26, 33)&gt; &lt;L@1, 0,(26, 55)&gt; &lt;L@0, 0,(26, 33)&gt; &lt;L@0, 0,(26, 55)&gt; &lt;L@1, 0,21&gt; &lt;L@0, 0,21&gt; &lt;L@2, 47,(55, 62)&gt; &lt;L@2, 47,(55, 64)&gt; &lt;L@4, 64,95&gt; &lt;L@2.prox, 64,95&gt; &lt;L@3, 64,95&gt; &lt;L@4, 64,90&gt; &lt;L@2.prox, 64,90&gt; &lt;L@3, 64,90&gt; &lt;L@1, 0,(7, 21)&gt; &lt;L@1, 0,(7, 11)&gt; &lt;L@0, 0,(7, 21)&gt; &lt;L@0, 0,(7, 11)&gt; &lt;L@1, 0,(0, 11)&gt; &lt;L@1, 0,(0, 7)&gt; &lt;L@0, 0,(0, 11)&gt; &lt;L@0, 0,(0, 7)&gt; &lt;L@1, 0,11&gt; &lt;L@0, 0,11&gt; &lt;L@2, 21,(64, 90)&gt; &lt;L@2, 21,(64, 95)&gt; &lt;L@2, 21,62&gt; &lt;L@1, 0,(64, 90)&gt; &lt;L@1, 0,(64, 95)&gt; &lt;L@0, 0,(64, 90)&gt; &lt;L@0, 0,(64, 95)&gt; &lt;L@1, 0,62&gt; &lt;L@2, 47,(33, 55)&gt; &lt;L@2, 47,(33, 47)&gt; &lt;L@0, 0,62&gt; &lt;L@2, 47,95&gt; &lt;L@2, 21,(55, 62)&gt; &lt;L@2, 21,(55, 64)&gt; &lt;L@2, 47,90&gt; &lt;L@0.ultimo, 90,95&gt; &lt;L@1, 0,(55, 64)&gt; &lt;L@1, 0,(55, 62)&gt; &lt;L@2, 47,(26, 55)&gt; &lt;L@2, 47,(26, 33)&gt; &lt;L@0, 0,(55, 64)&gt; &lt;L@0, 0,(55, 62)&gt; &lt;L@2, 21,47&gt; &lt;L@4, 64,(64, 90)&gt; &lt;L@4, 64,(64, 95)&gt; &lt;L@2.prox, 64,(64, 90)&gt; &lt;L@2.prox, 64,(64, 95)&gt; &lt;L@3, 64,(64, 90)&gt; &lt;L@3, 64,(64, 95)&gt; &lt;L@1, 0,47&gt; &lt;L@0, 0,47&gt; "/>
+   </Method>
+   <Method name="Lista.retira(Ljava/lang/Object;)Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="52 47 0 17 7 "/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(17,47) (47,52) (0,17) (0,7) (17,52) "/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@2.prox, 0,(17, 47)&gt; &lt;L@2.prox, 0,(17, 52)&gt; &lt;L@3, 17,52&gt; &lt;L@0, 0,(17, 52)&gt; &lt;L@0, 0,(17, 47)&gt; &lt;L@0, 0,47&gt; &lt;L@0, 0,(0, 17)&gt; &lt;L@0, 0,(0, 7)&gt; &lt;L@2, 17,(17, 52)&gt; &lt;L@2, 17,(17, 47)&gt; &lt;L@1, 17,(17, 52)&gt; &lt;L@1, 17,(17, 47)&gt; &lt;L@1, 17,47&gt; &lt;L@0.primeiro, 0,(17, 47)&gt; &lt;L@0.primeiro, 0,(17, 52)&gt; &lt;L@1.prox, 0,(17, 47)&gt; &lt;L@1.prox, 0,(17, 52)&gt; &lt;L@2.item, 0,(17, 47)&gt; &lt;L@2.item, 0,(17, 52)&gt; "/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0.ultimo, 47,52&gt; &lt;L@3, 17,52&gt; &lt;L@2, 17,52&gt; &lt;L@1, 17,52&gt; &lt;L@0, 0,(17, 52)&gt; &lt;L@0, 0,(17, 47)&gt; &lt;L@0, 0,47&gt; &lt;L@1.prox, 17,(17, 47)&gt; &lt;L@1.prox, 17,(17, 52)&gt; &lt;L@1.prox, 17,47&gt; &lt;L@0, 0,7&gt; &lt;L@0, 0,52&gt; &lt;L@0, 0,(0, 17)&gt; &lt;L@0, 0,(0, 7)&gt; &lt;L@3, 17,(17, 47)&gt; &lt;L@3, 17,(17, 52)&gt; &lt;L@2, 17,(17, 52)&gt; &lt;L@2, 17,(17, 47)&gt; &lt;L@3, 17,47&gt; &lt;L@1, 17,(17, 47)&gt; &lt;L@1, 17,(17, 52)&gt; &lt;L@2, 17,47&gt; &lt;L@1, 17,47&gt; &lt;L@1.prox, 17,52&gt; "/>
+   </Method>
+   <Method name="Lista.retiraPrimeiro()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="15 11 0 16 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(15,16) (0,11) (11,16) (0,15) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@0.primeiro, 0,(0, 15)&gt; &lt;L@0.primeiro, 0,(0, 11)&gt; &lt;L@0.ultimo, 0,(0, 15)&gt; &lt;L@0.ultimo, 0,(0, 11)&gt; &lt;L@0, 0,(0, 15)&gt; &lt;L@0, 0,(0, 11)&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,16&gt; &lt;L@0, 0,15&gt; &lt;L@0, 0,11&gt; &lt;L@0, 0,(0, 15)&gt; &lt;L@0, 0,(0, 11)&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Lista.vazia()Z">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+</CoveredAndUncovered>

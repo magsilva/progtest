@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<MethodCoverage>
+   <Method name="Main.&lt;init&gt;()V">
+      <All-Nodes-ei value="0 of 2(0.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 1(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 1(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <All-Nodes-ei value="4 of 4(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="4 of 4(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="10 of 11(90.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="20 of 22(90.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="Max.&lt;init&gt;()V">
+      <All-Nodes-ei value="0 of 2(0.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 1(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 1(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="Max.max([I)I">
+      <All-Nodes-ei value="6 of 6(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="7 of 7(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="23 of 25(92.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="30 of 33(90.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+</MethodCoverage>

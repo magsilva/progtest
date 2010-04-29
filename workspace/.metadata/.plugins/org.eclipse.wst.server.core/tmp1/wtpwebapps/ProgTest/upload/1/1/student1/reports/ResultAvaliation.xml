@@ -1,0 +1,9 @@
+<?xml version='1.0'?>
+<EvaluationResult>
+   <Result name="Qualidade do Programa">
+      <Score value="71.43%"/>
+   </Result>
+   <Result name="Qualidade do Conjunto de Teste">
+      <Score value="97.15%"/>
+   </Result>
+</EvaluationResult>

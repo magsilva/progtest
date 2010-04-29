@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<ClassCoverage>
+   <Class name="BTree">
+      <All-Nodes-ei value="38 of 41(92.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="37 of 43(86.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="106 of 123(86.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="129 of 152(84.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+   <Class name="No">
+      <All-Nodes-ei value="2 of 2(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="1 of 1(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="1 of 1(100.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+</ClassCoverage>

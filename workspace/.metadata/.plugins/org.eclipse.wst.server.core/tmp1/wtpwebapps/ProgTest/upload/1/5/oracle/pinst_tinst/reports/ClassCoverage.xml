@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<ClassCoverage>
+   <Class name="CasamentoExato">
+      <All-Nodes-ei value="10 of 12(83.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="12 of 13(92.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="39 of 39(100.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="121 of 126(96.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+   <Class name="Main">
+      <All-Nodes-ei value="1 of 3(33.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 1(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 1(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+</ClassCoverage>

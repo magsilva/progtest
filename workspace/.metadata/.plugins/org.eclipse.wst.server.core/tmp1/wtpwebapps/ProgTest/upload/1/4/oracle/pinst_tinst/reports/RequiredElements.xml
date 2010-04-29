@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<RequiredElements>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <All-Nodes-ei value="4,0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,4),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <All-Nodes-ei value="6,25,11,0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(6,25),(11,6),(6,11),(0,6),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@2, 11,25&gt;,&lt;L@2, 0,25&gt;,&lt;L@3, 11,(6, 11)&gt;,&lt;L@3, 11,(6, 25)&gt;,&lt;L@3, 0,(6, 11)&gt;,&lt;L@3, 0,(6, 25)&gt;,&lt;L@0, 0,(6, 11)&gt;,&lt;L@0, 0,(6, 25)&gt;,&lt;L@3, 0,11&gt;,&lt;L@2, 0,11&gt;,&lt;L@1, 0,11&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@3, 11,(6, 25)&gt;,&lt;L@3, 11,(6, 11)&gt;,&lt;L@2, 11,(6, 11)&gt;,&lt;L@2, 11,(6, 25)&gt;,&lt;L@3, 11,25&gt;,&lt;L@1, 11,(6, 11)&gt;,&lt;L@1, 11,(6, 25)&gt;,&lt;L@2, 11,25&gt;,&lt;L@1, 11,25&gt;,&lt;L@3, 0,11&gt;,&lt;L@2, 0,11&gt;,&lt;L@1, 0,11&gt;,&lt;L@0, 0,11&gt;,&lt;L@3, 0,(6, 11)&gt;,&lt;L@3, 0,(6, 25)&gt;,&lt;L@2, 0,(6, 25)&gt;,&lt;L@2, 0,(6, 11)&gt;,&lt;L@3, 0,25&gt;,&lt;L@1, 0,(6, 25)&gt;,&lt;L@1, 0,(6, 11)&gt;,&lt;L@2, 0,25&gt;,&lt;L@0, 0,(6, 25)&gt;,&lt;L@0, 0,(6, 11)&gt;,&lt;L@1, 0,25&gt;,&lt;L@0, 0,25&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <All-Nodes-ei value="4,0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,4),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <All-Nodes-ei value="0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value=""/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value=""/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+</RequiredElements>

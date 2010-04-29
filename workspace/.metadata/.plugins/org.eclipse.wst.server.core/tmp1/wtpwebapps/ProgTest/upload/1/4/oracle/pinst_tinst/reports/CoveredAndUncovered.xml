@@ -1,0 +1,163 @@
+<?xml version='1.0'?>
+<CoveredAndUncovered>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="4 0 "/>
+   </Method>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(0,4) "/>
+   </Method>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0, 0,4&gt; "/>
+   </Method>
+   <Method name="Fibonacci.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="6 25 11 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(6,25) (11,6) (6,11) (0,6) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 11,25&gt; &lt;L@2, 0,25&gt; &lt;L@3, 11,(6, 11)&gt; &lt;L@3, 11,(6, 25)&gt; &lt;L@3, 0,(6, 11)&gt; &lt;L@3, 0,(6, 25)&gt; &lt;L@0, 0,(6, 11)&gt; &lt;L@0, 0,(6, 25)&gt; &lt;L@3, 0,11&gt; &lt;L@2, 0,11&gt; &lt;L@1, 0,11&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@3, 11,(6, 11)&gt; &lt;L@3, 11,(6, 25)&gt; &lt;L@2, 11,(6, 11)&gt; &lt;L@2, 11,(6, 25)&gt; &lt;L@3, 11,25&gt; &lt;L@1, 11,(6, 25)&gt; &lt;L@1, 11,(6, 11)&gt; &lt;L@2, 11,25&gt; &lt;L@1, 11,25&gt; &lt;L@3, 0,11&gt; &lt;L@2, 0,11&gt; &lt;L@1, 0,11&gt; &lt;L@0, 0,11&gt; &lt;L@3, 0,(6, 11)&gt; &lt;L@3, 0,(6, 25)&gt; &lt;L@2, 0,(6, 25)&gt; &lt;L@2, 0,(6, 11)&gt; &lt;L@3, 0,25&gt; &lt;L@1, 0,(6, 25)&gt; &lt;L@1, 0,(6, 11)&gt; &lt;L@2, 0,25&gt; &lt;L@0, 0,(6, 25)&gt; &lt;L@0, 0,(6, 11)&gt; &lt;L@1, 0,25&gt; &lt;L@0, 0,25&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fibonacci.fibIter(I)I">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="4 0 "/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(0,4) "/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0, 0,4&gt; "/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;)Ljava/lang/String;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+</CoveredAndUncovered>

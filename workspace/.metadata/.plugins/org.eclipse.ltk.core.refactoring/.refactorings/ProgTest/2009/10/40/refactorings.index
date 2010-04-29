@@ -1,0 +1,135 @@
+1254401961234	Rename type 'removeAssigment'
+1254402276062	Rename type 'AssigmentList'
+1254402286984	Rename type 'ClassCoverageReport'
+1254402394250	Rename type 'CourseList'
+1254402403578	Rename type 'CoveredAndUncoveredReport'
+1254402414031	Rename type 'CriterionCoverageReport'
+1254402429593	Rename type 'MethodCoverageReport'
+1254402438828	Rename type 'MetricsReport'
+1254402453359	Rename type 'RequiredElementsReport'
+1254402461375	Rename type 'StudentList'
+1254403984703	Delete element
+1254507163843	Rename type 'ReportList'
+1254510396984	Copy compilation unit
+1254510788000	Delete element
+1254510797125	Copy compilation unit
+1254510978718	Delete element
+1254511055875	Delete element
+1254511174109	Move compilation unit
+1254511199546	Move compilation unit
+1254511289906	Delete element
+1254511293718	Delete element
+1254511298640	Delete element
+1254511319781	Delete element
+1254511324796	Delete element
+1254512760000	Rename type 'Avaliation'
+1254514329890	Delete element
+1254514516578	Rename type 'ClassCoverageReport'
+1254514523875	Delete element
+1254514533015	Rename type 'CoveredAndUncoveredReport'
+1254514542984	Rename type 'CriterionCoverageReport'
+1254514553203	Rename type 'GeneralCoverageReport'
+1254514562843	Rename type 'MethodCoverageReport'
+1254514572937	Rename type 'MetricsReport'
+1254514585625	Rename type 'ReportClassCoverage'
+1254514596312	Rename type 'ClassCoverageReport'
+1254514613546	Rename type 'RequiredElementsReport'
+1254514624234	Rename type 'ReportList'
+1254514660968	Rename type 'ResultAvaliationReport'
+1254515138312	Delete element
+1254515159703	Delete element
+1254515287265	Delete element
+1254515329500	Delete element
+1254515338453	Delete element
+1254515380890	Rename type 'TestCaseTools'
+1254515407125	Delete element
+1254515898046	Delete element
+1254515921875	Delete element
+1254515931687	Delete element
+1254515934734	Delete element
+1254516315265	Rename type 'RegisterUser'
+1254516339000	Delete element
+1254516381453	Rename type 'UpdateUser'
+1254516575718	Rename type 'File'
+1254517040750	Delete element
+1254518470796	Delete element
+1254518947375	Delete element
+1254518950765	Delete element
+1254519168968	Delete element
+1254519201953	Rename package 'progtest.dao'
+1254591723600	Copy files
+1254591831631	Copy file
+1254591874022	Copy file
+1254592329725	Rename resource 'updateUser.jsp'
+1254592492803	Rename resource 'courseListTemplate.jsp'
+1254592505584	Rename resource 'courseList.jsp'
+1254593057631	Rename type 'CreateStudent'
+1254593102647	Rename type 'ListAssigment'
+1254593107241	Rename type 'ListCourse'
+1254593111100	Rename type 'ListReport'
+1254593115850	Rename type 'ListStudent'
+1254593133725	Rename type 'NewStudent'
+1254593404506	Rename type 'ListAssigments'
+1254598061312	Rename resource 'listCourse.jsp'
+1254598070359	Rename resource 'listCourseTemplate.jsp'
+1254598197765	Delete element
+1254598201203	Delete element
+1254598211531	Delete element
+1254598483750	Rename resource 'mainTemplate.jsp'
+1254598499578	Copy file
+1254598506375	Rename resource 'Copy of templateWithoutMenu.jsp'
+1254598512093	Rename resource 'template'
+1254598867437	Rename resource 'courseList.jsp'
+1254598879578	Rename resource 'courseListTemplate.jsp'
+1254599069328	Delete element
+1254599788057	Delete element
+1254608408719	Delete element
+1254608801161	Rename type 'ListAssigments'
+1254608813477	Rename type 'AssigmentList'
+1254608858337	Rename type 'ListCourses'
+1254608874347	Rename type 'AssigmentsList'
+1254608902003	Rename type 'ListReports'
+1254608918704	Rename type 'ListStudents'
+1254609141620	Delete element
+1254609146636	Delete element
+1254609166499	Rename type 'UseAssigment'
+1254609196282	Rename type 'ReportClassCoverage'
+1254609211207	Rename type 'ReportCoveredAndUncovered'
+1254609222873	Rename type 'ReportCriterionCoverage'
+1254609240287	Rename type 'ReportMethodCoverage'
+1254609263642	Rename type 'ReportMetrics'
+1254609278416	Rename type 'ReportRequiredElements'
+1254609419261	Rename type 'MetricReport'
+1254609431073	Rename type 'RequiredElementReport'
+1254609488216	Rename resource 'listCourses.jsp'
+1254609500344	Rename resource 'listCoursesTemplate.jsp'
+1254609538218	Rename resource 'listCourses.jsp'
+1254609553604	Rename resource 'listCoursesTemplate.jsp'
+1254613781646	Rename type 'HomeMenu'
+1254613953230	Delete element
+1254613994492	Rename resource 'CourseList.jsp'
+1254614014996	Rename resource 'CourseListTemplate.jsp'
+1254614023222	Rename resource 'CourseList.jsp'
+1254614028851	Rename resource 'CourseListTemplate.jsp'
+1254614142678	Copy file
+1254614153522	Copy file
+1254614167997	Rename resource 'register.jsp'
+1254614768740	Delete element
+1254616473287	Rename resource 'instructor'
+1254616500090	Rename resource 'instructors'
+1254668065816	Copy file
+1254668076253	Delete element
+1254668090753	Copy file
+1254673072276	Copy file
+1254673083479	Copy file
+1254675018304	Delete element
+1254675338584	Copy file
+1254675354649	Copy file
+1254675540374	Copy compilation unit
+1254677147872	Copy file
+1254677188625	Copy file
+1254677665288	Copy file
+1254677674131	Copy file
+1254682082302	Delete element
+1254686414825	Rename package 'progtest.execution'
+1254700309341	Delete element

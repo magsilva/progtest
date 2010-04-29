@@ -1,0 +1,42 @@
+<CommonBaseEvent creationTime="2009-10-04T00:27:04.883000Z" globalInstanceId="AD42089FABFA4340992630BD7B544E36" msg="Native file server started listening on port 10005" severity="10" version="1.0.1">
+	<sourceComponentId component="AgentController" componentIdType="TPTPComponent" executionEnvironment="C:\cygwin\home\build\TPTP\4.5.2\TPTP-4.5.2-200902180100\agntctrl\src\transport\TPTPClientCompTL\ClientCTL.c, line 586" instanceId="1004" location="Eduardo" locationType="IPV4" processId="3728" subComponent="Client Compatibility TL" threadId="2828" componentType="Eclipse_TPTP"/>
+	<situation categoryName="ReportSituation">
+		<situationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ReportSituation" reasoningScope="INTERNAL" reportCategory="LOG"/>
+	</situation>
+</CommonBaseEvent>
+<CommonBaseEvent creationTime="2009-10-04T00:27:07.953000Z" globalInstanceId="A6DC7AFA17084D3485993E2D6D236736" msg="Received PUT_FILE command from client" severity="10" version="1.0.1">
+	<sourceComponentId component="AgentController" componentIdType="TPTPComponent" executionEnvironment="C:\cygwin\home\build\TPTP\4.5.2\TPTP-4.5.2-200902180100\agntctrl\src\transport\TPTPClientCompTL\RACmdHandlers.c, line 873" instanceId="1004" location="Eduardo" locationType="IPV4" processId="3728" subComponent="Client Compatibility TL" threadId="3108" componentType="Eclipse_TPTP"/>
+	<situation categoryName="ReportSituation">
+		<situationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ReportSituation" reasoningScope="INTERNAL" reportCategory="LOG"/>
+	</situation>
+</CommonBaseEvent>
+<CommonBaseEvent creationTime="2009-10-04T00:27:08.184000Z" globalInstanceId="A8CDB2C24E1846698DCE7DCE2DF31588" msg="Received PUT_FILE command from client" severity="10" version="1.0.1">
+	<sourceComponentId component="AgentController" componentIdType="TPTPComponent" executionEnvironment="C:\cygwin\home\build\TPTP\4.5.2\TPTP-4.5.2-200902180100\agntctrl\src\transport\TPTPClientCompTL\RACmdHandlers.c, line 873" instanceId="1004" location="Eduardo" locationType="IPV4" processId="3728" subComponent="Client Compatibility TL" threadId="3108" componentType="Eclipse_TPTP"/>
+	<situation categoryName="ReportSituation">
+		<situationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ReportSituation" reasoningScope="INTERNAL" reportCategory="LOG"/>
+	</situation>
+</CommonBaseEvent>
+<CommonBaseEvent creationTime="2009-10-04T00:27:09.012000Z" globalInstanceId="A1CBB73880D247C69551E78FEB1131A8" msg="CONSOLE LAUNCHED COMMAND for connection(5001). " severity="50" version="1.0.1">
+	<sourceComponentId component="AgentController" componentIdType="TPTPComponent" executionEnvironment="C:\cygwin\home\build\TPTP\4.5.2\TPTP-4.5.2-200902180100\agntctrl\src\transport\namedPipeTL\namedPipeListener.c, line 578" instanceId="1002" location="Eduardo" locationType="IPV4" processId="3728" subComponent="Named Pipe TL" threadId="3684" componentType="Eclipse_TPTP"/>
+	<situation categoryName="ReportSituation">
+		<situationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ReportSituation" reasoningScope="INTERNAL" reportCategory="LOG"/>
+	</situation>
+</CommonBaseEvent>
+<CommonBaseEvent creationTime="2009-10-04T00:27:09.830000Z" globalInstanceId="AF72DD84D53B4FA19CF3B074566FCA4E" msg="PC handleProcessEvents: Process has exited with status 0." severity="50" version="1.0.1">
+	<sourceComponentId component="ProcessController" componentIdType="TPTPComponent" componentType="Eclipse_TPTP" executionEnvironment="C:\cygwin\home\build\TPTP\4.5.2\TPTP-4.5.2-200902180100\agntctrl\src\agents\tptpProcessController\ProcessController_md.cpp, line 284" instanceId="101" location="Eduardo" locationType="IPV4" processId="944" subComponent="ProcessController" threadId="1264"/>
+	<situation categoryName="ReportSituation">
+		<situationType reasoningScope="INTERNAL" reportCategory="LOG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ReportSituation"/>
+	</situation>
+</CommonBaseEvent>
+<CommonBaseEvent creationTime="2009-10-04T00:27:09.856000Z" globalInstanceId="A9A664650F42431A86FD68D471AE4F6F" msg="CCTL Scrubbing process 3976" severity="10" version="1.0.1">
+	<sourceComponentId component="AgentController" componentIdType="TPTPComponent" executionEnvironment="C:\cygwin\home\build\TPTP\4.5.2\TPTP-4.5.2-200902180100\agntctrl\src\transport\TPTPClientCompTL\RACClientSupport.c, line 497" instanceId="1004" location="Eduardo" locationType="IPV4" processId="3728" subComponent="Client Compatibility TL" threadId="3684" componentType="Eclipse_TPTP"/>
+	<situation categoryName="ReportSituation">
+		<situationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ReportSituation" reasoningScope="INTERNAL" reportCategory="LOG"/>
+	</situation>
+</CommonBaseEvent>
+<CommonBaseEvent creationTime="2009-10-04T00:42:59.780000Z" globalInstanceId="A3184FA6DAF84675BDFCC632C8ACE226" msg="Agent Controller shutdown requested through ACTL" severity="30" version="1.0.1">
+	<sourceComponentId component="AgentController" componentIdType="TPTPComponent" executionEnvironment="C:\cygwin\home\build\TPTP\4.5.2\TPTP-4.5.2-200902180100\agntctrl\src\transport\TPTPAgentCompTL\ACTLServer.c, line 376" instanceId="1005" location="Eduardo" locationType="IPV4" processId="3728" subComponent="Agent Compatibility TL" threadId="3880" componentType="Eclipse_TPTP"/>
+	<situation categoryName="ReportSituation">
+		<situationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ReportSituation" reasoningScope="INTERNAL" reportCategory="LOG"/>
+	</situation>
+</CommonBaseEvent>

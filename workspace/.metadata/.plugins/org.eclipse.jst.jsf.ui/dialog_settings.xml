@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.jst.jsf.ui.jsfFacetInstall">
+		<item value="SERVER_SUPPLIED" key="deployImplType"/>
+		<item value="false" key="deployImplementation"/>
+		<item value="/WEB-INF/faces-config.xml" key="configPath"/>
+		<item value="javax.faces.webapp.FacesServlet" key="servletClassname"/>
+		<item value="Faces Servlet" key="servletName"/>
+		<section name="urlMappings">
+			<list key="pattern">
+				<item value="*.jsf"/>
+			</list>
+		</section>
+		<section name="selectedComponent">
+			<list key="selectdeploycomplib">
+			</list>
+		</section>
+	</section>
+</section>

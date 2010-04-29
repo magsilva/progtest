@@ -1,0 +1,63 @@
+<?xml version='1.0'?>
+<RequiredElements>
+   <Method name="Celula.&lt;init&gt;()V">
+      <All-Nodes-ei value="4,0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,4),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="List.&lt;init&gt;()V">
+      <All-Nodes-ei value="4,0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,4),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="List.add(Ljava/lang/Object;)V">
+      <All-Nodes-ei value="0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value=""/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value=""/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="List.isEmpty()Z">
+      <All-Nodes-ei value="15,11,0,16,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(15,16),(0,11),(11,16),(0,15),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@0.primeiro, 0,(0, 15)&gt;,&lt;L@0.primeiro, 0,(0, 11)&gt;,&lt;L@0.ultimo, 0,(0, 15)&gt;,&lt;L@0.ultimo, 0,(0, 11)&gt;,&lt;L@0, 0,(0, 15)&gt;,&lt;L@0, 0,(0, 11)&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@0, 0,16&gt;,&lt;L@0, 0,15&gt;,&lt;L@0, 0,11&gt;,&lt;L@0, 0,(0, 15)&gt;,&lt;L@0, 0,(0, 11)&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="List.print()Ljava/lang/String;">
+      <All-Nodes-ei value="15,75,47,11,0,67,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,11),(67,11),(47,67),(15,47),(11,15),(11,75),(15,67),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@2.prox, 0,(15, 67)&gt;,&lt;L@2.prox, 0,(15, 47)&gt;,&lt;L@2, 0,(15, 47)&gt;,&lt;L@2, 0,(15, 67)&gt;,&lt;L@1, 0,(15, 67)&gt;,&lt;L@1, 0,(15, 47)&gt;,&lt;L@1, 0,75&gt;,&lt;L@2, 0,(11, 75)&gt;,&lt;L@2, 0,(11, 15)&gt;,&lt;L@2, 67,(15, 47)&gt;,&lt;L@2, 67,(15, 67)&gt;,&lt;L@2, 67,(11, 75)&gt;,&lt;L@2, 67,(11, 15)&gt;,&lt;L@2.prox, 0,67&gt;,&lt;L@1, 15,47&gt;,&lt;L@1, 47,(15, 47)&gt;,&lt;L@1, 47,(15, 67)&gt;,&lt;L@1, 47,75&gt;,&lt;L@1, 15,75&gt;,&lt;L@2, 0,67&gt;,&lt;L@2.item, 0,(15, 67)&gt;,&lt;L@2.item, 0,(15, 47)&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@2, 67,(15, 47)&gt;,&lt;L@2, 67,(15, 67)&gt;,&lt;L@2, 67,47&gt;,&lt;L@1, 15,67&gt;,&lt;L@1, 47,67&gt;,&lt;L@2, 67,75&gt;,&lt;L@2, 0,67&gt;,&lt;L@2, 67,(11, 75)&gt;,&lt;L@2, 67,(11, 15)&gt;,&lt;L@0, 0,67&gt;,&lt;L@1, 15,(15, 67)&gt;,&lt;L@1, 15,(15, 47)&gt;,&lt;L@1, 47,(15, 47)&gt;,&lt;L@1, 47,(15, 67)&gt;,&lt;L@1, 15,47&gt;,&lt;L@2, 0,(15, 47)&gt;,&lt;L@2, 0,(15, 67)&gt;,&lt;L@2, 0,47&gt;,&lt;L@1, 47,75&gt;,&lt;L@1, 15,(11, 15)&gt;,&lt;L@1, 15,(11, 75)&gt;,&lt;L@1, 47,(11, 15)&gt;,&lt;L@1, 47,(11, 75)&gt;,&lt;L@1, 15,75&gt;,&lt;L@1, 0,(15, 47)&gt;,&lt;L@1, 0,(15, 67)&gt;,&lt;L@0, 0,(15, 67)&gt;,&lt;L@0, 0,(15, 47)&gt;,&lt;L@0, 0,47&gt;,&lt;L@2, 0,(11, 15)&gt;,&lt;L@2, 0,(11, 75)&gt;,&lt;L@2, 0,75&gt;,&lt;L@1, 0,75&gt;,&lt;L@1, 0,(11, 75)&gt;,&lt;L@1, 0,(11, 15)&gt;,&lt;L@0, 0,(11, 15)&gt;,&lt;L@0, 0,(11, 75)&gt;,&lt;L@0, 0,75&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="List.remove(Ljava/lang/Object;)Ljava/lang/Object;">
+      <All-Nodes-ei value="62,33,90,55,26,21,47,7,11,95,0,64,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(64,90),(7,21),(55,64),(55,62),(33,55),(26,33),(7,11),(26,55),(0,7),(33,47),(21,26),(0,11),(47,26),(64,95),(90,95),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@2, 47,(33, 47)&gt;,&lt;L@2, 47,(33, 55)&gt;,&lt;L@2, 47,(64, 95)&gt;,&lt;L@2, 47,(64, 90)&gt;,&lt;L@2, 21,(26, 55)&gt;,&lt;L@2, 21,(26, 33)&gt;,&lt;L@2, 21,(55, 62)&gt;,&lt;L@2, 21,(55, 64)&gt;,&lt;L@1, 0,(33, 55)&gt;,&lt;L@1, 0,(33, 47)&gt;,&lt;L@2, 47,90&gt;,&lt;L@0, 0,90&gt;,&lt;L@2.prox, 0,(26, 33)&gt;,&lt;L@2.prox, 0,(26, 55)&gt;,&lt;L@2.prox, 0,(55, 62)&gt;,&lt;L@2.prox, 0,(55, 64)&gt;,&lt;L@2.prox.item, 0,(33, 55)&gt;,&lt;L@2.prox.item, 0,(33, 47)&gt;,&lt;L@2, 47,(26, 55)&gt;,&lt;L@2, 47,(26, 33)&gt;,&lt;L@2, 47,(55, 62)&gt;,&lt;L@2, 47,(55, 64)&gt;,&lt;L@2, 21,47&gt;,&lt;L@4, 64,95&gt;,&lt;L@3.prox, 0,(64, 95)&gt;,&lt;L@3.prox, 0,(64, 90)&gt;,&lt;L@3, 64,(64, 90)&gt;,&lt;L@3, 64,(64, 95)&gt;,&lt;L@0, 0,21&gt;,&lt;L@0.primeiro, 0,21&gt;,&lt;L@2.prox, 0,47&gt;,&lt;L@3.item, 0,(64, 95)&gt;,&lt;L@3.item, 0,(64, 90)&gt;,&lt;L@1, 0,(7, 11)&gt;,&lt;L@1, 0,(7, 21)&gt;,&lt;L@2, 21,(33, 47)&gt;,&lt;L@2, 21,(33, 55)&gt;,&lt;L@2, 21,(64, 95)&gt;,&lt;L@2, 21,(64, 90)&gt;,&lt;L@0, 0,(0, 7)&gt;,&lt;L@0, 0,(0, 11)&gt;,&lt;L@2, 21,90&gt;,&lt;L@2.prox, 0,(33, 47)&gt;,&lt;L@2.prox, 0,(33, 55)&gt;,&lt;L@2.prox, 0,(64, 95)&gt;,&lt;L@2.prox, 0,(64, 90)&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@2, 21,(33, 55)&gt;,&lt;L@2, 21,(33, 47)&gt;,&lt;L@2, 21,95&gt;,&lt;L@2, 21,90&gt;,&lt;L@1, 0,(33, 55)&gt;,&lt;L@1, 0,(33, 47)&gt;,&lt;L@0, 0,(33, 55)&gt;,&lt;L@0, 0,(33, 47)&gt;,&lt;L@1, 0,95&gt;,&lt;L@0, 0,95&gt;,&lt;L@2, 21,(26, 33)&gt;,&lt;L@2, 21,(26, 55)&gt;,&lt;L@2, 47,(64, 90)&gt;,&lt;L@2, 47,(64, 95)&gt;,&lt;L@2, 47,62&gt;,&lt;L@1, 0,90&gt;,&lt;L@0, 0,90&gt;,&lt;L@1, 0,(26, 55)&gt;,&lt;L@1, 0,(26, 33)&gt;,&lt;L@0, 0,(26, 33)&gt;,&lt;L@0, 0,(26, 55)&gt;,&lt;L@1, 0,21&gt;,&lt;L@0, 0,21&gt;,&lt;L@2, 47,(55, 62)&gt;,&lt;L@2, 47,(55, 64)&gt;,&lt;L@4, 64,95&gt;,&lt;L@2.prox, 64,95&gt;,&lt;L@3, 64,95&gt;,&lt;L@4, 64,90&gt;,&lt;L@2.prox, 64,90&gt;,&lt;L@3, 64,90&gt;,&lt;L@1, 0,(7, 21)&gt;,&lt;L@1, 0,(7, 11)&gt;,&lt;L@0, 0,(7, 21)&gt;,&lt;L@0, 0,(7, 11)&gt;,&lt;L@1, 0,(0, 11)&gt;,&lt;L@1, 0,(0, 7)&gt;,&lt;L@0, 0,(0, 11)&gt;,&lt;L@0, 0,(0, 7)&gt;,&lt;L@1, 0,11&gt;,&lt;L@0, 0,11&gt;,&lt;L@2, 21,(64, 90)&gt;,&lt;L@2, 21,(64, 95)&gt;,&lt;L@2, 21,62&gt;,&lt;L@1, 0,(64, 90)&gt;,&lt;L@1, 0,(64, 95)&gt;,&lt;L@0, 0,(64, 90)&gt;,&lt;L@0, 0,(64, 95)&gt;,&lt;L@1, 0,62&gt;,&lt;L@2, 47,(33, 55)&gt;,&lt;L@2, 47,(33, 47)&gt;,&lt;L@0, 0,62&gt;,&lt;L@2, 47,95&gt;,&lt;L@2, 21,(55, 64)&gt;,&lt;L@2, 21,(55, 62)&gt;,&lt;L@2, 47,90&gt;,&lt;L@0.ultimo, 90,95&gt;,&lt;L@1, 0,(55, 62)&gt;,&lt;L@1, 0,(55, 64)&gt;,&lt;L@2, 47,(26, 55)&gt;,&lt;L@2, 47,(26, 33)&gt;,&lt;L@0, 0,(55, 64)&gt;,&lt;L@0, 0,(55, 62)&gt;,&lt;L@2, 21,47&gt;,&lt;L@4, 64,(64, 90)&gt;,&lt;L@4, 64,(64, 95)&gt;,&lt;L@2.prox, 64,(64, 90)&gt;,&lt;L@2.prox, 64,(64, 95)&gt;,&lt;L@3, 64,(64, 90)&gt;,&lt;L@3, 64,(64, 95)&gt;,&lt;L@1, 0,47&gt;,&lt;L@0, 0,47&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+</RequiredElements>

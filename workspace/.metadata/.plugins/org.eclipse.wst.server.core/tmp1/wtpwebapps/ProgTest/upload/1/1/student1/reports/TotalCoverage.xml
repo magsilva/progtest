@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<TotalCoverage>
+   <Executions name="Programa do Professor - Conjunto de Teste do Professor">
+      <Coverage value="88.8%"/>
+   </Executions>
+   <Executions name="Programa do Aluno - Conjunto de Teste do Aluno">
+      <Coverage value="84.6%"/>
+   </Executions>
+   <Executions name="Programa do Professor - Conjunto de Teste do Aluno">
+      <Coverage value="83.74%"/>
+   </Executions>
+   <Executions name="Programa do Aluno - Conjunto de Teste do Professor">
+      <Coverage value="78.89%"/>
+   </Executions>
+</TotalCoverage>

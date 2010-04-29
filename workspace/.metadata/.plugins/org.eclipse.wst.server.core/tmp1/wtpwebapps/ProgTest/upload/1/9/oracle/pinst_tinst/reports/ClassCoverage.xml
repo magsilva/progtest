@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<ClassCoverage>
+   <Class name="InsertionSort">
+      <All-Nodes-ei value="9 of 11(81.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="11 of 12(91.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="24 of 27(88.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="56 of 65(86.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+   <Class name="Main">
+      <All-Nodes-ei value="9 of 11(81.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="11 of 12(91.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="30 of 38(78.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="97 of 110(88.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+</ClassCoverage>

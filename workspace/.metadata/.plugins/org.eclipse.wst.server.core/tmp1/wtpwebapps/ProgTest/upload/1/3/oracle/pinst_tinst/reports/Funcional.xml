@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+<Funcional>
+   <Tests name="9">
+      <Errors value="0"/>
+      <Failures value="0"/>
+      <Coverage value="100.0"/>
+   </Tests>
+</Funcional>

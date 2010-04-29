@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<ClassCoverage>
+   <Class name="Main">
+      <All-Nodes-ei value="4 of 6(66.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="4 of 5(80.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="11 of 12(91.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="20 of 23(86.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+   <Class name="MaxMin">
+      <All-Nodes-ei value="8 of 10(80.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="10 of 11(90.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="42 of 43(97.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="66 of 68(97.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Class>
+</ClassCoverage>

@@ -1,0 +1,243 @@
+<?xml version='1.0'?>
+<CoveredAndUncovered>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="4 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,4) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Celula.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="4 0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,4) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@0, 0,4&gt; "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.&lt;init&gt;()V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="0 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.add(Ljava/lang/Object;)V">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="15 11 0 16 "/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(15,16) (0,11) (11,16) (0,15) "/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0.frente, 0,(0, 15)&gt; &lt;L@0.frente, 0,(0, 11)&gt; &lt;L@0.tras, 0,(0, 15)&gt; &lt;L@0.tras, 0,(0, 11)&gt; &lt;L@0, 0,(0, 15)&gt; &lt;L@0, 0,(0, 11)&gt; "/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0, 0,16&gt; &lt;L@0, 0,15&gt; &lt;L@0, 0,11&gt; &lt;L@0, 0,(0, 15)&gt; &lt;L@0, 0,(0, 11)&gt; "/>
+   </Method>
+   <Method name="Fila.isEmpty()Z">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value="15 75 47 11 0 67 "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value="(0,11) (67,11) (47,67) (15,47) (11,15) (11,75) (15,67) "/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value="&lt;L@2.prox, 0,(15, 67)&gt; &lt;L@2.prox, 0,(15, 47)&gt; &lt;L@2, 0,(15, 47)&gt; &lt;L@2, 0,(15, 67)&gt; &lt;L@1, 0,(15, 67)&gt; &lt;L@1, 0,(15, 47)&gt; &lt;L@1, 0,75&gt; &lt;L@2, 0,(11, 75)&gt; &lt;L@2, 0,(11, 15)&gt; &lt;L@2, 67,(15, 47)&gt; &lt;L@2, 67,(15, 67)&gt; &lt;L@2, 67,(11, 75)&gt; &lt;L@2, 67,(11, 15)&gt; &lt;L@2.prox, 0,67&gt; &lt;L@1, 15,47&gt; &lt;L@1, 47,(15, 47)&gt; &lt;L@1, 47,(15, 67)&gt; &lt;L@1, 15,75&gt; &lt;L@2, 0,67&gt; &lt;L@2.item, 0,(15, 67)&gt; &lt;L@2.item, 0,(15, 47)&gt; "/>
+      <UncoveredElements value="&lt;L@1, 47,75&gt; "/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value="&lt;L@2, 67,(15, 67)&gt; &lt;L@2, 67,(15, 47)&gt; &lt;L@2, 67,47&gt; &lt;L@1, 15,67&gt; &lt;L@1, 47,67&gt; &lt;L@2, 0,67&gt; &lt;L@2, 67,(11, 15)&gt; &lt;L@2, 67,(11, 75)&gt; &lt;L@2, 67,75&gt; &lt;L@0, 0,67&gt; &lt;L@1, 15,(15, 47)&gt; &lt;L@1, 15,(15, 67)&gt; &lt;L@1, 15,47&gt; &lt;L@2, 0,(15, 47)&gt; &lt;L@2, 0,(15, 67)&gt; &lt;L@2, 0,47&gt; &lt;L@1, 15,(11, 75)&gt; &lt;L@1, 47,(11, 15)&gt; &lt;L@1, 15,75&gt; &lt;L@0, 0,(15, 67)&gt; &lt;L@0, 0,(15, 47)&gt; &lt;L@0, 0,47&gt; &lt;L@2, 0,75&gt; &lt;L@2, 0,(11, 75)&gt; &lt;L@2, 0,(11, 15)&gt; &lt;L@1, 0,75&gt; &lt;L@1, 0,(11, 75)&gt; &lt;L@1, 0,(11, 15)&gt; &lt;L@0, 0,(11, 15)&gt; &lt;L@0, 0,(11, 75)&gt; &lt;L@0, 0,75&gt; "/>
+      <UncoveredElements value="&lt;L@1, 47,(15, 47)&gt; &lt;L@1, 47,(15, 67)&gt; &lt;L@1, 47,75&gt; &lt;L@1, 15,(11, 15)&gt; &lt;L@1, 47,(11, 75)&gt; &lt;L@1, 0,(15, 47)&gt; &lt;L@1, 0,(15, 67)&gt; "/>
+   </Method>
+   <Method name="Fila.print()Ljava/lang/String;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="0 19 9 "/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Nodes-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="(0,19) (0,9) "/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Edges-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0.frente.item, 0,19&gt; &lt;L@0.frente, 0,19&gt; &lt;L@0.frente.prox, 0,19&gt; &lt;L@0, 0,(0, 19)&gt; &lt;L@0, 0,(0, 9)&gt; &lt;L@0, 0,19&gt; "/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ei"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value="&lt;L@0, 0,9&gt; &lt;L@1, 0,(0, 19)&gt; &lt;L@1, 0,(0, 9)&gt; &lt;L@1, 0,19&gt; &lt;L@0, 0,(0, 19)&gt; &lt;L@0, 0,(0, 9)&gt; &lt;L@0, 0,19&gt; &lt;L@1, 0,9&gt; "/>
+   </Method>
+   <Method name="Fila.remove()Ljava/lang/Object;">
+      <Criterion value="All-Pot-Uses-ed"/>
+      <CoveredElements value=""/>
+      <UncoveredElements value=""/>
+   </Method>
+</CoveredAndUncovered>

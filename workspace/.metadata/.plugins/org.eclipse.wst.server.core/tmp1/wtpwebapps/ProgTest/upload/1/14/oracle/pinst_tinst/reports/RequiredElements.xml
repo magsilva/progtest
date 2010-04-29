@@ -1,0 +1,93 @@
+<?xml version='1.0'?>
+<RequiredElements>
+   <Method name="BTree.&lt;init&gt;()V">
+      <All-Nodes-ei value="4,0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,4),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="BTree.add(I)V">
+      <All-Nodes-ei value="0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value=""/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value=""/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="BTree.add(ILNo;)LNo;">
+      <All-Nodes-ei value="38,62,86,4,0,78,54,30,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,30),(62,86),(54,62),(30,54),(0,4),(54,78),(4,86),(38,86),(30,38),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@2, 0,62&gt;,&lt;L@1, 0,62&gt;,&lt;L@2, 0,(30, 54)&gt;,&lt;L@2, 0,(30, 38)&gt;,&lt;L@0, 0,62&gt;,&lt;L@2.reg, 0,(54, 62)&gt;,&lt;L@2.reg, 0,(54, 78)&gt;,&lt;L@1, 0,(30, 38)&gt;,&lt;L@1, 0,(30, 54)&gt;,&lt;L@2.reg, 0,(30, 54)&gt;,&lt;L@2.reg, 0,(30, 38)&gt;,&lt;L@2, 4,86&gt;,&lt;L@2, 0,86&gt;,&lt;L@1, 0,4&gt;,&lt;L@2, 0,(54, 62)&gt;,&lt;L@2, 0,(54, 78)&gt;,&lt;L@1, 0,(54, 78)&gt;,&lt;L@1, 0,(54, 62)&gt;,&lt;L@2.esq, 0,38&gt;,&lt;L@2, 0,(0, 30)&gt;,&lt;L@2, 0,(0, 4)&gt;,&lt;L@2.dir, 0,62&gt;,&lt;L@2, 0,38&gt;,&lt;L@1, 0,38&gt;,&lt;L@0, 0,38&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@2, 0,38&gt;,&lt;L@1, 0,38&gt;,&lt;L@0, 0,38&gt;,&lt;L@2, 0,(30, 54)&gt;,&lt;L@2, 0,(30, 38)&gt;,&lt;L@2, 0,62&gt;,&lt;L@1, 0,(30, 54)&gt;,&lt;L@1, 0,(30, 38)&gt;,&lt;L@1, 0,62&gt;,&lt;L@0, 0,(30, 54)&gt;,&lt;L@0, 0,(30, 38)&gt;,&lt;L@0, 0,62&gt;,&lt;L@2.dir, 62,86&gt;,&lt;L@2, 4,86&gt;,&lt;L@2, 0,(54, 62)&gt;,&lt;L@2, 0,(54, 78)&gt;,&lt;L@2, 0,86&gt;,&lt;L@1, 0,(54, 62)&gt;,&lt;L@1, 0,(54, 78)&gt;,&lt;L@1, 0,86&gt;,&lt;L@0, 0,(54, 62)&gt;,&lt;L@0, 0,(54, 78)&gt;,&lt;L@0, 0,86&gt;,&lt;L@2.esq, 4,86&gt;,&lt;L@2, 0,4&gt;,&lt;L@1, 0,4&gt;,&lt;L@2, 0,78&gt;,&lt;L@0, 0,4&gt;,&lt;L@1, 0,78&gt;,&lt;L@0, 0,78&gt;,&lt;L@2, 0,(0, 4)&gt;,&lt;L@2, 0,(0, 30)&gt;,&lt;L@2.reg, 4,86&gt;,&lt;L@1, 0,(0, 4)&gt;,&lt;L@1, 0,(0, 30)&gt;,&lt;L@0, 0,(0, 4)&gt;,&lt;L@0, 0,(0, 30)&gt;,&lt;L@2.esq, 38,86&gt;,&lt;L@2.dir, 4,86&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="BTree.antecessor(LNo;LNo;)LNo;">
+      <All-Nodes-ei value="36,23,0,7,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,23),(7,36),(0,7),(23,36),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@2.dir, 0,7&gt;,&lt;L@2, 23,36&gt;,&lt;L@2, 0,23&gt;,&lt;L@1, 0,23&gt;,&lt;L@2.dir, 0,(0, 7)&gt;,&lt;L@2.dir, 0,(0, 23)&gt;,&lt;L@2, 0,7&gt;,&lt;L@1, 0,7&gt;,&lt;L@0, 0,7&gt;,&lt;L@2.esq, 0,23&gt;,&lt;L@2, 0,36&gt;,&lt;L@2, 0,(0, 7)&gt;,&lt;L@2, 0,(0, 23)&gt;,&lt;L@2.reg, 0,23&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@2, 0,7&gt;,&lt;L@1, 0,7&gt;,&lt;L@0, 0,7&gt;,&lt;L@2.dir, 7,36&gt;,&lt;L@2, 0,23&gt;,&lt;L@1, 0,23&gt;,&lt;L@2, 0,(0, 23)&gt;,&lt;L@2, 0,(0, 7)&gt;,&lt;L@0, 0,23&gt;,&lt;L@1.reg, 23,36&gt;,&lt;L@1, 0,(0, 23)&gt;,&lt;L@1, 0,(0, 7)&gt;,&lt;L@0, 0,(0, 23)&gt;,&lt;L@0, 0,(0, 7)&gt;,&lt;L@2, 23,36&gt;,&lt;L@2, 0,36&gt;,&lt;L@1, 0,36&gt;,&lt;L@0, 0,36&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="BTree.print()Ljava/lang/String;">
+      <All-Nodes-ei value="0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value=""/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value=""/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="BTree.print(LNo;)Ljava/lang/String;">
+      <All-Nodes-ei value="88,29,147,21,7,43,14,4,102,95,0,36,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(95,147),(29,36),(14,21),(29,88),(88,147),(7,14),(0,7),(36,43),(95,102),(0,4),(7,29),(14,29),(88,95),(36,88),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@1, 0,147&gt;,&lt;L@0, 0,147&gt;,&lt;L@1, 0,(36, 43)&gt;,&lt;L@1, 0,(36, 88)&gt;,&lt;L@1.reg, 0,102&gt;,&lt;L@1.reg, 0,21&gt;,&lt;L@1, 0,(95, 102)&gt;,&lt;L@1, 0,(95, 147)&gt;,&lt;L@1.esq, 0,(7, 14)&gt;,&lt;L@1.esq, 0,(7, 29)&gt;,&lt;L@1.esq, 0,43&gt;,&lt;L@1.dir, 0,102&gt;,&lt;L@1, 0,(29, 88)&gt;,&lt;L@1, 0,(29, 36)&gt;,&lt;L@1, 0,102&gt;,&lt;L@1, 0,(88, 95)&gt;,&lt;L@1, 0,(88, 147)&gt;,&lt;L@0, 0,102&gt;,&lt;L@1.reg, 0,43&gt;,&lt;L@1, 0,21&gt;,&lt;L@1.esq, 0,147&gt;,&lt;L@1.dir, 0,(14, 21)&gt;,&lt;L@1.dir, 0,(14, 29)&gt;,&lt;L@1.dir, 0,43&gt;,&lt;L@1, 0,(7, 14)&gt;,&lt;L@1, 0,(7, 29)&gt;,&lt;L@1.reg, 0,147&gt;,&lt;L@1, 0,(14, 29)&gt;,&lt;L@1, 0,(14, 21)&gt;,&lt;L@1, 0,(0, 4)&gt;,&lt;L@1, 0,(0, 7)&gt;,&lt;L@1, 0,43&gt;,&lt;L@0, 0,43&gt;,&lt;L@1.esq, 0,(29, 88)&gt;,&lt;L@1.esq, 0,(29, 36)&gt;,&lt;L@1.esq, 0,102&gt;,&lt;L@1.esq, 0,(88, 95)&gt;,&lt;L@1.esq, 0,(88, 147)&gt;,&lt;L@1.dir, 0,147&gt;,&lt;L@1.dir, 0,(36, 43)&gt;,&lt;L@1.dir, 0,(36, 88)&gt;,&lt;L@1.dir, 0,(95, 102)&gt;,&lt;L@1.dir, 0,(95, 147)&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@1, 0,147&gt;,&lt;L@0, 0,147&gt;,&lt;L@1, 0,(36, 43)&gt;,&lt;L@1, 0,(36, 88)&gt;,&lt;L@0, 0,(36, 43)&gt;,&lt;L@0, 0,(36, 88)&gt;,&lt;L@1, 0,(95, 102)&gt;,&lt;L@1, 0,(95, 147)&gt;,&lt;L@0, 0,(95, 102)&gt;,&lt;L@0, 0,(95, 147)&gt;,&lt;L@1, 0,(29, 36)&gt;,&lt;L@1, 0,(29, 88)&gt;,&lt;L@0, 0,(29, 36)&gt;,&lt;L@0, 0,(29, 88)&gt;,&lt;L@1, 0,102&gt;,&lt;L@1, 0,(88, 95)&gt;,&lt;L@1, 0,(88, 147)&gt;,&lt;L@0, 0,(88, 95)&gt;,&lt;L@0, 0,(88, 147)&gt;,&lt;L@0, 0,102&gt;,&lt;L@1, 0,21&gt;,&lt;L@0, 0,21&gt;,&lt;L@1, 0,(7, 29)&gt;,&lt;L@1, 0,(7, 14)&gt;,&lt;L@0, 0,(7, 14)&gt;,&lt;L@0, 0,(7, 29)&gt;,&lt;L@1, 0,4&gt;,&lt;L@0, 0,4&gt;,&lt;L@1, 0,(14, 29)&gt;,&lt;L@1, 0,(14, 21)&gt;,&lt;L@0, 0,(14, 29)&gt;,&lt;L@0, 0,(14, 21)&gt;,&lt;L@1, 0,(0, 4)&gt;,&lt;L@1, 0,(0, 7)&gt;,&lt;L@1, 0,43&gt;,&lt;L@0, 0,(0, 4)&gt;,&lt;L@0, 0,(0, 7)&gt;,&lt;L@0, 0,43&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="BTree.remove(I)V">
+      <All-Nodes-ei value="0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value=""/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value=""/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="BTree.remove(ILNo;)LNo;">
+      <All-Nodes-ei value="90,60,82,20,75,44,4,103,12,67,0,36,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(36,60),(82,103),(20,103),(12,20),(44,103),(67,103),(36,44),(75,90),(0,4),(60,75),(0,12),(12,36),(90,103),(75,82),(60,67),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value="&lt;L@2, 0,(36, 60)&gt;,&lt;L@2, 0,(36, 44)&gt;,&lt;L@2.dir, 0,82&gt;,&lt;L@1, 0,(36, 44)&gt;,&lt;L@1, 0,(36, 60)&gt;,&lt;L@2, 0,67&gt;,&lt;L@2, 82,103&gt;,&lt;L@2.reg, 0,(12, 20)&gt;,&lt;L@2.reg, 0,(12, 36)&gt;,&lt;L@2, 0,(60, 67)&gt;,&lt;L@2, 0,(60, 75)&gt;,&lt;L@2, 0,90&gt;,&lt;L@0, 0,90&gt;,&lt;L@2.esq, 0,67&gt;,&lt;L@2.dir, 0,44&gt;,&lt;L@2.esq, 0,90&gt;,&lt;L@2, 0,103&gt;,&lt;L@2, 0,20&gt;,&lt;L@2.reg, 0,(36, 60)&gt;,&lt;L@2.reg, 0,(36, 44)&gt;,&lt;L@1, 0,20&gt;,&lt;L@0, 0,20&gt;,&lt;L@2, 0,82&gt;,&lt;L@2.esq, 0,20&gt;,&lt;L@2, 67,103&gt;,&lt;L@2.dir, 0,(60, 67)&gt;,&lt;L@2.dir, 0,(60, 75)&gt;,&lt;L@2, 0,(12, 20)&gt;,&lt;L@2, 0,(12, 36)&gt;,&lt;L@2, 0,44&gt;,&lt;L@2, 0,(0, 4)&gt;,&lt;L@2, 0,(0, 12)&gt;,&lt;L@1, 0,(12, 20)&gt;,&lt;L@1, 0,(12, 36)&gt;,&lt;L@1, 0,44&gt;,&lt;L@2, 0,(75, 82)&gt;,&lt;L@2, 0,(75, 90)&gt;,&lt;L@0, 0,44&gt;,&lt;L@2.esq, 0,(75, 82)&gt;,&lt;L@2.esq, 0,(75, 90)&gt;,"/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@2.esq, 90,103&gt;,&lt;L@2, 0,(36, 44)&gt;,&lt;L@2, 0,(36, 60)&gt;,&lt;L@2, 0,67&gt;,&lt;L@1, 0,(36, 44)&gt;,&lt;L@1, 0,(36, 60)&gt;,&lt;L@0, 0,(36, 44)&gt;,&lt;L@0, 0,(36, 60)&gt;,&lt;L@1, 0,67&gt;,&lt;L@0, 0,67&gt;,&lt;L@2, 82,103&gt;,&lt;L@2, 0,(60, 67)&gt;,&lt;L@2, 0,(60, 75)&gt;,&lt;L@1, 0,(60, 67)&gt;,&lt;L@1, 0,(60, 75)&gt;,&lt;L@2, 0,90&gt;,&lt;L@0, 0,(60, 67)&gt;,&lt;L@0, 0,(60, 75)&gt;,&lt;L@1, 0,90&gt;,&lt;L@0, 0,90&gt;,&lt;L@2.esq, 20,103&gt;,&lt;L@2, 0,103&gt;,&lt;L@1, 0,103&gt;,&lt;L@0, 0,103&gt;,&lt;L@2, 0,20&gt;,&lt;L@1, 0,20&gt;,&lt;L@2, 0,82&gt;,&lt;L@0, 0,20&gt;,&lt;L@1, 0,82&gt;,&lt;L@0, 0,82&gt;,&lt;L@2, 67,103&gt;,&lt;L@2, 0,4&gt;,&lt;L@1, 0,4&gt;,&lt;L@0, 0,4&gt;,&lt;L@2, 0,(12, 36)&gt;,&lt;L@2, 0,(12, 20)&gt;,&lt;L@2, 0,44&gt;,&lt;L@2, 0,(75, 90)&gt;,&lt;L@2, 0,(75, 82)&gt;,&lt;L@2, 0,(0, 4)&gt;,&lt;L@2, 0,(0, 12)&gt;,&lt;L@1, 0,(12, 36)&gt;,&lt;L@1, 0,(12, 20)&gt;,&lt;L@1, 0,44&gt;,&lt;L@1, 0,(75, 90)&gt;,&lt;L@1, 0,(75, 82)&gt;,&lt;L@1, 0,(0, 4)&gt;,&lt;L@1, 0,(0, 12)&gt;,&lt;L@0, 0,(12, 36)&gt;,&lt;L@0, 0,(12, 20)&gt;,&lt;L@0, 0,44&gt;,&lt;L@0, 0,(75, 90)&gt;,&lt;L@0, 0,(75, 82)&gt;,&lt;L@0, 0,(0, 4)&gt;,&lt;L@0, 0,(0, 12)&gt;,&lt;L@2.dir, 44,103&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+   <Method name="No.&lt;init&gt;()V">
+      <All-Nodes-ei value="4,0,"/>
+      <All-Nodes-ed value=""/>
+      <All-Edges-ei value="(0,4),"/>
+      <All-Edges-ed value=""/>
+      <All-Uses-ei value=""/>
+      <All-Uses-ed value=""/>
+      <All-Pot-Uses-ei value="&lt;L@0, 0,4&gt;,"/>
+      <All-Pot-Uses-ed value=""/>
+   </Method>
+</RequiredElements>

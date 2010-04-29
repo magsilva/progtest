@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#pages#default#loginTemplate.jsp"
+    NAME="output10" PATH="/pages/default/loginTemplate.jsp"
+    TARGET="rules:#pages#default#loginTemplate.jsp" TITLE="login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="register::#pages#default#registerTemplate.jsp" NAME="output11"
+    PATH="/pages/default/registerTemplate.jsp"
+    TARGET="rules:#pages#default#registerTemplate.jsp" TITLE="register" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="logoff::#pages#default#loginTemplate.jsp"
+    NAME="output" PATH="/pages/default/loginTemplate.jsp"
+    TARGET="rules:#pages#default#loginTemplate.jsp" TITLE="logoff" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="instructorProfile::#pages#instructor#editProfileTemplate.jsp"
+    NAME="output9" PATH="/pages/instructor/editProfileTemplate.jsp"
+    TARGET="rules:#pages#instructor#editProfileTemplate.jsp"
+    TITLE="instructorProfile" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="instructorCourses::#pages#instructor#coursesTemplate.jsp"
+    NAME="output6" PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp"
+    TITLE="instructorCourses" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="instructorAssignments::#pages#instructor#assignmentsTemplate.jsp"
+    NAME="output7" PATH="/pages/instructor/assignmentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentsTemplate.jsp"
+    TITLE="instructorAssignments" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="instructorStudents::#pages#instructor#studentsTemplate.jsp"
+    NAME="output8" PATH="/pages/instructor/studentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentsTemplate.jsp"
+    TITLE="instructorStudents" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="studentProfile::#pages#student#editProfileTemplate.jsp"
+    NAME="output1" PATH="/pages/student/editProfileTemplate.jsp"
+    TARGET="rules:#pages#student#editProfileTemplate.jsp"
+    TITLE="studentProfile" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="studentCourses::#pages#student#coursesInfoTemplate.jsp"
+    NAME="output5" PATH="/pages/student/coursesInfoTemplate.jsp"
+    TARGET="rules:#pages#student#coursesInfoTemplate.jsp"
+    TITLE="studentCourses" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="studentPendencies::#pages#student#outstandingAssignmentsTemplate.jsp"
+    NAME="output2"
+    PATH="/pages/student/outstandingAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#outstandingAssignmentsTemplate.jsp"
+    TITLE="studentPendencies" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="studentAssignments::#pages#student#allAssignmentsTemplate.jsp"
+    NAME="output3" PATH="/pages/student/allAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#allAssignmentsTemplate.jsp"
+    TITLE="studentAssignments" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="studentGrades::#pages#student#gradesTemplate.jsp" NAME="output4"
+    PATH="/pages/student/gradesTemplate.jsp"
+    TARGET="rules:#pages#student#gradesTemplate.jsp"
+    TITLE="studentGrades" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#createCourseTemplate.jsp"
+  PATH="/pages/instructor/createCourseTemplate.jsp" SHAPE="880,209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#createCourseTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/createCourseTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#coursesTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#coursesTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#createCourseTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/createCourseTemplate.jsp"
+    TARGET="rules:#pages#instructor#createCourseTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#editCourseTemplate.jsp"
+  PATH="/pages/instructor/editCourseTemplate.jsp" SHAPE="608,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#editCourseTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/editCourseTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#coursesTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#coursesTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#editCourseTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/editCourseTemplate.jsp"
+    TARGET="rules:#pages#instructor#editCourseTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#removeCourseTemplate.jsp"
+  PATH="/pages/instructor/removeCourseTemplate.jsp" SHAPE="608,193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#removeCourseTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/removeCourseTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#coursesTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#coursesTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#removeCourseTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/removeCourseTemplate.jsp"
+    TARGET="rules:#pages#instructor#removeCourseTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#instructor#registerStudentTemplate.jsp"
+  PATH="/pages/instructor/registerStudentTemplate.jsp"
+  SHAPE="880,1313,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#instructor#registerStudentTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/registerStudentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#studentsTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/studentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentsTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#studentsTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/studentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentsTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#registerStudentTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/registerStudentTemplate.jsp"
+    TARGET="rules:#pages#instructor#registerStudentTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#removeStudentTemplate.jsp"
+  PATH="/pages/instructor/removeStudentTemplate.jsp"
+  SHAPE="880,1697,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#removeStudentTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/removeStudentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#studentsTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/studentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentsTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#studentTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/studentTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#removeStudentTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/removeStudentTemplate.jsp"
+    TARGET="rules:#pages#instructor#removeStudentTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#student#addTestCasesTemplate.jsp"
+  PATH="/pages/student/addTestCasesTemplate.jsp" SHAPE="336,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#student#addTestCasesTemplate.jsp:0"
+   NAME="item" PATH="/pages/student/addTestCasesTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#student#assignmentInfoTemplate.jsp"
+    NAME="output" PATH="/pages/student/assignmentInfoTemplate.jsp"
+    TARGET="rules:#pages#student#assignmentInfoTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="outstanding::#pages#student#outstandingAssignmentsTemplate.jsp"
+    NAME="output1"
+    PATH="/pages/student/outstandingAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#outstandingAssignmentsTemplate.jsp"
+    TITLE="outstanding" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="assignments::#pages#student#allAssignmentsTemplate.jsp"
+    NAME="output2" PATH="/pages/student/allAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#allAssignmentsTemplate.jsp"
+    TITLE="assignments" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="assignment::#pages#student#assignmentInfoTemplate.jsp"
+    NAME="output3" PATH="/pages/student/assignmentInfoTemplate.jsp"
+    TARGET="rules:#pages#student#assignmentInfoTemplate.jsp"
+    TITLE="assignment" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#default#loginTemplate.jsp"
+  PATH="/pages/default/loginTemplate.jsp" SHAPE="880,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#default#loginTemplate.jsp:0"
+   NAME="item" PATH="/pages/default/loginTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="instructorHome::#pages#instructor#coursesTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp"
+    TITLE="instructorHome" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="studentHome::#pages#student#outstandingAssignmentsTemplate.jsp"
+    NAME="output3"
+    PATH="/pages/student/outstandingAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#outstandingAssignmentsTemplate.jsp"
+    TITLE="studentHome" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#default#registerTemplate.jsp"
+  PATH="/pages/default/registerTemplate.jsp" SHAPE="608,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#default#registerTemplate.jsp:0"
+   NAME="item" PATH="/pages/default/registerTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cancel::#pages#default#loginTemplate.jsp"
+    NAME="output2" PATH="/pages/default/loginTemplate.jsp"
+    TARGET="rules:#pages#default#loginTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success::#pages#default#loginTemplate.jsp"
+    NAME="output3" PATH="/pages/default/loginTemplate.jsp"
+    TARGET="rules:#pages#default#loginTemplate.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#student#editProfileTemplate.jsp"
+  PATH="/pages/student/editProfileTemplate.jsp" SHAPE="880,785,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#student#editProfileTemplate.jsp:0"
+   NAME="item" PATH="/pages/student/editProfileTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#student#outstandingAssignmentsTemplate.jsp"
+    NAME="output"
+    PATH="/pages/student/outstandingAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#outstandingAssignmentsTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#student#outstandingAssignmentsTemplate.jsp"
+  PATH="/pages/student/outstandingAssignmentsTemplate.jsp"
+  SHAPE="1152,769,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#student#outstandingAssignmentsTemplate.jsp:0"
+   NAME="item" PATH="/pages/student/outstandingAssignmentsTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#student#outstandingAssignmentsTemplate.jsp"
+    NAME="output"
+    PATH="/pages/student/outstandingAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#outstandingAssignmentsTemplate.jsp"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="send::#pages#student#submitAssignmentTemplate.jsp"
+    NAME="output1" PATH="/pages/student/submitAssignmentTemplate.jsp"
+    TARGET="rules:#pages#student#submitAssignmentTemplate.jsp"
+    TITLE="send" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="view::#pages#student#assignmentInfoTemplate.jsp" NAME="output2"
+    PATH="/pages/student/assignmentInfoTemplate.jsp"
+    TARGET="rules:#pages#student#assignmentInfoTemplate.jsp"
+    TITLE="view" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#student#allAssignmentsTemplate.jsp"
+  PATH="/pages/student/allAssignmentsTemplate.jsp" SHAPE="336,993,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#student#allAssignmentsTemplate.jsp:0"
+   NAME="item" PATH="/pages/student/allAssignmentsTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#student#allAssignmentsTemplate.jsp" NAME="output"
+    PATH="/pages/student/allAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#allAssignmentsTemplate.jsp"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="send::#pages#student#submitAssignmentTemplate.jsp"
+    NAME="output1" PATH="/pages/student/submitAssignmentTemplate.jsp"
+    TARGET="rules:#pages#student#submitAssignmentTemplate.jsp"
+    TITLE="send" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="view::#pages#student#assignmentInfoTemplate.jsp" NAME="output2"
+    PATH="/pages/student/assignmentInfoTemplate.jsp"
+    TARGET="rules:#pages#student#assignmentInfoTemplate.jsp"
+    TITLE="view" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#student#assignmentInfoTemplate.jsp"
+  PATH="/pages/student/assignmentInfoTemplate.jsp" SHAPE="608,769,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#student#assignmentInfoTemplate.jsp:0"
+   NAME="item" PATH="/pages/student/assignmentInfoTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="send::#pages#student#submitAssignmentTemplate.jsp" NAME="output"
+    PATH="/pages/student/submitAssignmentTemplate.jsp"
+    TARGET="rules:#pages#student#submitAssignmentTemplate.jsp"
+    TITLE="send" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="add::#pages#student#addTestCasesTemplate.jsp" NAME="output1"
+    PATH="/pages/student/addTestCasesTemplate.jsp"
+    TARGET="rules:#pages#student#addTestCasesTemplate.jsp" TITLE="add" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#student#submitAssignmentTemplate.jsp"
+  PATH="/pages/student/submitAssignmentTemplate.jsp" SHAPE="64,977,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#student#submitAssignmentTemplate.jsp:0"
+   NAME="item" PATH="/pages/student/submitAssignmentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#student#assignmentInfoTemplate.jsp"
+    NAME="output" PATH="/pages/student/assignmentInfoTemplate.jsp"
+    TARGET="rules:#pages#student#assignmentInfoTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="outstanding::#pages#student#outstandingAssignmentsTemplate.jsp"
+    NAME="output1"
+    PATH="/pages/student/outstandingAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#outstandingAssignmentsTemplate.jsp"
+    TITLE="outstanding" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="assignments::#pages#student#allAssignmentsTemplate.jsp"
+    NAME="output2" PATH="/pages/student/allAssignmentsTemplate.jsp"
+    TARGET="rules:#pages#student#allAssignmentsTemplate.jsp"
+    TITLE="assignments" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="assignment::#pages#student#assignmentInfoTemplate.jsp"
+    NAME="output3" PATH="/pages/student/assignmentInfoTemplate.jsp"
+    TARGET="rules:#pages#student#assignmentInfoTemplate.jsp"
+    TITLE="assignment" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#coursesTemplate.jsp"
+  PATH="/pages/instructor/coursesTemplate.jsp" SHAPE="1152,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#coursesTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/coursesTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="create::#pages#instructor#createCourseTemplate.jsp"
+    NAME="output" PATH="/pages/instructor/createCourseTemplate.jsp"
+    TARGET="rules:#pages#instructor#createCourseTemplate.jsp"
+    TITLE="create" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="edit::#pages#instructor#editCourseTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/editCourseTemplate.jsp"
+    TARGET="rules:#pages#instructor#editCourseTemplate.jsp" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="remove::#pages#instructor#removeCourseTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/removeCourseTemplate.jsp"
+    TARGET="rules:#pages#instructor#removeCourseTemplate.jsp"
+    TITLE="remove" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#studentsTemplate.jsp"
+  PATH="/pages/instructor/studentsTemplate.jsp" SHAPE="880,1201,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#studentsTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/studentsTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="register::#pages#instructor#registerStudentTemplate.jsp"
+    NAME="output" PATH="/pages/instructor/registerStudentTemplate.jsp"
+    TARGET="rules:#pages#instructor#registerStudentTemplate.jsp"
+    TITLE="register" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="add::#pages#instructor#addStudentsTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/addStudentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#addStudentsTemplate.jsp" TITLE="add" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="view::#pages#instructor#studentTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/studentTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentTemplate.jsp" TITLE="view" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#addStudentsTemplate.jsp"
+  PATH="/pages/instructor/addStudentsTemplate.jsp" SHAPE="608,1601,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#addStudentsTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/addStudentsTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#studentsTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/studentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentsTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#studentsTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/studentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentsTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#addStudentsTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/addStudentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#addStudentsTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#studentTemplate.jsp"
+  PATH="/pages/instructor/studentTemplate.jsp" SHAPE="1392,2609,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#studentTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/studentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#instructor#studentTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/studentTemplate.jsp"
+    TARGET="rules:#pages#instructor#studentTemplate.jsp" TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="remove::#pages#instructor#removeStudentTemplate.jsp"
+    NAME="output1" PATH="/pages/instructor/removeStudentTemplate.jsp"
+    TARGET="rules:#pages#instructor#removeStudentTemplate.jsp"
+    TITLE="remove" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#assignmentsTemplate.jsp"
+  PATH="/pages/instructor/assignmentsTemplate.jsp" SHAPE="880,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#assignmentsTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/assignmentsTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#instructor#assignmentsTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/assignmentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentsTemplate.jsp"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="create::#pages#instructor#createAssignmentTemplate.jsp"
+    NAME="output1" PATH="/pages/instructor/createAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#createAssignmentTemplate.jsp"
+    TITLE="create" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="add::#pages#instructor#addAssignmentTemplate.jsp" NAME="output2"
+    PATH="/pages/instructor/addAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#addAssignmentTemplate.jsp"
+    TITLE="add" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="view::#pages#instructor#assignmentTemplate.jsp" NAME="output3"
+    PATH="/pages/instructor/assignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentTemplate.jsp" TITLE="view" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#instructor#createAssignmentTemplate.jsp"
+  PATH="/pages/instructor/createAssignmentTemplate.jsp"
+  SHAPE="608,977,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#instructor#createAssignmentTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/createAssignmentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#instructor#createAssignmentTemplate.jsp"
+    NAME="output" PATH="/pages/instructor/createAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#createAssignmentTemplate.jsp"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#assignmentsTemplate.jsp"
+    NAME="output1" PATH="/pages/instructor/assignmentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentsTemplate.jsp"
+    TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#assignmentsTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/assignmentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentsTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#createAssignmentTemplate.jsp"
+    NAME="output3" PATH="/pages/instructor/createAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#createAssignmentTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#addAssignmentTemplate.jsp"
+  PATH="/pages/instructor/addAssignmentTemplate.jsp"
+  SHAPE="608,1185,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#addAssignmentTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/addAssignmentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#instructor#addAssignmentTemplate.jsp"
+    NAME="output" PATH="/pages/instructor/addAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#addAssignmentTemplate.jsp"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#assignmentsTemplate.jsp"
+    NAME="output1" PATH="/pages/instructor/assignmentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentsTemplate.jsp"
+    TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#assignmentsTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/assignmentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentsTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#addAssignmentTemplate.jsp"
+    NAME="output3" PATH="/pages/instructor/addAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#addAssignmentTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#assignmentTemplate.jsp"
+  PATH="/pages/instructor/assignmentTemplate.jsp" SHAPE="336,1409,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#assignmentTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/assignmentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#instructor#assignmentTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/assignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentTemplate.jsp"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="edit::#pages#instructor#editAssignmentTemplate.jsp"
+    NAME="output1" PATH="/pages/instructor/editAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#editAssignmentTemplate.jsp"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="remove::#pages#instructor#removeAssignmentTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/removeAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#removeAssignmentTemplate.jsp"
+    TITLE="remove" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#editAssignmentTemplate.jsp"
+  PATH="/pages/instructor/editAssignmentTemplate.jsp"
+  SHAPE="64,1393,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#instructor#editAssignmentTemplate.jsp:0" NAME="item"
+   PATH="/pages/instructor/editAssignmentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="select::#pages#instructor#editAssignmentTemplate.jsp"
+    NAME="output" PATH="/pages/instructor/editAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#editAssignmentTemplate.jsp"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#assignmentTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/assignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentTemplate.jsp"
+    TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#assignmentTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/assignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#editAssignmentTemplate.jsp"
+    NAME="output3" PATH="/pages/instructor/editAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#editAssignmentTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#instructor#removeAssignmentTemplate.jsp"
+  PATH="/pages/instructor/removeAssignmentTemplate.jsp"
+  SHAPE="608,1393,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#instructor#removeAssignmentTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/removeAssignmentTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#assignmentTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/assignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentTemplate.jsp"
+    TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#assignmentsTemplate.jsp"
+    NAME="output1" PATH="/pages/instructor/assignmentsTemplate.jsp"
+    TARGET="rules:#pages#instructor#assignmentsTemplate.jsp"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#removeAssignmentTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/removeAssignmentTemplate.jsp"
+    TARGET="rules:#pages#instructor#removeAssignmentTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#student#gradesTemplate.jsp"
+  PATH="/pages/student/gradesTemplate.jsp" SHAPE="880,241,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#student#coursesInfoTemplate.jsp"
+  PATH="/pages/student/coursesInfoTemplate.jsp" SHAPE="880,993,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#instructor#editProfileTemplate.jsp"
+  PATH="/pages/instructor/editProfileTemplate.jsp" SHAPE="336,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#instructor#editProfileTemplate.jsp:0"
+   NAME="item" PATH="/pages/instructor/editProfileTemplate.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancel::#pages#instructor#coursesTemplate.jsp" NAME="output"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pages#instructor#coursesTemplate.jsp" NAME="output1"
+    PATH="/pages/instructor/coursesTemplate.jsp"
+    TARGET="rules:#pages#instructor#coursesTemplate.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="failure::#pages#instructor#editProfileTemplate.jsp"
+    NAME="output2" PATH="/pages/instructor/editProfileTemplate.jsp"
+    TARGET="rules:#pages#instructor#editProfileTemplate.jsp"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

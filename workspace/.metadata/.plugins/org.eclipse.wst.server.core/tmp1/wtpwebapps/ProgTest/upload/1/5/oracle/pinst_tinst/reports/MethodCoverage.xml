@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<MethodCoverage>
+   <Method name="CasamentoExato.&lt;init&gt;()V">
+      <All-Nodes-ei value="0 of 2(0.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 1(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 1(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="CasamentoExato.forcaBruta(Ljava/lang/String;ILjava/lang/String;I)Ljava/lang/String;">
+      <All-Nodes-ei value="10 of 10(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="12 of 12(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="39 of 39(100.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="121 of 125(96.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="Main.&lt;init&gt;()V">
+      <All-Nodes-ei value="0 of 2(0.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 1(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 1(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="Main.main(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;">
+      <All-Nodes-ei value="1 of 1(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 0(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+</MethodCoverage>

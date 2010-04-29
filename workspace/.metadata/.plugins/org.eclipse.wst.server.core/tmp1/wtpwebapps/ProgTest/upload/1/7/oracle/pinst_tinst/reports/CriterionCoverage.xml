@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<CriterionCoverage>
+   <Criterion name="All-Nodes-ei">
+      <NumberOfElements value="24"/>
+      <NumberOfCoveredElements value="20"/>
+      <Percentage value="83.0"/>
+   </Criterion>
+   <Criterion name="All-Nodes-ed">
+      <NumberOfElements value="0"/>
+      <NumberOfCoveredElements value="0"/>
+      <Percentage value="0.0"/>
+   </Criterion>
+   <Criterion name="All-Edges-ei">
+      <NumberOfElements value="26"/>
+      <NumberOfCoveredElements value="24"/>
+      <Percentage value="92.0"/>
+   </Criterion>
+   <Criterion name="All-Edges-ed">
+      <NumberOfElements value="0"/>
+      <NumberOfCoveredElements value="0"/>
+      <Percentage value="0.0"/>
+   </Criterion>
+   <Criterion name="All-Uses-ei">
+      <NumberOfElements value="70"/>
+      <NumberOfCoveredElements value="59"/>
+      <Percentage value="84.0"/>
+   </Criterion>
+   <Criterion name="All-Uses-ed">
+      <NumberOfElements value="0"/>
+      <NumberOfCoveredElements value="0"/>
+      <Percentage value="0.0"/>
+   </Criterion>
+   <Criterion name="All-Pot-Uses-ei">
+      <NumberOfElements value="211"/>
+      <NumberOfCoveredElements value="186"/>
+      <Percentage value="88.0"/>
+   </Criterion>
+   <Criterion name="All-Pot-Uses-ed">
+      <NumberOfElements value="0"/>
+      <NumberOfCoveredElements value="0"/>
+      <Percentage value="0.0"/>
+   </Criterion>
+</CriterionCoverage>

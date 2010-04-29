@@ -1,0 +1,123 @@
+1266840789611	Copy compilation unit
+1266841203170	Copy files
+1266841215908	Rename resource 'assignmentInfoTemplate.jsp'
+1266841228826	Rename resource 'assignmentInfo.jsp'
+1266841327981	Rename field 'pageId'
+1266862642742	Copy compilation unit
+1266863570418	Copy files
+1266863592818	Rename resource 'assignmentInfoTemplate.jsp'
+1266863599693	Rename resource 'assignmentInfo.jsp'
+1266868241199	Copy files
+1266868535879	Rename type 'CreateAssigment'
+1266929592461	Rename method 'reset'
+1266931316368	Copy compilation unit
+1266931372556	Delete element
+1266931383947	Copy compilation unit
+1266931913790	Copy files
+1266933056056	Delete element
+1266933073259	Delete element
+1266933075869	Delete element
+1266933079916	Delete element
+1266933086606	Delete element
+1266933100212	Delete element
+1266933102682	Delete element
+1266933104807	Delete element
+1266933110745	Delete element
+1266933116151	Delete element
+1266933119870	Delete element
+1266933121776	Delete element
+1266933130307	Delete element
+1266933132135	Delete element
+1266933147183	Delete element
+1266933149011	Delete element
+1266933150667	Delete element
+1266933246360	Rename type 'EditAssigment'
+1266933256266	Rename type 'RemoveAssigment'
+1266933335672	Delete element
+1266933345625	Delete elements
+1266933398409	Delete elements
+1266933444566	Delete elements
+1266933511115	Copy files
+1266933861269	Rename resource 'removeAssigmentTemplate.jsp'
+1266933866895	Rename resource 'removeAssigment.jsp'
+1266935718375	Delete elements
+1266935723829	Delete elements
+1266944116265	Delete element
+1266944248953	Copy compilation unit
+1266944250875	Copy compilation unit
+1266944258687	Delete element
+1266944477734	Rename field 'SESSION_ASSIGMENT'
+1266944719625	Rename field 'SESSION_AVALIATION'
+1266945606328	Copy files
+1266947705890	Delete elements
+1266947828031	Delete element
+1266947830390	Delete element
+1266947833109	Delete element
+1266948165671	Delete elements
+1266948171656	Delete element
+1266948177687	Rename resource 'database-schema2.sql'
+1266948869187	Rename type 'AssigmentPK'
+1266948923109	Rename type 'Assigment'
+1266948981609	Rename type 'Avaliation'
+1266948992781	Rename type 'AvaliationPK'
+1266949022187	Rename field 'avaliations'
+1266949110843	Rename field 'assigments'
+1266949154265	Rename field 'assigment'
+1266949270031	Rename field 'avaliations'
+1266949535609	Rename local variable 'assigment'
+1266949586875	Rename local variable 'assigments'
+1266949597000	Rename local variable 'assigment'
+1266949606609	Rename local variable 'avaliation'
+1266949645500	Rename local variable 'assigment'
+1266949661703	Rename field 'avaliations'
+1266949962156	Rename local variable 'assigment'
+1266950006531	Rename local variable 'assigment'
+1266950024375	Rename local variable 'assigment'
+1266950059187	Rename local variable 'assigments'
+1266950066281	Rename local variable 'avaliation'
+1266950082906	Rename local variable 'assigment'
+1266950090953	Rename local variable 'assigment'
+1266950112812	Rename local variable 'avaliations'
+1266950118890	Rename local variable 'avaliation'
+1266950143828	Rename field 'avaliations'
+1266950154843	Rename field 'avaliationsTable'
+1266950305687	Rename field 'avaliations'
+1266950315812	Rename field 'avaliationsTable'
+1266950413687	Rename local variable 'avaliation'
+1266950438015	Rename local variable 'avaliation'
+1266950507718	Rename local variable 'avaliation'
+1266950563859	Rename field 'avaliations'
+1266950577390	Rename field 'avaliationsTable'
+1266950657343	Rename field 'avaliations'
+1266950668046	Rename field 'avaliationsTable'
+1266950692281	Rename local variable 'avaliation'
+1266950703390	Rename local variable 'avaliation'
+1266950747437	Rename local variable 'avaliation'
+1266950942296	Rename type 'AssigmentDAO'
+1266950954453	Rename type 'AvaliationDAO'
+1266951176093	Rename field 'GET_AVALIATIONS'
+1266951212890	Rename method 'getAvaliations'
+1266951220796	Rename local variable 'avaliations'
+1266951249062	Rename field 'GET_ASSIGMENTS'
+1266951274359	Rename method 'getAssigments'
+1266951280531	Rename local variable 'assigments'
+1266951305500	Rename field 'GET_AVALIATIONS'
+1266951338265	Rename local variable 'assigment'
+1266951343812	Rename local variable 'assigment'
+1266951350859	Rename local variable 'assigment'
+1266951380671	Rename method 'getAvaliations'
+1266951389437	Rename local variable 'assigment'
+1266951399015	Rename local variable 'avaliations'
+1266951737953	Rename method 'getOutstandingAvaliations'
+1266951751015	Rename method 'getOutstandingAvaliations'
+1266951768687	Rename method 'getAvaliations'
+1266951785328	Rename method 'getAvaliations'
+1266951800796	Rename method 'getAvaliation'
+1266954311453	Rename local variable 'avaliation'
+1266954531078	Delete element
+1266954938890	Rename package 'progtest.database'
+1266955071593	Delete element
+1266956061515	Delete element
+1266956071234	Rename package 'progtest.database.DAO'
+1267033999171	Rename local variable 'avaliation'
+1267210564169	Rename local variable 'avaliation'

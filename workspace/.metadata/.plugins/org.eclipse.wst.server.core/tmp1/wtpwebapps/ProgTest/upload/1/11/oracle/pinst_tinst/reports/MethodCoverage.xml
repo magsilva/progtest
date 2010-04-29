@@ -1,0 +1,63 @@
+<?xml version='1.0'?>
+<MethodCoverage>
+   <Method name="Celula.&lt;init&gt;()V">
+      <All-Nodes-ei value="2 of 2(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="1 of 1(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="1 of 1(100.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="List.&lt;init&gt;()V">
+      <All-Nodes-ei value="2 of 2(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="1 of 1(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="1 of 1(100.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="1 of 1(100.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="List.add(Ljava/lang/Object;)V">
+      <All-Nodes-ei value="1 of 1(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 0(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="List.isEmpty()Z">
+      <All-Nodes-ei value="0 of 4(0.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 4(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 6(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 5(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="List.print()Ljava/lang/String;">
+      <All-Nodes-ei value="6 of 6(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="7 of 7(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="21 of 22(95.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="31 of 38(81.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="List.remove(Ljava/lang/Object;)Ljava/lang/Object;">
+      <All-Nodes-ei value="0 of 12(0.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 15(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 46(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 72(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+</MethodCoverage>

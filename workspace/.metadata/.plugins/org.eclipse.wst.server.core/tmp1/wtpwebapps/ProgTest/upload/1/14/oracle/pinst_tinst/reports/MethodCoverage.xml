@@ -1,0 +1,93 @@
+<?xml version='1.0'?>
+<MethodCoverage>
+   <Method name="BTree.&lt;init&gt;()V">
+      <All-Nodes-ei value="2 of 2(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="1 of 1(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="1 of 1(100.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="1 of 1(100.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="BTree.add(I)V">
+      <All-Nodes-ei value="1 of 1(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 0(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="BTree.add(ILNo;)LNo;">
+      <All-Nodes-ei value="7 of 8(87.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="8 of 9(88.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="22 of 25(88.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="33 of 39(84.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="BTree.antecessor(LNo;LNo;)LNo;">
+      <All-Nodes-ei value="3 of 4(75.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="2 of 4(50.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="7 of 14(50.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="10 of 18(55.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="BTree.print()Ljava/lang/String;">
+      <All-Nodes-ei value="1 of 1(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 0(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="BTree.print(LNo;)Ljava/lang/String;">
+      <All-Nodes-ei value="12 of 12(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="13 of 14(92.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="41 of 43(95.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="36 of 38(94.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="BTree.remove(I)V">
+      <All-Nodes-ei value="1 of 1(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="0 of 0(0.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="BTree.remove(ILNo;)LNo;">
+      <All-Nodes-ei value="11 of 12(91.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="13 of 15(86.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="35 of 40(87.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="49 of 56(87.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+   <Method name="No.&lt;init&gt;()V">
+      <All-Nodes-ei value="2 of 2(100.0)"/>
+      <All-Nodes-ed value="0 of 0(0.0)"/>
+      <All-Edges-ei value="1 of 1(100.0)"/>
+      <All-Edges-ed value="0 of 0(0.0)"/>
+      <All-Uses-ei value="0 of 0(0.0)"/>
+      <All-Uses-ed value="0 of 0(0.0)"/>
+      <All-Pot-Uses-ei value="1 of 1(100.0)"/>
+      <All-Pot-Uses-ed value="0 of 0(0.0)"/>
+   </Method>
+</MethodCoverage>
