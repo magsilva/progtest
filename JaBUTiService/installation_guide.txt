@@ -1,0 +1,32 @@
+authors: André Takeshi Endo and Rodrigo Pinto gondim
+version: 0.1
+
+---------------------------------------------
+Steps to install the JaBUTi Service
+---------------------------------------------
+
+Required softwares
+	- Linux
+	- Java
+	- Tomcat
+	- MySQL
+
+1) copy the files bcel-5.1.jar and mysql-connector-java-5.1.5-bin.jar to the directory TOMCAT_DIR/shared/lib/
+
+2) create a database named 'jabutiservice' and then execute the script jabuti.sql.
+
+3) open the jabuti.war and edit the file /WEB-INF/classes/jabuti.properties configuring:
+	- db.url, db.user and db.password are related to the database information.
+	- JABUTI_PERSISTENCE_HOME is a directory with read/write permissions.
+	- JABUTI_TOMCAT_PROJECT_HOME is the directory where the jabutiservice was deployed in the tomcat (usually in TOMCAT_DIR/webapps/{war_file_name}).
+
+4) deploy Jabuti.war on the tomcat
+
+5) If everything is all right, after the deployment, the following data will be printed in the console (log - catalina.out):
+
+***********************************init
+Database connection: OK
+Persistence directory: OK
+Tomcat project directory: OK
+***********************************init
+
