@@ -1,5 +1,7 @@
-#Wed Mar 24 19:29:28 BRT 2010
+#Thu Apr 29 18:19:42 BRT 2010
+SAVE_ALL_BEFORE_BUILD=true
 eclipse.preferences.version=1
+REFRESH_WORKSPACE_ON_STARTUP=true
 tipsAndTricks=true
 platformState=1245087372621
 EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false

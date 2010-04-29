@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="35" key="DIALOG_Y_ORIGIN"/>
+		<item value="12" key="DIALOG_Y_ORIGIN"/>
 		<item value="160" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="NewWizardAction">
@@ -15,13 +15,18 @@
 		<item value="280" key="DIALOG_WIDTH"/>
 		<item value="org.eclipse.wst.server.ui.ServersView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
 		<item value="159" key="DIALOG_Y_ORIGIN"/>
-		<item value="584" key="DIALOG_X_ORIGIN"/>
 		<item value="421" key="DIALOG_HEIGHT"/>
+		<item value="584" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.eclipse.debug.ui"/>
 			<item value="org.eclipse.wst.server.ui"/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.preferences.keysPreferencePage">
+		<item value="true" key="uncategorizedFilter"/>
+		<item value="true" key="internalFilter"/>
+		<item value="true" key="actionSetFilter"/>
 	</section>
 	<section name="ImportExportAction">
 		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
