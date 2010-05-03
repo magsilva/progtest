@@ -37,13 +37,13 @@
 						<af:spacer width="5" />
 						<h:commandLink action="instructorProfile"
 							styleClass="topmenu_link">
-							<h:outputText value="Editar Perfil" styleClass="topmenu_link" />
+							<h:outputText value="Edit Profile" styleClass="topmenu_link" />
 						</h:commandLink>
 						<af:spacer width="5" />
 						<h:outputText value="|" />
 						<af:spacer width="5" />
 						<h:commandLink action="#{logoff.logoff}" styleClass="topmenu_link">
-							<h:outputText value="Sair" styleClass="topmenu_link" />
+							<h:outputText value="Log Out" styleClass="topmenu_link" />
 						</h:commandLink>
 						<af:spacer height="10" />
 					</htm:div>
@@ -55,7 +55,7 @@
 							<htm:tr style="height: 30px">
 								<htm:td>
 									<h:commandLink action="instructorCourses" styleClass="orangebar_link">
-										<h:outputText value="Gerência de Cursos" styleClass="orangebar_link" />
+										<h:outputText value="Courses" styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
 								<htm:td style="color: #ffffff">
@@ -66,7 +66,7 @@
 								<htm:td>
 									<h:commandLink action="instructorAssignments"
 										styleClass="orangebar_link">
-										<h:outputText value="Gerência de Trabalhos"
+										<h:outputText value="Assignments"
 											styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
@@ -77,7 +77,7 @@
 								</htm:td>
 								<htm:td>
 									<h:commandLink action="instructorStudents" styleClass="orangebar_link">
-										<h:outputText value="Gerência de Alunos" styleClass="orangebar_link" />
+										<h:outputText value="Students" styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
 							</htm:tr>

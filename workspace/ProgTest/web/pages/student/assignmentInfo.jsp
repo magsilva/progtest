@@ -19,7 +19,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Trabalho" styleClass="menu_title" />
+					<h:outputText value="Assignment" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -29,10 +29,10 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectDefaultView}"
 									styleClass="link">
-									<h:outputText value="Informações sobre o Trabalho"
+									<h:outputText value="Assignment Properties"
 										styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 0}" />
-									<h:outputText value="Informações sobre o Trabalho"
+									<h:outputText value="Assignment Properties"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 0}" />
 								</h:commandLink>
@@ -41,7 +41,7 @@
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Resultado da Avaliação" />
+								<h:outputText value="Evaluation Result" />
 								<af:spacer height="5" />
 							</htm:td>
 						</htm:tr>
@@ -49,44 +49,44 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Relatórios" styleClass="menu_title" />
+					<h:outputText value="Reports" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
 					<htm:table>
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Teste Funcional" />
+								<h:outputText value="Functional Test" />
 								<af:spacer height="5" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Elementos Requeridos" />
+								<h:outputText value="Required Elements" />
 								<af:spacer height="5" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Cobertura por Classe" />
+								<h:outputText value="Class Coverage" />
 								<af:spacer height="5" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Cobertura por Método" />
+								<h:outputText value="Method Coverage" />
 								<af:spacer height="5" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Cobertura por Critério" />
+								<h:outputText value="Criterion Coverage" />
 								<af:spacer height="5" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Elementos Cobertos e Não Cobertos" />
+								<h:outputText value="Covered and Uncovered Elements" />
 								<af:spacer height="5" />
 							</htm:td>
 						</htm:tr>
@@ -94,7 +94,7 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Ações" styleClass="menu_title" />
+					<h:outputText value="Action" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -102,7 +102,7 @@
 						<af:image source="/images/upload.png" />
 						<h:commandLink action="#{studentAssignmentInfo.send}"
 							styleClass="link">
-							<h:outputText value="Enviar Trabalho" styleClass="topmenu_link" />
+							<h:outputText value="Send Assignment" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -113,7 +113,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Trabalho" styleClass="menu_title" />
+					<h:outputText value="Assignment" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -122,10 +122,10 @@
 							<htm:td>
 								<h:commandLink action="#{studentAssignmentInfo.selectAboutView}"
 									styleClass="link">
-									<h:outputText value="Informações sobre o Trabalho"
+									<h:outputText value="Assignment Properties"
 										styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 1}" />
-									<h:outputText value="Informações sobre o Trabalho"
+									<h:outputText value="Assignment Properties"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 1}" />
 								</h:commandLink>
@@ -137,9 +137,9 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectResultAvaliationView}"
 									styleClass="link">
-									<h:outputText value="Resultado da Avaliação" styleClass="link"
+									<h:outputText value="Evaluation Result" styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 2}" />
-									<h:outputText value="Resultado da Avaliação"
+									<h:outputText value="Evaluation Result"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 2}" />
 								</h:commandLink>
@@ -150,7 +150,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Relatórios" styleClass="menu_title" />
+					<h:outputText value="Reports" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -160,9 +160,9 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectFunctionalTestView}"
 									styleClass="link">
-									<h:outputText value="Teste Funcional" styleClass="link"
+									<h:outputText value="Functional Test" styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 3}" />
-									<h:outputText value="Teste Funcional" styleClass="link_hover"
+									<h:outputText value="Functional Test" styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 3}" />
 								</h:commandLink>
 								<af:spacer height="5" />
@@ -173,9 +173,9 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectRequiredElementsView}"
 									styleClass="link">
-									<h:outputText value="Elementos Requeridos" styleClass="link"
+									<h:outputText value="Required Elements" styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 4}" />
-									<h:outputText value="Elementos Requeridos"
+									<h:outputText value="Required Elements"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 4}" />
 								</h:commandLink>
@@ -187,9 +187,9 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectClassCoverageView}"
 									styleClass="link">
-									<h:outputText value="Cobertura por Classe" styleClass="link"
+									<h:outputText value="Class Coverage" styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 5}" />
-									<h:outputText value="Cobertura por Classe"
+									<h:outputText value="Class Coverage"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 5}" />
 								</h:commandLink>
@@ -201,9 +201,9 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectMethodCoverageView}"
 									styleClass="link">
-									<h:outputText value="Cobertura por Método" styleClass="link"
+									<h:outputText value="Method Coverage" styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 6}" />
-									<h:outputText value="Cobertura por Método"
+									<h:outputText value="Method Coverage"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 6}" />
 								</h:commandLink>
@@ -215,9 +215,9 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectCriterionCoverageView}"
 									styleClass="link">
-									<h:outputText value="Cobertura por Critério" styleClass="link"
+									<h:outputText value="Criterion Coverage" styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 7}" />
-									<h:outputText value="Cobertura por Critério"
+									<h:outputText value="Criterion Coverage"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 7}" />
 								</h:commandLink>
@@ -229,10 +229,10 @@
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectCoveredAndUncoveredView}"
 									styleClass="link">
-									<h:outputText value="Elementos Cobertos e Não Cobertos"
+									<h:outputText value="Covered and Uncovered Elements"
 										styleClass="link"
 										rendered="#{studentAssignmentInfo.viewId != 8}" />
-									<h:outputText value="Elementos Cobertos e Não Cobertos"
+									<h:outputText value="Covered and Uncovered Elements"
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 8}" />
 								</h:commandLink>
@@ -243,7 +243,7 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Ações" styleClass="menu_title" />
+					<h:outputText value="Action" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -251,7 +251,7 @@
 						<af:image source="/images/upload.png" />
 						<h:commandLink action="#{studentAssignmentInfo.send}"
 							styleClass="link">
-							<h:outputText value="Enviar Trabalho Novamente" styleClass="topmenu_link" />
+							<h:outputText value="Send Assignment Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -259,7 +259,7 @@
 						<af:image source="/images/add.png" />
 						<h:commandLink action="#{studentAssignmentInfo.add}"
 							styleClass="link">
-							<h:outputText value="Adicionar Casos de Teste" styleClass="topmenu_link" />
+							<h:outputText value="Add test Cases" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -272,29 +272,29 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Informações sobre o Trabalho"
+					<h:outputText value="Assignment Properties"
 						styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Título: " styleClass="label" />
+					<h:outputText value="Title: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.title}" />
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Descrição: " styleClass="label" />
+					<h:outputText value="Description: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.description}" />
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Início: " styleClass="label" />
+					<h:outputText value="Start Date: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.startDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Término: " styleClass="label" />
+					<h:outputText value="Deadline: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.endDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
@@ -308,43 +308,43 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Informações sobre o Trabalho"
+					<h:outputText value="Assignment Properties"
 						styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Título: " styleClass="label" />
+					<h:outputText value="Title: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.title}" />
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Descrição: " styleClass="label" />
+					<h:outputText value="Description: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.description}" />
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Início: " styleClass="label" />
+					<h:outputText value="Start Date: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.startDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Término: " styleClass="label" />
+					<h:outputText value="Deadline: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.endDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Enviado em: " styleClass="label" />
+					<h:outputText value="Submission Date: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.submissionDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Nota: " styleClass="label" />
+					<h:outputText value="Suggested Grade: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.score}" />
 
 					<af:spacer height="10" />
@@ -356,11 +356,11 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Resultado da Avaliação" styleClass="title" />
+					<h:outputText value="Evaluation Result" styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Cobertura Geral" styleClass="subtitle" />
+					<h:outputText value="General Coverage" styleClass="subtitle" />
 
 					<af:spacer height="20" />
 
@@ -370,31 +370,31 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério" />
+								<h:outputText value="Criterion" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.criterion}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Cobertura Pinst-Tinst" />
+								<h:outputText value="Pi-Ti Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.pinstTinst}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Cobertura Pal-Tal" />
+								<h:outputText value="Ps-Ts Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.palTal}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Cobertura Pinst-Tal" />
+								<h:outputText value="Pi-Ts Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.pinstTal}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Cobertura Pal-Tinst" />
+								<h:outputText value="Ps-Ti Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.palTinst}" />
 						</h:column>
@@ -402,7 +402,7 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Cobertura Total" styleClass="subtitle" />
+					<h:outputText value="Total Coverage" styleClass="subtitle" />
 
 					<af:spacer height="20" />
 
@@ -412,13 +412,13 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Execuções" />
+								<h:outputText value="Executions" />
 							</f:facet>
 							<h:outputText value="#{totalCoverageReport.execution}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Cobertura" />
+								<h:outputText value="Coverage" />
 							</f:facet>
 							<h:outputText value="#{totalCoverageReport.coverage}" />
 						</h:column>
@@ -426,7 +426,7 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Resultado da Avaliação" styleClass="subtitle" />
+					<h:outputText value="Evaluation Result" styleClass="subtitle" />
 
 					<af:spacer height="20" />
 
@@ -437,13 +437,13 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Avaliações" />
+								<h:outputText value="Evaluation" />
 							</f:facet>
 							<h:outputText value="#{resultAvaliationReport.element}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Pontos Obtidos" />
+								<h:outputText value="Points" />
 							</f:facet>
 							<h:outputText value="#{resultAvaliationReport.value}" />
 						</h:column>
@@ -453,7 +453,7 @@
 
 					<htm:center>
 						<h:outputText
-							value="Nota Sugerida: #{studentAssignmentInfo.score}"
+							value="Suggested Grade: #{studentAssignmentInfo.score}"
 							styleClass="subtitle" />
 					</htm:center>
 
@@ -464,7 +464,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Teste Funcional" styleClass="title" />
+					<h:outputText value="Functional Test" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -475,25 +475,25 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Testes" />
+								<h:outputText value="Tests" />
 							</f:facet>
 							<h:outputText value="#{funcionalCoverageReport.tests}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Erros" />
+								<h:outputText value="Errors" />
 							</f:facet>
 							<h:outputText value="#{funcionalCoverageReport.errors}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Falhas" />
+								<h:outputText value="Failures" />
 							</f:facet>
 							<h:outputText value="#{funcionalCoverageReport.failures}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Cobertura" />
+								<h:outputText value="Coverage" />
 							</f:facet>
 							<h:outputText value="#{funcionalCoverageReport.coverage}" />
 						</h:column>
@@ -506,7 +506,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Elementos Requeridos" styleClass="title" />
+					<h:outputText value="Required Elements" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -517,31 +517,31 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Método" />
+								<h:outputText value="Method" />
 							</f:facet>
 							<h:outputText value="#{requiredElementsReport.method}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Nós" />
+								<h:outputText value="All-Nodes" />
 							</f:facet>
 							<h:outputText value="#{requiredElementsReport.allNodes}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Arcos" />
+								<h:outputText value="All-Edges" />
 							</f:facet>
 							<h:outputText value="#{requiredElementsReport.allEdges}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Usos" />
+								<h:outputText value="All-Uses" />
 							</f:facet>
 							<h:outputText value="#{requiredElementsReport.allUses}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Potenciais-Usos" />
+								<h:outputText value="All-Pot-Uses" />
 							</f:facet>
 							<h:outputText value="#{requiredElementsReport.allPotUses}" />
 						</h:column>
@@ -554,7 +554,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Cobertura por Classe" styleClass="title" />
+					<h:outputText value="Class Coverage" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -564,31 +564,31 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Classe" />
+								<h:outputText value="Class" />
 							</f:facet>
 							<h:outputText value="#{classCoverageReport.clazz}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Nós" />
+								<h:outputText value="All-Nodes" />
 							</f:facet>
 							<h:outputText value="#{classCoverageReport.allNodes}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Arcos" />
+								<h:outputText value="All-Edges" />
 							</f:facet>
 							<h:outputText value="#{classCoverageReport.allEdges}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Usos" />
+								<h:outputText value="All-Uses" />
 							</f:facet>
 							<h:outputText value="#{classCoverageReport.allUses}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Potenciais-Usos" />
+								<h:outputText value="All-Pot-Uses" />
 							</f:facet>
 							<h:outputText value="#{classCoverageReport.allPotUses}" />
 						</h:column>
@@ -601,7 +601,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Cobertura por Método" styleClass="title" />
+					<h:outputText value="Method Coverage" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -611,31 +611,31 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Método" />
+								<h:outputText value="Method" />
 							</f:facet>
 							<h:outputText value="#{methodCoverageReport.method}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Nós" />
+								<h:outputText value="All-Nodes" />
 							</f:facet>
 							<h:outputText value="#{methodCoverageReport.allNodes}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Arcos" />
+								<h:outputText value="All-Edges" />
 							</f:facet>
 							<h:outputText value="#{methodCoverageReport.allEdges}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Usos" />
+								<h:outputText value="All-Uses" />
 							</f:facet>
 							<h:outputText value="#{methodCoverageReport.allUses}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério Todos-Potenciais-Usos" />
+								<h:outputText value="All-Pot-Uses" />
 							</f:facet>
 							<h:outputText value="#{methodCoverageReport.allPotUses}" />
 						</h:column>
@@ -648,7 +648,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Cobertura por Critério" styleClass="title" />
+					<h:outputText value="Criterion Coverage" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -659,26 +659,26 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério" />
+								<h:outputText value="Criterion" />
 							</f:facet>
 							<h:outputText value="#{criterionCoverageReport.criterion}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Número de Elementos" />
+								<h:outputText value="Number of Elements" />
 							</f:facet>
 							<h:outputText value="#{criterionCoverageReport.numberOfElements}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Numero de Elementos Cobertos" />
+								<h:outputText value="Number of Covered Elements" />
 							</f:facet>
 							<h:outputText
 								value="#{criterionCoverageReport.numberOfCoveredElements}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Porcentagem" />
+								<h:outputText value="Percentage" />
 							</f:facet>
 							<h:outputText value="#{criterionCoverageReport.percentage}" />
 						</h:column>
@@ -691,7 +691,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Elementos Cobertor e Não Cobertos"
+					<h:outputText value="Covered and Uncovered Elements"
 						styleClass="title" />
 
 					<af:spacer height="20" />
@@ -703,26 +703,26 @@
 						headerClass="tableHeader" rowClasses="tableRow" width="100%">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Método" />
+								<h:outputText value="Method" />
 							</f:facet>
 							<h:outputText value="#{coveredAndUncoveredReport.method}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Critério" />
+								<h:outputText value="Criterion" />
 							</f:facet>
 							<h:outputText value="#{coveredAndUncoveredReport.criterion}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Elementos Cobertos" />
+								<h:outputText value="Covered Elements" />
 							</f:facet>
 							<h:outputText
 								value="#{coveredAndUncoveredReport.coveredElements}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Elementos Não Cobertos" />
+								<h:outputText value="Uncovered Elements" />
 							</f:facet>
 							<h:outputText
 								value="#{coveredAndUncoveredReport.uncoveredElements}" />

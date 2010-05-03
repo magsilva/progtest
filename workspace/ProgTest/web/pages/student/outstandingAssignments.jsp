@@ -18,7 +18,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Cursos" styleClass="menu_title" />
+					<h:outputText value="Courses" styleClass="menu_title" />
 
 					<af:spacer height="15" />
 
@@ -28,9 +28,9 @@
 								<h:commandLink
 									action="#{studentOutstandingAssignments.selectAllCourses}"
 									styleClass="link">
-									<h:outputText value="Todos os cursos" styleClass="link"
+									<h:outputText value="All courses" styleClass="link"
 										rendered="#{studentOutstandingAssignments.activedCourse != null}" />
-									<h:outputText value="Todos os cursos" styleClass="link_hover"
+									<h:outputText value="All courses" styleClass="link_hover"
 										rendered="#{studentOutstandingAssignments.activedCourse == null}" />
 								</h:commandLink>
 							</htm:td>
@@ -62,7 +62,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Trabalhos Pendentes" styleClass="title" />
+					<h:outputText value="Pending Assignments" styleClass="title" />
 
 					<af:spacer height="30" />
 
@@ -88,7 +88,7 @@
 								<htm:tr>
 									<htm:td>
 										<af:spacer height="5" />
-										<h:outputText value="Data de entrega: " styleClass="label" />
+										<h:outputText value="Deadline: " styleClass="label" />
 										<h:outputText value="#{avaliation.assignment.endDate}" />
 										<af:spacer height="5" />
 									</htm:td>
@@ -96,20 +96,20 @@
 								<htm:tr>
 									<htm:td>
 										<af:spacer height="5" />
-										<h:outputText value="Situação: " styleClass="label" />
-										<h:outputText value="Enviado"
+										<h:outputText value="Status: " styleClass="label" />
+										<h:outputText value="Sent"
 											rendered="#{avaliation.submissionDate != null}" />
-										<h:outputText value="Pendente"
+										<h:outputText value="Pending"
 											rendered="#{avaliation.submissionDate == null}" />
 										<af:spacer height="5" />
 									</htm:td>
 								</htm:tr>
 								<htm:tr align="right">
 									<htm:td>
-										<h:commandButton value="Enviar"
+										<h:commandButton value="Send"
 											action="#{studentOutstandingAssignments.submitAssignment}" />
 										<af:spacer width="5" />
-										<h:commandButton value="Visualizar"
+										<h:commandButton value="View"
 											action="#{studentOutstandingAssignments.assignmentInfo}" />
 									</htm:td>
 								</htm:tr>
@@ -122,7 +122,7 @@
 						rendered="#{empty studentOutstandingAssignments.evaluations}">
 						<htm:tr>
 							<htm:td>
-								<h:outputText value="Não há trabalhos pendentes." />
+								<h:outputText value="There are no pending assignments." />
 							</htm:td>
 						</htm:tr>
 					</htm:table>

@@ -16,27 +16,27 @@
 
 				<af:spacer height="70" />
 
-				<h:outputText value="Acesso" styleClass="title" />
+				<h:outputText value="Login" styleClass="title" />
 
 				<af:spacer height="30" />
 
 				<h:outputText
-					value="Entre com o seu nome de usuário e senha ou registre-se." />
+					value="Enter your username and password." />
 
 				<af:spacer height="20" />
 
 				<h:messages styleClass="message" />
 
 				<h:panelGrid columns="2">
-					<h:outputText value="Nome de Usuário*:" styleClass="label" />
+					<h:outputText value="Username*:" styleClass="label" />
 					<h:inputText value="#{login.userName}" />
-					<h:outputText value="Senha*:" styleClass="label" />
+					<h:outputText value="Password*:" styleClass="label" />
 					<h:inputSecret value="#{login.password}" />
 				</h:panelGrid>
 
 				<af:spacer height="20" />
 
-				<h:commandButton value="Entrar" action="#{login.login}" />
+				<h:commandButton value="Sign in" action="#{login.login}" />
 
 				<af:spacer height="120" />
 

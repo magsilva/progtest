@@ -14,28 +14,28 @@
 
 			<af:spacer height="30" />
 
-			<h:outputText value="Adicionar Casos de Teste" styleClass="title" />
+			<h:outputText value="Add Test Cases" styleClass="title" />
 
 			<af:spacer height="30" />
 
 			<h:outputText
-				value="Indique um arquivo .jar com o código-fonte (arquivos .java) com a implementação dos casos de teste que deseja adicionar." />
+				value="Select a .jar file with the source code of the test cases." />
 
 			<af:spacer height="30" />
 
 			<h:messages styleClass="message" />
 
 			<h:panelGrid columns="2">
-				<h:outputText value="Arquivo*:" />
+				<h:outputText value="File*:" />
 				<t:inputFileUpload value="#{studentAddTestCases.file}"
 					storage="file" />
 			</h:panelGrid>
 
 			<af:spacer height="30" />
 
-			<h:commandButton value="Cancelar"
+			<h:commandButton value="Cancel"
 				action="#{studentAddTestCases.cancel}" />
-			<h:commandButton value="Finalizar"
+			<h:commandButton value="Finalize"
 				action="#{studentAddTestCases.upload}" />
 
 		</h:form>

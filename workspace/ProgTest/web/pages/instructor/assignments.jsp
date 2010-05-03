@@ -18,7 +18,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Cursos" styleClass="menu_title"
+					<h:outputText value="Courses" styleClass="menu_title"
 						rendered="#{!empty instructorAssignments.courses}" />
 
 					<af:spacer height="5"
@@ -42,7 +42,7 @@
 					<af:spacer height="40"
 						rendered="#{!empty instructorAssignments.courses}" />
 
-					<h:outputText value="Ações" styleClass="menu_title"
+					<h:outputText value="Actions" styleClass="menu_title"
 						rendered="#{instructorAssignments.activedCourse != null}" />
 
 					<af:spacer height="10"
@@ -53,7 +53,7 @@
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorAssignments.create}"
 							styleClass="link">
-							<h:outputText value="Criar Novo Trabalho" styleClass="topmenu_link" />
+							<h:outputText value="Create New Assignment" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -62,7 +62,7 @@
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorAssignments.add}"
 							styleClass="link">
-							<h:outputText value="Adicionar Novo Trabalho" styleClass="topmenu_link" />
+							<h:outputText value="Add New Assignment" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -75,7 +75,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Trabalhos" styleClass="title" />
+					<h:outputText value="Assignments" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -85,19 +85,7 @@
 						layout="orderedList">
 						<h:column>
 							<h:commandLink action="#{instructorAssignments.view}" styleClass="link">
-								<h:outputText value="#{assignment.title} (De " styleClass="link" />
-								<h:outputText value="#{assignment.startDate}" styleClass="link">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-								</h:outputText>
-								<h:outputText value=" à " styleClass="link">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-								</h:outputText>
-								<h:outputText value="#{assignment.endDate}" styleClass="link">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-								</h:outputText>
-								<h:outputText value=")" styleClass="link">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-								</h:outputText>
+								<h:outputText value="#{assignment.title}" styleClass="link" />
 								<af:spacer height="10" />
 							</h:commandLink>
 						</h:column>
@@ -110,14 +98,14 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Trabalhos" styleClass="title" />
+					<h:outputText value="Assignments" styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Nenhum curso selecionado."
+					<h:outputText value="No courses selected."
 						rendered="#{instructorAssignments.activedCourse == null}" />
 
-					<h:outputText value="Não há trabalhos no curso."
+					<h:outputText value="There is no assignment in this course"
 						rendered="#{instructorAssignments.activedCourse != null}" />
 
 				</htm:div>

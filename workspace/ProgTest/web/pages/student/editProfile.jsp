@@ -16,27 +16,27 @@
 
 				<af:spacer height="30" />
 
-				<h:outputText value="Editar Perfil" styleClass="title"/>
+				<h:outputText value="Edit Profile" styleClass="title"/>
 
 				<af:spacer height="30" />
 
 				<h:messages styleClass="message"/>
 
 				<h:panelGrid columns="2">
-					<h:outputText value="Nome Completo*:" />
+					<h:outputText value="Full Name*:" />
 					<h:inputText value="#{studentEditProfile.name}" />
 					<h:outputText value="E-mail*:" />
 					<h:inputText value="#{studentEditProfile.email}" />
-					<h:outputText value="Senha*:" />
+					<h:outputText value="Password*:" />
 					<h:inputSecret value="#{studentEditProfile.password}" />
-					<h:outputText value="Confirmação Senha*:" />
+					<h:outputText value="Confirmation Password*:" />
 					<h:inputSecret value="#{studentEditProfile.confirmationPassword}" />
 				</h:panelGrid>
 
 				<af:spacer height="30" />
 
-				<h:commandButton value="Cancelar" action="#{studentEditProfile.cancel}" />
-				<h:commandButton value="Salvar" action="#{studentEditProfile.edit}" />
+				<h:commandButton value="Cancel" action="#{studentEditProfile.cancel}" />
+				<h:commandButton value="Save" action="#{studentEditProfile.edit}" />
 
 			</h:form>
 

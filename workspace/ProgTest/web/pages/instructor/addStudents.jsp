@@ -14,17 +14,12 @@
 
 			<af:spacer height="30" />
 
-			<h:outputText value="Adicionar Alunos" styleClass="title" />
+			<h:outputText value="Add Students" styleClass="title" />
 
 			<af:spacer height="20" />
 
 			<h:outputText
-				value="Dica: Se o aluno que deseja adicionar não estiver na lista abaixo, você deverá registra-lo." />
-
-			<af:spacer height="20" />
-
-			<h:outputText
-				value="Selecione os alunos que deseja adicionar ao curso."
+				value="Select the students that you want to add to the course."
 				rendered="#{!empty instructorAddStudents.students}" />
 
 			<af:spacer height="20"
@@ -37,14 +32,14 @@
 				<f:selectItems value="#{instructorAddStudents.students}" />
 			</h:selectManyCheckbox>
 
-			<h:outputText value="Nenhum aluno encontrado."
+			<h:outputText value="No student found."
 				rendered="#{empty instructorAddStudents.students}" />
 
 			<af:spacer height="30" />
 
-			<h:commandButton value="Cancelar"
+			<h:commandButton value="Cancel"
 				action="#{instructorAddStudents.cancel}" />
-			<h:commandButton value="Finalizar"
+			<h:commandButton value="Finalize"
 				action="#{instructorAddStudents.add}"
 				rendered="#{!empty instructorAddStudents.students}" />
 

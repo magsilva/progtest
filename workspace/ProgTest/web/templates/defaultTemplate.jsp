@@ -37,7 +37,7 @@
 						<h:outputText value="|" />
 						<af:spacer width="5" />
 						<h:commandLink action="register" styleClass="topmenu_link">
-							<h:outputText value="Registrar" styleClass="topmenu_link" />
+							<h:outputText value="Sign Up" styleClass="topmenu_link" />
 						</h:commandLink>
 						<af:spacer height="10" />
 					</htm:div>

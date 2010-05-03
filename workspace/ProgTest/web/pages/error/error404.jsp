@@ -1,1 +1,1 @@
-Página não encontrada.
+Page not found.

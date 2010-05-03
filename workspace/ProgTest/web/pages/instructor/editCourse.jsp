@@ -14,30 +14,26 @@
 
 			<af:spacer height="30" />
 
-			<h:outputText value="Editar Curso" styleClass="title" />
-
-			<af:spacer height="20" />
-
-			<h:outputText value="Altere os dados desejados." />
+			<h:outputText value="Edit Course" styleClass="title" />
 
 			<af:spacer height="20" />
 
 			<h:messages styleClass="message" />
 
 			<h:panelGrid columns="2">
-				<h:outputText value="Nome*:" />
+				<h:outputText value="Name*:" />
 				<h:inputText value="#{instructorEditCourse.name}" />
-				<h:outputText value="Data Início*:" />
+				<h:outputText value="Start Date*:" />
 				<t:inputDate value="#{instructorEditCourse.startDate}" popupCalendar="true"/>
-				<h:outputText value="Data Término*:" />
+				<h:outputText value="End Date*:" />
 				<t:inputDate value="#{instructorEditCourse.endDate}" popupCalendar="true"/>
 			</h:panelGrid>
 
 			<af:spacer height="30" />
 
-			<h:commandButton value="Cancelar"
+			<h:commandButton value="Cancel"
 				action="#{instructorEditCourse.cancel}" />
-			<h:commandButton value="Salvar"
+			<h:commandButton value="Save"
 				action="#{instructorEditCourse.edit}" />
 
 		</h:form>

@@ -37,13 +37,13 @@
 						<af:spacer width="5" />
 						<h:commandLink action="studentProfile"
 							styleClass="topmenu_link">
-							<h:outputText value="Editar Perfil" styleClass="topmenu_link" />
+							<h:outputText value="Edit Profile" styleClass="topmenu_link" />
 						</h:commandLink>
 						<af:spacer width="5" />
 						<h:outputText value="|" />
 						<af:spacer width="5" />
 						<h:commandLink action="#{logoff.logoff}" styleClass="topmenu_link">
-							<h:outputText value="Sair" styleClass="topmenu_link" />
+							<h:outputText value="Log Out" styleClass="topmenu_link" />
 						</h:commandLink>
 						<af:spacer height="10" />
 					</htm:div>
@@ -55,7 +55,7 @@
 							<htm:tr style="height: 30px">
 								<htm:td>
 									<h:commandLink action="studentCourses" styleClass="orangebar_link">
-										<h:outputText value="Cursos" styleClass="orangebar_link" />
+										<h:outputText value="Courses" styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
 								<htm:td style="color: #ffffff">
@@ -66,7 +66,7 @@
 								<htm:td>
 									<h:commandLink action="studentPendencies"
 										styleClass="orangebar_link">
-										<h:outputText value="Trabalhos Pendentes"
+										<h:outputText value="Pending Assignments"
 											styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
@@ -78,7 +78,7 @@
 								<htm:td>
 									<h:commandLink action="studentAssignments"
 										styleClass="orangebar_link">
-										<h:outputText value="Todos Trabalhos"
+										<h:outputText value="All Assignments"
 											styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
@@ -89,7 +89,7 @@
 								</htm:td>
 								<htm:td>
 									<h:commandLink action="studentGrades" styleClass="orangebar_link">
-										<h:outputText value="Notas" styleClass="orangebar_link" />
+										<h:outputText value="Grades" styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
 							</htm:tr>

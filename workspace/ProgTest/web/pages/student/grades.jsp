@@ -18,7 +18,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Cursos" styleClass="menu_title" />
+					<h:outputText value="Courses" styleClass="menu_title" />
 
 					<af:spacer height="15" />
 
@@ -27,9 +27,9 @@
 							<htm:td>
 								<h:commandLink action="#{studentGrades.selectAllCourses}"
 									styleClass="link">
-									<h:outputText value="Todos os cursos" styleClass="link"
+									<h:outputText value="All Courses" styleClass="link"
 										rendered="#{studentGrades.activedCourse != null}" />
-									<h:outputText value="Todos os cursos" styleClass="link_hover"
+									<h:outputText value="All Courses" styleClass="link_hover"
 										rendered="#{studentGrades.activedCourse == null}" />
 								</h:commandLink>
 							</htm:td>
@@ -58,7 +58,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Notas" styleClass="title" />
+					<h:outputText value="Grades" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -68,19 +68,19 @@
 						rendered="#{!empty studentGrades.evaluations}">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Trabalho" />
+								<h:outputText value="Assignments" />
 							</f:facet>
 							<h:outputText value="#{evaluation.assignment.title}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Nota" />
+								<h:outputText value="Grade" />
 							</f:facet>
 							<h:outputText value="#{evaluation.score}" />
 						</h:column>
 					</h:dataTable>
 
-					<h:outputText value="Não há trabalhos no curso."
+					<h:outputText value="There are no assignments in this course."
 						rendered="#{empty studentGrades.evaluations}" />
 
 				</htm:div>

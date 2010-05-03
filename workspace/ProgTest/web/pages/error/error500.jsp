@@ -1,1 +1,1 @@
-Erro interno no servidor. Tente novamente.
+Internal error. Try again.

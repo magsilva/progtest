@@ -18,7 +18,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Cursos" styleClass="menu_title"
+					<h:outputText value="Courses" styleClass="menu_title"
 						rendered="#{!empty instructorCourses.courses}" />
 
 					<af:spacer height="5"
@@ -42,7 +42,7 @@
 					<af:spacer height="40"
 						rendered="#{!empty instructorCourses.courses}" />
 
-					<h:outputText value="Ações" styleClass="menu_title" />
+					<h:outputText value="Actions" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -50,7 +50,7 @@
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorCourses.create}"
 							styleClass="link">
-							<h:outputText value="Criar Novo Curso" styleClass="topmenu_link" />
+							<h:outputText value="Create New Course" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -59,7 +59,7 @@
 						<af:image source="/images/edit.png" />
 						<h:commandLink action="#{instructorCourses.edit}"
 							styleClass="link">
-							<h:outputText value="Editar Curso" styleClass="topmenu_link" />
+							<h:outputText value="Edit Course" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -68,7 +68,7 @@
 						<af:image source="/images/remove.png" />
 						<h:commandLink action="#{instructorCourses.remove}"
 							styleClass="link">
-							<h:outputText value="Remover Curso" styleClass="topmenu_link" />
+							<h:outputText value="Remove Course" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -81,30 +81,30 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Informações sobre o Curso" styleClass="title" />
+					<h:outputText value="Course Properties" styleClass="title" />
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Nome: " styleClass="label" />
+					<h:outputText value="Name: " styleClass="label" />
 					<h:outputText value="#{instructorCourses.course.name}" />
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Início: " styleClass="label" />
+					<h:outputText value="Start Date: " styleClass="label" />
 					<h:outputText value="#{instructorCourses.course.startDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Término: " styleClass="label" />
+					<h:outputText value="End Date: " styleClass="label" />
 					<h:outputText value="#{instructorCourses.course.endDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Professor: " styleClass="label" />
+					<h:outputText value="Instructor: " styleClass="label" />
 					<h:outputText value="#{instructorCourses.course.instructor.name}" />
 
 				</htm:div>
@@ -114,11 +114,11 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Informações sobre o Curso" styleClass="title" />
+					<h:outputText value="Course Properties" styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Nenhum curso selecionado." />
+					<h:outputText value="No course selected." />
 
 				</htm:div>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="14" version="2.0">
+<workbench progressCount="11" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="44" y="58">
 <fastViewData fastViewLocation="1024">
@@ -22,6 +22,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="183" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" itemType="typeToolBarContribution" x="39" y="22"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.server.ui.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -34,10 +35,15 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor focus="true" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="editAssignment.jsp" partName="editAssignment.jsp" path="Z:/Files/ProgTest/workspace/ProgTest/web/pages/instructor/editAssignment.jsp" title="editAssignment.jsp" tooltip="Z:/Files/ProgTest/workspace/ProgTest/web/pages/instructor/editAssignment.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" path="/ProgTest/web/pages/instructor/editAssignment.jsp"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.ProgressView" partName="Progress">
@@ -97,7 +103,7 @@
 </view>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.ui.views.ProgressView" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.wst.server.ui.ServersView" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -194,7 +200,7 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="252" ratioRight="756" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.65567285" ratioLeft="497" ratioRight="261" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ProgressView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.wst.server.ui.ServersView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
@@ -228,7 +234,186 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/assignment.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/registerStudent.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/removeAssignment.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/removeCourse.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/removeStudent.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/student.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/students.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/addTestCases.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/allAssignments.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/assignmentInfo.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/coursesInfo.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/grades.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/outstandingAssignments.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/submitAssignment.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/addTestCases.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/allAssignments.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/assignmentInfo.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/coursesInfo.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/editProfile.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/grades.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/outstandingAssignments.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/student/submitAssignment.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/createAssignment.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/templates/studentTemplate.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/addAssignment.jsp"/>
+<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" path="/ProgTest/web/pages/instructor/editAssignment.jsp"/>
+</editors>
+<item historyLabel="removeStudent.jsp" index="4">
+<position/>
+</item>
+<item historyLabel="registerStudent.jsp" index="1">
+<position/>
+</item>
+<item historyLabel="removeStudent.jsp" index="4">
+<position/>
+</item>
+<item historyLabel="removeAssignment.jsp" index="2">
+<position/>
+</item>
+<item historyLabel="registerStudent.jsp" index="1">
+<position/>
+</item>
+<item historyLabel="removeAssignment.jsp" index="2">
+<position/>
+</item>
+<item historyLabel="removeStudent.jsp" index="4">
+<position/>
+</item>
+<item historyLabel="removeCourse.jsp" index="3">
+<position/>
+</item>
+<item historyLabel="student.jsp" index="5">
+<position/>
+</item>
+<item historyLabel="students.jsp" index="6">
+<position/>
+</item>
+<item historyLabel="student.jsp" index="5">
+<position/>
+</item>
+<item historyLabel="students.jsp" index="6">
+<position/>
+</item>
+<item historyLabel="student.jsp" index="5">
+<position/>
+</item>
+<item historyLabel="students.jsp" index="6">
+<position/>
+</item>
+<item historyLabel="addTestCases.jsp" index="7">
+<position/>
+</item>
+<item historyLabel="allAssignments.jsp" index="8">
+<position/>
+</item>
+<item historyLabel="assignmentInfo.jsp" index="9">
+<position/>
+</item>
+<item historyLabel="coursesInfo.jsp" index="10">
+<position/>
+</item>
+<item historyLabel="grades.jsp" index="11">
+<position/>
+</item>
+<item historyLabel="outstandingAssignments.jsp" index="12">
+<position/>
+</item>
+<item historyLabel="submitAssignment.jsp" index="13">
+<position/>
+</item>
+<item historyLabel="assignmentInfo.jsp" index="9">
+<position/>
+</item>
+<item historyLabel="addTestCases.jsp" index="14">
+<position/>
+</item>
+<item historyLabel="allAssignments.jsp" index="15">
+<position/>
+</item>
+<item historyLabel="assignmentInfo.jsp" index="16">
+<position/>
+</item>
+<item historyLabel="coursesInfo.jsp" index="17">
+<position/>
+</item>
+<item historyLabel="addTestCases.jsp" index="14">
+<position/>
+</item>
+<item historyLabel="coursesInfo.jsp" index="17">
+<position/>
+</item>
+<item historyLabel="allAssignments.jsp" index="15">
+<position/>
+</item>
+<item historyLabel="coursesInfo.jsp" index="17">
+<position/>
+</item>
+<item historyLabel="assignmentInfo.jsp" index="16">
+<position/>
+</item>
+<item historyLabel="assignment.jsp" index="0">
+<position/>
+</item>
+<item historyLabel="assignmentInfo.jsp" index="16">
+<position info="not_deleted" x="15440" y="0"/>
+</item>
+<item historyLabel="coursesInfo.jsp" index="17">
+<position/>
+</item>
+<item historyLabel="editProfile.jsp" index="18">
+<position/>
+</item>
+<item historyLabel="grades.jsp" index="19">
+<position/>
+</item>
+<item historyLabel="outstandingAssignments.jsp" index="20">
+<position/>
+</item>
+<item historyLabel="submitAssignment.jsp" index="21">
+<position/>
+</item>
+<item historyLabel="editProfile.jsp" index="18">
+<position/>
+</item>
+<item historyLabel="submitAssignment.jsp" index="21">
+<position/>
+</item>
+<item historyLabel="grades.jsp" index="19">
+<position/>
+</item>
+<item historyLabel="submitAssignment.jsp" index="21">
+<position/>
+</item>
+<item historyLabel="createAssignment.jsp" index="22">
+<position/>
+</item>
+<item historyLabel="submitAssignment.jsp" index="21">
+<position info="not_deleted" x="716" y="0"/>
+</item>
+<item historyLabel="outstandingAssignments.jsp" index="20">
+<position/>
+</item>
+<item historyLabel="studentTemplate.jsp" index="23">
+<position/>
+</item>
+<item historyLabel="outstandingAssignments.jsp" index="20">
+<position info="not_deleted" x="4283" y="0"/>
+</item>
+<item historyLabel="createAssignment.jsp" index="22">
+<position/>
+</item>
+<item historyLabel="addAssignment.jsp" index="24">
+<position info="not_deleted" x="692" y="0"/>
+</item>
+<item active="true" historyLabel="editAssignment.jsp" index="25">
+<position/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -245,50 +430,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JUnitExecutor.java" tooltip="ProgTest/src/progtest/ant/JUnitExecutor.java">
-<persistable path="/ProgTest/src/progtest/ant/JUnitExecutor.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="editAssignment.jsp" tooltip="ProgTest/web/pages/instructor/editAssignment.jsp">
+<persistable path="/ProgTest/web/pages/instructor/editAssignment.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JavacExecutor.java" tooltip="ProgTest/src/progtest/ant/JavacExecutor.java">
-<persistable path="/ProgTest/src/progtest/ant/JavacExecutor.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="addAssignment.jsp" tooltip="ProgTest/web/pages/instructor/addAssignment.jsp">
+<persistable path="/ProgTest/web/pages/instructor/addAssignment.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BuildLogger.java" tooltip="ProgTest/src/progtest/ant/BuildLogger.java">
-<persistable path="/ProgTest/src/progtest/ant/BuildLogger.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="createAssignment.jsp" tooltip="ProgTest/web/pages/instructor/createAssignment.jsp">
+<persistable path="/ProgTest/web/pages/instructor/createAssignment.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="build.log" tooltip="ProgTest/build.log">
-<persistable path="/ProgTest/build.log"/>
-</file>
-<file factoryID="org.eclipse.wst.server.ui.editor.input.factory" id="org.eclipse.wst.server.ui.editor" name="Tomcat v6.0 Server at localhost" tooltip="">
-<persistable server-id="Tomcat v6.0 Server at localhost"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Querier.java" tooltip="ProgTest/src/progtest/database/Querier.java">
-<persistable path="/ProgTest/src/progtest/database/Querier.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AssignmentDAO.java" tooltip="ProgTest/src/progtest/database/AssignmentDAO.java">
-<persistable path="/ProgTest/src/progtest/database/AssignmentDAO.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Assignment.java" tooltip="ProgTest/src/progtest/common/Assignment.java">
-<persistable path="/ProgTest/src/progtest/common/Assignment.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CreateAssignment.java" tooltip="ProgTest/src/progtest/view/instructor/CreateAssignment.java">
-<persistable path="/ProgTest/src/progtest/view/instructor/CreateAssignment.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Jabuti.java" tooltip="ProgTest/src/progtest/tools/Jabuti.java">
-<persistable path="/ProgTest/src/progtest/tools/Jabuti.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.hibernate.ui.xml.editor.HibConfig3CompoundEditor" name="hibernate.cfg.xml" tooltip="ProgTest/src/hibernate.cfg.xml">
-<persistable path="/ProgTest/src/hibernate.cfg.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor" name="database-schema.sql" tooltip="ProgTest/doc/database/database-schema.sql">
-<persistable path="/ProgTest/doc/database/database-schema.sql"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JUnit.java" tooltip="ProgTest/src/progtest/tools/JUnit.java">
-<persistable path="/ProgTest/src/progtest/tools/JUnit.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddStudents.java" tooltip="ProgTest/src/progtest/view/instructor/AddStudents.java">
-<persistable path="/ProgTest/src/progtest/view/instructor/AddStudents.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="studentTemplate.jsp" tooltip="ProgTest/web/templates/studentTemplate.jsp">
+<persistable path="/ProgTest/web/templates/studentTemplate.jsp"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="submitAssignment.jsp" tooltip="ProgTest/web/pages/student/submitAssignment.jsp">
 <persistable path="/ProgTest/web/pages/student/submitAssignment.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="outstandingAssignments.jsp" tooltip="ProgTest/web/pages/student/outstandingAssignments.jsp">
+<persistable path="/ProgTest/web/pages/student/outstandingAssignments.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="grades.jsp" tooltip="ProgTest/web/pages/student/grades.jsp">
+<persistable path="/ProgTest/web/pages/student/grades.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="editProfile.jsp" tooltip="ProgTest/web/pages/student/editProfile.jsp">
+<persistable path="/ProgTest/web/pages/student/editProfile.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="coursesInfo.jsp" tooltip="ProgTest/web/pages/student/coursesInfo.jsp">
+<persistable path="/ProgTest/web/pages/student/coursesInfo.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="assignment.jsp" tooltip="ProgTest/web/pages/instructor/assignment.jsp">
+<persistable path="/ProgTest/web/pages/instructor/assignment.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="assignmentInfo.jsp" tooltip="ProgTest/web/pages/student/assignmentInfo.jsp">
+<persistable path="/ProgTest/web/pages/student/assignmentInfo.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="allAssignments.jsp" tooltip="ProgTest/web/pages/student/allAssignments.jsp">
+<persistable path="/ProgTest/web/pages/student/allAssignments.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="addTestCases.jsp" tooltip="ProgTest/web/pages/student/addTestCases.jsp">
+<persistable path="/ProgTest/web/pages/student/addTestCases.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="student.jsp" tooltip="ProgTest/web/pages/instructor/student.jsp">
+<persistable path="/ProgTest/web/pages/instructor/student.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.jst.jsp.jspeditor.JSPTextEditor" name="students.jsp" tooltip="ProgTest/web/pages/instructor/students.jsp">
+<persistable path="/ProgTest/web/pages/instructor/students.jsp"/>
 </file>
 </mruList>
 </workbench>

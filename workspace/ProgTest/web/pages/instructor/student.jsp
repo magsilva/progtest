@@ -18,7 +18,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Aluno" styleClass="menu_title" />
+					<h:outputText value="Student" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -28,10 +28,10 @@
 								<h:commandLink
 									action="#{instructorStudent.selectAboutView}"
 									styleClass="link">
-									<h:outputText value="Informações sobre o Aluno"
+									<h:outputText value="Student Informations"
 										styleClass="link"
 										rendered="#{instructorStudent.viewId != 0}" />
-									<h:outputText value="Informações sobre o Aluno"
+									<h:outputText value="Student Informations"
 										styleClass="link_hover"
 										rendered="#{instructorStudent.viewId == 0}" />
 								</h:commandLink>
@@ -43,10 +43,10 @@
 								<h:commandLink
 									action="#{instructorStudent.selectGradesView}"
 									styleClass="link">
-									<h:outputText value="Notas"
+									<h:outputText value="Grades"
 										styleClass="link"
 										rendered="#{instructorStudent.viewId != 1}" />
-									<h:outputText value="Notas"
+									<h:outputText value="Grades"
 										styleClass="link_hover"
 										rendered="#{instructorStudent.viewId == 1}" />
 								</h:commandLink>
@@ -57,7 +57,7 @@
 
 					<af:spacer height="40" />
 
-					<h:outputText value="Ações" styleClass="menu_title" />
+					<h:outputText value="Action" styleClass="menu_title" />
 
 					<af:spacer height="10" />
 
@@ -65,7 +65,7 @@
 						<af:image source="/images/remove.png" />
 						<h:commandLink action="#{instructorStudent.remove}"
 							styleClass="link">
-							<h:outputText value="Remover Aluno" styleClass="topmenu_link" />
+							<h:outputText value="Remove Student" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -78,17 +78,17 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Informações sobre o Aluno"
+					<h:outputText value="Student Information"
 						styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Nome de Usuário: " styleClass="label" />
+					<h:outputText value="Username: " styleClass="label" />
 					<h:outputText value="#{instructorStudent.userName}" />
 
 					<af:spacer height="10" />
 
-					<h:outputText value="Nome: " styleClass="label" />
+					<h:outputText value="Name: " styleClass="label" />
 					<h:outputText value="#{instructorStudent.name}" />
 
 					<af:spacer height="10" />
@@ -105,7 +105,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Notas" styleClass="title" />
+					<h:outputText value="Grades" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -115,19 +115,19 @@
 						rendered="#{!empty instructorStudent.evaluations}">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Trabalho" />
+								<h:outputText value="Assignment" />
 							</f:facet>
 							<h:outputText value="#{evaluation.assignment.title}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Nota" />
+								<h:outputText value="Grade" />
 							</f:facet>
 							<h:outputText value="#{evaluation.score}" />
 						</h:column>
 					</h:dataTable>
 
-					<h:outputText value="Não há trabalhos no curso."
+					<h:outputText value="There is no assignment for this student."
 						rendered="#{empty instructorStudent.evaluations}" />
 
 				</htm:div>

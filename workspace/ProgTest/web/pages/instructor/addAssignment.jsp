@@ -18,7 +18,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Passos" styleClass="menu_title" />
+					<h:outputText value="Steps" styleClass="menu_title" />
 
 					<af:spacer height="15" />
 
@@ -28,10 +28,10 @@
 								<h:commandLink
 									action="#{instructorAddAssignment.backToStep1}"
 									styleClass="link">
-									<h:outputText value="Passo 1: Selecionar Trabalho Oráculo"
+									<h:outputText value="Step 1: Oracle Assignment"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 1}" />
-									<h:outputText value="Passo 1: Selecionar Trabalho Oráculo"
+									<h:outputText value="Step 1: Oracle Assignment"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 1}" />
 								</h:commandLink>
@@ -42,10 +42,10 @@
 							<htm:td>
 								<h:commandLink action="#{instructorAddAssignment.goToStep2}"
 									styleClass="link">
-									<h:outputText value="Passo 2: Informações sobre o Trabalho"
+									<h:outputText value="Step 2: Assignment Properties"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 2}" />
-									<h:outputText value="Passo 2: Informações sobre o Trabalho"
+									<h:outputText value="Step 2: Assignment Properties"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 2}" />
 								</h:commandLink>
@@ -62,24 +62,19 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Adicionar Novo Trabalho" styleClass="title" />
+					<h:outputText value="Add New Assignment" styleClass="title" />
 
 					<af:spacer height="20" />
 
 					<h:outputText
-						value="Passo 1 - Escolha uma das implementações abaixo." />
-
-					<af:spacer height="20" />
-
-					<h:outputText
-						value="Dica: Você também pode criar seu prórpio trabalho, submento para ele sua própria implementação de referência. Para isto, escolha a opção 'Criar Novo Trabalho' no menu lateral." />
+						value="Step 1 - Choice one of the implementations below." />
 
 					<af:spacer height="20" />
 
 					<h:messages styleClass="message" />
 
 					<h:panelGrid columns="2">
-						<h:outputText value="Implementação*:" />
+						<h:outputText value="Implementation*:" />
 						<h:selectOneMenu value="#{instructorAddAssignment.oracle}">
 							<f:selectItems value="#{instructorAddAssignment.oracles}" />
 						</h:selectOneMenu>
@@ -87,9 +82,9 @@
 
 					<af:spacer height="20" />
 
-					<h:commandButton value="Cancelar"
+					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
-					<h:commandButton value="Próximo"
+					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep2}" />
 
 				</htm:div>
@@ -99,25 +94,25 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Adicionar Novo Trabalho" styleClass="title" />
+					<h:outputText value="Add New Assignment" styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Passo 2a - Informe os dados do novo trabalho." />
+					<h:outputText value="Step 2 - Enter the assignment properties." />
 
 					<af:spacer height="20" />
 
 					<h:messages styleClass="message" />
 
 					<h:panelGrid columns="2">
-						<h:outputText value="Nome*:" />
+						<h:outputText value="Name*:" />
 						<h:inputText value="#{instructorAddAssignment.title}" />
-						<h:outputText value="Descrição*:" />
+						<h:outputText value="Description*:" />
 						<h:inputTextarea value="#{instructorAddAssignment.description}" />
-						<h:outputText value="Data Início*:" />
+						<h:outputText value="Start Date*:" />
 						<t:inputDate value="#{instructorAddAssignment.startDate}"
 							popupCalendar="true" />
-						<h:outputText value="Data Término*:" />
+						<h:outputText value="Deadline*:" />
 						<t:inputDate value="#{instructorAddAssignment.endDate}"
 							popupCalendar="true" />
 					</h:panelGrid>
@@ -128,27 +123,20 @@
 						action="#{instructorAddAssignment.turnOnAdvancedOptions}"
 						styleClass="link"
 						rendered="#{!instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Opções Avançadas" styleClass="link" />
+						<h:outputText value="Advanced Options" styleClass="link" />
 					</h:commandLink>
 
 					<h:commandLink
 						action="#{instructorAddAssignment.turnOffAdvancedOptions}"
 						styleClass="link"
 						rendered="#{instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Opções Básicas" styleClass="link" />
+						<h:outputText value="Basic Options" styleClass="link" />
 					</h:commandLink>
 
 					<af:spacer height="20"
 						rendered="#{instructorAddAssignment.advancedOptions}" />
 
-					<h:outputText value="Passo 2b - Pesos"
-						rendered="#{instructorAddAssignment.advancedOptions}" />
-
-					<af:spacer height="20"
-						rendered="#{instructorAddAssignment.advancedOptions}" />
-
-					<h:outputText
-						value="Com as opções abaixo é possível regular o quão rigorosa será a avaliação. Atribuindo pesos maiores a critérios mais fracos como, por exemplo, o critério Todos-Nós resultará em uma avaliação menos rigorosa. Por outro lado, atribuindo pesos maiores para critérios mais fortes como, por exemplo, Todos-Potenciais-Usos, resultará em uma avaliação mais rigorosa."
+					<h:outputText value="Step 2.1 - Weights"
 						rendered="#{instructorAddAssignment.advancedOptions}" />
 
 					<af:spacer height="20"
@@ -156,9 +144,9 @@
 
 					<h:panelGrid columns="2"
 						rendered="#{instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Critérios" styleClass="label" />
-						<h:outputText value="Pesos" styleClass="label" />
-						<h:outputText value="Funcional*:" />
+						<h:outputText value="Criteria" styleClass="label" />
+						<h:outputText value="Weights" styleClass="label" />
+						<h:outputText value="Functional*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightFunctional}">
 							<f:selectItem itemValue="0" />
@@ -173,7 +161,7 @@
 							<f:selectItem itemValue="9" />
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
-						<h:outputText value="Todos-Nós*:" />
+						<h:outputText value="All-Nodes*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightAllNodes}">
 							<f:selectItem itemValue="0" />
@@ -188,7 +176,7 @@
 							<f:selectItem itemValue="9" />
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
-						<h:outputText value="Todos-Arcos*:" />
+						<h:outputText value="All-Edges*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightAllEdges}">
 							<f:selectItem itemValue="0" />
@@ -203,7 +191,7 @@
 							<f:selectItem itemValue="9" />
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
-						<h:outputText value="Todos-Usos*:" />
+						<h:outputText value="All-Uses*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightAllUses}">
 							<f:selectItem itemValue="0" />
@@ -218,7 +206,7 @@
 							<f:selectItem itemValue="9" />
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
-						<h:outputText value="Todos-Potenciais-Usos*:" />
+						<h:outputText value="All-Pot-Uses*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightAllPotUses}">
 							<f:selectItem itemValue="0" />
@@ -238,19 +226,12 @@
 					<af:spacer height="20"
 						rendered="#{instructorAddAssignment.advancedOptions}" />
 
-					<h:outputText
-						value="Nas opções abaixo, pesos maiores nas execuções Pal-Tal e Pal-Tinst farão com que a qualidade dos programas submetidos pelos alunos tenham uma maior influência no resultado da avaliação. Da mesma forma, peso maior na execução Pinst-Tal fará com que a qualidade dos casos de teste tenham maior influência no resultado da avaliação."
-						rendered="#{instructorAddAssignment.advancedOptions}" />
-
-					<af:spacer height="20"
-						rendered="#{instructorAddAssignment.advancedOptions}" />
-
 					<h:panelGrid columns="2"
 						rendered="#{instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Execuções" styleClass="label" />
-						<h:outputText value="Pesos" styleClass="label" />
+						<h:outputText value="Executions" styleClass="label" />
+						<h:outputText value="Weights" styleClass="label" />
 						<h:outputText
-							value="Programa do Aluno com Casos de Teste do Aluno (PAL-TAL)*:" />
+							value="Student's program with the student's test set (Ps-Ts)*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightPalTal}">
 							<f:selectItem itemValue="0" />
@@ -266,7 +247,7 @@
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
 						<h:outputText
-							value="Programa do Instrutor com Casos de Teste do Aluno (PINST-TAL)*:" />
+							value="Instructor's program with the student's test set (Pi-Ts)*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightPinstTal}">
 							<f:selectItem itemValue="0" />
@@ -282,7 +263,7 @@
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
 						<h:outputText
-							value="Programa do Aluno com Casos de Teste do Instrutor (PAL-TINST)*:" />
+							value="Student's program with the instructor's test set (Ps-Ti)*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightPalTinst}">
 							<f:selectItem itemValue="0" />
@@ -300,17 +281,12 @@
 					</h:panelGrid>
 
 					<af:spacer height="20" />
-					
-					<h:outputText
-						value="Atenção: O processamento do trabalho poderá demorar alguns segundos." styleClass="message" />
 
-					<af:spacer height="20" />
-
-					<h:commandButton value="Cancelar"
+					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
-					<h:commandButton value="Voltar"
+					<h:commandButton value="Back"
 						action="#{instructorAddAssignment.backToStep1}" />
-					<h:commandButton value="Finalizar"
+					<h:commandButton value="Finalize"
 						action="#{instructorAddAssignment.conclude}" />
 
 				</htm:div>

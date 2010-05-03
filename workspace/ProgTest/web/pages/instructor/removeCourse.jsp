@@ -14,18 +14,18 @@
 
 			<af:spacer height="30" />
 
-			<h:outputText value="Excluir Curso" styleClass="title" />
+			<h:outputText value="Remove Course" styleClass="title" />
 
 			<af:spacer height="20" />
 
 			<h:outputText
-				value="Tem certeza que deseja excluir o curso #{instructorRemoveCourse.name}?" />
+				value="Are you sure you want to remove the course #{instructorRemoveCourse.name}?" />
 
 			<af:spacer height="30" />
 
-			<h:commandButton value="Cancelar"
+			<h:commandButton value="Cancel"
 				action="#{instructorRemoveCourse.cancel}" />
-			<h:commandButton value="Finalizar"
+			<h:commandButton value="Finalize"
 				action="#{instructorRemoveCourse.remove}" />
 
 		</h:form>

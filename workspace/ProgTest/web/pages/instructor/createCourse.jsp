@@ -14,30 +14,30 @@
 
 			<af:spacer height="30" />
 
-			<h:outputText value="Criar Novo Curso" styleClass="title" />
+			<h:outputText value="Create New Course" styleClass="title" />
 
 			<af:spacer height="20" />
 
-			<h:outputText value="Informe os dados do curso." />
+			<h:outputText value="Enter the course properties." />
 
 			<af:spacer height="20" />
 
 			<h:messages styleClass="message" />
 
 			<h:panelGrid columns="2">
-				<h:outputText value="Nome*:" />
+				<h:outputText value="Name*:" />
 				<h:inputText value="#{instructorCreateCourse.name}" />
-				<h:outputText value="Data Início*:" />
+				<h:outputText value="Start Date*:" />
 				<t:inputDate value="#{instructorCreateCourse.startDate}" popupCalendar="true"/>
-				<h:outputText value="Data Término*:" />
+				<h:outputText value="End Date*:" />
 				<t:inputDate value="#{instructorCreateCourse.endDate}" popupCalendar="true"/>
 			</h:panelGrid>
 
 			<af:spacer height="30" />
 
-			<h:commandButton value="Cancelar"
+			<h:commandButton value="Cancel"
 				action="#{instructorCreateCourse.cancel}" />
-			<h:commandButton value="Finalizar"
+			<h:commandButton value="Finalize"
 				action="#{instructorCreateCourse.create}" />
 
 		</h:form>

@@ -18,7 +18,7 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Cursos" styleClass="menu_title"
+					<h:outputText value="Courses" styleClass="menu_title"
 						rendered="#{!empty instructorStudents.courses}" />
 
 					<af:spacer height="5"
@@ -42,7 +42,7 @@
 					<af:spacer height="40"
 						rendered="#{!empty instructorStudents.courses}" />
 
-					<h:outputText value="Ações" styleClass="menu_title"
+					<h:outputText value="Actions" styleClass="menu_title"
 						rendered="#{instructorStudents.activedCourse != null}" />
 
 					<af:spacer height="10"
@@ -53,7 +53,7 @@
 						<af:image source="/images/register.png" />
 						<h:commandLink action="#{instructorStudents.register}"
 							styleClass="link">
-							<h:outputText value="Registrar Novo Aluno" styleClass="topmenu_link" />
+							<h:outputText value="Register New Student" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -62,7 +62,7 @@
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorStudents.add}"
 							styleClass="link">
-							<h:outputText value="Adicionar Novo Aluno" styleClass="topmenu_link" />
+							<h:outputText value="Add New Student" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -75,7 +75,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Alunos" styleClass="title" />
+					<h:outputText value="Students" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -98,14 +98,14 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Alunos" styleClass="title" />
+					<h:outputText value="Students" styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Nenhum curso selecionado."
+					<h:outputText value="No course selected."
 						rendered="#{instructorStudents.activedCourse == null}" />
 
-					<h:outputText value="Não há alunos no curso."
+					<h:outputText value="There is no student in this course."
 						rendered="#{instructorStudents.activedCourse != null}" />
 
 				</htm:div>

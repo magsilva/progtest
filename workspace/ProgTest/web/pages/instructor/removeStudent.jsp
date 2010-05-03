@@ -16,22 +16,18 @@
 
 				<af:spacer height="30" />
 
-				<h:outputText value="Remover Aluno" styleClass="title" />
+				<h:outputText value="Remove Student" styleClass="title" />
 
 				<af:spacer height="20" />
 
 				<h:outputText
-					value="Tem certeza que deseja remover o aluno #{instructorRemoveStudent.userName} - #{instructorRemoveStudent.name}?" />
-
-				<af:spacer height="20" />
-				<h:outputText
-					value="Observação: Ao remover um aluno, o mesmo somente será desassociado do curso. Assim, o registro do aluno permanecerá no sistema e o aluno poderá ser adicionado em outros cursos." />
+					value="Are you sure you want to remove the student #{instructorRemoveStudent.name}?" />
 
 				<af:spacer height="30" />
 
-				<h:commandButton value="Cancelar"
+				<h:commandButton value="Cancel"
 					action="#{instructorRemoveStudent.cancel}" />
-				<h:commandButton value="Finalizar"
+				<h:commandButton value="Finalize"
 					action="#{instructorRemoveStudent.remove}" />
 
 			</htm:div>

@@ -14,34 +14,28 @@
 
 			<af:spacer height="30" />
 
-			<h:outputText value="Enviar Trabalho" styleClass="title" />
+			<h:outputText value="Send Assignment" styleClass="title" />
 
 			<af:spacer height="30" />
 
 			<h:outputText
-				value="Indique um arquivo .jar com o código-fonte (arquivos .java) do seu programa e do seu conjunto de teste." />
+				value="Select a .jar file with the source code (.java files) of the program and test cases." />
 
 			<af:spacer height="30" />
 
 			<h:messages styleClass="message" />
 
 			<h:panelGrid columns="2">
-				<h:outputText value="Arquivo*:" styleClass="label" />
+				<h:outputText value="File*:" styleClass="label" />
 				<t:inputFileUpload value="#{studentSubmitAssigment.file}"
 					storage="file" />
 			</h:panelGrid>
 
-			<af:spacer height="20" />
-
-			<h:outputText
-				value="Atenção: O processamento do trabalho poderá demorar alguns minutos."
-				styleClass="message" />
-
 			<af:spacer height="30" />
 
-			<h:commandButton value="Cancelar"
+			<h:commandButton value="Cancel"
 				action="#{studentSubmitAssigment.cancel}" />
-			<h:commandButton value="Finalizar"
+			<h:commandButton value="Finalize"
 				action="#{studentSubmitAssigment.upload}" />
 
 		</h:form>

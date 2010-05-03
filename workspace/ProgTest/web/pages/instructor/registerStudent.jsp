@@ -14,40 +14,35 @@
 
 			<af:spacer height="30" />
 
-			<h:outputText value="Registrar Novo Aluno" styleClass="title" />
+			<h:outputText value="Register New Student" styleClass="title" />
 
 			<af:spacer height="20" />
 
-			<h:outputText
-				value="Dica: Se o aluno já estiver registrado no sistema, você pode simplesmente adiciona-lo ao curso." />
-
-			<af:spacer height="20" />
-
-			<h:outputText value="Informe os dados do aluno." />
+			<h:outputText value="Enter the student informations." />
 
 			<af:spacer height="20" />
 
 			<h:messages styleClass="message" />
 
 			<h:panelGrid columns="2">
-				<h:outputText value="Nome de Usuário*:" />
+				<h:outputText value="Username*:" />
 				<h:inputText value="#{instructorRegisterStudent.userName}" />
-				<h:outputText value="Nome Completo*:" />
+				<h:outputText value="Full Name*:" />
 				<h:inputText value="#{instructorRegisterStudent.name}" />
 				<h:outputText value="E-mail*:" />
 				<h:inputText value="#{instructorRegisterStudent.email}" />
-				<h:outputText value="Senha*:" />
+				<h:outputText value="Password*:" />
 				<h:inputSecret value="#{instructorRegisterStudent.password}" />
-				<h:outputText value="Confirmação Senha*:" />
+				<h:outputText value="Confirmation Password*:" />
 				<h:inputSecret
 					value="#{instructorRegisterStudent.confirmationPassword}" />
 			</h:panelGrid>
 
 			<af:spacer height="30" />
 
-			<h:commandButton value="Cancelar"
+			<h:commandButton value="Cancel"
 				action="#{instructorRegisterStudent.cancel}" />
-			<h:commandButton value="Finalizar"
+			<h:commandButton value="Finalize"
 				action="#{instructorRegisterStudent.register}" />
 
 		</h:form>
