@@ -113,7 +113,7 @@
 						<h:outputText value="Weights" styleClass="label" />
 						<h:outputText value="Functional*:" />
 						<h:selectOneMenu
-							value="#{instructorAddAssigment.weightFunctional}">
+							value="#{instructorCreateAssignment.weightFunctional}">
 							<f:selectItem itemValue="0" />
 							<f:selectItem itemValue="1" />
 							<f:selectItem itemValue="2" />
@@ -196,7 +196,7 @@
 						<h:outputText value="Executions" styleClass="label" />
 						<h:outputText value="Weights" styleClass="label" />
 						<h:outputText
-							value="Student's program with the student's test set (Ps-Ts)*:" />
+							value="Student's program with the student's test set (P_St-T_St)*:" />
 						<h:selectOneMenu
 							value="#{instructorCreateAssignment.weightPalTal}">
 							<f:selectItem itemValue="0" />
@@ -212,7 +212,7 @@
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
 						<h:outputText
-							value="Instructor's program with the student's test set (Pi-Ts)*:" />
+							value="Instructor's program with the student's test set (P_Inst-T_St)*:" />
 						<h:selectOneMenu
 							value="#{instructorCreateAssignment.weightPinstTal}">
 							<f:selectItem itemValue="0" />
@@ -228,7 +228,7 @@
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
 						<h:outputText
-							value="Student's program with the instructor's test set (Ps-Ti)*:" />
+							value="Student's program with the instructor's test set (P_St-T_Inst)*:" />
 						<h:selectOneMenu
 							value="#{instructorCreateAssignment.weightPalTinst}">
 							<f:selectItem itemValue="0" />

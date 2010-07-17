@@ -376,25 +376,25 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Pi-Ti Coverage" />
+								<h:outputText value="P_Inst-T_Inst Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.pinstTinst}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Ps-Ts Coverage" />
+								<h:outputText value="P_St-T_St Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.palTal}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Pi-Ts Coverage" />
+								<h:outputText value="P_Inst-T_St Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.pinstTal}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Ps-Ti Coverage" />
+								<h:outputText value="P_St-T_Inst Coverage" />
 							</f:facet>
 							<h:outputText value="#{generalCoverageReport.palTinst}" />
 						</h:column>
@@ -426,36 +426,13 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Evaluation Result" styleClass="subtitle" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable
-						value="#{studentAssignmentInfo.resultAvaliationReport}"
-						var="resultAvaliationReport"
-						binding="#{studentAssignmentInfo.resultAvaliationTable}"
-						headerClass="tableHeader" rowClasses="tableRow" width="100%">
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Evaluation" />
-							</f:facet>
-							<h:outputText value="#{resultAvaliationReport.element}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Points" />
-							</f:facet>
-							<h:outputText value="#{resultAvaliationReport.value}" />
-						</h:column>
-					</h:dataTable>
-
-					<af:spacer height="30" />
-
 					<htm:center>
 						<h:outputText
 							value="Suggested Grade: #{studentAssignmentInfo.score}"
 							styleClass="subtitle" />
 					</htm:center>
+					
+					<af:spacer height="30" />
 
 				</htm:div>
 

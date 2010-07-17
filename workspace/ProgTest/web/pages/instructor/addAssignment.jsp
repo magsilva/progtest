@@ -231,7 +231,7 @@
 						<h:outputText value="Executions" styleClass="label" />
 						<h:outputText value="Weights" styleClass="label" />
 						<h:outputText
-							value="Student's program with the student's test set (Ps-Ts)*:" />
+							value="Student's program with the student's test set (P_St-T_St)*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightPalTal}">
 							<f:selectItem itemValue="0" />
@@ -247,7 +247,7 @@
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
 						<h:outputText
-							value="Instructor's program with the student's test set (Pi-Ts)*:" />
+							value="Instructor's program with the student's test set (P_Inst-T_St)*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightPinstTal}">
 							<f:selectItem itemValue="0" />
@@ -263,7 +263,7 @@
 							<f:selectItem itemValue="10" />
 						</h:selectOneMenu>
 						<h:outputText
-							value="Student's program with the instructor's test set (Ps-Ti)*:" />
+							value="Student's program with the instructor's test set (P_St-T_Inst)*:" />
 						<h:selectOneMenu
 							value="#{instructorAddAssignment.weightPalTinst}">
 							<f:selectItem itemValue="0" />

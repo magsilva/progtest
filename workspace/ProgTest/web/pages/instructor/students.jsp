@@ -85,7 +85,7 @@
 						layout="orderedList">
 						<h:column>
 							<h:commandLink action="#{instructorStudents.view}" styleClass="link">
-								<h:outputText value="#{student.userName} - #{student.name} (#{student.email})" styleClass="link"/>
+								<h:outputText value="#{student.name}" styleClass="link"/>
 								<af:spacer height="10" />
 							</h:commandLink>
 						</h:column>
