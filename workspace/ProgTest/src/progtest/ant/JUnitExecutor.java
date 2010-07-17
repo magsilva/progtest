@@ -11,8 +11,6 @@ import org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.SummaryAttribute;
 import org.apache.tools.ant.types.Path;
 
 public class JUnitExecutor {
-	
-	private static BuildLogger logger = new BuildLogger();
 
 	public static void run(String testClassPath, String reportPath, String classPath, String outFileName) {
 		
@@ -64,27 +62,19 @@ public class JUnitExecutor {
 		sourceSet.appendIncludes(includes);
 		batchTest.addFileSet(sourceSet);*/
 
-		startLogging(project);
+		//startLogging(project);
 		try {
 			junit.perform();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		stopLogging(project);
+		//stopLogging(project);
 	}
 
 	private static Project createProject() {
 		Project project = new Project();
 		project.init();
 		return project;
-	}
-
-	private static void startLogging(Project project) {
-		project.addBuildListener(logger);
-	}
-
-	private static void stopLogging(Project project) {
-		logger.finalize();
 	}
 }

@@ -13,13 +13,13 @@ import progtest.util.Math;
 
 public class Evaluator {
 
-	private static double coveragePinstTinstFuncional;
+	private static double coveragePinstTinstFunctional;
 
-	private static double coveragePalTalFuncional;
+	private static double coveragePalTalFunctional;
 
-	private static double coveragePinstTalFuncional;
+	private static double coveragePinstTalFunctional;
 
-	private static double coveragePalTinstFuncional;
+	private static double coveragePalTinstFunctional;
 
 	private static double coveragePinstTinstAllNodes;
 
@@ -53,7 +53,13 @@ public class Evaluator {
 
 	private static double coveragePalTinstAllPotUses;
 
-	private static double weightFuncional;
+	private static double weightPalTal;
+
+	private static double weightPinstTal;
+
+	private static double weightPalTinst;
+
+	private static double weightFunctional;
 
 	private static double weightAllNodes;
 
@@ -63,25 +69,13 @@ public class Evaluator {
 
 	private static double weightAllPotUses;
 
-	private static double functionalPiTi;
+	private static double coveragePinstTinst;
 
-	private static double functionalPaTa;
+	private static double coveragePalTal;
 
-	private static double functionalPiTa;
+	private static double coveragePinstTal;
 
-	private static double functionalPaTi;
-
-	private static double structuralPiTi;
-
-	private static double structuralPaTa;
-
-	private static double structuralPiTa;
-
-	private static double structuralPaTi;
-
-	private static double programScore;
-
-	private static double testScore;
+	private static double coveragePalTinst;
 
 	private static double totalScore;
 
@@ -140,7 +134,7 @@ public class Evaluator {
 
 		String values[][] = XMLParser.parse(XMLFile);
 
-		coveragePinstTinstFuncional = Double.parseDouble(values[1][3]) / 100;
+		coveragePinstTinstFunctional = Double.parseDouble(values[1][3]) / 100;
 
 	}
 
@@ -173,7 +167,7 @@ public class Evaluator {
 
 		String values[][] = XMLParser.parse(XMLFile);
 
-		coveragePalTalFuncional = Double.parseDouble(values[1][3]) / 100;
+		coveragePalTalFunctional = Double.parseDouble(values[1][3]) / 100;
 
 	}
 
@@ -207,7 +201,7 @@ public class Evaluator {
 
 		String values[][] = XMLParser.parse(XMLFile);
 
-		coveragePinstTalFuncional = Double.parseDouble(values[1][3]) / 100;
+		coveragePinstTalFunctional = Double.parseDouble(values[1][3]) / 100;
 
 	}
 
@@ -241,12 +235,15 @@ public class Evaluator {
 
 		String values[][] = XMLParser.parse(XMLFile);
 
-		coveragePalTinstFuncional = Double.parseDouble(values[1][3]) / 100;
+		coveragePalTinstFunctional = Double.parseDouble(values[1][3]) / 100;
 
 	}
 
 	private static void initializeWeights(Evaluation avaliation) {
-		weightFuncional = avaliation.getAssignment().getWeightFunctional();
+		weightPalTal = avaliation.getAssignment().getWeightPalTal();
+		weightPinstTal = avaliation.getAssignment().getWeightPinstTal();
+		weightPalTinst = avaliation.getAssignment().getWeightPalTinst();
+		weightFunctional = avaliation.getAssignment().getWeightFunctional();
 		weightAllNodes = avaliation.getAssignment().getWeightAllNodes();
 		weightAllEdges = avaliation.getAssignment().getWeightAllEdges();
 		weightAllUses = avaliation.getAssignment().getWeightAllUses();
@@ -255,109 +252,61 @@ public class Evaluator {
 
 	private static void calculateScore() {
 
-		functionalPiTi = calculateFunctionalPiTi();
-		functionalPaTa = calculateFunctionalPaTa();
-		functionalPiTa = calculateFunctionalPiTa();
-		functionalPaTi = calculateFunctionalPaTi();
-		structuralPiTi = calculateStructuralPiTi();
-		structuralPaTa = calculateStructuralPaTa();
-		structuralPiTa = calculateStructuralPiTa();
-		structuralPaTi = calculateStructuralPaTi();
-		
-		programScore = (functionalPaTa + functionalPaTi) / 2;
-		
-		testScore = (functionalPiTa + structuralPaTa) / 2;
-		
-		if((structuralPaTa >= structuralPaTi) && (functionalPaTa == functionalPaTi))
-			testScore = 1;
-		  
-		totalScore = (programScore + testScore) / 2;
+		coveragePinstTinst = coveragePinstTinst();
+		coveragePalTal = coveragePalTal();
+		coveragePinstTal = coveragePinstTal();
+		coveragePalTinst = coveragePalTinst();
 
-		/*
-		 * coveragePinstTinst = calculatePinstTinst(); coveragePalTal =
-		 * calculatePalTal(); coveragePinstTal = calculatePinstTal();
-		 * coveragePalTinst = calculatePalTinst();
-		 * 
-		 * double ts1;
-		 * 
-		 * double ts2;
-		 * 
-		 * if(coveragePinstTinst > 0) ts1 = coveragePinstTal /
-		 * coveragePinstTinst; else ts1 = 1;
-		 * 
-		 * if(ts1 > 1) ts1 = 1;
-		 * 
-		 * if(coveragePalTinst > 0) ts2 = coveragePalTal / coveragePalTinst;
-		 * else ts2 = 1;
-		 * 
-		 * if(ts2 > 1) ts2 = 1;
-		 * 
-		 * testScore = (ts1 + ts2) / 2;
-		 * 
-		 * programScore = coveragePalTinstFuncional;
-		 * 
-		 * if(programScore > 1) programScore = 1;
-		 */
-		 
+		totalScore = (coveragePalTal * weightPalTal + coveragePinstTal
+				* weightPinstTal + (coveragePalTinst/coveragePinstTinst) * weightPalTinst)
+				/ (weightPalTal + weightPinstTal + weightPalTinst);
 
 	}
 
-	private static double calculateStructuralPaTi() {
-		// TODO Auto-generated method stub
-		return (coveragePalTinstAllNodes * weightAllNodes
-				+ coveragePalTinstAllEdges * weightAllEdges
-				+ coveragePalTinstAllUses * weightAllUses + coveragePalTinstAllPotUses
-				* weightAllPotUses)
-				/ (weightAllNodes + weightAllEdges + weightAllUses + weightAllPotUses);
-	}
-
-	private static double calculateStructuralPiTa() {
-		// TODO Auto-generated method stub
-		return (coveragePinstTalAllNodes * weightAllNodes
-				+ coveragePinstTalAllEdges * weightAllEdges
-				+ coveragePinstTalAllUses * weightAllUses + coveragePinstTalAllPotUses
-				* weightAllPotUses)
-				/ (weightAllNodes + weightAllEdges + weightAllUses + weightAllPotUses);
-	}
-
-	private static double calculateStructuralPaTa() {
-		// TODO Auto-generated method stub
-		return (coveragePalTalAllNodes * weightAllNodes
-				+ coveragePalTalAllEdges * weightAllEdges
-				+ coveragePalTalAllUses * weightAllUses + coveragePalTalAllPotUses
-				* weightAllPotUses)
-				/ (weightAllNodes + weightAllEdges + weightAllUses + weightAllPotUses);
-	}
-
-	private static double calculateStructuralPiTi() {
-		return (coveragePinstTinstAllNodes * weightAllNodes
+	private static double coveragePinstTinst() {
+		return (coveragePinstTinstFunctional * weightFunctional
+				+ coveragePinstTinstAllNodes * weightAllNodes
 				+ coveragePinstTinstAllEdges * weightAllEdges
 				+ coveragePinstTinstAllUses * weightAllUses + coveragePinstTinstAllPotUses
 				* weightAllPotUses)
-				/ (weightAllNodes + weightAllEdges + weightAllUses + weightAllPotUses);
+				/ (weightFunctional + weightAllNodes + weightAllEdges
+						+ weightAllUses + weightAllPotUses);
 	}
 
-	private static double calculateFunctionalPaTi() {
-		return coveragePalTinstFuncional;
+	private static double coveragePalTal() {
+		return (coveragePalTalFunctional * weightFunctional
+				+ coveragePalTalAllNodes * weightAllNodes
+				+ coveragePalTalAllEdges * weightAllEdges
+				+ coveragePalTalAllUses * weightAllUses + coveragePalTalAllPotUses
+				* weightAllPotUses)
+				/ (weightFunctional + weightAllNodes + weightAllEdges
+						+ weightAllUses + weightAllPotUses);
 	}
 
-	private static double calculateFunctionalPiTa() {
-		return coveragePinstTalFuncional;
+	private static double coveragePalTinst() {
+		return (coveragePalTinstFunctional * weightFunctional
+				+ coveragePalTinstAllNodes * weightAllNodes
+				+ coveragePalTinstAllEdges * weightAllEdges
+				+ coveragePalTinstAllUses * weightAllUses + coveragePalTinstAllPotUses
+				* weightAllPotUses)
+				/ (weightFunctional + weightAllNodes + weightAllEdges
+						+ weightAllUses + weightAllPotUses);
 	}
 
-	private static double calculateFunctionalPaTa() {
-		return coveragePalTalFuncional;
-	}
-
-	private static double calculateFunctionalPiTi() {
-		return coveragePinstTinstFuncional;
+	private static double coveragePinstTal() {
+		return (coveragePinstTalFunctional * weightFunctional
+				+ coveragePinstTalAllNodes * weightAllNodes
+				+ coveragePinstTalAllEdges * weightAllEdges
+				+ coveragePinstTalAllUses * weightAllUses + coveragePinstTalAllPotUses
+				* weightAllPotUses)
+				/ (weightFunctional + weightAllNodes + weightAllEdges
+						+ weightAllUses + weightAllPotUses);
 	}
 
 	private static void generateXMLFiles(Evaluation avaliation)
 			throws FileNotFoundException {
 		generateXMLGeneralCoverage(avaliation);
 		generateXMLTotalCoverage(avaliation);
-		generateXMLResultAvaliation(avaliation);
 	}
 
 	private static void generateXMLGeneralCoverage(Evaluation avaliation)
@@ -365,35 +314,75 @@ public class Evaluator {
 
 		String values[][] = new String[6][5];
 		values[0][0] = "Criterion";
-		values[0][1] = "Pi-Ti";
-		values[0][2] = "Pa-Ta";
-		values[0][3] = "Pi-Ta";
-		values[0][4] = "Pa-Ti";
+		values[0][1] = "P_Inst-T_Inst";
+		values[0][2] = "P_St-T_St";
+		values[0][3] = "P_Inst-T_Stu";
+		values[0][4] = "P_St-T_Inst";
 		values[1][0] = "Functional";
-		values[1][1] = String.valueOf(Math.round(coveragePinstTinstFuncional * 100, 2)) + "%";
-		values[1][2] = String.valueOf(Math.round(coveragePalTalFuncional * 100, 2)) + "%";
-		values[1][3] = String.valueOf(Math.round(coveragePinstTalFuncional * 100, 2)) + "%";
-		values[1][4] = String.valueOf(Math.round(coveragePalTinstFuncional * 100, 2)) + "%";
+		values[1][1] = String.valueOf(Math.round(
+				coveragePinstTinstFunctional * 100, 2))
+				+ "%";
+		values[1][2] = String.valueOf(Math.round(
+				coveragePalTalFunctional * 100, 2))
+				+ "%";
+		values[1][3] = String.valueOf(Math.round(
+				coveragePinstTalFunctional * 100, 2))
+				+ "%";
+		values[1][4] = String.valueOf(Math.round(
+				coveragePalTinstFunctional * 100, 2))
+				+ "%";
 		values[2][0] = "All-Nodes";
-		values[2][1] = String.valueOf(Math.round(coveragePinstTinstAllNodes * 100, 2)) + "%";
-		values[2][2] = String.valueOf(Math.round(coveragePalTalAllNodes * 100, 2)) + "%";
-		values[2][3] = String.valueOf(Math.round(coveragePinstTalAllNodes * 100, 2)) + "%";
-		values[2][4] = String.valueOf(Math.round(coveragePalTinstAllNodes * 100, 2)) + "%";
+		values[2][1] = String.valueOf(Math.round(
+				coveragePinstTinstAllNodes * 100, 2))
+				+ "%";
+		values[2][2] = String.valueOf(Math.round(coveragePalTalAllNodes * 100,
+				2))
+				+ "%";
+		values[2][3] = String.valueOf(Math.round(
+				coveragePinstTalAllNodes * 100, 2))
+				+ "%";
+		values[2][4] = String.valueOf(Math.round(
+				coveragePalTinstAllNodes * 100, 2))
+				+ "%";
 		values[3][0] = "All-Edges";
-		values[3][1] = String.valueOf(Math.round(coveragePinstTinstAllEdges * 100, 2)) + "%";
-		values[3][2] = String.valueOf(Math.round(coveragePalTalAllEdges * 100, 2)) + "%";
-		values[3][3] = String.valueOf(Math.round(coveragePinstTalAllEdges * 100, 2)) + "%";
-		values[3][4] = String.valueOf(Math.round(coveragePalTinstAllEdges * 100, 2)) + "%";
+		values[3][1] = String.valueOf(Math.round(
+				coveragePinstTinstAllEdges * 100, 2))
+				+ "%";
+		values[3][2] = String.valueOf(Math.round(coveragePalTalAllEdges * 100,
+				2))
+				+ "%";
+		values[3][3] = String.valueOf(Math.round(
+				coveragePinstTalAllEdges * 100, 2))
+				+ "%";
+		values[3][4] = String.valueOf(Math.round(
+				coveragePalTinstAllEdges * 100, 2))
+				+ "%";
 		values[4][0] = "All-Uses";
-		values[4][1] = String.valueOf(Math.round(coveragePinstTinstAllUses * 100, 2)) + "%";
-		values[4][2] = String.valueOf(Math.round(coveragePalTalAllUses * 100, 2)) + "%";
-		values[4][3] = String.valueOf(Math.round(coveragePinstTalAllUses * 100, 2)) + "%";
-		values[4][4] = String.valueOf(Math.round(coveragePalTinstAllUses * 100, 2)) + "%";
+		values[4][1] = String.valueOf(Math.round(
+				coveragePinstTinstAllUses * 100, 2))
+				+ "%";
+		values[4][2] = String.valueOf(Math
+				.round(coveragePalTalAllUses * 100, 2))
+				+ "%";
+		values[4][3] = String.valueOf(Math.round(coveragePinstTalAllUses * 100,
+				2))
+				+ "%";
+		values[4][4] = String.valueOf(Math.round(coveragePalTinstAllUses * 100,
+				2))
+				+ "%";
 		values[5][0] = "All-Pot-Uses";
-		values[5][1] = String.valueOf(Math.round(coveragePinstTinstAllPotUses * 100, 2)) + "%";
-		values[5][2] = String.valueOf(Math.round(coveragePalTalAllPotUses * 100, 2)) + "%";
-		values[5][3] = String.valueOf(Math.round(coveragePinstTalAllPotUses * 100, 2)) + "%";
-		values[5][4] = String.valueOf(Math.round(coveragePalTinstAllPotUses * 100, 2)) + "%";
+		values[5][1] = String.valueOf(Math.round(
+				coveragePinstTinstAllPotUses * 100, 2))
+				+ "%";
+		values[5][2] = String.valueOf(Math.round(
+				coveragePalTalAllPotUses * 100, 2))
+				+ "%";
+		values[5][3] = String.valueOf(Math.round(
+				coveragePinstTalAllPotUses * 100, 2))
+				+ "%";
+		values[5][4] = String.valueOf(Math.round(
+				coveragePalTinstAllPotUses * 100, 2))
+				+ "%";
 
 		String root = "GeneralCoverage";
 
@@ -410,18 +399,18 @@ public class Evaluator {
 
 		String values[][] = new String[5][2];
 		values[0][0] = "Executions";
-		values[1][0] = "Instructor's Program - Instructor's Test Set";
-		values[2][0] = "Student's Program - Student's Test Set";
-		values[3][0] = "Instructor's Program - Student's Test Set";
-		values[4][0] = "Student's Program - Instructor's Test Set";
+		values[1][0] = "Instructor's Program - Instructor's Test Set (P_Inst-T-Inst)";
+		values[2][0] = "Student's Program - Student's Test Set (P_St-T-St)";
+		values[3][0] = "Instructor's Program - Student's Test Set (P_Inst-T-St)";
+		values[4][0] = "Student's Program - Instructor's Test Set (P_St-T-Inst)";
 		values[0][1] = "Coverage";
-		values[1][1] = String.valueOf(Math.round(structuralPiTi * 100, 2))
+		values[1][1] = String.valueOf(Math.round(coveragePinstTinst * 100, 2))
 				+ "%";
-		values[2][1] = String.valueOf(Math.round(structuralPaTa * 100, 2))
+		values[2][1] = String.valueOf(Math.round(coveragePalTal * 100, 2))
 				+ "%";
-		values[3][1] = String.valueOf(Math.round(structuralPiTa * 100, 2))
+		values[3][1] = String.valueOf(Math.round(coveragePinstTal * 100, 2))
 				+ "%";
-		values[4][1] = String.valueOf(Math.round(structuralPaTi * 100, 2))
+		values[4][1] = String.valueOf(Math.round(coveragePalTinst * 100, 2))
 				+ "%";
 
 		String root = "TotalCoverage";
@@ -429,27 +418,6 @@ public class Evaluator {
 		String path = DirControl.getUserReportsPath(avaliation.getAssignment(),
 				avaliation.getStudent())
 				+ File.separator + "TotalCoverage.xml";
-
-		XMLParser.generateXML(root, values, path);
-
-	}
-
-	private static void generateXMLResultAvaliation(Evaluation avaliation)
-			throws FileNotFoundException {
-
-		String values[][] = new String[3][2];
-		values[0][0] = "Result";
-		values[1][0] = "Program Accuracy";
-		values[2][0] = "Test Set Quality";
-		values[0][1] = "Score";
-		values[1][1] = String.valueOf(Math.round(programScore * 100, 2)) + "%";
-		values[2][1] = String.valueOf(Math.round(testScore * 100, 2)) + "%";
-
-		String root = "EvaluationResult";
-
-		String path = DirControl.getUserReportsPath(avaliation.getAssignment(),
-				avaliation.getStudent())
-				+ File.separator + "ResultAvaliation.xml";
 
 		XMLParser.generateXML(root, values, path);
 

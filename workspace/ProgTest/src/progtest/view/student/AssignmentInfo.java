@@ -16,7 +16,6 @@ import progtest.reports.GeneralCoverage;
 import progtest.reports.MethodCoverage;
 import progtest.reports.ReportGenerator;
 import progtest.reports.RequiredElement;
-import progtest.reports.ResultAvaliation;
 import progtest.reports.TotalCoverage;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
@@ -45,10 +44,6 @@ public class AssignmentInfo {
 	private List<TotalCoverage> totalCoverageReport = new ArrayList<TotalCoverage>();
 
 	private UIData totalCoverageTable;
-
-	private List<ResultAvaliation> resultAvaliationReport = new ArrayList<ResultAvaliation>();
-
-	private UIData resultAvaliationTable;
 
 	private List<FuncionalCoverage> funcionalCoverageReport = new ArrayList<FuncionalCoverage>();
 
@@ -161,23 +156,6 @@ public class AssignmentInfo {
 
 	public void setTotalCoverageTable(UIData totalCoverageTable) {
 		this.totalCoverageTable = totalCoverageTable;
-	}
-
-	public List<ResultAvaliation> getResultAvaliationReport() {
-		return resultAvaliationReport;
-	}
-
-	public void setResultAvaliationReport(
-			List<ResultAvaliation> resultAvaliationReport) {
-		this.resultAvaliationReport = resultAvaliationReport;
-	}
-
-	public UIData getResultAvaliationTable() {
-		return resultAvaliationTable;
-	}
-
-	public void setResultAvaliationTable(UIData resultAvaliationTable) {
-		this.resultAvaliationTable = resultAvaliationTable;
 	}
 
 	public List<FuncionalCoverage> getFuncionalCoverageReport() {
@@ -317,12 +295,6 @@ public class AssignmentInfo {
 							.getUserReportsPath(evaluation.getAssignment(),
 									evaluation.getStudent())
 							+ File.separator + "TotalCoverage.xml"));
-
-			resultAvaliationReport = ReportGenerator
-					.getResultAvaliationReport(new File(DirControl
-							.getUserReportsPath(evaluation.getAssignment(),
-									evaluation.getStudent())
-							+ File.separator + "ResultAvaliation.xml"));
 
 			funcionalCoverageReport = ReportGenerator
 					.getFuncionalCoverageReport(new File(DirControl

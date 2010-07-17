@@ -12,8 +12,6 @@ import progtest.util.FileUtil;
 
 public class JavacExecutor {
 
-	private static BuildLogger logger = new BuildLogger();
-
 	public static void run(String basicPath, String srcPath, String libsPath,
 			String destPath) {
 		Project project = createProject();
@@ -74,9 +72,7 @@ public class JavacExecutor {
 		additionalSetPattern.setName("*.jar");
 		classpath.addFileset(additionalSet);
 
-		startLogging(project);
 		javac.perform();
-		stopLogging(project);
 		
 	}
 
@@ -85,12 +81,5 @@ public class JavacExecutor {
 		project.init();
 		return project;
 	}
-
-	private static void startLogging(Project project) {
-		project.addBuildListener(logger);
-	}
-
-	private static void stopLogging(Project project) {
-		logger.finalize();
-	}
+	
 }
