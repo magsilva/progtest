@@ -1,5 +1,0 @@
-INDEX VERSION 1.121+/media/Common/Files/Draylson/Developments/Projects/ProgTest/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-506033124.index
-209949051.index
-873451756.index
-558094365.index
