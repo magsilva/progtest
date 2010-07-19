@@ -7,16 +7,16 @@
 	<session-factory>
     	
         <!-- Database connection settings -->
-		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">micaelmm</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/progtest?autoRecconect=true</property>
-		<property name="hibernate.connection.username">root</property>
+        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="connection.url">jdbc:hsqldb:file:/banco/DBEmpresa</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
 
-		<!-- JDBC connection pool (use the built-in) -->
-		<property name="connection.pool_size">1</property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">2</property>
 
-		<!-- SQL dialect -->
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
 
 		<!-- Enable Hibernate's automatic session context management -->
 		<property name="current_session_context_class">thread</property>
