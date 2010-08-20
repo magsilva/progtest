@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Oracle {
@@ -15,7 +16,8 @@ public class Oracle {
 	private String description;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "SEQ_ORACLE", sequenceName = "SEQ_ORACLE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ORACLE")
 	public int getIdCode() {
 		return idCode;
 	}

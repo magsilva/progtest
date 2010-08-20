@@ -5,10 +5,10 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
-import progtest.common.Evaluation;
 import progtest.common.Course;
+import progtest.common.Evaluation;
 import progtest.common.User;
-import progtest.database.EvaluationDAO;
+import progtest.database.Querier;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
 
@@ -81,7 +81,7 @@ public class Student {
 		Course course = (Course) ContextManager
 				.getSession(Constants.SESSION_COURSE);
 
-		evaluations = EvaluationDAO.getEvaluations(user, course);
+		evaluations = Querier.getEvaluations(user, course);
 
 		userName = user.getUserName();
 		name = user.getName();

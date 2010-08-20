@@ -2,9 +2,12 @@ package progtest.common;
 
 import java.io.Serializable;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 public class AssignmentPK implements Serializable {
 	
@@ -26,6 +29,8 @@ public class AssignmentPK implements Serializable {
 	}
 
 	@Id
+	@SequenceGenerator(name = "SEQ_ASSIGNMENT", sequenceName = "SEQ_ASSIGNMENT")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ASSIGNMENT")
 	public int getIdCode() {
 		return idCode;
 	}

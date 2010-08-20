@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Course {
@@ -32,7 +33,8 @@ public class Course {
 	private List<Assignment> assignments = new ArrayList<Assignment>();
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "SEQ_COURSE", sequenceName = "SEQ_COURSE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_COURSE")
 	public int getIdCode() {
 		return idCode;
 	}

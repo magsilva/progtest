@@ -8,7 +8,6 @@ import javax.faces.component.UIData;
 import progtest.common.Course;
 import progtest.common.Evaluation;
 import progtest.common.User;
-import progtest.database.EvaluationDAO;
 import progtest.database.Querier;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
@@ -110,12 +109,12 @@ public class AllAssignments {
 
 		if (course == null) {
 
-			evaluations = EvaluationDAO.getEvaluations(user);
+			evaluations = Querier.getEvaluations(user);
 			activedCourse = null;
 
 		} else {
 
-			evaluations = EvaluationDAO.getEvaluations(user, course);
+			evaluations = Querier.getEvaluations(user, course);
 			activedCourse = course.getName();
 
 		}

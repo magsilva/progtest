@@ -5,46 +5,49 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import progtest.database.Querier;
 
 @Entity
 @IdClass(AssignmentPK.class)
 public class Assignment {
-	
+
 	private Course course;
-	
+
 	private int idCode = Querier.getNewId();
-	
+
 	private String title;
-	
+
 	private String description;
-	
+
 	private Date startDate;
-	
+
 	private Date endDate;
-	
+
 	private int weightPinstTinst;
-	
+
 	private int weightPalTal;
-	
+
 	private int weightPinstTal;
-	
+
 	private int weightPalTinst;
-	
+
 	private int weightFunctional;
-	
+
 	private int weightAllNodes;
-	
+
 	private int weightAllEdges;
-	
+
 	private int weightAllUses;
-	
+
 	private int weightAllPotUses;
 
 	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
@@ -55,12 +58,14 @@ public class Assignment {
 	public Course getCourse() {
 		return course;
 	}
-	
+
 	public void setCourse(Course course) {
 		this.course = course;
 	}
 
 	@Id
+	@SequenceGenerator(name = "SEQ_ASSIGNMENT", sequenceName = "SEQ_ASSIGNMENT")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ASSIGNMENT")
 	public int getIdCode() {
 		return idCode;
 	}

@@ -55,8 +55,8 @@ public class Jabuti {
 
 		String projectName = "progtest";
 		String user = "draylson";
-		String endpoint = "http://localhost:8080/jabutiprojectSvn/services/JaBUTiService1_0";
-		String tempDir = "/media/Common/Home/Developments/Servers/apache-tomcat-6.0.18-8080/webapps/jabutitemporaties" + File.separator;
+		String endpoint = "http://localhost:9080/jabutiprojectSvn/services/JaBUTiService1_0";
+		String tempDir = "/home/draylson/apache-tomcat-6.0.18/webapps/jabutitemporaties" + File.separator;
 
 		File dir = new File(tempDir);
 		if (!dir.exists()) {
@@ -146,7 +146,7 @@ public class Jabuti {
 
 		String TestSuiteClass = testSuite;
 		String TestFilePath = testCases;
-		String TestDir = "/media/Common/Home/Developments/Servers/apache-tomcat-6.0.18-8080/webapps/jabutitemporaties" + File.separator;
+		String TestDir = "/home/draylson/apache-tomcat-6.0.18/webapps/jabutitemporaties" + File.separator;
 
 		AddTestCases in3 = new AddTestCases();
 		in3.setProjectId(projectid);

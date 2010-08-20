@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class User {
@@ -34,7 +35,8 @@ public class User {
 	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "SEQ_USER", sequenceName = "SEQ_USER")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_USER")
 	public int getIdCode() {
 		return idCode;
 	}

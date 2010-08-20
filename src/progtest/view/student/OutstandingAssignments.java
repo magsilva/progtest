@@ -5,10 +5,9 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
-import progtest.common.Evaluation;
 import progtest.common.Course;
+import progtest.common.Evaluation;
 import progtest.common.User;
-import progtest.database.EvaluationDAO;
 import progtest.database.Querier;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
@@ -109,12 +108,12 @@ public class OutstandingAssignments {
 		
 		if(course == null) {
 			
-			evaluations = EvaluationDAO.getOutstandingEvaluations(user);
+			evaluations = Querier.getOutstandingEvaluations(user);
 			activedCourse = null;
 			
 		} else {
 			
-			evaluations = EvaluationDAO.getOutstandingEvaluations(user, course);
+			evaluations = Querier.getOutstandingEvaluations(user, course);
 			activedCourse = course.getName();
 			
 		}
