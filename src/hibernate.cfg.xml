@@ -36,6 +36,8 @@
 		<mapping class="progtest.common.Oracle" />
 		<mapping class="progtest.common.User" />
 		<mapping class="progtest.common.StudentCourse" />
+		<mapping class="progtest.common.Criterion" />
+		<mapping class="progtest.common.AssignmentCriterion" />
 		
 	</session-factory>
 </hibernate-configuration>

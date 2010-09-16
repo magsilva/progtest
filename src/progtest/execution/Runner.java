@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
-import progtest.ant.JavacExecutor;
 import progtest.common.Assignment;
 import progtest.common.Evaluation;
 import progtest.common.Oracle;
@@ -21,8 +20,9 @@ import progtest.exceptions.TestingException;
 import progtest.exceptions.UploadException;
 import progtest.reports.ReportGenerator;
 import progtest.reports.TestCase;
-import progtest.tools.JUnit;
-import progtest.tools.Jabuti;
+import progtest.trash.JUnit;
+import progtest.trash.Jabuti;
+import progtest.trash.JavacExecutor;
 import progtest.util.Constants;
 import progtest.util.DirControl;
 import progtest.util.FileUpload;

@@ -14,6 +14,8 @@ public class Oracle {
 	private String title;
 	
 	private String description;
+	
+	private String language;
 
 	@Id
 	@SequenceGenerator(name = "SEQ_ORACLE", sequenceName = "SEQ_ORACLE")
@@ -41,6 +43,14 @@ public class Oracle {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 }

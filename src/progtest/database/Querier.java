@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import progtest.common.Assignment;
 import progtest.common.Course;
+import progtest.common.Criterion;
 import progtest.common.Evaluation;
 import progtest.common.Oracle;
 import progtest.common.User;
@@ -297,6 +298,16 @@ public class Querier {
 		} catch(Throwable e) {
 			return 1;
 		}
+	}
+
+	public static List<Criterion> getCriteria(String language) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Criterion getCriterion(String string, String string2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

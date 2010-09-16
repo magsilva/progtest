@@ -34,6 +34,7 @@ CREATE TABLE Oracle (
 	idCode INT NOT NULL,
 	title VARCHAR(50),
 	description VARCHAR(500),
+	language VARCHAR(10),
 	CONSTRAINT PK_oracle PRIMARY KEY (idCode)
 );
 
@@ -52,8 +53,9 @@ CREATE TABLE Criterion (
 	idCode INT NOT NULL,
 	name VARCHAR(50),
 	tool VARCHAR(10),
+	language VARCHAR(10),
 	type VARCHAR(10),
-	CONSTRAINT PK_assignment PRIMARY KEY (idCode)
+	CONSTRAINT PK_criterion PRIMARY KEY (idCode)
 );
 
 CREATE TABLE assignment_criterion (
@@ -85,44 +87,46 @@ CREATE SEQUENCE SEQ_ORACLE START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE SEQ_ASSIGNMENT START WITH 1 INCREMENT BY 1;
 
+CREATE SEQUENCE SEQ_CRITERION START WITH 1 INCREMENT BY 1;
+
 INSERT INTO User VALUES(1, 'progtest', 'ProgTest', 'progtest@gmail.com', 'progtest', 'instructor');
 
-INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.');
+INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
-INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.');
+INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 'Java');
 
-INSERT INTO Oracle VALUES(3, 'Fibonacci', 'Computes the Fibonacci sequence.');
+INSERT INTO Oracle VALUES(3, 'Fibonacci', 'Computes the Fibonacci sequence.', 'Java');
 
-INSERT INTO Oracle VALUES(4, 'String Marriage', 'Searches the occurrence of one string in another string.');
+INSERT INTO Oracle VALUES(4, 'String Marriage', 'Searches the occurrence of one string in another string.', 'Java');
 
-INSERT INTO Oracle VALUES(5, 'Sort', 'Sorts a sequence of numbers.');
+INSERT INTO Oracle VALUES(5, 'Sort', 'Sorts a sequence of numbers.', 'Java');
 
-INSERT INTO Oracle VALUES(6, 'Bubble Sort', 'Implementation of the bubble sort algorithm.');
+INSERT INTO Oracle VALUES(6, 'Bubble Sort', 'Implementation of the bubble sort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(7, 'Heapsort', 'Implementation of the heapsort algorithm.');
+INSERT INTO Oracle VALUES(7, 'Heapsort', 'Implementation of the heapsort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(8, 'Insertion Sort', 'Implementation of the insertion sort algorithm.');
+INSERT INTO Oracle VALUES(8, 'Insertion Sort', 'Implementation of the insertion sort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(9, 'Selection Sort', 'Implementation of the selection sort algorithm.');
+INSERT INTO Oracle VALUES(9, 'Selection Sort', 'Implementation of the selection sort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(10, 'List', 'Implementation of a list.');
+INSERT INTO Oracle VALUES(10, 'List', 'Implementation of a list.', 'Java');
 
-INSERT INTO Oracle VALUES(11, 'Stack', 'Implementation of a stack.');
+INSERT INTO Oracle VALUES(11, 'Stack', 'Implementation of a stack.', 'Java');
 
-INSERT INTO Oracle VALUES(12, 'Queue', 'Implementation of a queue.');
+INSERT INTO Oracle VALUES(12, 'Queue', 'Implementation of a queue.', 'Java');
 
-INSERT INTO Oracle VALUES(13, 'Binary Tree', 'Implementation of a binary tree.');
+INSERT INTO Oracle VALUES(13, 'Binary Tree', 'Implementation of a binary tree.', 'Java');
 
-INSERT INTO Oracle VALUES(14, 'Graph', 'Implementation of a graph.');
+INSERT INTO Oracle VALUES(14, 'Graph', 'Implementation of a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(15, 'Depth-first Search', 'Implementation of the depth-first search in a graph.');
+INSERT INTO Oracle VALUES(15, 'Depth-first Search', 'Implementation of the depth-first search in a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(16, 'Breadth-first Search', 'Implementation of the breadth-first search in a graph.');
+INSERT INTO Oracle VALUES(16, 'Breadth-first Search', 'Implementation of the breadth-first search in a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(17, 'Strongly Connected Components', 'Gets the number of strongly connected components of a graph.');
+INSERT INTO Oracle VALUES(17, 'Strongly Connected Components', 'Gets the number of strongly connected components of a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(18, 'Prim Algorithm', 'Implementation of the Prim algorithm.');
+INSERT INTO Oracle VALUES(18, 'Prim Algorithm', 'Implementation of the Prim algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(19, 'Hash Table', 'Implementation of a hash table.');
+INSERT INTO Oracle VALUES(19, 'Hash Table', 'Implementation of a hash table.', 'Java');
 
-INSERT INTO Oracle VALUES(20, 'Matrix Multiplication', 'Gets the result of multiplying two matrices.');
+INSERT INTO Oracle VALUES(20, 'Matrix Multiplication', 'Gets the result of multiplying two matrices.', 'Java');
