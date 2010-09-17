@@ -18,17 +18,12 @@ public class AssignmentCriterion {
 
 	private Criterion criterion;
 
-	private int weight;
-
-	public AssignmentCriterion() {
-		this.weight = 0;
-	}
+	private int weight = 0;
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns({
-			@JoinColumn(name = "course", referencedColumnName = "course"),
-			@JoinColumn(name = "assignment", referencedColumnName = "idCode") })
+	@JoinColumns({ @JoinColumn(name = "course"),
+			@JoinColumn(name = "assignment") })
 	public Assignment getAssignment() {
 		return assignment;
 	}
@@ -39,7 +34,7 @@ public class AssignmentCriterion {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "criterion", referencedColumnName = "idCode")
+	@JoinColumn(name = "criterion")
 	public Criterion getCriterion() {
 		return criterion;
 	}

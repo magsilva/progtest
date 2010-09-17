@@ -32,7 +32,7 @@ public class Querier {
 	private static final String SELECT_STUDENTS_BY_COURSE = "select studentCourse.student from StudentCourse studentCourse where studentCourse.course = ?";
 
 	private static final String SELECT_STUDENTS_NOT_COURSE = "select studentCourse.student from StudentCourse studentCourse where studentCourse.course != ?";
-	
+
 	private static final String SELECT_ORACLE = "from Oracle oracle where oracle.idCode = ?";
 
 	private static final String SELECT_ORACLES = "from Oracle";
@@ -48,8 +48,12 @@ public class Querier {
 	private static final String SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE = "from Evaluation evaluation where evaluation.student = ? and evaluation.assignment.course = ? and evaluation.submissionDate = NULL order by evaluation.assignment.endDate";
 
 	private static final String SELECT_EVALUATIONS_BY_STUDENT_AND_SUBMISSIONDATE = "from Evaluation evaluation where evaluation.student = ? and evaluation.submissionDate = NULL order by evaluation.assignment.endDate";
-	
+
 	private static final String SELECT_MAX_IDCODE_ASSIGNMENT = "select max(assignment.idCode) from Assignment assignment";
+
+	private static final String SELECT_CRITERIA_BY_LANGUAGE = "from Criterion criterion where criterion.language = ?";
+
+	private static final String SELECT_CRITERION_BY_TOOL_AND_NAME = "from Criterion criterion where criterion.tool = ? and criterion.name = ?";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -86,7 +90,8 @@ public class Querier {
 		boolean result;
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery(SELECT_USER_BY_EMAIL_AND_NOT_USERNAME);
+		Query query = session
+				.createQuery(SELECT_USER_BY_EMAIL_AND_NOT_USERNAME);
 		query.setString(0, email);
 		query.setString(1, userName);
 		if (query.list().size() == 0)
@@ -284,30 +289,43 @@ public class Querier {
 
 	public static Integer getNewId() {
 		try {
-		Session session = HibernateUtil.getSession();
-		session.beginTransaction();
-		Query query = session
-				.createQuery(SELECT_MAX_IDCODE_ASSIGNMENT);
-		Integer idCode = (Integer) query.uniqueResult();
-		session.getTransaction().commit();
-		session.close();
-		if(idCode == 0 || idCode == null)
-			return 1;
-		else
-			return idCode + 1;
-		} catch(Throwable e) {
+			Session session = HibernateUtil.getSession();
+			session.beginTransaction();
+			Query query = session.createQuery(SELECT_MAX_IDCODE_ASSIGNMENT);
+			Integer idCode = (Integer) query.uniqueResult();
+			session.getTransaction().commit();
+			session.close();
+			if (idCode == 0 || idCode == null)
+				return 1;
+			else
+				return idCode + 1;
+		} catch (Throwable e) {
 			return 1;
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public static List<Criterion> getCriteria(String language) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_CRITERIA_BY_LANGUAGE);
+		query.setString(0, language);
+		List<Criterion> criteria = (List<Criterion>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return criteria;
 	}
 
-	public static Criterion getCriterion(String string, String string2) {
-		// TODO Auto-generated method stub
-		
+	public static Criterion getCriterion(String tool, String name) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_CRITERION_BY_TOOL_AND_NAME);
+		query.setString(0, tool);
+		query.setString(1, name);
+		Criterion criterion = (Criterion) query.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return criterion;
 	}
 
 }

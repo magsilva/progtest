@@ -18,9 +18,9 @@ public class AssignmentCriterionPK implements Serializable {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns({
-			@JoinColumn(name = "course", referencedColumnName = "course"),
-			@JoinColumn(name = "assignment", referencedColumnName = "idCode") })
+	@JoinColumns({ @JoinColumn(name = "course"),
+			@JoinColumn(name = "assignment") }
+	)
 	public Assignment getAssignment() {
 		return assignment;
 	}
@@ -31,7 +31,7 @@ public class AssignmentCriterionPK implements Serializable {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "criterion", referencedColumnName = "idCode")
+	@JoinColumn(name = "criterion")
 	public Criterion getCriterion() {
 		return criterion;
 	}
