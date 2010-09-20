@@ -96,6 +96,7 @@ public class Constants {
 	public static final String KEY_ERROR_DATEINCONSISTENT = "error_dataInconsistent";
 	public static final String KEY_ERROR_NOTFOUNDTESTCASES = "error_notFoundTestCases";
 	public static final String KEY_ERROR_NOTFOUNDAPPLICATION = "error_notFoundApplication";
+	public static final String KEY_ERROR_ANYSELECTEDCRITERION = "error_anySelectedCriteria";
 	
 	public static final String KEY_ERROR_DECOMPRESSING = "error_Descompressing";
 	public static final String KEY_ERROR_COMPILING = "error_Compiling";

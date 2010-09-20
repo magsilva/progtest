@@ -382,6 +382,9 @@
 
 					<h:messages styleClass="message" />
 
+					<h:outputText value="Any criterion avaible!"
+						rendered="#{empty instructorAddAssignment.criteria}" />
+
 					<h:selectManyCheckbox
 						value="#{instructorAddAssignment.selectedCriteria}"
 						layout="pageDirection"
@@ -423,8 +426,7 @@
 						rendered="#{!empty instructorAddAssignment.assignmentCriteria}">
 						<h:column>
 							<af:spacer height="10" />
-							<h:selectOneMenu
-								value="#{assignmentCriteria.weight}">
+							<h:selectOneMenu value="#{assignmentCriteria.weight}">
 								<f:selectItem itemValue="0" />
 								<f:selectItem itemValue="1" />
 								<f:selectItem itemValue="2" />

@@ -42,7 +42,7 @@ public class AddAssignment {
 	private List<String> selectedCriteria = new ArrayList<String>();
 
 	private List<AssignmentCriterion> assignmentCriteria = new ArrayList<AssignmentCriterion>();
-	
+
 	private UIData assignmentCriteriaTable;
 
 	public int getStep() {
@@ -262,20 +262,29 @@ public class AddAssignment {
 
 	public String goToStep5() {
 
-		Assignment assignment = (Assignment) ContextManager
-				.getSession(Constants.SESSION_ASSIGNMENT);
+		if (hasSelectedCriteria()) {
 
-		for (String selectedCriterion : selectedCriteria) {
-			String[] str = selectedCriterion.split("/");
-			Criterion criterion = Querier.getCriterion(str[0], str[1]);
-			AssignmentCriterion assignmentCriterion = new AssignmentCriterion();
-			assignmentCriterion.setAssignment(assignment);
-			assignmentCriterion.setCriterion(criterion);
-			assignmentCriteria.add(assignmentCriterion);
+			Assignment assignment = (Assignment) ContextManager
+					.getSession(Constants.SESSION_ASSIGNMENT);
+
+			for (String selectedCriterion : selectedCriteria) {
+				String[] str = selectedCriterion.split("/");
+				Criterion criterion = Querier.getCriterion(str[0], str[1]);
+				AssignmentCriterion assignmentCriterion = new AssignmentCriterion();
+				assignmentCriterion.setAssignment(assignment);
+				assignmentCriterion.setCriterion(criterion);
+				assignmentCriteria.add(assignmentCriterion);
+			}
+
+			step = 5;
+
+		} else {
+
+			ContextManager.addMessage(Constants.KEY_ERROR_ANYSELECTEDCRITERION,
+				FacesMessage.SEVERITY_ERROR);
+
 		}
-
-		step = 5;
-
+		
 		return Constants.ACTION_SELECT;
 
 	}
@@ -302,70 +311,77 @@ public class AddAssignment {
 
 	public String conclude() {
 
-		/*if (validate()) {
-
-			Assignment assignment = (Assignment) ContextManager
-					.getSession(Constants.SESSION_ASSIGNMENT);
-
-			for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
-				AssignmentCriterionDAO.insert(assignmentCriterion);
-
-			Oracle oracle = (Oracle) ContextManager
-					.getSession(Constants.SESSION_ORACLE);
-
-			try {
-
-				Runner.executePinstTinst(oracle, assignment);
-
-				AssignmentDAO.insert(assignment);
-
-				refresh();
-
-				return Constants.ACTION_SUCCESS;
-
-			} catch (DecompressException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_DECOMPRESSING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (TestingException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_TESTING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (CompileException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_COMPILING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (CompressException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_COMPRESSING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (FileException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_RUNNING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (NotFoundTestCasesException e) {
-
-				ContextManager.addMessage(
-						Constants.KEY_ERROR_NOTFOUNDTESTCASES,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (NotFoundApplicationException e) {
-
-				ContextManager.addMessage(
-						Constants.KEY_ERROR_NOTFOUNDAPPLICATION,
-						FacesMessage.SEVERITY_ERROR);
-
-			}
-
-		}*/
+		/*
+		 * if (validate()) {
+		 * 
+		 * Assignment assignment = (Assignment) ContextManager
+		 * .getSession(Constants.SESSION_ASSIGNMENT);
+		 * 
+		 * for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
+		 * AssignmentCriterionDAO.insert(assignmentCriterion);
+		 * 
+		 * Oracle oracle = (Oracle) ContextManager
+		 * .getSession(Constants.SESSION_ORACLE);
+		 * 
+		 * try {
+		 * 
+		 * Runner.executePinstTinst(oracle, assignment);
+		 * 
+		 * AssignmentDAO.insert(assignment);
+		 * 
+		 * refresh();
+		 * 
+		 * return Constants.ACTION_SUCCESS;
+		 * 
+		 * } catch (DecompressException e) {
+		 * 
+		 * ContextManager.addMessage(Constants.KEY_ERROR_DECOMPRESSING,
+		 * FacesMessage.SEVERITY_ERROR);
+		 * 
+		 * } catch (TestingException e) {
+		 * 
+		 * ContextManager.addMessage(Constants.KEY_ERROR_TESTING,
+		 * FacesMessage.SEVERITY_ERROR);
+		 * 
+		 * } catch (CompileException e) {
+		 * 
+		 * ContextManager.addMessage(Constants.KEY_ERROR_COMPILING,
+		 * FacesMessage.SEVERITY_ERROR);
+		 * 
+		 * } catch (CompressException e) {
+		 * 
+		 * ContextManager.addMessage(Constants.KEY_ERROR_COMPRESSING,
+		 * FacesMessage.SEVERITY_ERROR);
+		 * 
+		 * } catch (FileException e) {
+		 * 
+		 * ContextManager.addMessage(Constants.KEY_ERROR_RUNNING,
+		 * FacesMessage.SEVERITY_ERROR);
+		 * 
+		 * } catch (NotFoundTestCasesException e) {
+		 * 
+		 * ContextManager.addMessage( Constants.KEY_ERROR_NOTFOUNDTESTCASES,
+		 * FacesMessage.SEVERITY_ERROR);
+		 * 
+		 * } catch (NotFoundApplicationException e) {
+		 * 
+		 * ContextManager.addMessage( Constants.KEY_ERROR_NOTFOUNDAPPLICATION,
+		 * FacesMessage.SEVERITY_ERROR);
+		 * 
+		 * }
+		 * 
+		 * }
+		 */
 
 		return Constants.ACTION_FAILURE;
 
+	}
+
+	private boolean hasSelectedCriteria() {
+		if (selectedCriteria.isEmpty())
+			return false;
+		else
+			return true;
 	}
 
 	private boolean validate() {
