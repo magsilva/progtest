@@ -25,7 +25,7 @@
 					<htm:table>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink action="#{instructorAddAssignment.backToStep1}"
+								<h:commandLink action="#{instructorAddAssignment.goToStep1}"
 									styleClass="link">
 									<h:outputText value="Step 1: Programming Language"
 										styleClass="link"
@@ -69,10 +69,9 @@
 							<htm:td>
 								<h:commandLink action="#{instructorAddAssignment.goToStep4}"
 									styleClass="link">
-									<h:outputText value="Step 4: Testing Criteria"
-										styleClass="link"
+									<h:outputText value="Step 4: Test Criteria" styleClass="link"
 										rendered="#{instructorAddAssignment.step != 4}" />
-									<h:outputText value="Step 4: Testing Criteria"
+									<h:outputText value="Step 4: Test Criteria"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 4}" />
 								</h:commandLink>
@@ -114,12 +113,16 @@
 
 					<h:messages styleClass="message" />
 
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2"
+						rendered="#{!empty instructorAddAssignment.languages}">
 						<h:outputText value="Programming languages*:" />
 						<h:selectOneMenu value="#{instructorAddAssignment.language}">
 							<f:selectItems value="#{instructorAddAssignment.languages}" />
 						</h:selectOneMenu>
 					</h:panelGrid>
+
+					<h:outputText value="Any languages avaible!"
+						rendered="#{empty instructorAddAssignment.languages}" />
 
 					<af:spacer height="20" />
 
@@ -146,19 +149,23 @@
 
 					<h:messages styleClass="message" />
 
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2"
+						rendered="#{!empty instructorAddAssignment.oracles}">
 						<h:outputText value="Implementation*:" />
 						<h:selectOneMenu value="#{instructorAddAssignment.oracle}">
 							<f:selectItems value="#{instructorAddAssignment.oracles}" />
 						</h:selectOneMenu>
 					</h:panelGrid>
 
+					<h:outputText value="Any implementation avaible!"
+						rendered="#{empty instructorAddAssignment.oracles}" />
+
 					<af:spacer height="20" />
 
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.backToStep1}" />
+						action="#{instructorAddAssignment.goToStep1}" />
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep3}" />
 
@@ -360,7 +367,7 @@
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.backToStep2}" />
+						action="#{instructorAddAssignment.goToStep2}" />
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep4}" />
 
@@ -397,7 +404,7 @@
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.backToStep3}" />
+						action="#{instructorAddAssignment.goToStep3}" />
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep5}" />
 
@@ -447,7 +454,7 @@
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.backToStep3}" />
+						action="#{instructorAddAssignment.goToStep3}" />
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep5}" />
 

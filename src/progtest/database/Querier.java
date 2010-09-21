@@ -37,6 +37,8 @@ public class Querier {
 
 	private static final String SELECT_ORACLES = "from Oracle";
 
+	private static final String SELECT_ORACLES_BY_LANGUAGE = "from Oracle oracle where oracle.language = ?";
+
 	private static final String SELECT_EVALUATION = "from Evaluation evaluation where evaluation.student = ? and evaluation.assignment.course = ? and evaluation.assignment = ? order by evaluation.assignment.endDate";
 
 	private static final String SELECT_EVALUATIONS_BY_STUDENT = "from Evaluation evaluation where evaluation.student = ? order by evaluation.assignment.endDate";
@@ -326,6 +328,18 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return criterion;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Oracle> getOracles(String language) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_ORACLES_BY_LANGUAGE);
+		query.setString(0, language);
+		List<Oracle> oracles = (List<Oracle>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return oracles;
 	}
 
 }

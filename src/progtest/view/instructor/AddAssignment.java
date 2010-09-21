@@ -23,11 +23,11 @@ public class AddAssignment {
 
 	private SelectItem[] languages = loadLanguages();
 
-	private String language = languages[0].toString();
+	private String language = null;
 
-	private SelectItem[] oracles = loadOracles();
+	private SelectItem[] oracles = new SelectItem[0];
 
-	private String oracle = oracles[0].toString();
+	private String oracle = null;
 
 	private String title = Constants.EMPTY;
 
@@ -37,7 +37,7 @@ public class AddAssignment {
 
 	private Date endDate = new Date();
 
-	private SelectItem[] criteria = loadCriteria();
+	private SelectItem[] criteria = new SelectItem[0];
 
 	private List<String> selectedCriteria = new ArrayList<String>();
 
@@ -153,14 +153,14 @@ public class AddAssignment {
 	private void refresh() {
 		step = 1;
 		languages = loadLanguages();
-		language = languages[0].toString();
-		oracles = loadOracles();
-		oracle = oracles[0].toString();
+		language = null;
+		oracles = new SelectItem[0];
+		oracle = null;
 		title = Constants.EMPTY;
 		description = Constants.EMPTY;
 		startDate = new Date();
 		endDate = new Date();
-		criteria = loadCriteria();
+		criteria = new SelectItem[0];
 		selectedCriteria = new ArrayList<String>();
 		assignmentCriteria = new ArrayList<AssignmentCriterion>();
 	}
@@ -186,7 +186,7 @@ public class AddAssignment {
 
 	private SelectItem[] loadOracles() {
 
-		List<Oracle> oracles = Querier.getOracles();
+		List<Oracle> oracles = Querier.getOracles(language);
 		SelectItem[] itens = new SelectItem[oracles.size()];
 
 		for (int i = 0; i < oracles.size(); i++)
@@ -215,22 +215,55 @@ public class AddAssignment {
 		return Constants.ACTION_CANCEL;
 	}
 
-	public String goToStep2() {
-		step = 2;
+	public String goToStep1() {
+		languages = loadLanguages();
+		step = 1;
 		return Constants.ACTION_SELECT;
+	}
+
+	public String goToStep2() {
+
+		if (!hasLanguage()) {
+
+			languages = loadLanguages();
+			step = 1;
+
+		} else {
+
+			oracles = loadOracles();
+			step = 2;
+
+		}
+
+		return Constants.ACTION_SELECT;
+
 	}
 
 	public String goToStep3() {
 
-		Oracle oracle = Querier.getOracle(Integer.parseInt(this.oracle
-				.substring(0, this.oracle.indexOf(" "))));
+		if (!hasLanguage()) {
 
-		title = oracle.getTitle();
-		description = oracle.getDescription();
+			languages = loadLanguages();
+			step = 1;
 
-		ContextManager.setSession(Constants.SESSION_ORACLE, oracle);
+		} else if (!hasOracle()) {
 
-		step = 3;
+			oracles = loadOracles();
+			step = 2;
+
+		} else {
+
+			Oracle oracle = Querier.getOracle(Integer.parseInt(this.oracle
+					.substring(0, this.oracle.indexOf(" "))));
+
+			title = oracle.getTitle();
+			description = oracle.getDescription();
+
+			ContextManager.setSession(Constants.SESSION_ORACLE, oracle);
+
+			step = 3;
+
+		}
 
 		return Constants.ACTION_SELECT;
 
@@ -238,7 +271,21 @@ public class AddAssignment {
 
 	public String goToStep4() {
 
-		if (validate()) {
+		if (!hasLanguage()) {
+
+			languages = loadLanguages();
+			step = 1;
+
+		} else if (!hasOracle()) {
+
+			oracles = loadOracles();
+			step = 2;
+
+		} else if(!validate()) {
+			
+			step = 3;
+			
+		} else {
 
 			Course course = (Course) ContextManager
 					.getSession(Constants.SESSION_COURSE);
@@ -252,6 +299,7 @@ public class AddAssignment {
 
 			ContextManager.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
+			criteria = loadCriteria();
 			step = 4;
 
 		}
@@ -261,8 +309,27 @@ public class AddAssignment {
 	}
 
 	public String goToStep5() {
+		
+		if (!hasLanguage()) {
 
-		if (hasSelectedCriteria()) {
+			languages = loadLanguages();
+			step = 1;
+
+		} else if (!hasOracle()) {
+
+			oracles = loadOracles();
+			step = 2;
+
+		} else if(!validate()) {
+			
+			step = 3;
+			
+		} else if(!hasCriteria()) {
+			
+			criteria = loadCriteria();
+			step = 4;
+			
+		} else {
 
 			Assignment assignment = (Assignment) ContextManager
 					.getSession(Constants.SESSION_ASSIGNMENT);
@@ -278,35 +345,10 @@ public class AddAssignment {
 
 			step = 5;
 
-		} else {
-
-			ContextManager.addMessage(Constants.KEY_ERROR_ANYSELECTEDCRITERION,
-				FacesMessage.SEVERITY_ERROR);
-
 		}
-		
+
 		return Constants.ACTION_SELECT;
 
-	}
-
-	public String backToStep1() {
-		step = 1;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String backToStep2() {
-		step = 2;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String backToStep3() {
-		step = 3;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String backToStep4() {
-		step = 4;
-		return Constants.ACTION_SELECT;
 	}
 
 	public String conclude() {
@@ -377,11 +419,32 @@ public class AddAssignment {
 
 	}
 
-	private boolean hasSelectedCriteria() {
-		if (selectedCriteria.isEmpty())
+	private boolean hasLanguage() {
+		if (language == null) {
+
+			ContextManager.addMessage(Constants.KEY_ERROR_ANYLANGUAGESELECTED,
+					FacesMessage.SEVERITY_ERROR);
+
 			return false;
-		else
+
+		} else
+
 			return true;
+
+	}
+
+	private boolean hasOracle() {
+		if (oracle == null) {
+
+			ContextManager.addMessage(Constants.KEY_ERROR_ANYORACLESELECTED,
+					FacesMessage.SEVERITY_ERROR);
+
+			return false;
+
+		} else
+
+			return true;
+
 	}
 
 	private boolean validate() {
@@ -404,6 +467,20 @@ public class AddAssignment {
 		}
 
 		return false;
+
+	}
+
+	private boolean hasCriteria() {
+		if (selectedCriteria.isEmpty()) {
+
+			ContextManager.addMessage(Constants.KEY_ERROR_ANYCRITERIONSELECTED,
+					FacesMessage.SEVERITY_ERROR);
+
+			return false;
+
+		} else
+
+			return true;
 
 	}
 
