@@ -150,90 +150,10 @@ public class AddAssignment {
 		return assignmentCriteriaTable;
 	}
 
-	private void refresh() {
-		step = 1;
-		languages = loadLanguages();
-		language = null;
-		oracles = new SelectItem[0];
-		oracle = null;
-		title = Constants.EMPTY;
-		description = Constants.EMPTY;
-		startDate = new Date();
-		endDate = new Date();
-		criteria = new SelectItem[0];
-		selectedCriteria = new ArrayList<String>();
-		assignmentCriteria = new ArrayList<AssignmentCriterion>();
-	}
-
-	private SelectItem[] loadLanguages() {
-
-		List<Oracle> oracles = Querier.getOracles();
-
-		List<String> languages = new ArrayList<String>();
-
-		for (Oracle oracle : oracles)
-			if (!languages.contains(oracle.getLanguage()))
-				languages.add(oracle.getLanguage());
-
-		SelectItem[] itens = new SelectItem[languages.size()];
-
-		for (int i = 0; i < languages.size(); i++)
-			itens[i] = new SelectItem(languages.get(i));
-
-		return itens;
-
-	}
-
-	private SelectItem[] loadOracles() {
-
-		List<Oracle> oracles = Querier.getOracles(language);
-		SelectItem[] itens = new SelectItem[oracles.size()];
-
-		for (int i = 0; i < oracles.size(); i++)
-			itens[i] = new SelectItem(oracles.get(i).getIdCode() + " - "
-					+ oracles.get(i).getTitle());
-
-		return itens;
-
-	}
-
-	private SelectItem[] loadCriteria() {
-
-		List<Criterion> criteria = Querier.getCriteria(language);
-		SelectItem[] itens = new SelectItem[criteria.size()];
-
-		for (int i = 0; i < criteria.size(); i++)
-			itens[i] = new SelectItem(criteria.get(i).getTool() + "/"
-					+ criteria.get(i).getName());
-
-		return itens;
-
-	}
-
-	public String cancel() {
-		refresh();
-		return Constants.ACTION_CANCEL;
-	}
-
-	public String goToStep1() {
-		languages = loadLanguages();
-		step = 1;
-		return Constants.ACTION_SELECT;
-	}
-
 	public String goToStep2() {
 
-		if (!hasLanguage()) {
-
-			languages = loadLanguages();
-			step = 1;
-
-		} else {
-
-			oracles = loadOracles();
-			step = 2;
-
-		}
+		oracles = loadOracles();
+		step = 2;
 
 		return Constants.ACTION_SELECT;
 
@@ -241,29 +161,15 @@ public class AddAssignment {
 
 	public String goToStep3() {
 
-		if (!hasLanguage()) {
+		Oracle oracle = Querier.getOracle(Integer.parseInt(this.oracle
+				.substring(0, this.oracle.indexOf(" "))));
 
-			languages = loadLanguages();
-			step = 1;
+		title = oracle.getTitle();
+		description = oracle.getDescription();
 
-		} else if (!hasOracle()) {
+		ContextManager.setSession(Constants.SESSION_ORACLE, oracle);
 
-			oracles = loadOracles();
-			step = 2;
-
-		} else {
-
-			Oracle oracle = Querier.getOracle(Integer.parseInt(this.oracle
-					.substring(0, this.oracle.indexOf(" "))));
-
-			title = oracle.getTitle();
-			description = oracle.getDescription();
-
-			ContextManager.setSession(Constants.SESSION_ORACLE, oracle);
-
-			step = 3;
-
-		}
+		step = 3;
 
 		return Constants.ACTION_SELECT;
 
@@ -271,21 +177,7 @@ public class AddAssignment {
 
 	public String goToStep4() {
 
-		if (!hasLanguage()) {
-
-			languages = loadLanguages();
-			step = 1;
-
-		} else if (!hasOracle()) {
-
-			oracles = loadOracles();
-			step = 2;
-
-		} else if(!validate()) {
-			
-			step = 3;
-			
-		} else {
+		if (validate()) {
 
 			Course course = (Course) ContextManager
 					.getSession(Constants.SESSION_COURSE);
@@ -309,30 +201,13 @@ public class AddAssignment {
 	}
 
 	public String goToStep5() {
-		
-		if (!hasLanguage()) {
 
-			languages = loadLanguages();
-			step = 1;
-
-		} else if (!hasOracle()) {
-
-			oracles = loadOracles();
-			step = 2;
-
-		} else if(!validate()) {
-			
-			step = 3;
-			
-		} else if(!hasCriteria()) {
-			
-			criteria = loadCriteria();
-			step = 4;
-			
-		} else {
+		if (hasCriteria()) {
 
 			Assignment assignment = (Assignment) ContextManager
 					.getSession(Constants.SESSION_ASSIGNMENT);
+			
+			assignmentCriteria.clear();
 
 			for (String selectedCriterion : selectedCriteria) {
 				String[] str = selectedCriterion.split("/");
@@ -418,32 +293,89 @@ public class AddAssignment {
 		return Constants.ACTION_FAILURE;
 
 	}
+	
+	public String backToStep1() {
+		step = 1;
+		return Constants.ACTION_SELECT;
+	}
+	
+	public String backToStep2() {
+		step = 2;
+		return Constants.ACTION_SELECT;
+	}
+	
+	public String backToStep3() {
+		step = 3;
+		return Constants.ACTION_SELECT;
+	}
+	
+	public String backToStep4() {
+		step = 4;
+		return Constants.ACTION_SELECT;
+	}
 
-	private boolean hasLanguage() {
-		if (language == null) {
+	private void refresh() {
+		step = 1;
+		languages = loadLanguages();
+		language = null;
+		oracles = new SelectItem[0];
+		oracle = null;
+		title = Constants.EMPTY;
+		description = Constants.EMPTY;
+		startDate = new Date();
+		endDate = new Date();
+		criteria = new SelectItem[0];
+		selectedCriteria = new ArrayList<String>();
+		assignmentCriteria = new ArrayList<AssignmentCriterion>();
+	}
 
-			ContextManager.addMessage(Constants.KEY_ERROR_ANYLANGUAGESELECTED,
-					FacesMessage.SEVERITY_ERROR);
+	public String cancel() {
+		refresh();
+		return Constants.ACTION_CANCEL;
+	}
 
-			return false;
+	private SelectItem[] loadLanguages() {
 
-		} else
+		List<Oracle> oracles = Querier.getOracles();
 
-			return true;
+		List<String> languages = new ArrayList<String>();
+
+		for (Oracle oracle : oracles)
+			if (!languages.contains(oracle.getLanguage()))
+				languages.add(oracle.getLanguage());
+
+		SelectItem[] itens = new SelectItem[languages.size()];
+
+		for (int i = 0; i < languages.size(); i++)
+			itens[i] = new SelectItem(languages.get(i));
+
+		return itens;
 
 	}
 
-	private boolean hasOracle() {
-		if (oracle == null) {
+	private SelectItem[] loadOracles() {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_ANYORACLESELECTED,
-					FacesMessage.SEVERITY_ERROR);
+		List<Oracle> oracles = Querier.getOracles(language);
+		SelectItem[] itens = new SelectItem[oracles.size()];
 
-			return false;
+		for (int i = 0; i < oracles.size(); i++)
+			itens[i] = new SelectItem(oracles.get(i).getIdCode() + " - "
+					+ oracles.get(i).getTitle());
 
-		} else
+		return itens;
 
-			return true;
+	}
+
+	private SelectItem[] loadCriteria() {
+
+		List<Criterion> criteria = Querier.getCriteria(language);
+		SelectItem[] itens = new SelectItem[criteria.size()];
+
+		for (int i = 0; i < criteria.size(); i++)
+			itens[i] = new SelectItem(criteria.get(i).getTool() + "/"
+					+ criteria.get(i).getName());
+
+		return itens;
 
 	}
 

@@ -52,9 +52,9 @@ CREATE TABLE Assignment (
 CREATE TABLE Criterion (
 	idCode INT NOT NULL,
 	name VARCHAR(50),
-	tool VARCHAR(10),
-	language VARCHAR(10),
-	type VARCHAR(10),
+	tool VARCHAR(50),
+	language VARCHAR(50),
+	type VARCHAR(50),
 	CONSTRAINT PK_criterion PRIMARY KEY (idCode)
 );
 
@@ -90,6 +90,22 @@ CREATE SEQUENCE SEQ_ASSIGNMENT START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE SEQ_CRITERION START WITH 1 INCREMENT BY 1;
 
 INSERT INTO User VALUES(1, 'progtest', 'ProgTest', 'progtest@gmail.com', 'progtest', 'instructor');
+
+INSERT INTO Criterion VALUES(1, 'All-Nodes-ei', 'JaBUTiService', 'Java', 'Structural');
+
+INSERT INTO Criterion VALUES(2, 'All-Nodes-ed', 'JaBUTiService', 'Java', 'Structural');
+
+INSERT INTO Criterion VALUES(3, 'All-Edges-ei', 'JaBUTiService', 'Java', 'Structural');
+
+INSERT INTO Criterion VALUES(4, 'All-Edges-ed', 'JaBUTiService', 'Java', 'Structural');
+
+INSERT INTO Criterion VALUES(5, 'All-Uses-ei', 'JaBUTiService', 'Java', 'Structural');
+
+INSERT INTO Criterion VALUES(6, 'All-Uses-ed', 'JaBUTiService', 'Java', 'Structural');
+
+INSERT INTO Criterion VALUES(7, 'All-Pot-Uses-ei', 'JaBUTiService', 'Java', 'Structural');
+
+INSERT INTO Criterion VALUES(8, 'All-Pot-Uses-ed', 'JaBUTiService', 'Java', 'Structural');
 
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 

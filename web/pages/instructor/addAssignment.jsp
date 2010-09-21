@@ -25,70 +25,55 @@
 					<htm:table>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink action="#{instructorAddAssignment.goToStep1}"
-									styleClass="link">
 									<h:outputText value="Step 1: Programming Language"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 1}" />
 									<h:outputText value="Step 1: Programming Language"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 1}" />
-								</h:commandLink>
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink action="#{instructorAddAssignment.goToStep2}"
-									styleClass="link">
 									<h:outputText value="Step 2: Oracle Assignment"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 2}" />
 									<h:outputText value="Step 2: Oracle Assignment"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 2}" />
-								</h:commandLink>
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink action="#{instructorAddAssignment.goToStep3}"
-									styleClass="link">
 									<h:outputText value="Step 3: Assignment Properties"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 3}" />
 									<h:outputText value="Step 3: Assignment Properties"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 3}" />
-								</h:commandLink>
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink action="#{instructorAddAssignment.goToStep4}"
-									styleClass="link">
 									<h:outputText value="Step 4: Test Criteria" styleClass="link"
 										rendered="#{instructorAddAssignment.step != 4}" />
 									<h:outputText value="Step 4: Test Criteria"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 4}" />
-								</h:commandLink>
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink action="#{instructorAddAssignment.goToStep5}"
-									styleClass="link">
 									<h:outputText value="Step 5: Evaluation Weigths"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 5}" />
 									<h:outputText value="Step 5: Evaluation Weigths"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 5}" />
-								</h:commandLink>
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
@@ -165,7 +150,7 @@
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.goToStep1}" />
+						action="#{instructorAddAssignment.backToStep1}" />
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep3}" />
 
@@ -367,7 +352,7 @@
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.goToStep2}" />
+						action="#{instructorAddAssignment.backToStep2}" />
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep4}" />
 
@@ -404,7 +389,7 @@
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.goToStep3}" />
+						action="#{instructorAddAssignment.backToStep3}" />
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep5}" />
 
@@ -432,9 +417,10 @@
 						width="100%"
 						rendered="#{!empty instructorAddAssignment.assignmentCriteria}">
 						<h:column>
-							<af:spacer height="10" />
+							<h:outputText value="#{assignmentCriteria.criterion.tool}/#{assignmentCriteria.criterion.name}: " />
+						</h:column>
+						<h:column>
 							<h:selectOneMenu value="#{assignmentCriteria.weight}">
-								<f:selectItem itemValue="0" />
 								<f:selectItem itemValue="1" />
 								<f:selectItem itemValue="2" />
 								<f:selectItem itemValue="3" />
@@ -454,9 +440,9 @@
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.goToStep3}" />
-					<h:commandButton value="Next"
-						action="#{instructorAddAssignment.goToStep5}" />
+						action="#{instructorAddAssignment.backToStep4}" />
+					<h:commandButton value="Finalize"
+						action="#{instructorAddAssignment.conclude}" />
 
 				</htm:div>
 
