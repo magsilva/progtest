@@ -10,44 +10,33 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Oracle {
+public class Compiler {
 	
 	private int idCode;
 	
-	private String title;
-	
-	private String description;
+	private String name;
 	
 	private Language language;
 
 	@Id
-	@SequenceGenerator(name = "SEQ_ORACLE", sequenceName = "SEQ_ORACLE")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ORACLE")
+	@SequenceGenerator(name = "SEQ_COMPILER", sequenceName = "SEQ_COMPILER")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_COMPILER")
 	public int getIdCode() {
 		return idCode;
 	}
 
-	@SuppressWarnings("unused")
-	private void setIdCode(int idCode) {
+	public void setIdCode(int idCode) {
 		this.idCode = idCode;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "language")
 	public Language getLanguage() {

@@ -95,7 +95,9 @@ public class Assignment {
 
 	@ManyToMany(targetEntity = progtest.common.Criterion.class)
 	@JoinTable(name = "assignment_criterion", joinColumns = {
-			@JoinColumn(name = "course"), @JoinColumn(name = "assignment") }, inverseJoinColumns = @JoinColumn(name = "criterion"))
+			@JoinColumn(name = "course"), @JoinColumn(name = "assignment") }, inverseJoinColumns = {
+			@JoinColumn(name = "tool", referencedColumnName = "tool"),
+			@JoinColumn(name = "criterion", referencedColumnName = "idCode") })
 	public List<Criterion> getCriteria() {
 		return criteria;
 	}

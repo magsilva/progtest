@@ -1,23 +1,21 @@
 package progtest.common;
 
-import javax.persistence.Entity;
+import java.io.Serializable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-@Entity
-@IdClass(CriterionPK.class)
-public class Criterion {
+public class CriterionPK implements Serializable {
 	
+	private static final long serialVersionUID = 4753671316385228333L;
+
 	private Tool tool;
 	
 	private int idCode;
-	
-	private String name;
 	
 	@Id
 	@ManyToOne
@@ -39,14 +37,6 @@ public class Criterion {
 
 	public void setIdCode(int idCode) {
 		this.idCode = idCode;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 }

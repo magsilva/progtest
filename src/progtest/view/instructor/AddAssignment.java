@@ -12,6 +12,7 @@ import progtest.common.Assignment;
 import progtest.common.AssignmentCriterion;
 import progtest.common.Course;
 import progtest.common.Criterion;
+import progtest.common.Language;
 import progtest.common.Oracle;
 import progtest.database.Querier;
 import progtest.util.Constants;
@@ -23,7 +24,7 @@ public class AddAssignment {
 
 	private SelectItem[] languages = loadLanguages();
 
-	private String language = null;
+	private Language language = null;
 
 	private SelectItem[] oracles = new SelectItem[0];
 
@@ -61,11 +62,11 @@ public class AddAssignment {
 		this.languages = languages;
 	}
 
-	public String getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 
@@ -206,7 +207,7 @@ public class AddAssignment {
 
 			Assignment assignment = (Assignment) ContextManager
 					.getSession(Constants.SESSION_ASSIGNMENT);
-			
+
 			assignmentCriteria.clear();
 
 			for (String selectedCriterion : selectedCriteria) {
@@ -293,22 +294,22 @@ public class AddAssignment {
 		return Constants.ACTION_FAILURE;
 
 	}
-	
+
 	public String backToStep1() {
 		step = 1;
 		return Constants.ACTION_SELECT;
 	}
-	
+
 	public String backToStep2() {
 		step = 2;
 		return Constants.ACTION_SELECT;
 	}
-	
+
 	public String backToStep3() {
 		step = 3;
 		return Constants.ACTION_SELECT;
 	}
-	
+
 	public String backToStep4() {
 		step = 4;
 		return Constants.ACTION_SELECT;
@@ -336,18 +337,12 @@ public class AddAssignment {
 
 	private SelectItem[] loadLanguages() {
 
-		List<Oracle> oracles = Querier.getOracles();
-
-		List<String> languages = new ArrayList<String>();
-
-		for (Oracle oracle : oracles)
-			if (!languages.contains(oracle.getLanguage()))
-				languages.add(oracle.getLanguage());
+		List<Language> languages = Querier.getLanguages();
 
 		SelectItem[] itens = new SelectItem[languages.size()];
 
 		for (int i = 0; i < languages.size(); i++)
-			itens[i] = new SelectItem(languages.get(i));
+			itens[i] = new SelectItem(languages);
 
 		return itens;
 
@@ -355,7 +350,7 @@ public class AddAssignment {
 
 	private SelectItem[] loadOracles() {
 
-		List<Oracle> oracles = Querier.getOracles(language);
+		List<Oracle> oracles = Querier.getOracles(language.getName());
 		SelectItem[] itens = new SelectItem[oracles.size()];
 
 		for (int i = 0; i < oracles.size(); i++)
@@ -368,7 +363,7 @@ public class AddAssignment {
 
 	private SelectItem[] loadCriteria() {
 
-		List<Criterion> criteria = Querier.getCriteria(language);
+		List<Criterion> criteria = Querier.getCriteria(language.getName());
 		SelectItem[] itens = new SelectItem[criteria.size()];
 
 		for (int i = 0; i < criteria.size(); i++)

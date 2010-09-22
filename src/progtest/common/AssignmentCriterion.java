@@ -34,7 +34,9 @@ public class AssignmentCriterion {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "criterion")
+	@JoinColumns({
+			@JoinColumn(name = "criterion", referencedColumnName = "idCode"),
+			@JoinColumn(name = "tool", referencedColumnName = "tool") })
 	public Criterion getCriterion() {
 		return criterion;
 	}

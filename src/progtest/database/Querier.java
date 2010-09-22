@@ -9,6 +9,7 @@ import progtest.common.Assignment;
 import progtest.common.Course;
 import progtest.common.Criterion;
 import progtest.common.Evaluation;
+import progtest.common.Language;
 import progtest.common.Oracle;
 import progtest.common.User;
 import progtest.util.HibernateUtil;
@@ -56,6 +57,8 @@ public class Querier {
 	private static final String SELECT_CRITERIA_BY_LANGUAGE = "from Criterion criterion where criterion.language = ?";
 
 	private static final String SELECT_CRITERION_BY_TOOL_AND_NAME = "from Criterion criterion where criterion.tool = ? and criterion.name = ?";
+
+	private static final String SELECT_LANGUAGES = "from Languages";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -340,6 +343,17 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return oracles;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Language> getLanguages() {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_LANGUAGES);
+		List<Language> languages = (List<Language>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return languages;
 	}
 
 }

@@ -8,7 +8,7 @@
     	
         <!-- Database connection settings -->
 		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <property name="connection.url">jdbc:hsqldb:file:/media/Common/Workspace/Developments/Projects/ProgTest/database/progtest</property>
+        <property name="connection.url">jdbc:hsqldb:file:Z:\Workspace\Developments\Projects\ProgTest\database\progtest</property>
         <property name="connection.username">progtest</property>
         <property name="connection.password">progtest</property>
 
@@ -34,8 +34,11 @@
 		<mapping class="progtest.common.Course" />
 		<mapping class="progtest.common.StudentCourse" />
 		<mapping class="progtest.common.Oracle" />
-		<mapping class="progtest.common.Criterion" />
 		<mapping class="progtest.common.Assignment" />
+		<mapping class="progtest.common.Language" />
+		<mapping class="progtest.common.Compiler" />
+		<mapping class="progtest.common.Tool" />
+		<mapping class="progtest.common.Criterion" />
 		<mapping class="progtest.common.AssignmentCriterion" />
 		<mapping class="progtest.common.Evaluation" />
 		
