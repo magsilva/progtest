@@ -54,11 +54,13 @@ public class Querier {
 
 	private static final String SELECT_MAX_IDCODE_ASSIGNMENT = "select max(assignment.idCode) from Assignment assignment";
 
-	private static final String SELECT_CRITERIA_BY_LANGUAGE = "from Criterion criterion where criterion.language = ?";
+	private static final String SELECT_CRITERIA_BY_LANGUAGE = "select tool.criteria from Tool tool where tool.language = ?";
 
-	private static final String SELECT_CRITERION_BY_TOOL_AND_NAME = "from Criterion criterion where criterion.tool = ? and criterion.name = ?";
+	private static final String SELECT_CRITERION_BY_TOOL_AND_ID = "from Criterion criterion where criterion.tool = ? and criterion.idCode = ?";
 
-	private static final String SELECT_LANGUAGES = "from Languages";
+	private static final String SELECT_LANGUAGES = "from Language";
+
+	private static final String SELECT_COMPILERS_BY_LANGUAGE = "from Compiler compiler where compiler.language = ?";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -310,23 +312,23 @@ public class Querier {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Criterion> getCriteria(String language) {
+	public static List<Criterion> getCriteria(Integer language) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session.createQuery(SELECT_CRITERIA_BY_LANGUAGE);
-		query.setString(0, language);
+		query.setInteger(0, language);
 		List<Criterion> criteria = (List<Criterion>) query.list();
 		session.getTransaction().commit();
 		session.close();
 		return criteria;
 	}
 
-	public static Criterion getCriterion(String tool, String name) {
+	public static Criterion getCriterion(int i, int j) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery(SELECT_CRITERION_BY_TOOL_AND_NAME);
-		query.setString(0, tool);
-		query.setString(1, name);
+		Query query = session.createQuery(SELECT_CRITERION_BY_TOOL_AND_ID);
+		query.setInteger(0, i);
+		query.setInteger(1, j);
 		Criterion criterion = (Criterion) query.uniqueResult();
 		session.getTransaction().commit();
 		session.close();
@@ -334,11 +336,11 @@ public class Querier {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Oracle> getOracles(String language) {
+	public static List<Oracle> getOracles(Integer language) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session.createQuery(SELECT_ORACLES_BY_LANGUAGE);
-		query.setString(0, language);
+		query.setInteger(0, language);
 		List<Oracle> oracles = (List<Oracle>) query.list();
 		session.getTransaction().commit();
 		session.close();
@@ -354,6 +356,18 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return languages;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Compiler> getCompilers(Integer language) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_COMPILERS_BY_LANGUAGE);
+		query.setInteger(0, language);
+		List<Compiler> compilers = (List<Compiler>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return compilers;
 	}
 
 }

@@ -8,7 +8,7 @@
     	
         <!-- Database connection settings -->
 		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <property name="connection.url">jdbc:hsqldb:file:Z:\Workspace\Developments\Projects\ProgTest\database\progtest</property>
+        <property name="connection.url">jdbc:hsqldb:file:/media/Common/Workspace/Developments/Projects/ProgTest/database/progtest</property>
         <property name="connection.username">progtest</property>
         <property name="connection.password">progtest</property>
 

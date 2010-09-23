@@ -24,7 +24,7 @@ public class Tool {
 	
 	private Language language;
 	
-	private List<Criterion> criterion = new ArrayList<Criterion>();
+	private List<Criterion> criteria = new ArrayList<Criterion>();
 
 	@Id
 	@SequenceGenerator(name = "SEQ_TOOL", sequenceName = "SEQ_TOOL")
@@ -64,12 +64,12 @@ public class Tool {
 	}
 
 	@OneToMany(mappedBy = "tool")
-	public List<Criterion> getCriterion() {
-		return criterion;
+	public List<Criterion> getCriteria() {
+		return criteria;
 	}
 
-	public void setCriterion(List<Criterion> criterion) {
-		this.criterion = criterion;
+	public void setCriteria(List<Criterion> criteria) {
+		this.criteria = criteria;
 	}
 
 }
