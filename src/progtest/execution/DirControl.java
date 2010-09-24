@@ -3,6 +3,7 @@ package progtest.execution;
 import java.io.File;
 
 import progtest.common.Assignment;
+import progtest.common.Oracle;
 import progtest.common.Tool;
 import progtest.common.User;
 import progtest.util.Constants;
@@ -199,6 +200,11 @@ public class DirControl {
 			Tool tool) {
 		return getToolDirPath(assignment, student, tool) + File.separator
 				+ DIR_RPT;
+	}
+
+	public static String getOracleFilePath(Oracle oracle) {
+		return Constants.PATH_ORACLES + File.separator + oracle.getIdCode()
+				+ Constants.EXTENSION_JAR;
 	}
 
 }

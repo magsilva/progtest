@@ -17,7 +17,7 @@ import java.util.zip.ZipOutputStream;
 
 public class FileUtil {
 
-	public static void copy(File src, File dst) throws IOException {
+	public static File copy(File src, File dst) throws IOException {
 
 		if (!dst.exists())
 			dst.mkdirs();
@@ -45,6 +45,8 @@ public class FileUtil {
 			out.close();
 
 		}
+
+		return new File(dst + File.separator + src.getName());
 
 	}
 
@@ -139,7 +141,7 @@ public class FileUtil {
 				ZipEntry entrada = (ZipEntry) e.nextElement();
 				arquivo = new File(dst, entrada.getName());
 
-				if(arquivo.exists())
+				if (arquivo.exists())
 					continue;
 
 				if (entrada.isDirectory() && !arquivo.exists()) {
