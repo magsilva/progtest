@@ -1,5 +1,6 @@
 package progtest.view.instructor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,12 @@ import progtest.common.Course;
 import progtest.common.Criterion;
 import progtest.common.Language;
 import progtest.common.Oracle;
+import progtest.database.AssignmentCriterionDAO;
+import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
+import progtest.exceptions.NotFoundApplicationException;
+import progtest.exceptions.NotFoundTestCasesException;
+import progtest.execution.Run;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
 
@@ -257,67 +263,35 @@ public class AddAssignment {
 
 	public String conclude() {
 
-		/*
-		 * if (validate()) {
-		 * 
-		 * Assignment assignment = (Assignment) ContextManager
-		 * .getSession(Constants.SESSION_ASSIGNMENT);
-		 * 
-		 * for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
-		 * AssignmentCriterionDAO.insert(assignmentCriterion);
-		 * 
-		 * Oracle oracle = (Oracle) ContextManager
-		 * .getSession(Constants.SESSION_ORACLE);
-		 * 
-		 * try {
-		 * 
-		 * Runner.executePinstTinst(oracle, assignment);
-		 * 
-		 * AssignmentDAO.insert(assignment);
-		 * 
-		 * refresh();
-		 * 
-		 * return Constants.ACTION_SUCCESS;
-		 * 
-		 * } catch (DecompressException e) {
-		 * 
-		 * ContextManager.addMessage(Constants.KEY_ERROR_DECOMPRESSING,
-		 * FacesMessage.SEVERITY_ERROR);
-		 * 
-		 * } catch (TestingException e) {
-		 * 
-		 * ContextManager.addMessage(Constants.KEY_ERROR_TESTING,
-		 * FacesMessage.SEVERITY_ERROR);
-		 * 
-		 * } catch (CompileException e) {
-		 * 
-		 * ContextManager.addMessage(Constants.KEY_ERROR_COMPILING,
-		 * FacesMessage.SEVERITY_ERROR);
-		 * 
-		 * } catch (CompressException e) {
-		 * 
-		 * ContextManager.addMessage(Constants.KEY_ERROR_COMPRESSING,
-		 * FacesMessage.SEVERITY_ERROR);
-		 * 
-		 * } catch (FileException e) {
-		 * 
-		 * ContextManager.addMessage(Constants.KEY_ERROR_RUNNING,
-		 * FacesMessage.SEVERITY_ERROR);
-		 * 
-		 * } catch (NotFoundTestCasesException e) {
-		 * 
-		 * ContextManager.addMessage( Constants.KEY_ERROR_NOTFOUNDTESTCASES,
-		 * FacesMessage.SEVERITY_ERROR);
-		 * 
-		 * } catch (NotFoundApplicationException e) {
-		 * 
-		 * ContextManager.addMessage( Constants.KEY_ERROR_NOTFOUNDAPPLICATION,
-		 * FacesMessage.SEVERITY_ERROR);
-		 * 
-		 * }
-		 * 
-		 * }
-		 */
+		Assignment assignment = (Assignment) ContextManager
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
+		Oracle oracle = (Oracle) ContextManager
+				.getSession(Constants.SESSION_ORACLE);
+
+		try {
+
+			Run.run(assignment, oracle);
+
+			AssignmentDAO.insert(assignment);
+
+			for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
+				AssignmentCriterionDAO.insert(assignmentCriterion);
+
+			refresh();
+
+			return Constants.ACTION_SUCCESS;
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotFoundTestCasesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotFoundApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return Constants.ACTION_FAILURE;
 

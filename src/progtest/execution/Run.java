@@ -2,19 +2,15 @@ package progtest.execution;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
-import progtest.common.Criterion;
 import progtest.common.Evaluation;
 import progtest.common.Oracle;
-import progtest.common.Tool;
+import progtest.common.User;
 import progtest.exceptions.NotFoundApplicationException;
 import progtest.exceptions.NotFoundTestCasesException;
-import progtest.util.Constants;
 import progtest.util.FileUpload;
 import progtest.util.FileUtil;
 import progtest.util.TestCaseUtil;
@@ -25,17 +21,20 @@ public class Run {
 			throws IllegalArgumentException, IOException,
 			NotFoundTestCasesException, NotFoundApplicationException {
 
-		File assignmentDir = new File(DirControl.getAssignmentDirPath(assignment));
-
+		File oracleDir = new File(DirControl.getOracleDirPath(assignment));
 		File packageDir = new File(DirControl.getPackageDirPath(assignment));
-
+		File sourceDir = new File(DirControl.getSourceDirPath(assignment));
 		File programDir = new File(DirControl.getProgramDirPath(assignment));
-
 		File testsDir = new File(DirControl.getTestsDirPath(assignment));
-
-		upload(uf, assignmentDir, packageDir, programDir, testsDir);
+		File reportsDir = new File(DirControl.getReportsDirPath(assignment));
 		
-		execute(assignment);
+		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir, reportsDir);
+		
+		upload(uf, packageDir);
+		
+		extract(packageDir, sourceDir);
+		
+		split(sourceDir, programDir, testsDir);
 
 	}
 
@@ -43,135 +42,105 @@ public class Run {
 			throws IOException, NotFoundTestCasesException, NotFoundApplicationException {
 		
 		File oracleFile = new File(DirControl.getOracleFilePath(oracle));
-
-		File assignmentDir = new File(DirControl.getAssignmentDirPath(assignment));
-
+		File oracleDir = new File(DirControl.getOracleDirPath(assignment));
 		File packageDir = new File(DirControl.getPackageDirPath(assignment));
-
+		File sourceDir = new File(DirControl.getSourceDirPath(assignment));
 		File programDir = new File(DirControl.getProgramDirPath(assignment));
-
 		File testsDir = new File(DirControl.getTestsDirPath(assignment));
+		File reportsDir = new File(DirControl.getReportsDirPath(assignment));
 		
-		FileUtil.clean(assignmentDir);
-
-		upload(oracleFile, assignmentDir, packageDir, programDir, testsDir);
+		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir, reportsDir);
 		
-		execute(assignment);
+		copy(oracleFile, packageDir);
 		
-	}
-
-	public static void run(Evaluation evaluation, UploadedFile uf) {
+		extract(packageDir, sourceDir);
 		
-	}
-
-	private static void upload(UploadedFile uf, File assignmentDir,
-			File packageDir, File programDir, File testsDir)
-			throws IllegalArgumentException, IOException,
-			NotFoundTestCasesException, NotFoundApplicationException {
-
-		File savedFile = FileUpload.save(uf, packageDir);
-		
-		split(savedFile, programDir, testsDir);
-
-	}
-	
-	private static void upload(File oracleFile, File assignmentDir,
-			File packageDir, File programDir, File testsDir)
-			throws IOException, NotFoundTestCasesException, NotFoundApplicationException {
-
-		File copiedFile = FileUtil.copy(oracleFile, packageDir);
-		
-		split(copiedFile, programDir, testsDir);
-		
-	}
-	
-	private static void split(File zipFile, File programDir, File testsDir) throws IOException, NotFoundTestCasesException, NotFoundApplicationException {
-
-		FileUtil.unzip(zipFile, programDir);
-
-		FileUtil.unzip(zipFile, testsDir);
-
-		for (File file : FileUtil.listFiles(programDir))
-			if (TestCaseUtil.isTestCase(file))
-				file.delete();
-
-		for (File file : FileUtil.listFiles(testsDir))
-			if (!file.getName().endsWith(Constants.EXTENSION_JAVA)
-					|| !TestCaseUtil.isTestCase(file))
-				file.delete();
-
-		if (FileUtil.listFiles(testsDir, Constants.EXTENSION_JAVA) == null)
-			throw new NotFoundTestCasesException();
-
-		if (FileUtil.listFiles(programDir, Constants.EXTENSION_JAVA) == null)
-			throw new NotFoundApplicationException();
-		
-	}
-	
-	private static void execute(Assignment assignment) {
-
-		for (Tool tool : listTools(assignment)) {
-			makeDirectories(assignment, tool);
-			preprocess(assignment, tool);
-			compile(assignment);
-			postprocess(assignment, tool);
-			generageReports(assignment, tool);
-		}
+		split(sourceDir, programDir, testsDir);
 		
 	}
 
-	private static List<Tool> listTools(Assignment assignment) {
-
-		List<Tool> tools = new ArrayList<Tool>();
-
-		for (Criterion criterion : assignment.getCriteria())
-			if (!tools.contains(criterion.getTool()))
-				tools.add(criterion.getTool());
-
-		return tools;
-
+	public static void run(Evaluation evaluation, UploadedFile uf)
+			throws IOException {
+		
+		Assignment assignment = evaluation.getAssignment();
+		User student = evaluation.getStudent();
+		
+		File studentDir = new File(DirControl.getStudentDirPath(assignment, student));
+		File packageDir = new File(DirControl.getPackageDirPath(assignment, student));
+		File sourceDir = new File(DirControl.getSourceDirPath(assignment, student));
+		File programDir = new File(DirControl.getProgramDirPath(assignment, student));
+		File testsDir = new File(DirControl.getTestsDirPath(assignment, student));
+		File reportsDir = new File(DirControl.getReportsDirPath(assignment));
+		
+		makeDirectories(studentDir, packageDir, sourceDir, programDir, testsDir, reportsDir);
+		
+		upload(uf, packageDir);
+		
+		extract(packageDir, sourceDir);
+		
+		split(sourceDir, programDir, testsDir);
+		
 	}
 
-	private static void makeDirectories(Assignment assignment, Tool tool) {
-
+	private static void makeDirectories(File rootDir, File packageDir, File sourceDir, File programDir,
+			File testsDir, File reportsDir) {
+		
+		if(rootDir.exists())
+			FileUtil.clean(rootDir);
+		else
+			FileUtil.mkdirs(rootDir);
+		
+		FileUtil.mkdir(packageDir);
+		FileUtil.mkdir(sourceDir);
+		FileUtil.mkdir(programDir);
+		FileUtil.mkdir(testsDir);
+		FileUtil.mkdir(reportsDir);
+		
 	}
 
-	private static void preprocess(Assignment assignment, Tool tool) {
-		// File preprocessFile = DirControl
-		// .getToolPreprocessFile(assignment, tool);
-		// process(assignment, tool, preprocessFile);
+	private static void upload(UploadedFile uf, File packageDir) throws IllegalArgumentException, IOException {
+		FileUpload.save(uf,packageDir);
 	}
 
-	private static void compile(Assignment assignment) {
-
+	private static void copy(File oracleFile, File packageDir) throws IOException {
+		FileUtil.copy(oracleFile, packageDir);
 	}
 
-	private static void postprocess(Assignment assignment, Tool tool) {
-		// File postprocessFile = DirControl.getToolPostprocessFile(assignment,
-		// tool);
-		// process(assignment, tool, postprocessFile);
+	private static void extract(File packageDir, File sourceDir) throws IOException {
+		FileUtil.unzip(packageDir, sourceDir);
 	}
 
-	private static void generageReports(Assignment assignment, Tool tool) {
-
-	}
-
-	private static void process(Assignment assignment, Tool tool,
-			File processFile) throws IOException {
-
-		/*
-		 * FileInputStream fis = new FileInputStream(processFile);
-		 * DataInputStream dis = new DataInputStream(fis); InputStreamReader isr
-		 * = new InputStreamReader(dis); BufferedReader br = new
-		 * BufferedReader(isr);
-		 * 
-		 * while (br.ready()) {
-		 * 
-		 * String args[] = br.readLine().split(" ");
-		 * 
-		 * }
-		 */
-
+	private static void split(File sourceDir, File programDir, File testsDir) throws IOException {
+		
+			File[] localFiles = sourceDir.listFiles();
+			
+			for (File file : localFiles) {
+				
+				if (file.isDirectory()) {
+					
+					File newProgramDir = new File(sourceDir + File.separator + file.getName());
+					File newTestsDir = new File(sourceDir + File.separator + file.getName());
+					
+					if(!newProgramDir.exists())
+						FileUtil.mkdir(newProgramDir);
+					
+					if(!newTestsDir.exists())
+						FileUtil.mkdir(newTestsDir);
+					
+					split(file, newProgramDir, newTestsDir);
+				
+				} else {
+					
+					if (TestCaseUtil.isTestCase(file)) {
+						FileUtil.copy(file, testsDir);
+					} else {
+						FileUtil.copy(file, programDir);
+					}
+					
+				}
+				
+			}
+		
 	}
 
 }

@@ -253,4 +253,12 @@ public class FileUtil {
 		return files;
 	}
 
+	public static boolean mkdir(File rootDir) {
+		return rootDir.mkdir();
+	}
+
+	public static boolean mkdirs(File rootDir) {
+		return rootDir.mkdirs();
+	}
+
 }

@@ -16,6 +16,8 @@ public class DirControl {
 
 	private static final String DIR_PACKAGE = "package";
 
+	private static final String DIR_SOURCE = "source";
+
 	private static final String DIR_PROGRAM = "program";
 
 	private static final String DIR_TESTS = "tests";
@@ -62,6 +64,10 @@ public class DirControl {
 
 	public static String getPackageDirPath(Assignment assignment) {
 		return getOracleDirPath(assignment) + File.separator + DIR_PACKAGE;
+	}
+
+	public static String getSourceDirPath(Assignment assignment) {
+		return getOracleDirPath(assignment) + File.separator + DIR_SOURCE;
 	}
 
 	public static String getProgramDirPath(Assignment assignment) {
@@ -121,6 +127,10 @@ public class DirControl {
 	public static String getPackageDirPath(Assignment assignment, User student) {
 		return getStudentDirPath(assignment, student) + File.separator
 				+ DIR_PACKAGE;
+	}
+
+	public static String getSourceDirPath(Assignment assignment, User student) {
+		return getStudentDirPath(assignment, student) + File.separator + DIR_SOURCE;
 	}
 
 	public static String getProgramDirPath(Assignment assignment, User student) {
