@@ -19,7 +19,7 @@ import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
 import progtest.exceptions.NotFoundApplicationException;
 import progtest.exceptions.NotFoundTestCasesException;
-import progtest.execution.Run;
+import progtest.execution.Runner;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
 
@@ -271,7 +271,7 @@ public class AddAssignment {
 
 		try {
 
-			Run.run(assignment, oracle);
+			Runner.run(assignment, oracle);
 
 			AssignmentDAO.insert(assignment);
 

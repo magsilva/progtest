@@ -8,7 +8,7 @@ import progtest.common.Tool;
 import progtest.common.User;
 import progtest.util.Constants;
 
-public class DirControl {
+public class Directories {
 
 	private static final String DIR_ORACLE = "oracle";
 
@@ -37,6 +37,8 @@ public class DirControl {
 	private static final String DIR_LIB = "lib";
 
 	private static final String DIR_RPT = "rpt";
+
+	private static final String DIR_PITI = "pi-ti";
 
 	private static final String DIR_PSTS = "ps-ts";
 
@@ -81,6 +83,10 @@ public class DirControl {
 
 	public static String getReportsDirPath(Assignment assignment) {
 		return getOracleDirPath(assignment) + File.separator + DIR_REPORTS;
+	}
+
+	public static String getPitiDirPath(Assignment assignment) {
+		return getReportsDirPath(assignment) + File.separator + DIR_PITI;
 	}
 
 	public static String getToolDirPath(Assignment assignment, Tool tool) {

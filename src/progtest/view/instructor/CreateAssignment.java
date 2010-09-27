@@ -17,7 +17,7 @@ import progtest.exceptions.NotFoundApplicationException;
 import progtest.exceptions.NotFoundTestCasesException;
 import progtest.exceptions.TestingException;
 import progtest.exceptions.UploadException;
-import progtest.execution.Runner;
+import progtest.trash.Runner;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
 
