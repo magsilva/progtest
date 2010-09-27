@@ -50,6 +50,22 @@ public class FileUtil {
 
 	}
 
+	public static void copyContent(File src, File dst) throws IOException {
+
+		if (!dst.exists())
+			dst.mkdirs();
+
+		if (src.isDirectory()) {
+
+			String[] children = src.list();
+
+			for (int i = 0; i < children.length; i++)
+				copy(new File(src, children[i]), dst);
+
+		}
+
+	}
+
 	public static void clean(File f) {
 		if (f.isDirectory()) {
 			File[] children = f.listFiles();
@@ -259,6 +275,11 @@ public class FileUtil {
 
 	public static boolean mkdirs(File rootDir) {
 		return rootDir.mkdirs();
+	}
+
+	public static void merge(File src1, File src2, File dst) throws IOException {
+		copyContent(src1, dst);
+		copyContent(src2, dst);
 	}
 
 }

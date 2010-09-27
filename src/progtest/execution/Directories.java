@@ -51,12 +51,12 @@ public class Directories {
 	}
 
 	public static String getCourseDirPath(Assignment assignment) {
-		return getStorageDirPath(assignment) + File.separator
+		return getStorageDirPath(assignment) + File.separator + "course"
 				+ assignment.getCourse().getIdCode();
 	}
 
 	public static String getAssignmentDirPath(Assignment assignment) {
-		return getCourseDirPath(assignment) + File.separator
+		return getCourseDirPath(assignment) + File.separator + "assignment"
 				+ assignment.getIdCode();
 	}
 
@@ -89,44 +89,12 @@ public class Directories {
 		return getReportsDirPath(assignment) + File.separator + DIR_PITI;
 	}
 
-	public static String getToolDirPath(Assignment assignment, Tool tool) {
-		return getOracleDirPath(assignment) + File.separator + tool.getIdCode();
-	}
-
-	public static String getSrcDirPath(Assignment assignment, Tool tool) {
-		return getToolDirPath(assignment, tool) + File.separator + DIR_SRC;
-	}
-
-	public static String getBinDirPath(Assignment assignment, Tool tool) {
-		return getToolDirPath(assignment, tool) + File.separator + DIR_BIN;
-	}
-
-	public static String getProgDirPath(Assignment assignment, Tool tool) {
-		return getToolDirPath(assignment, tool) + File.separator + DIR_PROG;
-	}
-
-	public static String getTestDirPath(Assignment assignment, Tool tool) {
-		return getToolDirPath(assignment, tool) + File.separator + DIR_TEST;
-	}
-
-	public static String getInstDirPath(Assignment assignment, Tool tool) {
-		return getToolDirPath(assignment, tool) + File.separator + DIR_INST;
-	}
-
-	public static String getLibDirPath(Assignment assignment, Tool tool) {
-		return getToolDirPath(assignment, tool) + File.separator + DIR_LIB;
-	}
-
-	public static String getRptDirPath(Assignment assignment, Tool tool) {
-		return getToolDirPath(assignment, tool) + File.separator + DIR_RPT;
-	}
-
 	public static String getStudentsDirPath(Assignment assignment) {
 		return getAssignmentDirPath(assignment) + File.separator + DIR_STUDENTS;
 	}
 
 	public static String getStudentDirPath(Assignment assignment, User student) {
-		return getAssignmentDirPath(assignment) + File.separator
+		return getAssignmentDirPath(assignment) + File.separator + "student"
 				+ student.getIdCode();
 	}
 
@@ -218,8 +186,45 @@ public class Directories {
 				+ DIR_RPT;
 	}
 
+	public static String getToolDirPath(File rootDir, Tool tool) {
+		return rootDir.getPath() + File.separator + "tool" + tool.getIdCode();
+	}
+
+	public static String getSrcDirPath(File rootDir, Tool tool) {
+		return getToolDirPath(rootDir, tool) + File.separator + DIR_SRC;
+	}
+
+	public static String getBinDirPath(File rootDir, Tool tool) {
+		return getToolDirPath(rootDir, tool) + File.separator + DIR_BIN;
+	}
+
+	public static String getProgDirPath(File rootDir, Tool tool) {
+		return getToolDirPath(rootDir, tool) + File.separator + DIR_PROG;
+	}
+
+	public static String getTestDirPath(File rootDir, Tool tool) {
+		return getToolDirPath(rootDir, tool) + File.separator + DIR_TEST;
+	}
+
+	public static String getInstDirPath(File rootDir, Tool tool) {
+		return getToolDirPath(rootDir, tool) + File.separator + DIR_INST;
+	}
+
+	public static String getLibDirPath(File rootDir, Tool tool) {
+		return getToolDirPath(rootDir, tool) + File.separator + DIR_LIB;
+	}
+
+	public static String getRptDirPath(File rootDir, Tool tool) {
+		return getToolDirPath(rootDir, tool) + File.separator + DIR_RPT;
+	}
+
 	public static String getOracleFilePath(Oracle oracle) {
 		return Constants.PATH_ORACLES + File.separator + oracle.getIdCode()
+				+ Constants.EXTENSION_JAR;
+	}
+
+	public static String getToolFilePath(Tool tool) {
+		return Constants.PATH_TOOLS + File.separator + tool.getIdCode()
 				+ Constants.EXTENSION_JAR;
 	}
 
