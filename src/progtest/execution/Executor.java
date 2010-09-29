@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import progtest.common.Compiler;
 import progtest.common.Tool;
 import progtest.util.FileUtil;
 
@@ -25,11 +26,12 @@ public class Executor {
 	private static final String TAG_LIBRARIES = "<libraries>";
 	private static final String TAG_REPORTS = "<reports>";
 
-	public static void execute(Tool tool, File toolDir, File programDir,
+	public static void execute(Tool tool, Compiler compiler, File toolDir, File programDir,
 			File testsDir, File reportsDir) throws IOException,
 			InterruptedException {
 
 		File toolFile = new File(Directories.getToolFilePath(tool));
+		File compilerFile = new File(Directories.getCompilerFilePath(compiler));
 
 		File srcDir = new File(Directories.getSrcDirPath(toolDir, tool));
 		File binDir = new File(Directories.getBinDirPath(toolDir, tool));
@@ -40,7 +42,7 @@ public class Executor {
 		File rptDir = new File(Directories.getRptDirPath(toolDir, tool));
 
 		makeDirectories(toolDir, srcDir, binDir, progDir, testDir, instDir,
-				libDir, rptDir, toolFile, programDir, testsDir);
+				libDir, rptDir, toolFile, compilerFile, programDir, testsDir);
 
 		preprocess(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
 				rptDir);
@@ -57,7 +59,7 @@ public class Executor {
 
 	private static void makeDirectories(File toolDir, File srcDir, File binDir,
 			File progDir, File testDir, File instDir, File libDir, File rptDir,
-			File toolFile, File programDir, File testsDir) throws IOException {
+			File toolFile, File compilerFile, File programDir, File testsDir) throws IOException {
 
 		if (toolDir.exists())
 			FileUtil.clean(toolDir);
@@ -96,6 +98,8 @@ public class Executor {
 			FileUtil.clean(rptDir);
 		else
 			rptDir.mkdirs();
+
+		FileUtil.unzip(compilerFile, toolDir);
 
 		FileUtil.unzip(toolFile, toolDir);
 

@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
+import progtest.common.Compiler;
 import progtest.common.Criterion;
 import progtest.common.Evaluation;
 import progtest.common.Oracle;
@@ -23,7 +24,8 @@ public class Runner {
 
 	public static void run(Assignment assignment, UploadedFile uf)
 			throws IllegalArgumentException, IOException,
-			NotFoundTestCasesException, NotFoundApplicationException, InterruptedException {
+			NotFoundTestCasesException, NotFoundApplicationException,
+			InterruptedException {
 
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
 		File packageDir = new File(Directories.getPackageDirPath(assignment));
@@ -43,8 +45,8 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(assignment.getCriteria(), oracleDir, programDir, testsDir,
-				pitiDir);
+		execute(assignment.getCriteria(), assignment.getCompiler(), oracleDir,
+				programDir, testsDir, pitiDir);
 
 	}
 
@@ -71,8 +73,8 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(assignment.getCriteria(), oracleDir, programDir, testsDir,
-				pitiDir);
+		execute(assignment.getCriteria(), assignment.getCompiler(), oracleDir,
+				programDir, testsDir, pitiDir);
 
 	}
 
@@ -112,14 +114,14 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(assignment.getCriteria(), studentDir, programDir, testsDir,
-				pstsDir);
+		execute(assignment.getCriteria(), assignment.getCompiler(), studentDir,
+				programDir, testsDir, pstsDir);
 
-		execute(assignment.getCriteria(), studentDir, oracleProgramDir,
-				testsDir, pitsDir);
+		execute(assignment.getCriteria(), assignment.getCompiler(), studentDir,
+				oracleProgramDir, testsDir, pitsDir);
 
-		execute(assignment.getCriteria(), studentDir, programDir,
-				oracleTestsDir, pstiDir);
+		execute(assignment.getCriteria(), assignment.getCompiler(), studentDir,
+				programDir, oracleTestsDir, pstiDir);
 
 		evaluate(evaluation, pitiDir, pstsDir, pitsDir, pstiDir, reportsDir);
 
@@ -207,8 +209,9 @@ public class Runner {
 
 	}
 
-	private static void execute(List<Criterion> criteria, File rootDir,
-			File programDir, File testsDir, File reportsDir) throws IOException, InterruptedException {
+	private static void execute(List<Criterion> criteria, Compiler compiler,
+			File rootDir, File programDir, File testsDir, File reportsDir)
+			throws IOException, InterruptedException {
 
 		List<Tool> tools = new ArrayList<Tool>();
 
@@ -223,7 +226,7 @@ public class Runner {
 
 		for (Tool tool : tools) {
 			File toolDir = new File(Directories.getToolDirPath(rootDir, tool));
-			Executor.execute(tool, toolDir, programDir, testsDir, reportsDir);
+			Executor.execute(tool, compiler, toolDir, programDir, testsDir, reportsDir);
 		}
 
 	}

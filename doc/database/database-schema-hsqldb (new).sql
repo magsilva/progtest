@@ -64,6 +64,15 @@ CREATE TABLE Compiler (
 	CONSTRAINT FK_compiler_language FOREIGN KEY (language) REFERENCES Language (idCode)
 );
 
+CREATE TABLE assignment_compiler (
+	course INT NOT NULL,
+	assignment INT NOT NULL,
+	compiler INT NOT NULL,
+	CONSTRAINT PK_assignment_compiler PRIMARY KEY (course, assignment, compiler),
+	CONSTRAINT FK_assignment_compiler_assignment FOREIGN KEY (course, assignment) REFERENCES Assignment (course, idCode),
+	CONSTRAINT FK_assignment_compiler_compiler FOREIGN KEY (compiler) REFERENCES Compiler (idCode)
+);
+
 CREATE TABLE Tool (
 	idCode INT NOT NULL,
 	name VARCHAR(50),

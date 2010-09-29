@@ -30,6 +30,9 @@ public class Constants {
 	public static final String PATH_TOOLS = PATH_ROOT + File.separator
 			+ "tools";
 
+	public static final String PATH_COMPILER = PATH_ROOT + File.separator
+			+ "compilers";
+
 	/* Directories */
 
 	public static final String DIR_PACKAGE = "package";

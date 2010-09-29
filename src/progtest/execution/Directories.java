@@ -3,6 +3,7 @@ package progtest.execution;
 import java.io.File;
 
 import progtest.common.Assignment;
+import progtest.common.Compiler;
 import progtest.common.Oracle;
 import progtest.common.Tool;
 import progtest.common.User;
@@ -104,7 +105,8 @@ public class Directories {
 	}
 
 	public static String getSourceDirPath(Assignment assignment, User student) {
-		return getStudentDirPath(assignment, student) + File.separator + DIR_SOURCE;
+		return getStudentDirPath(assignment, student) + File.separator
+				+ DIR_SOURCE;
 	}
 
 	public static String getProgramDirPath(Assignment assignment, User student) {
@@ -225,6 +227,11 @@ public class Directories {
 
 	public static String getToolFilePath(Tool tool) {
 		return Constants.PATH_TOOLS + File.separator + tool.getIdCode()
+				+ Constants.EXTENSION_JAR;
+	}
+
+	public static String getCompilerFilePath(Compiler compiler) {
+		return Constants.PATH_COMPILER + File.separator + compiler.getIdCode()
 				+ Constants.EXTENSION_JAR;
 	}
 

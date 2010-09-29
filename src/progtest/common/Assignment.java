@@ -34,6 +34,8 @@ public class Assignment {
 
 	private Date endDate;
 
+	private Compiler compiler;
+
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
 	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
@@ -91,6 +93,18 @@ public class Assignment {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public void setCompiler(Compiler compiler) {
+		this.compiler = compiler;
+	}
+	
+	@ManyToMany(targetEntity = progtest.common.Compiler.class)
+	@JoinTable(name = "assignment_compiler", joinColumns = {
+			@JoinColumn(name = "course"), @JoinColumn(name = "assignment") }, inverseJoinColumns = {
+			@JoinColumn(name = "compiler", referencedColumnName = "idCode") })
+	public Compiler getCompiler() {
+		return compiler;
 	}
 
 	@ManyToMany(targetEntity = progtest.common.Criterion.class)

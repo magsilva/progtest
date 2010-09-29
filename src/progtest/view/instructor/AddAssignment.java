@@ -9,11 +9,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 
 import progtest.common.Assignment;
+import progtest.common.AssignmentCompiler;
 import progtest.common.AssignmentCriterion;
 import progtest.common.Course;
+import progtest.common.Compiler;
 import progtest.common.Criterion;
 import progtest.common.Language;
 import progtest.common.Oracle;
+import progtest.database.AssignmentCompilerDAO;
 import progtest.database.AssignmentCriterionDAO;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
@@ -274,6 +277,11 @@ public class AddAssignment {
 			Runner.run(assignment, oracle);
 
 			AssignmentDAO.insert(assignment);
+			
+			AssignmentCompiler assignmentCompiler = new AssignmentCompiler();
+			assignmentCompiler.setCompiler(Querier.getCompiler(compiler));
+			assignmentCompiler.setAssignment(assignment);
+			AssignmentCompilerDAO.insert(assignmentCompiler);
 
 			for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
 				AssignmentCriterionDAO.insert(assignmentCriterion);
@@ -289,6 +297,9 @@ public class AddAssignment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NotFoundApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

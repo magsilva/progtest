@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import progtest.common.Assignment;
 import progtest.common.Course;
+import progtest.common.Compiler;
 import progtest.common.Criterion;
 import progtest.common.Evaluation;
 import progtest.common.Language;
@@ -61,6 +62,8 @@ public class Querier {
 	private static final String SELECT_LANGUAGES = "from Language";
 
 	private static final String SELECT_COMPILERS_BY_LANGUAGE = "from Compiler compiler where compiler.language = ?";
+
+	private static final String SELECT_COMPILER = "from Compiler compiler where compiler.idCode = ?";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -368,6 +371,17 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return compilers;
+	}
+
+	public static Compiler getCompiler(int idCode) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_COMPILER);
+		query.setInteger(0, idCode);
+		Compiler compiler = (Compiler) query.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return compiler;
 	}
 
 }
