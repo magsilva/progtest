@@ -1,12 +1,9 @@
 package progtest.common;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -18,7 +15,7 @@ public class Oracle {
 	
 	private String description;
 	
-	private Language language;
+	private String language;
 
 	@Id
 	@SequenceGenerator(name = "SEQ_ORACLE", sequenceName = "SEQ_ORACLE")
@@ -47,14 +44,12 @@ public class Oracle {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "language")
-	public Language getLanguage() {
+	
+	public String getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(Language language) {
+	public void setLanguage(String language) {
 		this.language = language;
 	}
 

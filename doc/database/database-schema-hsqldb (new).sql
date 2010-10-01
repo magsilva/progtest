@@ -41,45 +41,20 @@ CREATE TABLE Assignment (
 	CONSTRAINT FK_assignment_course FOREIGN KEY (course) REFERENCES Course (idCode) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE Language (
-	idCode INT NOT NULL,
-	name VARCHAR(50),
-	CONSTRAINT PK_language PRIMARY KEY (idCode)
-);
-
 CREATE TABLE Oracle (
 	idCode INT NOT NULL,
 	title VARCHAR(50),
 	description VARCHAR(500),
-	language INT,
-	CONSTRAINT PK_oracle PRIMARY KEY (idCode),
-	CONSTRAINT FK_oracle_language FOREIGN KEY (language) REFERENCES Language (idCode)
-);
-
-CREATE TABLE Compiler (
-	idCode INT NOT NULL,
-	name VARCHAR(50),
-	language INT,
-	CONSTRAINT PK_compiler PRIMARY KEY (idCode),
-	CONSTRAINT FK_compiler_language FOREIGN KEY (language) REFERENCES Language (idCode)
-);
-
-CREATE TABLE assignment_compiler (
-	course INT NOT NULL,
-	assignment INT NOT NULL,
-	compiler INT NOT NULL,
-	CONSTRAINT PK_assignment_compiler PRIMARY KEY (course, assignment, compiler),
-	CONSTRAINT FK_assignment_compiler_assignment FOREIGN KEY (course, assignment) REFERENCES Assignment (course, idCode),
-	CONSTRAINT FK_assignment_compiler_compiler FOREIGN KEY (compiler) REFERENCES Compiler (idCode)
+	language VARCHAR(50),
+	CONSTRAINT PK_oracle PRIMARY KEY (idCode)
 );
 
 CREATE TABLE Tool (
 	idCode INT NOT NULL,
 	name VARCHAR(50),
 	type VARCHAR(50),
-	language INT,
-	CONSTRAINT PK_tool PRIMARY KEY (idCode),
-	CONSTRAINT FK_tool_language FOREIGN KEY (language) REFERENCES Language (idCode)
+	language VARCHAR(50),
+	CONSTRAINT PK_tool PRIMARY KEY (idCode)
 );
 
 CREATE TABLE Criterion (
@@ -120,21 +95,13 @@ CREATE SEQUENCE SEQ_ORACLE START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE SEQ_ASSIGNMENT START WITH 1 INCREMENT BY 1;
 
-CREATE SEQUENCE SEQ_LANGUAGE START WITH 1 INCREMENT BY 1;
-
-CREATE SEQUENCE SEQ_COMPILER START WITH 1 INCREMENT BY 1;
-
 CREATE SEQUENCE SEQ_TOOL START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE SEQ_CRITERION START WITH 1 INCREMENT BY 1;
 
 INSERT INTO User VALUES(1, 'progtest', 'ProgTest', 'progtest@gmail.com', 'progtest', 'instructor');
 
-INSERT INTO Language VALUES(1, 'Java');
-
-INSERT INTO Compiler VALUES(1, 'Javac', 1);
-
-INSERT INTO Tool VALUES(1, 'JaBUTiService', 'Structural', 1);
+INSERT INTO Tool VALUES(1, 'JaBUTiService', 'Structural', 'Java');
 
 INSERT INTO Criterion VALUES(1, 1, 'All-Nodes-ei');
 
@@ -152,42 +119,42 @@ INSERT INTO Criterion VALUES(1, 7, 'All-Pot-Uses-ei');
 
 INSERT INTO Criterion VALUES(1, 8, 'All-Pot-Uses-ed');
 
-INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 1);
+INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
-INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 1);
+INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 'Java');
 
-INSERT INTO Oracle VALUES(3, 'Fibonacci', 'Computes the Fibonacci sequence.', 1);
+INSERT INTO Oracle VALUES(3, 'Fibonacci', 'Computes the Fibonacci sequence.', 'Java');
 
-INSERT INTO Oracle VALUES(4, 'String Marriage', 'Searches the occurrence of one string in another string.', 1);
+INSERT INTO Oracle VALUES(4, 'String Marriage', 'Searches the occurrence of one string in another string.', 'Java');
 
-INSERT INTO Oracle VALUES(5, 'Sort', 'Sorts a sequence of numbers.', 1);
+INSERT INTO Oracle VALUES(5, 'Sort', 'Sorts a sequence of numbers.', 'Java');
 
-INSERT INTO Oracle VALUES(6, 'Bubble Sort', 'Implementation of the bubble sort algorithm.', 1);
+INSERT INTO Oracle VALUES(6, 'Bubble Sort', 'Implementation of the bubble sort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(7, 'Heapsort', 'Implementation of the heapsort algorithm.', 1);
+INSERT INTO Oracle VALUES(7, 'Heapsort', 'Implementation of the heapsort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(8, 'Insertion Sort', 'Implementation of the insertion sort algorithm.', 1);
+INSERT INTO Oracle VALUES(8, 'Insertion Sort', 'Implementation of the insertion sort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(9, 'Selection Sort', 'Implementation of the selection sort algorithm.', 1);
+INSERT INTO Oracle VALUES(9, 'Selection Sort', 'Implementation of the selection sort algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(10, 'List', 'Implementation of a list.', 1);
+INSERT INTO Oracle VALUES(10, 'List', 'Implementation of a list.', 'Java');
 
-INSERT INTO Oracle VALUES(11, 'Stack', 'Implementation of a stack.', 1);
+INSERT INTO Oracle VALUES(11, 'Stack', 'Implementation of a stack.', 'Java');
 
-INSERT INTO Oracle VALUES(12, 'Queue', 'Implementation of a queue.', 1);
+INSERT INTO Oracle VALUES(12, 'Queue', 'Implementation of a queue.', 'Java');
 
-INSERT INTO Oracle VALUES(13, 'Binary Tree', 'Implementation of a binary tree.', 1);
+INSERT INTO Oracle VALUES(13, 'Binary Tree', 'Implementation of a binary tree.', 'Java');
 
-INSERT INTO Oracle VALUES(14, 'Graph', 'Implementation of a graph.', 1);
+INSERT INTO Oracle VALUES(14, 'Graph', 'Implementation of a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(15, 'Depth-first Search', 'Implementation of the depth-first search in a graph.', 1);
+INSERT INTO Oracle VALUES(15, 'Depth-first Search', 'Implementation of the depth-first search in a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(16, 'Breadth-first Search', 'Implementation of the breadth-first search in a graph.', 1);
+INSERT INTO Oracle VALUES(16, 'Breadth-first Search', 'Implementation of the breadth-first search in a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(17, 'Strongly Connected Components', 'Gets the number of strongly connected components of a graph.', 1);
+INSERT INTO Oracle VALUES(17, 'Strongly Connected Components', 'Gets the number of strongly connected components of a graph.', 'Java');
 
-INSERT INTO Oracle VALUES(18, 'Prim Algorithm', 'Implementation of the Prim algorithm.', 1);
+INSERT INTO Oracle VALUES(18, 'Prim Algorithm', 'Implementation of the Prim algorithm.', 'Java');
 
-INSERT INTO Oracle VALUES(19, 'Hash Table', 'Implementation of a hash table.', 1);
+INSERT INTO Oracle VALUES(19, 'Hash Table', 'Implementation of a hash table.', 'Java');
 
-INSERT INTO Oracle VALUES(20, 'Matrix Multiplication', 'Gets the result of multiplying two matrices.', 1);
+INSERT INTO Oracle VALUES(20, 'Matrix Multiplication', 'Gets the result of multiplying two matrices.', 'Java');

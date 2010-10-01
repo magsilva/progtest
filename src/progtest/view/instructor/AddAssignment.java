@@ -9,14 +9,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 
 import progtest.common.Assignment;
-import progtest.common.AssignmentCompiler;
 import progtest.common.AssignmentCriterion;
 import progtest.common.Course;
-import progtest.common.Compiler;
 import progtest.common.Criterion;
-import progtest.common.Language;
 import progtest.common.Oracle;
-import progtest.database.AssignmentCompilerDAO;
+import progtest.common.Tool;
 import progtest.database.AssignmentCriterionDAO;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
@@ -30,13 +27,9 @@ public class AddAssignment {
 
 	private int step = 1;
 
-	private List<Language> languages = Querier.getLanguages();
+	private List<String> languages = loadLanguages();
 
-	private Integer language = null;
-
-	private List<Compiler> compilers = new ArrayList<Compiler>();
-
-	private Integer compiler = null;
+	private String language = null;
 
 	private List<Oracle> oracles = new ArrayList<Oracle>();
 
@@ -66,36 +59,20 @@ public class AddAssignment {
 		this.step = step;
 	}
 
-	public List<Language> getLanguages() {
-		return languages;
-	}
-
-	public void setLanguages(List<Language> languages) {
+	public void setLanguages(List<String> languages) {
 		this.languages = languages;
 	}
 
-	public Integer getLanguage() {
-		return language;
+	public List<String> getLanguages() {
+		return languages;
 	}
 
-	public void setLanguage(Integer language) {
+	public void setLanguage(String language) {
 		this.language = language;
 	}
 
-	public List<Compiler> getCompilers() {
-		return compilers;
-	}
-
-	public void setCompilers(List<Compiler> compilers) {
-		this.compilers = compilers;
-	}
-
-	public Integer getCompiler() {
-		return compiler;
-	}
-
-	public void setCompiler(Integer compiler) {
-		this.compiler = compiler;
+	public String getLanguage() {
+		return language;
 	}
 
 	public List<Oracle> getOracles() {
@@ -181,7 +158,7 @@ public class AddAssignment {
 
 	public String goToStep2() {
 
-		compilers = Querier.getCompilers(language);
+		oracles = Querier.getOracles(language);
 		step = 2;
 
 		return Constants.ACTION_SELECT;
@@ -190,15 +167,6 @@ public class AddAssignment {
 
 	public String goToStep3() {
 
-		oracles = Querier.getOracles(language);
-		step = 3;
-
-		return Constants.ACTION_SELECT;
-
-	}
-
-	public String goToStep4() {
-
 		Oracle oracle = Querier.getOracle(this.oracle);
 
 		title = oracle.getTitle();
@@ -206,13 +174,13 @@ public class AddAssignment {
 
 		ContextManager.setSession(Constants.SESSION_ORACLE, oracle);
 
-		step = 4;
+		step = 3;
 
 		return Constants.ACTION_SELECT;
 
 	}
 
-	public String goToStep5() {
+	public String goToStep4() {
 
 		if (validate()) {
 
@@ -229,7 +197,7 @@ public class AddAssignment {
 			ContextManager.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			criteria = Querier.getCriteria(language);
-			step = 5;
+			step = 4;
 
 		}
 
@@ -237,7 +205,7 @@ public class AddAssignment {
 
 	}
 
-	public String goToStep6() {
+	public String goToStep5() {
 
 		assignmentCriteria.clear();
 
@@ -256,7 +224,7 @@ public class AddAssignment {
 				assignmentCriteria.add(assignmentCriterion);
 			}
 
-			step = 6;
+			step = 5;
 
 		}
 
@@ -277,11 +245,6 @@ public class AddAssignment {
 			Runner.run(assignment, oracle);
 
 			AssignmentDAO.insert(assignment);
-			
-			AssignmentCompiler assignmentCompiler = new AssignmentCompiler();
-			assignmentCompiler.setCompiler(Querier.getCompiler(compiler));
-			assignmentCompiler.setAssignment(assignment);
-			AssignmentCompilerDAO.insert(assignmentCompiler);
 
 			for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
 				AssignmentCriterionDAO.insert(assignmentCriterion);
@@ -328,17 +291,15 @@ public class AddAssignment {
 		return Constants.ACTION_SELECT;
 	}
 
-	public String backToStep5() {
-		step = 5;
-		return Constants.ACTION_SELECT;
+	public String cancel() {
+		refresh();
+		return Constants.ACTION_CANCEL;
 	}
 
 	private void refresh() {
 		step = 1;
-		languages = Querier.getLanguages();
+		setLanguages(loadLanguages());
 		language = null;
-		compilers = new ArrayList<Compiler>();
-		compiler = null;
 		oracles = new ArrayList<Oracle>();
 		oracle = null;
 		title = Constants.EMPTY;
@@ -350,9 +311,16 @@ public class AddAssignment {
 		assignmentCriteria = new ArrayList<AssignmentCriterion>();
 	}
 
-	public String cancel() {
-		refresh();
-		return Constants.ACTION_CANCEL;
+	private List<String> loadLanguages() {
+		
+		List<String> languages = new ArrayList<String>();
+		
+		for(Tool tool: Querier.getTools())
+			if(!languages.contains(tool.getLanguage()))
+				languages.add(tool.getLanguage());
+		
+		return languages;
+	
 	}
 
 	private boolean validate() {

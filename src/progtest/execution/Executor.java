@@ -7,15 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import progtest.common.Compiler;
 import progtest.common.Tool;
 import progtest.util.FileUtil;
 
 public class Executor {
-
-	private static final String FILE_PREPROCESS = "preprocess";
-	private static final String FILE_COMPILE = "compile";
-	private static final String FILE_POSTPROCESS = "postprocess";
+	
+	private static final String FILE_PROCESS = "process";
 
 	private static final String TAG_ROOT = "<root>";
 	private static final String TAG_SOURCE = "<source>";
@@ -26,12 +23,11 @@ public class Executor {
 	private static final String TAG_LIBRARIES = "<libraries>";
 	private static final String TAG_REPORTS = "<reports>";
 
-	public static void execute(Tool tool, Compiler compiler, File toolDir, File programDir,
+	public static void execute(Tool tool, File toolDir, File programDir,
 			File testsDir, File reportsDir) throws IOException,
 			InterruptedException {
 
 		File toolFile = new File(Directories.getToolFilePath(tool));
-		File compilerFile = new File(Directories.getCompilerFilePath(compiler));
 
 		File srcDir = new File(Directories.getSrcDirPath(toolDir, tool));
 		File binDir = new File(Directories.getBinDirPath(toolDir, tool));
@@ -42,24 +38,18 @@ public class Executor {
 		File rptDir = new File(Directories.getRptDirPath(toolDir, tool));
 
 		makeDirectories(toolDir, srcDir, binDir, progDir, testDir, instDir,
-				libDir, rptDir, toolFile, compilerFile, programDir, testsDir);
+				libDir, rptDir, toolFile, programDir, testsDir);
 
-		preprocess(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
+		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
 				rptDir);
 
-		compile(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
-				rptDir);
-
-		postprocess(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
-				rptDir);
-
-		removeDirectories(toolDir);
+		removeDirectories(toolDir, rptDir, reportsDir);
 
 	}
 
 	private static void makeDirectories(File toolDir, File srcDir, File binDir,
 			File progDir, File testDir, File instDir, File libDir, File rptDir,
-			File toolFile, File compilerFile, File programDir, File testsDir) throws IOException {
+			File toolFile, File programDir, File testsDir) throws IOException {
 
 		if (toolDir.exists())
 			FileUtil.clean(toolDir);
@@ -99,44 +89,18 @@ public class Executor {
 		else
 			rptDir.mkdirs();
 
-		FileUtil.unzip(compilerFile, toolDir);
-
 		FileUtil.unzip(toolFile, toolDir);
 
 		FileUtil.merge(programDir, testsDir, srcDir);
 
 	}
 
-	private static void preprocess(File toolDir, File srcDir, File binDir,
-			File progDir, File testDir, File instDir, File libDir, File rptDir)
-			throws IOException, InterruptedException {
-		File script = new File(toolDir.getPath() + File.separator
-				+ FILE_PREPROCESS);
-		process(script, toolDir, srcDir, binDir, progDir, testDir, instDir,
-				libDir, rptDir);
-	}
-
-	private static void compile(File toolDir, File srcDir, File binDir,
-			File progDir, File testDir, File instDir, File libDir, File rptDir)
-			throws IOException, InterruptedException {
-		File script = new File(toolDir.getPath() + File.separator
-				+ FILE_COMPILE);
-		process(script, toolDir, srcDir, binDir, progDir, testDir, instDir,
-				libDir, rptDir);
-	}
-
-	private static void postprocess(File toolDir, File srcDir, File binDir,
-			File progDir, File testDir, File instDir, File libDir, File rptDir)
-			throws IOException, InterruptedException {
-		File script = new File(toolDir.getPath() + File.separator
-				+ FILE_POSTPROCESS);
-		process(script, toolDir, srcDir, binDir, progDir, testDir, instDir,
-				libDir, rptDir);
-	}
-
-	private static void process(File script, File toolDir, File srcDir,
+	private static void process(File toolDir, File srcDir,
 			File binDir, File progDir, File testDir, File instDir, File libDir,
 			File rptDir) throws IOException, InterruptedException {
+		
+		File script = new File(toolDir.getPath() + File.separator
+				+ FILE_PROCESS);
 
 		BufferedReader input = new BufferedReader(new FileReader(script));
 
@@ -187,7 +151,9 @@ public class Executor {
 
 	}
 
-	private static void removeDirectories(File toolDir) {
+	private static void removeDirectories(File toolDir, File rptDir,
+			File reportsDir) throws IOException {
+		FileUtil.copyContent(rptDir, reportsDir);
 		toolDir.delete();
 	}
 

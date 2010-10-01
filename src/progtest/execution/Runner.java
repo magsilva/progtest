@@ -8,7 +8,6 @@ import java.util.List;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
-import progtest.common.Compiler;
 import progtest.common.Criterion;
 import progtest.common.Evaluation;
 import progtest.common.Oracle;
@@ -45,7 +44,7 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(assignment.getCriteria(), assignment.getCompiler(), oracleDir,
+		execute(assignment.getCriteria(), oracleDir,
 				programDir, testsDir, pitiDir);
 
 	}
@@ -73,7 +72,7 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(assignment.getCriteria(), assignment.getCompiler(), oracleDir,
+		execute(assignment.getCriteria(), oracleDir,
 				programDir, testsDir, pitiDir);
 
 	}
@@ -114,13 +113,13 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(assignment.getCriteria(), assignment.getCompiler(), studentDir,
+		execute(assignment.getCriteria(), studentDir,
 				programDir, testsDir, pstsDir);
 
-		execute(assignment.getCriteria(), assignment.getCompiler(), studentDir,
+		execute(assignment.getCriteria(), studentDir,
 				oracleProgramDir, testsDir, pitsDir);
 
-		execute(assignment.getCriteria(), assignment.getCompiler(), studentDir,
+		execute(assignment.getCriteria(), studentDir,
 				programDir, oracleTestsDir, pstiDir);
 
 		evaluate(evaluation, pitiDir, pstsDir, pitsDir, pstiDir, reportsDir);
@@ -209,7 +208,7 @@ public class Runner {
 
 	}
 
-	private static void execute(List<Criterion> criteria, Compiler compiler,
+	private static void execute(List<Criterion> criteria,
 			File rootDir, File programDir, File testsDir, File reportsDir)
 			throws IOException, InterruptedException {
 
@@ -226,7 +225,7 @@ public class Runner {
 
 		for (Tool tool : tools) {
 			File toolDir = new File(Directories.getToolDirPath(rootDir, tool));
-			Executor.execute(tool, compiler, toolDir, programDir, testsDir, reportsDir);
+			Executor.execute(tool, toolDir, programDir, testsDir, reportsDir);
 		}
 
 	}

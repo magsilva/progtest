@@ -35,12 +35,9 @@
 		<mapping class="progtest.common.StudentCourse" />
 		<mapping class="progtest.common.Oracle" />
 		<mapping class="progtest.common.Assignment" />
-		<mapping class="progtest.common.Language" />
-		<mapping class="progtest.common.Compiler" />
 		<mapping class="progtest.common.Tool" />
 		<mapping class="progtest.common.Criterion" />
 		<mapping class="progtest.common.AssignmentCriterion" />
-		<mapping class="progtest.common.AssignmentCompiler" />
 		<mapping class="progtest.common.Evaluation" />
 		
 	</session-factory>
