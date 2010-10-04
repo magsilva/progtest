@@ -56,6 +56,8 @@ public class Querier {
 
 	private static final String SELECT_CRITERIA_BY_LANGUAGE = "select tool.criteria from Tool tool where tool.language = ?";
 
+	private static final String SELECT_CRITERIA_BY_ASSIGNMENT = "select ac.criterion from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
+
 	private static final String SELECT_CRITERION_BY_TOOL_AND_ID = "from Criterion criterion where criterion.tool = ? and criterion.idCode = ?";
 
 	private static final String SELECT_TOOLS = "from Tool";
@@ -354,6 +356,19 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return tools;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Criterion> getCriteria(Assignment assignment) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_CRITERIA_BY_ASSIGNMENT);
+		query.setInteger(0, assignment.getCourse().getIdCode());
+		query.setInteger(1, assignment.getIdCode());
+		List<Criterion> criteria = (List<Criterion>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return criteria;
 	}
 
 }

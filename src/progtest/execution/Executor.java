@@ -11,8 +11,8 @@ import progtest.common.Tool;
 import progtest.util.FileUtil;
 
 public class Executor {
-	
-	private static final String FILE_PROCESS = "process";
+
+	private static final String SCRIPT = "script";
 
 	private static final String TAG_ROOT = "<root>";
 	private static final String TAG_SOURCE = "<source>";
@@ -23,31 +23,32 @@ public class Executor {
 	private static final String TAG_LIBRARIES = "<libraries>";
 	private static final String TAG_REPORTS = "<reports>";
 
-	public static void execute(Tool tool, File toolDir, File programDir,
-			File testsDir, File reportsDir) throws IOException,
+	public static void execute(Tool tool, File rootDir, File programDir,
+			File testsDir, File targetDir) throws IOException,
 			InterruptedException {
 
 		File toolFile = new File(Directories.getToolFilePath(tool));
+		
+		File toolDir = new File(Directories.getToolDirPath(rootDir, tool));
+		File srcDir = new File(Directories.getSrcDirPath(rootDir, tool));
+		File binDir = new File(Directories.getBinDirPath(rootDir, tool));
+		File progDir = new File(Directories.getProgDirPath(rootDir, tool));
+		File testDir = new File(Directories.getTestDirPath(rootDir, tool));
+		File instDir = new File(Directories.getInstDirPath(rootDir, tool));
+		File libDir = new File(Directories.getLibDirPath(rootDir, tool));
+		File rptDir = new File(Directories.getRptDirPath(rootDir, tool));
 
-		File srcDir = new File(Directories.getSrcDirPath(toolDir, tool));
-		File binDir = new File(Directories.getBinDirPath(toolDir, tool));
-		File progDir = new File(Directories.getProgDirPath(toolDir, tool));
-		File testDir = new File(Directories.getTestDirPath(toolDir, tool));
-		File instDir = new File(Directories.getInstDirPath(toolDir, tool));
-		File libDir = new File(Directories.getLibDirPath(toolDir, tool));
-		File rptDir = new File(Directories.getRptDirPath(toolDir, tool));
-
-		makeDirectories(toolDir, srcDir, binDir, progDir, testDir, instDir,
-				libDir, rptDir, toolFile, programDir, testsDir);
+		initialize(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
+				rptDir, toolFile, programDir, testsDir);
 
 		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
 				rptDir);
 
-		removeDirectories(toolDir, rptDir, reportsDir);
+		finalize(toolDir, rptDir, targetDir);
 
 	}
 
-	private static void makeDirectories(File toolDir, File srcDir, File binDir,
+	private static void initialize(File toolDir, File srcDir, File binDir,
 			File progDir, File testDir, File instDir, File libDir, File rptDir,
 			File toolFile, File programDir, File testsDir) throws IOException {
 
@@ -95,12 +96,11 @@ public class Executor {
 
 	}
 
-	private static void process(File toolDir, File srcDir,
-			File binDir, File progDir, File testDir, File instDir, File libDir,
-			File rptDir) throws IOException, InterruptedException {
-		
-		File script = new File(toolDir.getPath() + File.separator
-				+ FILE_PROCESS);
+	private static void process(File toolDir, File srcDir, File binDir,
+			File progDir, File testDir, File instDir, File libDir, File rptDir)
+			throws IOException, InterruptedException {
+
+		File script = new File(toolDir.getPath() + File.separator + SCRIPT);
 
 		BufferedReader input = new BufferedReader(new FileReader(script));
 
@@ -108,38 +108,33 @@ public class Executor {
 
 			while (input.ready()) {
 
-				String[] args = input.readLine()
-						.replace(TAG_ROOT, toolDir.getPath())
-						.replace(TAG_SOURCE, srcDir.getPath())
-						.replace(TAG_BINARIES, binDir.getPath())
-						.replace(TAG_PROGRAM, progDir.getPath())
-						.replace(TAG_TESTS, testDir.getPath())
-						.replace(TAG_INTRUMENTED, instDir.getPath())
-						.replace(TAG_LIBRARIES, libDir.getPath())
-						.replace(TAG_REPORTS, rptDir.getPath()).split(" ");
+				String[] args = input.readLine().split(" ");
+
+				for (int i = 0; i < args.length; i++)
+					args[i] = args[i].replace(TAG_ROOT, toolDir.getPath())
+							.replace(TAG_SOURCE, srcDir.getPath())
+							.replace(TAG_BINARIES, binDir.getPath())
+							.replace(TAG_PROGRAM, progDir.getPath())
+							.replace(TAG_TESTS, testDir.getPath())
+							.replace(TAG_INTRUMENTED, instDir.getPath())
+							.replace(TAG_LIBRARIES, libDir.getPath())
+							.replace(TAG_REPORTS, rptDir.getPath());
 
 				Process p = Runtime.getRuntime().exec(args);
-
-				boolean isEmpty = true;
 
 				InputStream st = p.getInputStream();
 				InputStreamReader isr = new InputStreamReader(st);
 				BufferedReader br = new BufferedReader(isr);
-				while (br.ready()) {
+				while (br.ready())
 					System.out.println(br.readLine());
-					isEmpty = false;
-				}
 
 				st = p.getErrorStream();
 				isr = new InputStreamReader(st);
 				br = new BufferedReader(isr);
-				while (br.ready()) {
-					System.out.println(br.readLine());
-					isEmpty = false;
-				}
+				while (br.ready())
+					System.err.println(br.readLine());
 
-				if (!isEmpty)
-					p.waitFor();
+				p.waitFor();
 
 			}
 
@@ -151,10 +146,10 @@ public class Executor {
 
 	}
 
-	private static void removeDirectories(File toolDir, File rptDir,
-			File reportsDir) throws IOException {
-		FileUtil.copyContent(rptDir, reportsDir);
-		toolDir.delete();
+	private static void finalize(File toolDir, File rptDir, File targetDir)
+			throws IOException {
+		FileUtil.copyContent(rptDir, targetDir);
+		FileUtil.delete(toolDir);
 	}
 
 }

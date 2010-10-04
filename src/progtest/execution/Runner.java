@@ -13,8 +13,10 @@ import progtest.common.Evaluation;
 import progtest.common.Oracle;
 import progtest.common.Tool;
 import progtest.common.User;
+import progtest.database.Querier;
 import progtest.exceptions.NotFoundApplicationException;
 import progtest.exceptions.NotFoundTestCasesException;
+import progtest.util.Constants;
 import progtest.util.FileUpload;
 import progtest.util.FileUtil;
 import progtest.util.TestCaseUtil;
@@ -72,7 +74,7 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(assignment.getCriteria(), oracleDir,
+		execute(Querier.getCriteria(assignment), oracleDir,
 				programDir, testsDir, pitiDir);
 
 	}
@@ -138,22 +140,22 @@ public class Runner {
 		if (packageDir != null)
 			FileUtil.mkdirs(packageDir);
 		if (sourceDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(sourceDir);
 		if (programDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(programDir);
 		if (testsDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(testsDir);
 		if (reportsDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(reportsDir);
 
 		if (pitiDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(pitiDir);
 		if (pstsDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(pstsDir);
 		if (pitsDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(pitsDir);
 		if (pstiDir != null)
-			FileUtil.mkdirs(packageDir);
+			FileUtil.mkdirs(pstiDir);
 
 	}
 
@@ -169,7 +171,8 @@ public class Runner {
 
 	private static void extract(File packageDir, File sourceDir)
 			throws IOException {
-		FileUtil.unzip(packageDir, sourceDir);
+		for(File file: FileUtil.listFiles(packageDir, Constants.EXTENSION_JAR))
+			FileUtil.unzip(file, sourceDir);
 	}
 
 	private static void split(File sourceDir, File programDir, File testsDir)
@@ -224,8 +227,8 @@ public class Runner {
 		}
 
 		for (Tool tool : tools) {
-			File toolDir = new File(Directories.getToolDirPath(rootDir, tool));
-			Executor.execute(tool, toolDir, programDir, testsDir, reportsDir);
+			File targetDir = new File(Directories.getTargetDirPath(reportsDir, tool));
+			Executor.execute(tool, rootDir, programDir, testsDir, targetDir);
 		}
 
 	}

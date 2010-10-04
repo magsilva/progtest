@@ -224,6 +224,8 @@ public class AddAssignment {
 				assignmentCriteria.add(assignmentCriterion);
 			}
 
+			ContextManager.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+
 			step = 5;
 
 		}
@@ -242,12 +244,12 @@ public class AddAssignment {
 
 		try {
 
-			Runner.run(assignment, oracle);
-
 			AssignmentDAO.insert(assignment);
 
 			for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
 				AssignmentCriterionDAO.insert(assignmentCriterion);
+
+			Runner.run(assignment, oracle);
 
 			refresh();
 

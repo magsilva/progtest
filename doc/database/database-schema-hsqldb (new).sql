@@ -101,23 +101,9 @@ CREATE SEQUENCE SEQ_CRITERION START WITH 1 INCREMENT BY 1;
 
 INSERT INTO User VALUES(1, 'progtest', 'ProgTest', 'progtest@gmail.com', 'progtest', 'instructor');
 
-INSERT INTO Tool VALUES(1, 'JaBUTiService', 'Structural', 'Java');
+INSERT INTO Tool VALUES(1, 'JUnit', 'Functional', 'Java');
 
-INSERT INTO Criterion VALUES(1, 1, 'All-Nodes-ei');
-
-INSERT INTO Criterion VALUES(1, 2, 'All-Nodes-ed');
-
-INSERT INTO Criterion VALUES(1, 3, 'All-Edges-ei');
-
-INSERT INTO Criterion VALUES(1, 4, 'All-Edges-ed');
-
-INSERT INTO Criterion VALUES(1, 5, 'All-Uses-ei');
-
-INSERT INTO Criterion VALUES(1, 6, 'All-Uses-ed');
-
-INSERT INTO Criterion VALUES(1, 7, 'All-Pot-Uses-ei');
-
-INSERT INTO Criterion VALUES(1, 8, 'All-Pot-Uses-ed');
+INSERT INTO Criterion VALUES(1, 1, 'Functional');
 
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 

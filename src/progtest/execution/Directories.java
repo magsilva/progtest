@@ -219,6 +219,10 @@ public class Directories {
 		return getToolDirPath(rootDir, tool) + File.separator + DIR_RPT;
 	}
 
+	public static String getTargetDirPath(File reportsDir, Tool tool) {
+		return reportsDir.getPath() + File.separator + "tool" + tool.getIdCode();
+	}
+
 	public static String getOracleFilePath(Oracle oracle) {
 		return Constants.PATH_ORACLES + File.separator + oracle.getIdCode()
 				+ Constants.EXTENSION_JAR;
