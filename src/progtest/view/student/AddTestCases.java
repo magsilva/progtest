@@ -5,7 +5,6 @@ import javax.faces.application.FacesMessage;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Evaluation;
-import progtest.evaluation.Evaluator;
 import progtest.exceptions.CompileException;
 import progtest.exceptions.CompressException;
 import progtest.exceptions.DecompressException;
@@ -15,6 +14,7 @@ import progtest.exceptions.NotFoundApplicationException;
 import progtest.exceptions.NotFoundTestCasesException;
 import progtest.exceptions.TestingException;
 import progtest.exceptions.UploadException;
+import progtest.trash.Evaluator;
 import progtest.trash.Runner;
 import progtest.util.Constants;
 import progtest.util.ContextManager;

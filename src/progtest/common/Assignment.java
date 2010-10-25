@@ -33,6 +33,8 @@ public class Assignment {
 	private Date startDate;
 
 	private Date endDate;
+	
+	private double pinstTinst;
 
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
@@ -91,6 +93,14 @@ public class Assignment {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public double getPinstTinst() {
+		return pinstTinst;
+	}
+
+	public void setPinstTinst(double pinstTinst) {
+		this.pinstTinst = pinstTinst;
 	}
 
 	@ManyToMany(targetEntity = progtest.common.Criterion.class)

@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import progtest.common.Assignment;
+import progtest.common.AssignmentCriterion;
 import progtest.common.Course;
 import progtest.common.Criterion;
 import progtest.common.Evaluation;
@@ -61,6 +62,10 @@ public class Querier {
 	private static final String SELECT_CRITERION_BY_TOOL_AND_ID = "from Criterion criterion where criterion.tool = ? and criterion.idCode = ?";
 
 	private static final String SELECT_TOOLS = "from Tool";
+
+	private static final String SELECT_ASSIGNMENTCRITERIA_BY_ASSIGNMENT = "from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
+
+	private static final String SELECT_TOOL_BY_ASSIGNMENT = "select ac.criterion.tool from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -369,6 +374,35 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return criteria;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<AssignmentCriterion> getAssignmentCriteria(
+			Assignment assignment) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session
+				.createQuery(SELECT_ASSIGNMENTCRITERIA_BY_ASSIGNMENT);
+		query.setInteger(0, assignment.getCourse().getIdCode());
+		query.setInteger(1, assignment.getIdCode());
+		List<AssignmentCriterion> assignmentCriteria = (List<AssignmentCriterion>) query
+				.list();
+		session.getTransaction().commit();
+		session.close();
+		return assignmentCriteria;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Tool> getTools(Assignment assignment) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_TOOL_BY_ASSIGNMENT);
+		query.setInteger(0, assignment.getCourse().getIdCode());
+		query.setInteger(1, assignment.getIdCode());
+		List<Tool> tool = (List<Tool>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return tool;
 	}
 
 }

@@ -250,6 +250,8 @@ public class AddAssignment {
 				AssignmentCriterionDAO.insert(assignmentCriterion);
 
 			Runner.run(assignment, oracle);
+			
+			AssignmentDAO.update(assignment);
 
 			refresh();
 

@@ -18,8 +18,7 @@ import progtest.exceptions.NotFoundApplicationException;
 import progtest.exceptions.NotFoundTestCasesException;
 import progtest.exceptions.TestingException;
 import progtest.exceptions.UploadException;
-import progtest.reports.ReportGenerator;
-import progtest.reports.TestCase;
+import progtest.reports.Report;
 import progtest.util.Constants;
 import progtest.util.DirControl;
 import progtest.util.FileUpload;
@@ -706,7 +705,7 @@ public class Runner {
 		
 		File file = new File(testCasesReport + File.separator + "TestCases.xml");
 		List<String> tcs = new ArrayList<String>();
-		List<TestCase> report = ReportGenerator.getTestCaseReport(file);
+		List<TestCase> report = Report.getTestCaseReport(file);
 		
 		for(TestCase tc : report) {
 			if(tc.getClassName().equals(testClass.getName().replace(".java", "")) && !tc.getStatus().equals("success"))

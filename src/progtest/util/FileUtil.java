@@ -30,19 +30,9 @@ public class FileUtil {
 				copy(new File(src, children[i]), new File(dst, src.getName()));
 
 		} else {
-
-			InputStream in = new FileInputStream(src);
-			OutputStream out = new FileOutputStream(dst + File.separator
-					+ src.getName());
-
-			byte[] buf = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
-			}
-
-			in.close();
-			out.close();
+			
+			copyContent(src, new File(dst + File.separator
+					+ src.getName()));
 
 		}
 
@@ -52,16 +42,30 @@ public class FileUtil {
 
 	public static void copyContent(File src, File dst) throws IOException {
 
-		if (!dst.exists())
-			dst.mkdirs();
-
 		if (src.isDirectory()) {
+
+			if (!dst.exists())
+				dst.mkdirs();
 
 			String[] children = src.list();
 
 			for (int i = 0; i < children.length; i++)
 				copy(new File(src, children[i]), dst);
 
+		} else {
+			
+			InputStream in = new FileInputStream(src);
+			OutputStream out = new FileOutputStream(dst);
+
+			byte[] buf = new byte[1024];
+			int len;
+			while ((len = in.read(buf)) > 0) {
+				out.write(buf, 0, len);
+			}
+
+			in.close();
+			out.close();
+			
 		}
 
 	}
@@ -280,6 +284,10 @@ public class FileUtil {
 	public static void merge(File src1, File src2, File dst) throws IOException {
 		copyContent(src1, dst);
 		copyContent(src2, dst);
+	}
+
+	public static String getNameWithoutExtension(File file) {
+		return file.getName().substring(0, file.getName().lastIndexOf("."));
 	}
 
 }

@@ -20,6 +20,12 @@ public class Evaluation {
 
 	private Date submissionDate;
 
+	private double pstTst;
+
+	private double pinstTst;
+
+	private double pstTinst;
+
 	private double score;
 
 	@Id
@@ -51,6 +57,30 @@ public class Evaluation {
 
 	public void setSubmissionDate(Date submissionDate) {
 		this.submissionDate = submissionDate;
+	}
+
+	public double getPstTst() {
+		return pstTst;
+	}
+
+	public void setPstTst(double pstTst) {
+		this.pstTst = pstTst;
+	}
+
+	public double getPinstTst() {
+		return pinstTst;
+	}
+
+	public void setPinstTst(double pinstTst) {
+		this.pinstTst = pinstTst;
+	}
+
+	public double getPstTinst() {
+		return pstTinst;
+	}
+
+	public void setPstTinst(double pstTinst) {
+		this.pstTinst = pstTinst;
 	}
 
 	public double getScore() {

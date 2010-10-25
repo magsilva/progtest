@@ -37,6 +37,7 @@ CREATE TABLE Assignment (
 	description VARCHAR(500),
 	startDate DATETIME,
 	endDate DATETIME,
+	pinstTinst DOUBLE,
 	CONSTRAINT PK_assignment PRIMARY KEY (course, idCode),
 	CONSTRAINT FK_assignment_course FOREIGN KEY (course) REFERENCES Course (idCode) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -70,7 +71,7 @@ CREATE TABLE assignment_criterion (
 	assignment INT NOT NULL,
 	tool INT NOT NULL,
 	criterion INT NOT NULL,
-	weight INT,
+	weight DOUBLE,
 	CONSTRAINT PK_assignment_criterion PRIMARY KEY (course, assignment, tool, criterion),
 	CONSTRAINT FK_assignment_criterion_assignment FOREIGN KEY (course, assignment) REFERENCES Assignment (course, idCode),
 	CONSTRAINT FK_assignment_criterion_criterion FOREIGN KEY (tool, criterion) REFERENCES Criterion (tool, idCode)
@@ -81,6 +82,9 @@ CREATE TABLE Evaluation (
 	course INT NOT NULL,
 	assignment INT NOT NULL,
 	submissionDate DATETIME,
+	pstTst DOUBLE,
+	pinstTst DOUBLE,
+	pstTinst DOUBLE,
 	score DOUBLE,
 	CONSTRAINT PK_evaluation PRIMARY KEY (student, course, assignment),
 	CONSTRAINT FK_evaluation_student FOREIGN KEY (student) REFERENCES User (idCode) ON UPDATE CASCADE ON DELETE CASCADE,

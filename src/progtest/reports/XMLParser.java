@@ -43,21 +43,20 @@ public class XMLParser {
 				}
 			}
 
-			int n = root.getChildNodes().getLength() + 1;
-			int m = root.getChildNodes().item(0).getChildNodes().getLength() + 1;
+			int m = root.getChildNodes().getLength() + 1;
+			int n = root.getChildNodes().item(0).getChildNodes().getLength() + 1;
 			int i = 0;
 			int j = 0;
 
-			String[][] report = new String[n][m];
+			String[][] report = new String[m][n];
 
-			for (i = 0; i < n; i++) {
-				for (j = 0; j < m; j++) {
+			for (i = 0; i < m; i++) {
+				for (j = 0; j < n; j++) {
 					if ((i == 0) && (j == 0)) {
-						report[i][j] = root.getChildNodes().item(i)
-								.getNodeName().replace("&lt;", "<").replace(
-										"&gt;", ">");
+						report[i][j] = root.getNodeName().replace("&lt;", "<")
+								.replace("&gt;", ">");
 					} else if ((i == 0) && (j != 0)) {
-						report[i][j] = root.getChildNodes().item(i)
+						report[i][j] = root.getChildNodes().item(0)
 								.getChildNodes().item(j - 1).getNodeName()
 								.replace("&lt;", "<").replace("&gt;", ">");
 					} else if ((i != 0) && (j == 0)) {
@@ -84,35 +83,58 @@ public class XMLParser {
 
 	}
 
-	public static void generateXML(String root, String data[][], String name)
-			throws FileNotFoundException {
-		
-		File f = new File(name);
-		
-		if(!f.getParentFile().exists())
+	public static void generateXML(File f, String[][] data)
+			throws FileNotFoundException, SecurityException {
+
+		if (!f.getParentFile().exists())
 			f.getParentFile().mkdirs();
 
-		PrintWriter fileXML = new PrintWriter(new FileOutputStream(name));
+		PrintWriter XMLFile = new PrintWriter(new FileOutputStream(f));
 
-		fileXML.println("<?xml version='1.0'?>");
-		fileXML.println("<" + root + ">");
+		XMLFile.println("<?xml version='1.0'?>");
+		XMLFile.println("<report>");
 
 		for (int i = 1; i < data.length; i++) {
 
+			XMLFile.println("\t<record>");
+
 			for (int j = 0; j < data[0].length; j++) {
-				if (j == 0)
-					fileXML.println("   <" + data[0][j] + " name=\""
-							+ data[i][j] + "\">");
-				else
-					fileXML.println("      <" + data[0][j] + " value=\""
-							+ data[i][j] + "\"/>");
+				XMLFile.println("\t\t<" + data[0][j] + " value=\"" + data[i][j]
+						+ "\"/>");
 			}
-			fileXML.println("   </" + data[0][0] + ">");
+
+			XMLFile.println("\t</record>");
+
 		}
 
-		fileXML.println("</" + root + ">");
+		XMLFile.println("</report>");
 
-		fileXML.close();
+		XMLFile.close();
+
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+
+		String[][] data = new String[4][3];
+
+		data[0][0] = "X";
+		data[0][1] = "A";
+		data[0][2] = "B";
+		data[1][0] = "1";
+		data[1][1] = "A1";
+		data[1][2] = "B1";
+		data[2][0] = "2";
+		data[2][1] = "A2";
+		data[2][2] = "B2";
+		data[3][0] = "3";
+		data[3][1] = "A3";
+		data[3][2] = "B3";
+
+		File XMLFile = new File("." + File.separator + "XML.xml");
+
+		XMLParser.generateXML(XMLFile, data);
+
+		data = XMLParser.parse(XMLFile);
 
 	}
 

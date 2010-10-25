@@ -62,6 +62,7 @@ public class Constants {
 	public static final String EXTENSION_JAR = ".jar";
 	public static final String EXTENSION_JAVA = ".java";
 	public static final String EXTENSION_CLASS = ".class";
+	public static final String EXTENSION_XML = ".xml";
 
 	/* Values */
 
