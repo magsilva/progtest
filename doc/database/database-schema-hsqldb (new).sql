@@ -109,6 +109,24 @@ INSERT INTO Tool VALUES(1, 'JUnit', 'Functional', 'Java');
 
 INSERT INTO Criterion VALUES(1, 1, 'Functional');
 
+INSERT INTO Tool VALUES(2, 'JaBUTiService', 'Structural', 'Java');
+
+INSERT INTO Criterion VALUES(2, 1, 'All-Nodes-ei');
+
+INSERT INTO Criterion VALUES(2, 2, 'All-Nodes-ed');
+
+INSERT INTO Criterion VALUES(2, 3, 'All-Edges-ei');
+
+INSERT INTO Criterion VALUES(2, 4, 'All-Edges-ed');
+
+INSERT INTO Criterion VALUES(2, 5, 'All-Uses-ei');
+
+INSERT INTO Criterion VALUES(2, 6, 'All-Uses-ed');
+
+INSERT INTO Criterion VALUES(2, 7, 'All-Pot-Uses-ei');
+
+INSERT INTO Criterion VALUES(2, 8, 'All-Pot-Uses-ed');
+
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
 INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 'Java');
