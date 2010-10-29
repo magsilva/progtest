@@ -127,6 +127,10 @@ INSERT INTO Criterion VALUES(2, 7, 'All-Pot-Uses-ei');
 
 INSERT INTO Criterion VALUES(2, 8, 'All-Pot-Uses-ed');
 
+INSERT INTO Tool VALUES(3, 'Jumble', 'Error-based', 'Java');
+
+INSERT INTO Criterion VALUES(3, 1, 'Analysis of Mutants');
+
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
 INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 'Java');
