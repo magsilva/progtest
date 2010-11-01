@@ -6,11 +6,11 @@ import java.util.List;
 import javax.faces.component.UIData;
 
 import progtest.common.Course;
-import progtest.common.Evaluation;
+import progtest.common.Submission;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class OutstandingAssignments {
 	
@@ -18,9 +18,9 @@ public class OutstandingAssignments {
 	
 	private UIData coursesTable; 
 
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
+	private List<Submission> submissions = new ArrayList<Submission>();
 
-	private UIData evaluationsTable;
+	private UIData submissionsTable;
 	
 	private String activedCourse;
 
@@ -40,20 +40,20 @@ public class OutstandingAssignments {
 		this.coursesTable = coursesTable;
 	}
 
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+	public List<Submission> getSubmissions() {
+		return submissions;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setSubmissions(List<Submission> submissions) {
+		this.submissions = submissions;
 	}
 
-	public UIData getEvaluationsTable() {
-		return evaluationsTable;
+	public UIData getSubmissionsTable() {
+		return submissionsTable;
 	}
 
-	public void setEvaluationsTable(UIData evaluationsTable) {
-		this.evaluationsTable = evaluationsTable;
+	public void setSubmissionsTable(UIData submissionsTable) {
+		this.submissionsTable = submissionsTable;
 	}
 
 	public String getActivedCourse() {
@@ -69,29 +69,29 @@ public class OutstandingAssignments {
 	}
 	
 	public String selectAllCourses() {
-		ContextManager.setSession(Constants.SESSION_COURSE, null);
+		FacesUtil.setSession(Constants.SESSION_COURSE, null);
 		refresh();
 		return Constants.ACTION_SELECT;
 	}
 	
 	public String selectCourse() {
 		Course course = (Course) coursesTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_COURSE, course);
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
 		refresh();
 		return Constants.ACTION_SELECT;
 	}
 	
 	public String submitAssignment() {
-		Evaluation evaluation = (Evaluation) evaluationsTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_EVALUATION, evaluation);
-		ContextManager.setSession(Constants.SESSION_BACKPAGE,
+		Submission evaluation = (Submission) submissionsTable.getRowData();
+		FacesUtil.setSession(Constants.SESSION_EVALUATION, evaluation);
+		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_OUTSTANDING);
 		return Constants.ACTION_SEND;
 	}
 	
 	public String assignmentInfo() {
-		Evaluation evaluation = (Evaluation) evaluationsTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_EVALUATION, evaluation);
+		Submission evaluation = (Submission) submissionsTable.getRowData();
+		FacesUtil.setSession(Constants.SESSION_EVALUATION, evaluation);
 		return Constants.ACTION_VIEW;
 	}
 	
@@ -101,19 +101,19 @@ public class OutstandingAssignments {
 	
 	private void refresh() {
 		
-		User user = (User) ContextManager.getSession(Constants.SESSION_USER);
-		Course course = (Course) ContextManager.getSession(Constants.SESSION_COURSE);
+		User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
+		Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 		
 		courses = Querier.getCoursesAsStudent(user);
 		
 		if(course == null) {
 			
-			evaluations = Querier.getOutstandingEvaluations(user);
+			submissions = Querier.getOutstandingEvaluations(user);
 			activedCourse = null;
 			
 		} else {
 			
-			evaluations = Querier.getOutstandingEvaluations(user, course);
+			submissions = Querier.getOutstandingEvaluations(user, course);
 			activedCourse = course.getName();
 			
 		}

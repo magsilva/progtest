@@ -32,7 +32,7 @@ public class User {
 
 	private List<Course> coursesAsStudent = new ArrayList<Course>();
 
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
+	private List<Submission> submissions = new ArrayList<Submission>();
 
 	@Id
 	@SequenceGenerator(name = "SEQ_USER", sequenceName = "SEQ_USER")
@@ -105,12 +105,12 @@ public class User {
 	}
 
 	@OneToMany(mappedBy = "student")
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+	public List<Submission> getSubmissions() {
+		return submissions;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setSubmissions(List<Submission> submissions) {
+		this.submissions = submissions;
 	}
 
 }

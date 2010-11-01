@@ -1,23 +1,9 @@
 package progtest.view.student;
 
-import javax.faces.application.FacesMessage;
-
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
-import progtest.common.Evaluation;
-import progtest.evaluation.Evaluator;
-import progtest.exceptions.CompileException;
-import progtest.exceptions.CompressException;
-import progtest.exceptions.DecompressException;
-import progtest.exceptions.EvaluationException;
-import progtest.exceptions.FileException;
-import progtest.exceptions.NotFoundApplicationException;
-import progtest.exceptions.NotFoundTestCasesException;
-import progtest.exceptions.TestingException;
-import progtest.exceptions.UploadException;
-import progtest.execution.Runner;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class AddTestCases {
 
@@ -33,7 +19,7 @@ public class AddTestCases {
 
 	public String upload() {
 
-		Evaluation evaluation = (Evaluation) ContextManager
+		/*Evaluation evaluation = (Evaluation) ContextManager
 				.getSession(Constants.SESSION_EVALUATION);
 		
 		try {
@@ -89,14 +75,14 @@ public class AddTestCases {
 			ContextManager.addMessage(Constants.KEY_ERROR_NOTFOUNDAPPLICATION,
 					FacesMessage.SEVERITY_ERROR);
 		
-		}
+		}*/
 
 		return Constants.ACTION_FAILURE;
 
 	}
 
 	public String cancel() {
-		String backPage = (String) ContextManager.getSession(Constants.SESSION_BACKPAGE);
+		String backPage = (String) FacesUtil.getSession(Constants.SESSION_BACKPAGE);
 		return backPage;
 	}
 

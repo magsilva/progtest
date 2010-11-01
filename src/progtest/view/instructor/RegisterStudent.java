@@ -3,13 +3,13 @@ package progtest.view.instructor;
 import javax.faces.application.FacesMessage;
 
 import progtest.common.Course;
-import progtest.common.StudentCourse;
+import progtest.common.Enrollment;
 import progtest.common.User;
 import progtest.database.Querier;
-import progtest.database.StudentCourseDAO;
+import progtest.database.EnrollmentDAO;
 import progtest.database.UserDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class RegisterStudent {
 
@@ -86,13 +86,13 @@ public class RegisterStudent {
 			
 			UserDAO.insert(user);
 			
-			Course course = (Course) ContextManager.getSession(Constants.SESSION_COURSE);
+			Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 			
-			StudentCourse studentCourse = new StudentCourse();
-			studentCourse.setStudent(user);
-			studentCourse.setCourse(course);
+			Enrollment enrollment = new Enrollment();
+			enrollment.setStudent(user);
+			enrollment.setCourse(course);
 			
-			StudentCourseDAO.insert(studentCourse);
+			EnrollmentDAO.insert(enrollment);
 			
 			return Constants.ACTION_SUCCESS;
 
@@ -110,22 +110,22 @@ public class RegisterStudent {
 				|| confirmationPassword.equals(Constants.EMPTY)
 				|| role.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (!confirmationPassword.equals(password)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DIFFERENTPASSWORDS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DIFFERENTPASSWORDS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (Querier.checkEmail(email, userName)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DUPLICATEDEMAIL,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DUPLICATEDEMAIL,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (Querier.checkUserName(userName)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DUPLICATEDUSERNAME,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DUPLICATEDUSERNAME,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {

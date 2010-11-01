@@ -66,22 +66,22 @@
 
 					<af:spacer height="30" />
 
-					<h:dataTable value="#{studentOutstandingAssignments.evaluations}"
-						var="avaliation"
-						binding="#{studentOutstandingAssignments.evaluationsTable}"
+					<h:dataTable value="#{studentOutstandingAssignments.submissions}"
+						var="submission"
+						binding="#{studentOutstandingAssignments.submissionsTable}"
 						width="100%"
-						rendered="#{!empty studentOutstandingAssignments.evaluations}">
+						rendered="#{!empty studentOutstandingAssignments.submissions}">
 						<h:column>
 							<htm:table styleClass="grid">
 								<htm:tr styleClass="tableHeader">
 									<htm:td>
-										<h:outputText value="#{avaliation.assignment.title}" />
+										<h:outputText value="#{submission.assignment.title}" />
 									</htm:td>
 								</htm:tr>
 								<htm:tr>
 									<htm:td>
 										<af:spacer height="10" />
-										<h:outputText value="#{avaliation.assignment.description}" />
+										<h:outputText value="#{submission.assignment.description}" />
 										<af:spacer height="5" />
 									</htm:td>
 								</htm:tr>
@@ -89,7 +89,7 @@
 									<htm:td>
 										<af:spacer height="5" />
 										<h:outputText value="Deadline: " styleClass="label" />
-										<h:outputText value="#{avaliation.assignment.endDate}" />
+										<h:outputText value="#{submission.assignment.endDate}" />
 										<af:spacer height="5" />
 									</htm:td>
 								</htm:tr>
@@ -98,9 +98,9 @@
 										<af:spacer height="5" />
 										<h:outputText value="Status: " styleClass="label" />
 										<h:outputText value="Sent"
-											rendered="#{avaliation.submissionDate != null}" />
+											rendered="#{submission.submissionDate != null}" />
 										<h:outputText value="Pending"
-											rendered="#{avaliation.submissionDate == null}" />
+											rendered="#{submission.submissionDate == null}" />
 										<af:spacer height="5" />
 									</htm:td>
 								</htm:tr>
@@ -119,7 +119,7 @@
 					</h:dataTable>
 
 					<htm:table
-						rendered="#{empty studentOutstandingAssignments.evaluations}">
+						rendered="#{empty studentOutstandingAssignments.submissions}">
 						<htm:tr>
 							<htm:td>
 								<h:outputText value="There are no pending assignments." />

@@ -5,7 +5,7 @@ import java.util.Date;
 import progtest.common.Assignment;
 import progtest.database.AssignmentDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class RemoveAssignment {
 	
@@ -50,7 +50,7 @@ public class RemoveAssignment {
 	}
 	
 	public RemoveAssignment() {
-		Assignment assignment = (Assignment) ContextManager.getSession(Constants.SESSION_ASSIGNMENT);
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 		title = assignment.getTitle();
 		description = assignment.getDescription();
 		startDate = assignment.getStartDate();
@@ -59,7 +59,7 @@ public class RemoveAssignment {
 	
 	public String remove() {
 		
-		Assignment assignment = (Assignment) ContextManager.getSession(Constants.SESSION_ASSIGNMENT);
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 		
 		AssignmentDAO.delete(assignment);
 		

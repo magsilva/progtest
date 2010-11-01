@@ -1,33 +1,36 @@
 package progtest.view.instructor;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.component.UIData;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
+import progtest.common.Requisite;
 import progtest.common.Course;
+import progtest.common.Criterion;
+import progtest.common.Tool;
+import progtest.database.RequisiteDAO;
 import progtest.database.AssignmentDAO;
-import progtest.exceptions.CompileException;
-import progtest.exceptions.CompressException;
-import progtest.exceptions.DecompressException;
-import progtest.exceptions.FileException;
-import progtest.exceptions.NotFoundApplicationException;
-import progtest.exceptions.NotFoundTestCasesException;
-import progtest.exceptions.TestingException;
-import progtest.exceptions.UploadException;
+import progtest.database.Querier;
 import progtest.execution.Runner;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class CreateAssignment {
-	
-	private int step = 1;
-	
-	private boolean advancedOptions = false;
 
-	private UploadedFile file;
+	private int step = 1;
+
+	private List<String> languages = loadLanguages();
+
+	private String language = null;
+
+	private UploadedFile uploadedFile = null;
 
 	private String title = Constants.EMPTY;
 
@@ -37,21 +40,14 @@ public class CreateAssignment {
 
 	private Date endDate = new Date();
 
-	private String weightFunctional = String.valueOf(1);
+	private List<Criterion> criteria = new ArrayList<Criterion>();
 
-	private String weightAllNodes = String.valueOf(1);
+	private List<String> selectedCriteria = new ArrayList<String>();
 
-	private String weightAllEdges = String.valueOf(1);
+	private List<Requisite> requisites = new ArrayList<Requisite>();
 
-	private String weightAllUses = String.valueOf(1);
-
-	private String weightAllPotUses = String.valueOf(1);
-
-	private String weightPalTal = String.valueOf(1);
-
-	private String weightPinstTal = String.valueOf(1);
-
-	private String weightPalTinst = String.valueOf(1);
+	private UIData requisitesTable
+	;
 
 	public int getStep() {
 		return step;
@@ -61,20 +57,28 @@ public class CreateAssignment {
 		this.step = step;
 	}
 
-	public boolean isAdvancedOptions() {
-		return advancedOptions;
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
 	}
 
-	public void setAdvancedOptions(boolean advancedOptions) {
-		this.advancedOptions = advancedOptions;
+	public List<String> getLanguages() {
+		return languages;
 	}
 
-	public UploadedFile getFile() {
-		return file;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
-	public void setFile(UploadedFile file) {
-		this.file = file;
+	public String getLanguage() {
+		return language;
+	}
+
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
 	}
 
 	public String getTitle() {
@@ -109,128 +113,73 @@ public class CreateAssignment {
 		this.endDate = endDate;
 	}
 
-	public String getWeightFunctional() {
-		return weightFunctional;
+	public List<Criterion> getCriteria() {
+		return criteria;
 	}
 
-	public void setWeightFunctional(String weightFunctional) {
-		this.weightFunctional = weightFunctional;
+	public void setCriteria(List<Criterion> criteria) {
+		this.criteria = criteria;
 	}
 
-	public String getWeightAllNodes() {
-		return weightAllNodes;
+	public List<String> getSelectedCriteria() {
+		return selectedCriteria;
 	}
 
-	public void setWeightAllNodes(String weightAllNodes) {
-		this.weightAllNodes = weightAllNodes;
+	public void setSelectedCriteria(List<String> selectedCriteria) {
+		this.selectedCriteria = selectedCriteria;
 	}
 
-	public String getWeightAllEdges() {
-		return weightAllEdges;
+	public List<Requisite> getRequisites() {
+		return requisites;
 	}
 
-	public void setWeightAllEdges(String weightAllEdges) {
-		this.weightAllEdges = weightAllEdges;
+	public void setRequisites(
+			List<Requisite> requisites) {
+		this.requisites = requisites;
 	}
 
-	public String getWeightAllUses() {
-		return weightAllUses;
+	public UIData getRequisitesTable() {
+		return requisitesTable;
 	}
 
-	public void setWeightAllUses(String weightAllUses) {
-		this.weightAllUses = weightAllUses;
-	}
-
-	public String getWeightAllPotUses() {
-		return weightAllPotUses;
-	}
-
-	public void setWeightAllPotUses(String weightAllPotUses) {
-		this.weightAllPotUses = weightAllPotUses;
-	}
-
-	public String getWeightPalTal() {
-		return weightPalTal;
-	}
-
-	public void setWeightPalTal(String weightPalTal) {
-		this.weightPalTal = weightPalTal;
-	}
-
-	public String getWeightPinstTal() {
-		return weightPinstTal;
-	}
-
-	public void setWeightPinstTal(String weightPinstTal) {
-		this.weightPinstTal = weightPinstTal;
-	}
-
-	public String getWeightPalTinst() {
-		return weightPalTinst;
-	}
-
-	public void setWeightPalTinst(String weightPalTinst) {
-		this.weightPalTinst = weightPalTinst;
-	}
-	
-	public String turnOnAdvancedOptions() {
-		advancedOptions = true;
-		return Constants.ACTION_SELECT;
-	}
-	
-	public String turnOffAdvancedOptions() {
-		advancedOptions = false;
-		return Constants.ACTION_SELECT;
-	}
-
-	private void refresh() {
-		step = 1;
-		advancedOptions = false;
-		file = null;
-		title = Constants.EMPTY;
-		description = Constants.EMPTY;
-		startDate = new Date();
-		endDate = new Date();
-		weightFunctional = String.valueOf(1);
-		weightAllNodes = String.valueOf(1);
-		weightAllEdges = String.valueOf(1);
-		weightAllUses = String.valueOf(1);
-		weightAllPotUses = String.valueOf(1);
-		weightPalTal = String.valueOf(1);
-		weightPinstTal = String.valueOf(1);
-		weightPalTinst = String.valueOf(1);
-	}
-
-	public String cancel() {
-		refresh();
-		return Constants.ACTION_CANCEL;
+	public void setRequisitesTable(UIData requisitesTable) {
+		this.requisitesTable = requisitesTable;
 	}
 
 	public String goToStep2() {
+		
+		step = 2;
 
-		Course course = (Course) ContextManager
-				.getSession(Constants.SESSION_COURSE);
+		return Constants.ACTION_SELECT;
+
+	}
+
+	public String goToStep3() {
+
+		step = 3;
+
+		return Constants.ACTION_SELECT;
+
+	}
+
+	public String goToStep4() {
 
 		if (validate()) {
 
-			Assignment assigment = new Assignment();
-			assigment.setCourse(course);
-			assigment.setTitle(title);
-			assigment.setDescription(description);
-			assigment.setStartDate(startDate);
-			assigment.setEndDate(endDate);
-			assigment.setWeightFunctional(Integer.parseInt(weightFunctional));
-			assigment.setWeightAllNodes(Integer.parseInt(weightAllNodes));
-			assigment.setWeightAllEdges(Integer.parseInt(weightAllEdges));
-			assigment.setWeightAllUses(Integer.parseInt(weightAllUses));
-			assigment.setWeightAllPotUses(Integer.parseInt(weightAllPotUses));
-			assigment.setWeightPalTal(Integer.parseInt(weightPalTal));
-			assigment.setWeightPinstTal(Integer.parseInt(weightPinstTal));
-			assigment.setWeightPalTinst(Integer.parseInt(weightPalTinst));
+			Course course = (Course) FacesUtil
+					.getSession(Constants.SESSION_COURSE);
 
-			ContextManager.setSession(Constants.SESSION_ASSIGNMENT, assigment);
-			
-			step = 2;
+			Assignment assignment = new Assignment();
+			assignment.setCourse(course);
+			assignment.setTitle(title);
+			assignment.setDescription(description);
+			assignment.setStartDate(startDate);
+			assignment.setEndDate(endDate);
+
+			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+
+			criteria = Querier.getCriteria(language);
+			step = 4;
 
 		}
 
@@ -238,17 +187,129 @@ public class CreateAssignment {
 
 	}
 
+	public String goToStep5() {
+
+		requisites.clear();
+
+		if (hasCriteria()) {
+
+			Assignment assignment = (Assignment) FacesUtil
+					.getSession(Constants.SESSION_ASSIGNMENT);
+
+			for (String selectedCriterion : selectedCriteria) {
+				String ids[] = selectedCriterion.split("/");
+				Criterion criterion = Querier.getCriterion(
+						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
+				Requisite requisite = new Requisite();
+				requisite.setAssignment(assignment);
+				requisite.setCriterion(criterion);
+				requisites.add(requisite);
+			}
+
+			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+
+			step = 5;
+
+		}
+
+		return Constants.ACTION_SELECT;
+
+	}
+
+	public String conclude() {
+
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
+		try {
+
+			AssignmentDAO.insert(assignment);
+
+			for (Requisite requisite : requisites)
+				RequisiteDAO.insert(requisite);
+
+			Runner.run(assignment, uploadedFile);
+			
+			AssignmentDAO.update(assignment);
+
+			refresh();
+
+			return Constants.ACTION_SUCCESS;
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return Constants.ACTION_FAILURE;
+
+	}
+
+	public String backToStep1() {
+		step = 1;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String backToStep2() {
+		step = 2;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String backToStep3() {
+		step = 3;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String backToStep4() {
+		step = 4;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String cancel() {
+		refresh();
+		return Constants.ACTION_CANCEL;
+	}
+
+	private void refresh() {
+		step = 1;
+		setLanguages(loadLanguages());
+		language = null;
+		uploadedFile = null;
+		title = Constants.EMPTY;
+		description = Constants.EMPTY;
+		startDate = new Date();
+		endDate = new Date();
+		criteria = new ArrayList<Criterion>();
+		selectedCriteria = new ArrayList<String>();
+		requisites = new ArrayList<Requisite>();
+	}
+
+	private List<String> loadLanguages() {
+		
+		List<String> languages = new ArrayList<String>();
+		
+		for(Tool tool: Querier.getTools())
+			if(!languages.contains(tool.getLanguage()))
+				languages.add(tool.getLanguage());
+		
+		return languages;
+	
+	}
+
 	private boolean validate() {
 
 		if (title.equals(Constants.EMPTY)
 				|| description.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (startDate.getTime() > endDate.getTime()) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {
@@ -261,69 +322,17 @@ public class CreateAssignment {
 
 	}
 
-	public String backToStep1() {
-		step = 1;
-		return Constants.ACTION_SELECT;
-	}
+	private boolean hasCriteria() {
+		if (selectedCriteria.isEmpty()) {
 
-	public String conclude() {
+			FacesUtil.addMessage(Constants.KEY_ERROR_ANYCRITERIONSELECTED,
+					FacesMessage.SEVERITY_ERROR);
 
-		Assignment assignment = (Assignment) ContextManager
-				.getSession(Constants.SESSION_ASSIGNMENT);
+			return false;
 
-		try {
-			
-			Runner.executePinstTinst(file, assignment);
+		} else
 
-			AssignmentDAO.insert(assignment);
-			
-			refresh();
-			
-			return Constants.ACTION_SUCCESS;
-			
-		} catch (DecompressException e) {
-			
-			ContextManager.addMessage(Constants.KEY_ERROR_DECOMPRESSING,
-					FacesMessage.SEVERITY_ERROR);
-			
-		} catch (TestingException e) {
-			
-			ContextManager.addMessage(Constants.KEY_ERROR_TESTING,
-					FacesMessage.SEVERITY_ERROR);
-			
-		} catch (CompileException e) {
-			
-			ContextManager.addMessage(Constants.KEY_ERROR_COMPILING,
-					FacesMessage.SEVERITY_ERROR);
-			
-		} catch (CompressException e) {
-			
-			ContextManager.addMessage(Constants.KEY_ERROR_COMPRESSING,
-					FacesMessage.SEVERITY_ERROR);
-			
-		} catch (FileException e) {
-			
-			ContextManager.addMessage(Constants.KEY_ERROR_RUNNING,
-					FacesMessage.SEVERITY_ERROR);
-			
-		} catch (UploadException e) {
-			
-			ContextManager.addMessage(Constants.KEY_ERROR_UPLOADING,
-					FacesMessage.SEVERITY_ERROR);
-			
-		} catch (NotFoundTestCasesException e) {
-			
-			ContextManager.addMessage(Constants.KEY_ERROR_NOTFOUNDTESTCASES,
-					FacesMessage.SEVERITY_ERROR);
-		
-		} catch (NotFoundApplicationException e) {
-		
-			ContextManager.addMessage(Constants.KEY_ERROR_NOTFOUNDAPPLICATION,
-					FacesMessage.SEVERITY_ERROR);
-		
-		}
-
-		return Constants.ACTION_FAILURE;
+			return true;
 
 	}
 

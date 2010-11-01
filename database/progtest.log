@@ -1,53 +1,45 @@
-/*C2*/SET SCHEMA PUBLIC
-CREATE TABLE User (\u000a\u0009idCode INT NOT NULL,\u000a\u0009userName VARCHAR(50) NOT NULL UNIQUE,\u000a\u0009name VARCHAR(100),\u000a\u0009email VARCHAR(100) UNIQUE,\u000a\u0009password VARCHAR(80),\u000a\u0009role VARCHAR(10) NOT NULL,\u000a\u0009CONSTRAINT PK_user PRIMARY KEY (idCode)\u000a)
-CREATE TABLE Course (\u000a\u0009idCode INT NOT NULL,\u000a\u0009name VARCHAR(50),\u000a\u0009startDate DATE,\u000a\u0009endDate DATE,\u000a\u0009instructor INT NOT NULL,\u000a\u0009CONSTRAINT PK_course PRIMARY KEY (idCode),\u000a\u0009CONSTRAINT FK_course_instructor FOREIGN KEY (instructor) REFERENCES User (idCode) ON UPDATE CASCADE ON DELETE CASCADE\u000a)
-CREATE TABLE student_course (\u000a\u0009student INT NOT NULL,\u000a\u0009course INT NOT NULL,\u000a\u0009CONSTRAINT PK_student_course PRIMARY KEY (student, course),\u000a\u0009CONSTRAINT FK_student_course_student FOREIGN KEY (student) REFERENCES User (idCode) ON UPDATE CASCADE ON DELETE CASCADE,\u000a\u0009CONSTRAINT FK_student_course_course FOREIGN KEY (course) REFERENCES Course (idCode) ON UPDATE CASCADE ON DELETE CASCADE\u000a)
-CREATE TABLE Oracle (\u000a\u0009idCode INT NOT NULL,\u000a\u0009title VARCHAR(50),\u000a\u0009description VARCHAR(500),\u000a\u0009CONSTRAINT PK_oracle PRIMARY KEY (idCode)\u000a)
-CREATE TABLE Assignment (\u000a\u0009course INT NOT NULL,\u000a\u0009idCode INT NOT NULL,\u000a\u0009title VARCHAR(50),\u000a\u0009description VARCHAR(500),\u000a\u0009startDate DATETIME,\u000a\u0009endDate DATETIME,\u000a\u0009weightPinstTinst INT,\u000a\u0009weightPalTal INT,\u000a\u0009weightPinstTal INT,\u000a\u0009weightPalTinst INT,\u000a\u0009weightFunctional INT,\u000a\u0009weightAllNodes INT,\u000a\u0009weightAllEdges INT,\u000a\u0009weightAllUses INT,\u000a\u0009weightAllPotUses INT,\u000a\u0009CONSTRAINT PK_assignment PRIMARY KEY (course, idCode),\u000a\u0009CONSTRAINT FK_assignment_course FOREIGN KEY (course) REFERENCES Course (idCode) ON UPDATE CASCADE ON DELETE CASCADE\u000a)
-CREATE TABLE Evaluation (\u000a\u0009student INT NOT NULL,\u000a\u0009course INT NOT NULL,\u000a\u0009assignment INT NOT NULL,\u000a\u0009submissionDate DATETIME,\u000a\u0009score DOUBLE,\u000a\u0009CONSTRAINT PK_evaluation PRIMARY KEY (student, course, assignment),\u000a\u0009CONSTRAINT FK_evaluation_student FOREIGN KEY (student) REFERENCES User (idCode) ON UPDATE CASCADE ON DELETE CASCADE,\u000a\u0009CONSTRAINT FK_evaluation_assignment FOREIGN KEY (course, assignment) REFERENCES Assignment (course, idCode) ON UPDATE CASCADE ON DELETE CASCADE\u000a)
-CREATE SEQUENCE SEQ_USER START WITH 1 INCREMENT BY 1
-CREATE SEQUENCE SEQ_COURSE START WITH 1 INCREMENT BY 1
-CREATE SEQUENCE SEQ_ORACLE START WITH 1 INCREMENT BY 1
-CREATE SEQUENCE SEQ_ASSIGNMENT START WITH 1 INCREMENT BY 1
-INSERT INTO USER VALUES(1,'progtest','ProgTest','progtest@gmail.com','progtest','instructor')
+/*C5*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C6*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C7*/SET SCHEMA PUBLIC
+INSERT INTO ASSIGNMENT VALUES(50,25,'Maximum Value','Obtains the highest value of a sequence of integers.','2010-10-29 16:28:12.000000','2010-10-29 16:28:12.000000',0.0E0)
 COMMIT
-INSERT INTO ORACLE VALUES(1,'Maximum Value','Obtains the highest value of a sequence of integers.')
+INSERT INTO EVALUATION VALUES(50,50,25,NULL,0.0E0,0.0E0,0.0E0,0.0E0)
 COMMIT
-INSERT INTO ORACLE VALUES(2,'Maximum and Minimum Value','Obtains the highest and lowest values of a sequence of integers.')
+INSERT INTO ASSIGNMENT_CRITERION VALUES(50,25,1,1,1.0E0)
 COMMIT
-INSERT INTO ORACLE VALUES(3,'Fibonacci','Computes the Fibonacci sequence.')
+INSERT INTO ASSIGNMENT_CRITERION VALUES(50,25,3,1,1.0E0)
 COMMIT
-INSERT INTO ORACLE VALUES(4,'String Marriage','Searches the occurrence of one string in another string.')
+DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+DELETE FROM ASSIGNMENT WHERE COURSE=50 AND IDCODE=25
+INSERT INTO ASSIGNMENT VALUES(50,25,'Maximum Value','Obtains the highest value of a sequence of integers.','2010-10-29 16:28:12.000000','2010-10-29 16:28:12.000000',1.0E0)
 COMMIT
-INSERT INTO ORACLE VALUES(5,'Sort','Sorts a sequence of numbers.')
-COMMIT
-INSERT INTO ORACLE VALUES(6,'Bubble Sort','Implementation of the bubble sort algorithm.')
-COMMIT
-INSERT INTO ORACLE VALUES(7,'Heapsort','Implementation of the heapsort algorithm.')
-COMMIT
-INSERT INTO ORACLE VALUES(8,'Insertion Sort','Implementation of the insertion sort algorithm.')
-COMMIT
-INSERT INTO ORACLE VALUES(9,'Selection Sort','Implementation of the selection sort algorithm.')
-COMMIT
-INSERT INTO ORACLE VALUES(10,'List','Implementation of a list.')
-COMMIT
-INSERT INTO ORACLE VALUES(11,'Stack','Implementation of a stack.')
-COMMIT
-INSERT INTO ORACLE VALUES(12,'Queue','Implementation of a queue.')
-COMMIT
-INSERT INTO ORACLE VALUES(13,'Binary Tree','Implementation of a binary tree.')
-COMMIT
-INSERT INTO ORACLE VALUES(14,'Graph','Implementation of a graph.')
-COMMIT
-INSERT INTO ORACLE VALUES(15,'Depth-first Search','Implementation of the depth-first search in a graph.')
-COMMIT
-INSERT INTO ORACLE VALUES(16,'Breadth-first Search','Implementation of the breadth-first search in a graph.')
-COMMIT
-INSERT INTO ORACLE VALUES(17,'Strongly Connected Components','Gets the number of strongly connected components of a graph.')
-COMMIT
-INSERT INTO ORACLE VALUES(18,'Prim Algorithm','Implementation of the Prim algorithm.')
-COMMIT
-INSERT INTO ORACLE VALUES(19,'Hash Table','Implementation of a hash table.')
-COMMIT
-INSERT INTO ORACLE VALUES(20,'Matrix Multiplication','Gets the result of multiplying two matrices.')
+DISCONNECT
+/*C9*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C10*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C11*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C12*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C13*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C14*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C15*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C16*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C17*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C18*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C19*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C20*/SET SCHEMA PUBLIC
+DELETE FROM EVALUATION WHERE STUDENT=50 AND COURSE=50 AND ASSIGNMENT=25
+INSERT INTO EVALUATION VALUES(50,50,25,'2010-10-29 16:30:31.013000',1.0E0,1.0E0,1.0E0,1.0E0)
 COMMIT

@@ -8,7 +8,7 @@ import progtest.common.User;
 import progtest.database.Querier;
 import progtest.database.UserDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class RemoveStudent {
 
@@ -44,7 +44,7 @@ public class RemoveStudent {
 
 	public RemoveStudent() {
 
-		User user = (User) ContextManager.getSession(Constants.SESSION_STUDENT);
+		User user = (User) FacesUtil.getSession(Constants.SESSION_STUDENT);
 
 		userName = user.getUserName();
 		name = user.getName();
@@ -54,9 +54,9 @@ public class RemoveStudent {
 
 	public String remove() {
 
-		User student = (User) ContextManager.getSession(Constants.SESSION_STUDENT);
+		User student = (User) FacesUtil.getSession(Constants.SESSION_STUDENT);
 
-		Course course = (Course) ContextManager.getSession(Constants.SESSION_COURSE);
+		Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 
 		List<Course> courses = Querier.getCoursesAsStudent(student);
 		

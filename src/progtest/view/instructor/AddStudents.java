@@ -6,12 +6,12 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import progtest.common.Course;
-import progtest.common.StudentCourse;
+import progtest.common.Enrollment;
 import progtest.common.User;
 import progtest.database.Querier;
-import progtest.database.StudentCourseDAO;
+import progtest.database.EnrollmentDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class AddStudents {
 
@@ -43,15 +43,15 @@ public class AddStudents {
 			users.add(Querier.getStudent(student.substring(
 					student.indexOf("(") + 1, student.indexOf(")"))));
 
-		Course course = (Course) ContextManager
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 
 		for (User user : users) {
 
-			StudentCourse studentCourse = new StudentCourse();
-			studentCourse.setCourse(course);
-			studentCourse.setStudent(user);
-			StudentCourseDAO.insert(studentCourse);
+			Enrollment enrollment = new Enrollment();
+			enrollment.setCourse(course);
+			enrollment.setStudent(user);
+			EnrollmentDAO.insert(enrollment);
 
 		}
 
@@ -61,7 +61,7 @@ public class AddStudents {
 
 	private SelectItem[] loadStudents() {
 
-		Course course = (Course) ContextManager
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 
 		List<User> users = Querier.getStudentsNotCourse(course);

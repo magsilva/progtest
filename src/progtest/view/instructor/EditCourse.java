@@ -7,7 +7,7 @@ import javax.faces.application.FacesMessage;
 import progtest.common.Course;
 import progtest.database.CourseDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class EditCourse {
 
@@ -42,7 +42,7 @@ public class EditCourse {
 	}
 
 	public EditCourse() {
-		Course course = (Course) ContextManager
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 		name = course.getName();
 		startDate = course.getStartDate();
@@ -53,7 +53,7 @@ public class EditCourse {
 
 		if (validate()) {
 
-			Course course = (Course) ContextManager
+			Course course = (Course) FacesUtil
 					.getSession(Constants.SESSION_COURSE);
 
 			course.setName(name);
@@ -74,12 +74,12 @@ public class EditCourse {
 
 		if (name.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (startDate.getTime() > endDate.getTime()) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {

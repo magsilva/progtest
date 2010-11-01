@@ -17,7 +17,7 @@ import java.util.zip.ZipOutputStream;
 
 public class FileUtil {
 
-	public static void copy(File src, File dst) throws IOException {
+	public static File copy(File src, File dst) throws IOException {
 
 		if (!dst.exists())
 			dst.mkdirs();
@@ -30,10 +30,32 @@ public class FileUtil {
 				copy(new File(src, children[i]), new File(dst, src.getName()));
 
 		} else {
+			
+			copyContent(src, new File(dst + File.separator
+					+ src.getName()));
 
+		}
+
+		return new File(dst + File.separator + src.getName());
+
+	}
+
+	public static void copyContent(File src, File dst) throws IOException {
+
+		if (src.isDirectory()) {
+
+			if (!dst.exists())
+				dst.mkdirs();
+
+			String[] children = src.list();
+
+			for (int i = 0; i < children.length; i++)
+				copy(new File(src, children[i]), dst);
+
+		} else {
+			
 			InputStream in = new FileInputStream(src);
-			OutputStream out = new FileOutputStream(dst + File.separator
-					+ src.getName());
+			OutputStream out = new FileOutputStream(dst);
 
 			byte[] buf = new byte[1024];
 			int len;
@@ -43,7 +65,7 @@ public class FileUtil {
 
 			in.close();
 			out.close();
-
+			
 		}
 
 	}
@@ -139,7 +161,7 @@ public class FileUtil {
 				ZipEntry entrada = (ZipEntry) e.nextElement();
 				arquivo = new File(dst, entrada.getName());
 
-				if(arquivo.exists())
+				if (arquivo.exists())
 					continue;
 
 				if (entrada.isDirectory() && !arquivo.exists()) {
@@ -249,6 +271,23 @@ public class FileUtil {
 			}
 		}
 		return files;
+	}
+
+	public static boolean mkdir(File rootDir) {
+		return rootDir.mkdir();
+	}
+
+	public static boolean mkdirs(File rootDir) {
+		return rootDir.mkdirs();
+	}
+
+	public static void merge(File src1, File src2, File dst) throws IOException {
+		copyContent(src1, dst);
+		copyContent(src2, dst);
+	}
+
+	public static String getNameWithoutExtension(File file) {
+		return file.getName().substring(0, file.getName().lastIndexOf("."));
 	}
 
 }

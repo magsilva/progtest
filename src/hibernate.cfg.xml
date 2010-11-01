@@ -8,7 +8,7 @@
     	
         <!-- Database connection settings -->
 		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <property name="connection.url">jdbc:hsqldb:file:/home/draylson/apache-tomcat-6.0.18/webapps/database/progtest</property>
+        <property name="connection.url">jdbc:hsqldb:file:/media/Common/Workspace/Developments/Projects/ProgTest/database/progtest</property>
         <property name="connection.username">progtest</property>
         <property name="connection.password">progtest</property>
 
@@ -30,12 +30,15 @@
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">update</property>
 
-		<mapping class="progtest.common.Assignment" />
-		<mapping class="progtest.common.Evaluation" />
-		<mapping class="progtest.common.Course" />
-		<mapping class="progtest.common.Oracle" />
 		<mapping class="progtest.common.User" />
+		<mapping class="progtest.common.Course" />
 		<mapping class="progtest.common.StudentCourse" />
+		<mapping class="progtest.common.Oracle" />
+		<mapping class="progtest.common.Assignment" />
+		<mapping class="progtest.common.Tool" />
+		<mapping class="progtest.common.Criterion" />
+		<mapping class="progtest.common.AssignmentCriterion" />
+		<mapping class="progtest.common.Evaluation" />
 		
 	</session-factory>
 </hibernate-configuration>

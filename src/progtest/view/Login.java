@@ -5,7 +5,7 @@ import javax.faces.application.FacesMessage;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class Login {
 
@@ -34,7 +34,7 @@ public class Login {
 		if (validate()) {
 			
 			User user = Querier.getUser(userName);
-			ContextManager.setSession(Constants.SESSION_USER, user);
+			FacesUtil.setSession(Constants.SESSION_USER, user);
 			
 			if(user.getRole().equals(Constants.ROLE_STUDENT))
 				return Constants.ACTION_STUDENTHOME;
@@ -53,17 +53,17 @@ public class Login {
 		if (userName.equals(Constants.EMPTY)
 				|| (password.equals(Constants.EMPTY))) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (!Querier.checkUserName(userName)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_WRONGUSERNAME,
+			FacesUtil.addMessage(Constants.KEY_ERROR_WRONGUSERNAME,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (!Querier.checkPassword(userName, password)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_WRONGPASSWORD,
+			FacesUtil.addMessage(Constants.KEY_ERROR_WRONGPASSWORD,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {

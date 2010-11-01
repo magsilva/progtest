@@ -7,22 +7,19 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
-import progtest.common.Evaluation;
+import progtest.common.Submission;
 import progtest.database.Querier;
-import progtest.reports.ClassCoverage;
-import progtest.reports.CoveredAndUncovered;
-import progtest.reports.CriterionCoverage;
-import progtest.reports.FuncionalCoverage;
-import progtest.reports.MethodCoverage;
-import progtest.reports.ReportGenerator;
-import progtest.reports.RequiredElement;
+import progtest.execution.Directories;
+import progtest.reports.Report;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
-import progtest.util.DirControl;
+import progtest.util.FacesUtil;
+import progtest.util.FileUtil;
 
 public class Assignment {
 
 	private int viewId;
+	
+	private String activedReport;
 
 	private String title;
 
@@ -32,33 +29,17 @@ public class Assignment {
 
 	private Date endDate;
 
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
+	private List<Submission> submissions = new ArrayList<Submission>();
 
-	private UIData evaluationsTable;
+	private UIData submissionsTable;
 
-	private List<FuncionalCoverage> funcionalCoverageReport = new ArrayList<FuncionalCoverage>();
+	private List<File> files = new ArrayList<File>();
 
-	private UIData funcionalCoverageTable;
+	private UIData filesTable;
 
-	private List<RequiredElement> requiredElementsReport = new ArrayList<RequiredElement>();
+	private Report report;
 
-	private UIData requiredElementTable;
-
-	private List<ClassCoverage> classCoverageReport = new ArrayList<ClassCoverage>();
-
-	private UIData classCoverageTable;
-
-	private List<MethodCoverage> methodCoverageReport = new ArrayList<MethodCoverage>();
-
-	private UIData methodCoverageTable;
-
-	private List<CriterionCoverage> criterionCoverageReport = new ArrayList<CriterionCoverage>();
-
-	private UIData criterionCoverageTable;
-
-	private List<CoveredAndUncovered> coveredAndUncoveredReport = new ArrayList<CoveredAndUncovered>();
-
-	private UIData coveredAndUncoveredTable;
+	private UIData reportTable;
 
 	public int getViewId() {
 		return viewId;
@@ -66,6 +47,14 @@ public class Assignment {
 
 	public void setViewId(int viewId) {
 		this.viewId = viewId;
+	}
+
+	public String getActivedReport() {
+		return activedReport;
+	}
+
+	public void setActivedReport(String activedReport) {
+		this.activedReport = activedReport;
 	}
 
 	public String getTitle() {
@@ -100,126 +89,59 @@ public class Assignment {
 		this.endDate = endDate;
 	}
 
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+	public List<Submission> getEvaluations() {
+		return submissions;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setSubmissions(List<Submission> submissions) {
+		this.submissions = submissions;
 	}
 
-	public UIData getEvaluationsTable() {
-		return evaluationsTable;
+	public UIData getSubmissionsTable() {
+		return submissionsTable;
 	}
 
-	public void setEvaluationsTable(UIData evaluationsTable) {
-		this.evaluationsTable = evaluationsTable;
+	public void setSubmissionsTable(UIData submissionsTable) {
+		this.submissionsTable = submissionsTable;
 	}
 
-	public List<FuncionalCoverage> getFuncionalCoverageReport() {
-		return funcionalCoverageReport;
+	public List<File> getFiles() {
+		return files;
 	}
 
-	public void setFuncionalCoverageReport(
-			List<FuncionalCoverage> funcionalCoverageReport) {
-		this.funcionalCoverageReport = funcionalCoverageReport;
+	public void setFiles(List<File> files) {
+		this.files = files;
 	}
 
-	public UIData getFuncionalCoverageTable() {
-		return funcionalCoverageTable;
+	public UIData getFilesTable() {
+		return filesTable;
 	}
 
-	public void setFuncionalCoverageTable(UIData funcionalCoverageTable) {
-		this.funcionalCoverageTable = funcionalCoverageTable;
+	public void setFilesTable(UIData filesTable) {
+		this.filesTable = filesTable;
 	}
 
-	public List<RequiredElement> getRequiredElementsReport() {
-		return requiredElementsReport;
+	public Report getReport() {
+		return report;
 	}
 
-	public void setRequiredElementsReport(
-			List<RequiredElement> requiredElementsReport) {
-		this.requiredElementsReport = requiredElementsReport;
+	public void setReport(Report report) {
+		this.report = report;
 	}
 
-	public UIData getRequiredElementTable() {
-		return requiredElementTable;
+	public UIData getReportTable() {
+		return reportTable;
 	}
 
-	public void setRequiredElementTable(UIData requiredElementTable) {
-		this.requiredElementTable = requiredElementTable;
-	}
-
-	public List<ClassCoverage> getClassCoverageReport() {
-		return classCoverageReport;
-	}
-
-	public void setClassCoverageReport(List<ClassCoverage> classCoverageReport) {
-		this.classCoverageReport = classCoverageReport;
-	}
-
-	public UIData getClassCoverageTable() {
-		return classCoverageTable;
-	}
-
-	public void setClassCoverageTable(UIData classCoverageTable) {
-		this.classCoverageTable = classCoverageTable;
-	}
-
-	public List<MethodCoverage> getMethodCoverageReport() {
-		return methodCoverageReport;
-	}
-
-	public void setMethodCoverageReport(
-			List<MethodCoverage> methodCoverageReport) {
-		this.methodCoverageReport = methodCoverageReport;
-	}
-
-	public UIData getMethodCoverageTable() {
-		return methodCoverageTable;
-	}
-
-	public void setMethodCoverageTable(UIData methodCoverageTable) {
-		this.methodCoverageTable = methodCoverageTable;
-	}
-
-	public List<CriterionCoverage> getCriterionCoverageReport() {
-		return criterionCoverageReport;
-	}
-
-	public void setCriterionCoverageReport(
-			List<CriterionCoverage> criterionCoverageReport) {
-		this.criterionCoverageReport = criterionCoverageReport;
-	}
-
-	public UIData getCriterionCoverageTable() {
-		return criterionCoverageTable;
-	}
-
-	public void setCriterionCoverageTable(UIData criterionCoverageTable) {
-		this.criterionCoverageTable = criterionCoverageTable;
-	}
-
-	public List<CoveredAndUncovered> getCoveredAndUncoveredReport() {
-		return coveredAndUncoveredReport;
-	}
-
-	public void setCoveredAndUncoveredReport(
-			List<CoveredAndUncovered> coveredAndUncoveredReport) {
-		this.coveredAndUncoveredReport = coveredAndUncoveredReport;
-	}
-
-	public UIData getCoveredAndUncoveredTable() {
-		return coveredAndUncoveredTable;
-	}
-
-	public void setCoveredAndUncoveredTable(UIData coveredAndUncoveredTable) {
-		this.coveredAndUncoveredTable = coveredAndUncoveredTable;
+	public void setReportTable(UIData reportTable) {
+		this.reportTable = reportTable;
 	}
 
 	public Assignment() {
+		
+		activedReport = Constants.EMPTY;
 
-		progtest.common.Assignment assignment = (progtest.common.Assignment) ContextManager
+		progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
 
 		title = assignment.getTitle();
@@ -230,38 +152,13 @@ public class Assignment {
 
 		endDate = assignment.getEndDate();
 		
-		evaluations = Querier.getEvaluations(assignment);
+		submissions = Querier.getEvaluations(assignment);
+		
+		files = FileUtil.listFiles(new File(Directories.getPitiDirPath(assignment)), Constants.EXTENSION_XML);
+		
+		report = null;
 
 		selectAboutView();
-		
-		funcionalCoverageReport = ReportGenerator
-				.getFuncionalCoverageReport(new File(DirControl
-						.getPinstTinstReportsPath(assignment)
-						+ File.separator + "Funcional.xml"));
-
-		requiredElementsReport = ReportGenerator
-				.getRequiredElementsReport(new File(DirControl
-						.getPinstTinstReportsPath(assignment)
-						+ File.separator + "RequiredElements.xml"));
-
-		classCoverageReport = ReportGenerator.getClassCoverageReport(new File(
-				DirControl.getPinstTinstReportsPath(assignment) + File.separator
-						+ "ClassCoverage.xml"));
-
-		methodCoverageReport = ReportGenerator
-				.getMethodCoverageReport(new File(DirControl
-						.getPinstTinstReportsPath(assignment)
-						+ File.separator + "MethodCoverage.xml"));
-
-		criterionCoverageReport = ReportGenerator
-				.getCriterionCoverageReport(new File(DirControl
-						.getPinstTinstReportsPath(assignment)
-						+ File.separator + "CriterionCoverage.xml"));
-
-		coveredAndUncoveredReport = ReportGenerator
-				.getCoveredAndUncoveredReport(new File(DirControl
-						.getPinstTinstReportsPath(assignment)
-						+ File.separator + "CoveredAndUncovered.xml"));
 
 	}
 
@@ -275,33 +172,11 @@ public class Assignment {
 		return Constants.ACTION_SELECT;
 	}
 
-	public String selectFunctionalTestView() {
+	public String selectReportView() {
+		File file = (File) filesTable.getRowData();
+		report = new Report(file);
 		viewId = 2;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String selectRequiredElementsView() {
-		viewId = 3;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String selectClassCoverageView() {
-		viewId = 4;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String selectMethodCoverageView() {
-		viewId = 5;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String selectCriterionCoverageView() {
-		viewId = 6;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String selectCoveredAndUncoveredView() {
-		viewId = 7;
+		activedReport = file.getName();
 		return Constants.ACTION_SELECT;
 	}
 

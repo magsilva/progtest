@@ -25,30 +25,55 @@
 					<htm:table>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink
-									action="#{instructorAddAssignment.backToStep1}"
-									styleClass="link">
-									<h:outputText value="Step 1: Oracle Assignment"
+									<h:outputText value="Step 1: Programming Language"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 1}" />
-									<h:outputText value="Step 1: Oracle Assignment"
+									<h:outputText value="Step 1: Programming Language"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 1}" />
-								</h:commandLink>
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink action="#{instructorAddAssignment.goToStep2}"
-									styleClass="link">
-									<h:outputText value="Step 2: Assignment Properties"
+									<h:outputText value="Step 2: Oracle Assignment"
 										styleClass="link"
 										rendered="#{instructorAddAssignment.step != 2}" />
-									<h:outputText value="Step 2: Assignment Properties"
+									<h:outputText value="Step 2: Oracle Assignment"
 										styleClass="link_hover"
 										rendered="#{instructorAddAssignment.step == 2}" />
-								</h:commandLink>
+								<af:spacer height="10" />
+							</htm:td>
+						</htm:tr>
+						<htm:tr>
+							<htm:td>
+									<h:outputText value="Step 3: Assignment Properties"
+										styleClass="link"
+										rendered="#{instructorAddAssignment.step != 3}" />
+									<h:outputText value="Step 3: Assignment Properties"
+										styleClass="link_hover"
+										rendered="#{instructorAddAssignment.step == 3}" />
+								<af:spacer height="10" />
+							</htm:td>
+						</htm:tr>
+						<htm:tr>
+							<htm:td>
+									<h:outputText value="Step 4: Test Criteria" styleClass="link"
+										rendered="#{instructorAddAssignment.step != 4}" />
+									<h:outputText value="Step 4: Test Criteria"
+										styleClass="link_hover"
+										rendered="#{instructorAddAssignment.step == 4}" />
+								<af:spacer height="10" />
+							</htm:td>
+						</htm:tr>
+						<htm:tr>
+							<htm:td>
+									<h:outputText value="Step 5: Evaluation Weigths"
+										styleClass="link"
+										rendered="#{instructorAddAssignment.step != 5}" />
+									<h:outputText value="Step 5: Evaluation Weigths"
+										styleClass="link_hover"
+										rendered="#{instructorAddAssignment.step == 5}" />
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
@@ -67,23 +92,28 @@
 					<af:spacer height="20" />
 
 					<h:outputText
-						value="Step 1 - Choice one of the implementations below." />
+						value="Step 1 - Choice one of the programming languages below." />
 
 					<af:spacer height="20" />
 
 					<h:messages styleClass="message" />
 
-					<h:panelGrid columns="2">
-						<h:outputText value="Implementation*:" />
-						<h:selectOneMenu value="#{instructorAddAssignment.oracle}">
-							<f:selectItems value="#{instructorAddAssignment.oracles}" />
+					<h:panelGrid columns="2"
+						rendered="#{!empty instructorAddAssignment.languages}">
+						<h:outputText value="Programming languages*:" />
+						<h:selectOneMenu value="#{instructorAddAssignment.language}">
+							<t:selectItems value="#{instructorAddAssignment.languages}" var="l" itemLabel="#{l}" itemValue="#{l}" />
 						</h:selectOneMenu>
 					</h:panelGrid>
+
+					<h:outputText value="Any languages avaible!"
+						rendered="#{empty instructorAddAssignment.languages}" />
 
 					<af:spacer height="20" />
 
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
+					<h:commandButton value="Back" disabled="true"/>
 					<h:commandButton value="Next"
 						action="#{instructorAddAssignment.goToStep2}" />
 
@@ -98,7 +128,45 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Step 2 - Enter the assignment properties." />
+					<h:outputText
+						value="Step 2 - Choice one of the implementations below." />
+
+					<af:spacer height="20" />
+
+					<h:messages styleClass="message" />
+
+					<h:panelGrid columns="2"
+						rendered="#{!empty instructorAddAssignment.oracles}">
+						<h:outputText value="Implementation*:" />
+						<h:selectOneMenu value="#{instructorAddAssignment.oracle}">
+							<t:selectItems value="#{instructorAddAssignment.oracles}" var="o" itemLabel="#{o.title}" itemValue="#{o.idCode}" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+
+					<h:outputText value="Any implementation avaible!"
+						rendered="#{empty instructorAddAssignment.oracles}" />
+
+					<af:spacer height="20" />
+
+					<h:commandButton value="Cancel"
+						action="#{instructorAddAssignment.cancel}" />
+					<h:commandButton value="Back"
+						action="#{instructorAddAssignment.backToStep1}" />
+					<h:commandButton value="Next"
+						action="#{instructorAddAssignment.goToStep3}" />
+
+				</htm:div>
+
+				<htm:div style="width: 600px;"
+					rendered="#{instructorAddAssignment.step == 3}">
+
+					<af:spacer height="20" />
+
+					<h:outputText value="Add New Assignment" styleClass="title" />
+
+					<af:spacer height="20" />
+
+					<h:outputText value="Step 3 - Enter the assignment properties." />
 
 					<af:spacer height="20" />
 
@@ -119,173 +187,97 @@
 
 					<af:spacer height="20" />
 
-					<h:commandLink
-						action="#{instructorAddAssignment.turnOnAdvancedOptions}"
-						styleClass="link"
-						rendered="#{!instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Advanced Options" styleClass="link" />
-					</h:commandLink>
+					<h:commandButton value="Cancel"
+						action="#{instructorAddAssignment.cancel}" />
+					<h:commandButton value="Back"
+						action="#{instructorAddAssignment.backToStep2}" />
+					<h:commandButton value="Next"
+						action="#{instructorAddAssignment.goToStep4}" />
 
-					<h:commandLink
-						action="#{instructorAddAssignment.turnOffAdvancedOptions}"
-						styleClass="link"
-						rendered="#{instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Basic Options" styleClass="link" />
-					</h:commandLink>
+				</htm:div>
 
-					<af:spacer height="20"
-						rendered="#{instructorAddAssignment.advancedOptions}" />
+				<htm:div style="width: 600px;"
+					rendered="#{instructorAddAssignment.step == 4}">
 
-					<h:outputText value="Step 2.1 - Weights"
-						rendered="#{instructorAddAssignment.advancedOptions}" />
+					<af:spacer height="20" />
 
-					<af:spacer height="20"
-						rendered="#{instructorAddAssignment.advancedOptions}" />
+					<h:outputText value="Add New Assignment" styleClass="title" />
 
-					<h:panelGrid columns="2"
-						rendered="#{instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Criteria" styleClass="label" />
-						<h:outputText value="Weights" styleClass="label" />
-						<h:outputText value="Functional*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightFunctional}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-						<h:outputText value="All-Nodes*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightAllNodes}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-						<h:outputText value="All-Edges*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightAllEdges}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-						<h:outputText value="All-Uses*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightAllUses}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-						<h:outputText value="All-Pot-Uses*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightAllPotUses}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-					</h:panelGrid>
+					<af:spacer height="20" />
 
-					<af:spacer height="20"
-						rendered="#{instructorAddAssignment.advancedOptions}" />
+					<h:outputText
+						value="Step 4 - Select the testing criteria to be considered." />
 
-					<h:panelGrid columns="2"
-						rendered="#{instructorAddAssignment.advancedOptions}">
-						<h:outputText value="Executions" styleClass="label" />
-						<h:outputText value="Weights" styleClass="label" />
-						<h:outputText
-							value="Student's program with the student's test set (P_St-T_St)*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightPalTal}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-						<h:outputText
-							value="Instructor's program with the student's test set (P_Inst-T_St)*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightPinstTal}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-						<h:outputText
-							value="Student's program with the instructor's test set (P_St-T_Inst)*:" />
-						<h:selectOneMenu
-							value="#{instructorAddAssignment.weightPalTinst}">
-							<f:selectItem itemValue="0" />
-							<f:selectItem itemValue="1" />
-							<f:selectItem itemValue="2" />
-							<f:selectItem itemValue="3" />
-							<f:selectItem itemValue="4" />
-							<f:selectItem itemValue="5" />
-							<f:selectItem itemValue="6" />
-							<f:selectItem itemValue="7" />
-							<f:selectItem itemValue="8" />
-							<f:selectItem itemValue="9" />
-							<f:selectItem itemValue="10" />
-						</h:selectOneMenu>
-					</h:panelGrid>
+					<af:spacer height="20" />
+
+					<h:messages styleClass="message" />
+
+					<h:outputText value="Any criterion avaible!"
+						rendered="#{empty instructorAddAssignment.criteria}" />
+
+					<h:selectManyCheckbox
+						value="#{instructorAddAssignment.selectedCriteria}"
+						layout="pageDirection"
+						rendered="#{!empty instructorAddAssignment.criteria}">
+						<t:selectItems value="#{instructorAddAssignment.criteria}" var="c2" itemLabel="#{c2.tool.name}/#{c2.name}" itemValue="#{c2.tool.idCode}/#{c2.idCode}" />
+					</h:selectManyCheckbox>
 
 					<af:spacer height="20" />
 
 					<h:commandButton value="Cancel"
 						action="#{instructorAddAssignment.cancel}" />
 					<h:commandButton value="Back"
-						action="#{instructorAddAssignment.backToStep1}" />
+						action="#{instructorAddAssignment.backToStep3}" />
+					<h:commandButton value="Next"
+						action="#{instructorAddAssignment.goToStep5}" />
+
+				</htm:div>
+
+				<htm:div style="width: 600px;"
+					rendered="#{instructorAddAssignment.step == 5}">
+
+					<af:spacer height="20" />
+
+					<h:outputText value="Add New Assignment" styleClass="title" />
+
+					<af:spacer height="20" />
+
+					<h:outputText
+						value="Step 5 - Define the weights for the criteria in the evaluations." />
+
+					<af:spacer height="20" />
+
+					<h:messages styleClass="message" />
+
+					<h:dataTable value="#{instructorAddAssignment.requisites}"
+						var="requisite"
+						binding="#{instructorAddAssignment.requisitesTable}"
+						rendered="#{!empty instructorAddAssignment.requisites}">
+						<h:column>
+							<h:outputText value="#{requisite.criterion.tool.name}/#{requisite.criterion.name}: " />
+						</h:column>
+						<h:column>
+							<h:selectOneMenu value="#{requisite.weight}">
+								<f:selectItem itemValue="1" />
+								<f:selectItem itemValue="2" />
+								<f:selectItem itemValue="3" />
+								<f:selectItem itemValue="4" />
+								<f:selectItem itemValue="5" />
+								<f:selectItem itemValue="6" />
+								<f:selectItem itemValue="7" />
+								<f:selectItem itemValue="8" />
+								<f:selectItem itemValue="9" />
+								<f:selectItem itemValue="10" />
+							</h:selectOneMenu>
+						</h:column>
+					</h:dataTable>
+
+					<af:spacer height="20" />
+
+					<h:commandButton value="Cancel"
+						action="#{instructorAddAssignment.cancel}" />
+					<h:commandButton value="Back"
+						action="#{instructorAddAssignment.backToStep4}" />
 					<h:commandButton value="Finalize"
 						action="#{instructorAddAssignment.conclude}" />
 

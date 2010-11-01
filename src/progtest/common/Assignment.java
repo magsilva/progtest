@@ -10,11 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import progtest.database.Querier;
+
 
 @Entity
 @IdClass(AssignmentPK.class)
@@ -22,7 +24,7 @@ public class Assignment {
 
 	private Course course;
 
-	private int idCode = Querier.getNewId();
+	private int idCode;
 
 	private String title;
 
@@ -31,26 +33,12 @@ public class Assignment {
 	private Date startDate;
 
 	private Date endDate;
+	
+	private double pinstTinst;
 
-	private int weightPinstTinst;
+	private List<Criterion> criteria = new ArrayList<Criterion>();
 
-	private int weightPalTal;
-
-	private int weightPinstTal;
-
-	private int weightPalTinst;
-
-	private int weightFunctional;
-
-	private int weightAllNodes;
-
-	private int weightAllEdges;
-
-	private int weightAllUses;
-
-	private int weightAllPotUses;
-
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
+	private List<Submission> submissions = new ArrayList<Submission>();
 
 	@Id
 	@ManyToOne
@@ -107,85 +95,34 @@ public class Assignment {
 		this.endDate = endDate;
 	}
 
-	public int getWeightPinstTinst() {
-		return weightPinstTinst;
+	public double getPinstTinst() {
+		return pinstTinst;
 	}
 
-	public void setWeightPinstTinst(int weightPinstTinst) {
-		this.weightPinstTinst = weightPinstTinst;
+	public void setPinstTinst(double pinstTinst) {
+		this.pinstTinst = pinstTinst;
 	}
 
-	public int getWeightPalTal() {
-		return weightPalTal;
+	@ManyToMany(targetEntity = progtest.common.Criterion.class)
+	@JoinTable(name = "assignment_criterion", joinColumns = {
+			@JoinColumn(name = "course"), @JoinColumn(name = "assignment") }, inverseJoinColumns = {
+			@JoinColumn(name = "tool", referencedColumnName = "tool"),
+			@JoinColumn(name = "criterion", referencedColumnName = "idCode") })
+	public List<Criterion> getCriteria() {
+		return criteria;
 	}
 
-	public void setWeightPalTal(int weightPalTal) {
-		this.weightPalTal = weightPalTal;
-	}
-
-	public int getWeightPinstTal() {
-		return weightPinstTal;
-	}
-
-	public void setWeightPinstTal(int weightPinstTal) {
-		this.weightPinstTal = weightPinstTal;
-	}
-
-	public int getWeightPalTinst() {
-		return weightPalTinst;
-	}
-
-	public void setWeightPalTinst(int weightPalTinst) {
-		this.weightPalTinst = weightPalTinst;
-	}
-
-	public int getWeightFunctional() {
-		return weightFunctional;
-	}
-
-	public void setWeightFunctional(int weightFunctional) {
-		this.weightFunctional = weightFunctional;
-	}
-
-	public int getWeightAllNodes() {
-		return weightAllNodes;
-	}
-
-	public void setWeightAllNodes(int weightAllNodes) {
-		this.weightAllNodes = weightAllNodes;
-	}
-
-	public int getWeightAllEdges() {
-		return weightAllEdges;
-	}
-
-	public void setWeightAllEdges(int weightAllEdges) {
-		this.weightAllEdges = weightAllEdges;
-	}
-
-	public int getWeightAllUses() {
-		return weightAllUses;
-	}
-
-	public void setWeightAllUses(int weightAllUses) {
-		this.weightAllUses = weightAllUses;
-	}
-
-	public int getWeightAllPotUses() {
-		return weightAllPotUses;
-	}
-
-	public void setWeightAllPotUses(int weightAllPotUses) {
-		this.weightAllPotUses = weightAllPotUses;
+	public void setCriteria(List<Criterion> criteria) {
+		this.criteria = criteria;
 	}
 
 	@OneToMany(mappedBy = "assignment")
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+	public List<Submission> getSubmissions() {
+		return submissions;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setSubmissions(List<Submission> submissions) {
+		this.submissions = submissions;
 	}
 
 }

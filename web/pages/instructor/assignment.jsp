@@ -27,8 +27,7 @@
 							<htm:td>
 								<h:commandLink action="#{instructorAssignment.selectAboutView}"
 									styleClass="link">
-									<h:outputText value="Assignment Properties"
-										styleClass="link"
+									<h:outputText value="Assignment Properties" styleClass="link"
 										rendered="#{instructorAssignment.viewId != 0}" />
 									<h:outputText value="Assignment Properties"
 										styleClass="link_hover"
@@ -39,13 +38,11 @@
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink
-									action="#{instructorAssignment.selectGradesView}"
+								<h:commandLink action="#{instructorAssignment.selectGradesView}"
 									styleClass="link">
 									<h:outputText value="Grades" styleClass="link"
 										rendered="#{instructorAssignment.viewId != 1}" />
-									<h:outputText value="Grades"
-										styleClass="link_hover"
+									<h:outputText value="Grades" styleClass="link_hover"
 										rendered="#{instructorAssignment.viewId == 1}" />
 								</h:commandLink>
 								<af:spacer height="5" />
@@ -55,96 +52,23 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Reports" styleClass="menu_title" />
+					<h:outputText value="Reports" styleClass="menu_title"
+						rendered="#{!empty instructorAssignment.files}" />
 
-					<af:spacer height="10" />
-
-					<htm:table>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorAssignment.selectFunctionalTestView}"
-									styleClass="link">
-									<h:outputText value="Functional Test" styleClass="link"
-										rendered="#{instructorAssignment.viewId != 2}" />
-									<h:outputText value="Functional Test" styleClass="link_hover"
-										rendered="#{instructorAssignment.viewId == 2}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorAssignment.selectRequiredElementsView}"
-									styleClass="link">
-									<h:outputText value="Required Elements" styleClass="link"
-										rendered="#{instructorAssignment.viewId != 3}" />
-									<h:outputText value="Required Elements"
-										styleClass="link_hover"
-										rendered="#{instructorAssignment.viewId == 3}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorAssignment.selectClassCoverageView}"
-									styleClass="link">
-									<h:outputText value="Class Coverage" styleClass="link"
-										rendered="#{instructorAssignment.viewId != 4}" />
-									<h:outputText value="Class Coverage"
-										styleClass="link_hover"
-										rendered="#{instructorAssignment.viewId == 4}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorAssignment.selectMethodCoverageView}"
-									styleClass="link">
-									<h:outputText value="Method Coverage" styleClass="link"
-										rendered="#{instructorAssignment.viewId != 5}" />
-									<h:outputText value="Method Coverage"
-										styleClass="link_hover"
-										rendered="#{instructorAssignment.viewId == 5}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorAssignment.selectCriterionCoverageView}"
-									styleClass="link">
-									<h:outputText value="Criterion Coverage" styleClass="link"
-										rendered="#{instructorAssignment.viewId != 6}" />
-									<h:outputText value="Criterion Coverage"
-										styleClass="link_hover"
-										rendered="#{instructorAssignment.viewId == 6}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorAssignment.selectCoveredAndUncoveredView}"
-									styleClass="link">
-									<h:outputText value="Covered and Uncovered Elements"
-										styleClass="link"
-										rendered="#{instructorAssignment.viewId != 7}" />
-									<h:outputText value="Covered and Uncovered Elements"
-										styleClass="link_hover"
-										rendered="#{instructorAssignment.viewId == 7}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-					</htm:table>
+					<h:dataTable value="#{instructorAssignment.files}" var="file"
+						binding="#{instructorAssignment.filesTable}" width="100%"
+						rendered="#{!empty instructorAssignment.files}">
+						<h:column>
+							<af:spacer height="10" />
+							<h:commandLink action="#{instructorAssignment.selectReportView}"
+								styleClass="link">
+								<h:outputText value="#{file.name}" styleClass="link"
+									rendered="#{file.name != instructorAssignment.activedReport}" />
+								<h:outputText value="#{file.name}" styleClass="link_hover"
+									rendered="#{file.name == instructorAssignment.activedReport}" />
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
 
 					<af:spacer height="30" />
 
@@ -177,8 +101,7 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Assignment Properties"
-						styleClass="title" />
+					<h:outputText value="Assignment Properties" styleClass="title" />
 
 					<af:spacer height="20" />
 
@@ -217,32 +140,33 @@
 
 					<af:spacer height="20" />
 
-					<h:dataTable value="#{instructorAssignment.evaluations}" var="evaluation"
-						binding="#{instructorAssignment.evaluationsTable}" width="100%"
+					<h:dataTable value="#{instructorAssignment.submissions}"
+						var="submission"
+						binding="#{instructorAssignment.submissionsTable}" width="100%"
 						rowClasses="tableRow" headerClass="tableHeader"
-						rendered="#{!empty instructorAssignment.evaluations}">
+						rendered="#{!empty instructorAssignment.submissions}">
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Student" />
 							</f:facet>
-							<h:outputText value="#{evaluation.student.userName}" />
+							<h:outputText value="#{submission.student.userName}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Name" />
 							</f:facet>
-							<h:outputText value="#{evaluation.student.name}" />
+							<h:outputText value="#{submission.student.name}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Grade" />
 							</f:facet>
-							<h:outputText value="#{evaluation.score}" />
+							<h:outputText value="#{submission.score}" />
 						</h:column>
 					</h:dataTable>
 
 					<h:outputText value="No students in the course."
-						rendered="#{empty instructorAssignment.evaluations}" />
+						rendered="#{empty instructorAssignment.submissions}" />
 
 				</htm:div>
 
@@ -251,268 +175,73 @@
 
 					<af:spacer height="20" />
 
-					<h:outputText value="Functional Test" styleClass="title" />
+					<h:outputText value="#{instructorAssignment.report.name}" styleClass="title" />
 
 					<af:spacer height="20" />
 
-					<h:dataTable
-						value="#{instructorAssignment.funcionalCoverageReport}"
-						var="funcionalCoverageReport"
-						binding="#{instructorAssignment.funcionalCoverageTable}"
-						headerClass="tableHeader" rowClasses="tableRow" width="100%">
-						<h:column>
+					<h:dataTable value="#{instructorAssignment.report.records}" var="record"
+						headerClass="tableHeader"
+						binding="#{instructorAssignment.reportTable}"
+						rowClasses="tableRow" width="100%">
+						<h:column rendered="#{instructorAssignment.report.header.column1 != null}">
 							<f:facet name="header">
-								<h:outputText value="Tests" />
+								<h:outputText value="#{instructorAssignment.report.header.column1}" />
 							</f:facet>
-							<h:outputText value="#{funcionalCoverageReport.tests}" />
+							<h:outputText value="#{record.column1}" />
 						</h:column>
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column2 != null}">
 							<f:facet name="header">
-								<h:outputText value="Errors" />
+								<h:outputText value="#{instructorAssignment.report.header.column2}" />
 							</f:facet>
-							<h:outputText value="#{funcionalCoverageReport.errors}" />
+							<h:outputText value="#{record.column2}" />
 						</h:column>
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column3 != null}">
 							<f:facet name="header">
-								<h:outputText value="Failures" />
+								<h:outputText value="#{instructorAssignment.report.header.column3}" />
 							</f:facet>
-							<h:outputText value="#{funcionalCoverageReport.failures}" />
+							<h:outputText value="#{record.column3}" />
 						</h:column>
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column4 != null}">
 							<f:facet name="header">
-								<h:outputText value="Coverage" />
+								<h:outputText value="#{instructorAssignment.report.header.column4}" />
 							</f:facet>
-							<h:outputText value="#{funcionalCoverageReport.coverage}" />
+							<h:outputText value="#{record.column4}" />
 						</h:column>
-					</h:dataTable>
-
-				</htm:div>
-
-				<htm:div style="width: 570px;"
-					rendered="#{instructorAssignment.viewId == 3}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Required Elements" styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable
-						value="#{instructorAssignment.requiredElementsReport}"
-						var="requiredElementsReport"
-						binding="#{instructorAssignment.requiredElementTable}"
-						headerClass="tableHeader" rowClasses="tableRow" width="100%">
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column5 != null}">
 							<f:facet name="header">
-								<h:outputText value="Method" />
+								<h:outputText value="#{instructorAssignment.report.header.column5}" />
 							</f:facet>
-							<h:outputText value="#{requiredElementsReport.method}" />
+							<h:outputText value="#{record.column5}" />
 						</h:column>
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column6 != null}">
 							<f:facet name="header">
-								<h:outputText value="All-Nodes" />
+								<h:outputText value="#{instructorAssignment.report.header.column6}" />
 							</f:facet>
-							<h:outputText value="#{requiredElementsReport.allNodes}" />
+							<h:outputText value="#{record.column6}" />
 						</h:column>
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column7 != null}">
 							<f:facet name="header">
-								<h:outputText value="All-Edges" />
+								<h:outputText value="#{instructorAssignment.report.header.column7}" />
 							</f:facet>
-							<h:outputText value="#{requiredElementsReport.allEdges}" />
+							<h:outputText value="#{record.column7}" />
 						</h:column>
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column8 != null}">
 							<f:facet name="header">
-								<h:outputText value="All-Uses" />
+								<h:outputText value="#{instructorAssignment.report.header.column8}" />
 							</f:facet>
-							<h:outputText value="#{requiredElementsReport.allUses}" />
+							<h:outputText value="#{record.column8}" />
 						</h:column>
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column9 != null}">
 							<f:facet name="header">
-								<h:outputText value="All-Pot-Uses" />
+								<h:outputText value="#{instructorAssignment.report.header.column9}" />
 							</f:facet>
-							<h:outputText value="#{requiredElementsReport.allPotUses}" />
+							<h:outputText value="#{record.column9}" />
 						</h:column>
-					</h:dataTable>
-
-				</htm:div>
-
-				<htm:div style="width: 570px;"
-					rendered="#{instructorAssignment.viewId == 4}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Class Coverage" styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable value="#{instructorAssignment.classCoverageReport}"
-						var="classCoverageReport"
-						binding="#{instructorAssignment.classCoverageTable}"
-						headerClass="tableHeader" rowClasses="tableRow" width="100%">
-						<h:column>
+						<h:column rendered="#{instructorAssignment.report.header.column10 != null}">
 							<f:facet name="header">
-								<h:outputText value="Class" />
+								<h:outputText value="#{instructorAssignment.report.header.column10}" />
 							</f:facet>
-							<h:outputText value="#{classCoverageReport.clazz}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-nodes" />
-							</f:facet>
-							<h:outputText value="#{classCoverageReport.allNodes}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-Edges" />
-							</f:facet>
-							<h:outputText value="#{classCoverageReport.allEdges}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-Uses" />
-							</f:facet>
-							<h:outputText value="#{classCoverageReport.allUses}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-Pot-Uses" />
-							</f:facet>
-							<h:outputText value="#{classCoverageReport.allPotUses}" />
-						</h:column>
-					</h:dataTable>
-
-				</htm:div>
-
-				<htm:div style="width: 570px;"
-					rendered="#{instructorAssignment.viewId == 5}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Method Coverage" styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable value="#{instructorAssignment.methodCoverageReport}"
-						var="methodCoverageReport"
-						binding="#{instructorAssignment.methodCoverageTable}"
-						headerClass="tableHeader" rowClasses="tableRow" width="100%">
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Method" />
-							</f:facet>
-							<h:outputText value="#{methodCoverageReport.method}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-Nodes" />
-							</f:facet>
-							<h:outputText value="#{methodCoverageReport.allNodes}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-Edges" />
-							</f:facet>
-							<h:outputText value="#{methodCoverageReport.allEdges}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-Uses" />
-							</f:facet>
-							<h:outputText value="#{methodCoverageReport.allUses}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="All-Pot-Uses" />
-							</f:facet>
-							<h:outputText value="#{methodCoverageReport.allPotUses}" />
-						</h:column>
-					</h:dataTable>
-
-				</htm:div>
-
-				<htm:div style="width: 570px;"
-					rendered="#{instructorAssignment.viewId == 6}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Criterion Coverage" styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable
-						value="#{instructorAssignment.criterionCoverageReport}"
-						var="criterionCoverageReport"
-						binding="#{instructorAssignment.criterionCoverageTable}"
-						headerClass="tableHeader" rowClasses="tableRow" width="100%">
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Criterion" />
-							</f:facet>
-							<h:outputText value="#{criterionCoverageReport.criterion}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Number of Elements" />
-							</f:facet>
-							<h:outputText value="#{criterionCoverageReport.numberOfElements}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Number of Covered Elements" />
-							</f:facet>
-							<h:outputText
-								value="#{criterionCoverageReport.numberOfCoveredElements}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Percentage" />
-							</f:facet>
-							<h:outputText value="#{criterionCoverageReport.percentage}" />
-						</h:column>
-					</h:dataTable>
-
-				</htm:div>
-
-				<htm:div style="width: 570px;"
-					rendered="#{instructorAssignment.viewId == 7}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Covered and Uncovered Elements"
-						styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable
-						value="#{instructorAssignment.coveredAndUncoveredReport}"
-						var="coveredAndUncoveredReport"
-						binding="#{instructorAssignment.coveredAndUncoveredTable}"
-						headerClass="tableHeader" rowClasses="tableRow" width="100%">
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Method" />
-							</f:facet>
-							<h:outputText value="#{coveredAndUncoveredReport.method}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Criterion" />
-							</f:facet>
-							<h:outputText value="#{coveredAndUncoveredReport.criterion}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Covered Elements" />
-							</f:facet>
-							<h:outputText
-								value="#{coveredAndUncoveredReport.coveredElements}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Uncovered Elements" />
-							</f:facet>
-							<h:outputText
-								value="#{coveredAndUncoveredReport.uncoveredElements}" />
+							<h:outputText value="#{record.column10}" />
 						</h:column>
 					</h:dataTable>
 

@@ -1,36 +1,37 @@
 package progtest.view.instructor;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.model.SelectItem;
+import javax.faces.component.UIData;
 
 import progtest.common.Assignment;
+import progtest.common.Requisite;
 import progtest.common.Course;
+import progtest.common.Criterion;
 import progtest.common.Oracle;
+import progtest.common.Tool;
+import progtest.database.RequisiteDAO;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
-import progtest.exceptions.CompileException;
-import progtest.exceptions.CompressException;
-import progtest.exceptions.DecompressException;
-import progtest.exceptions.FileException;
-import progtest.exceptions.NotFoundApplicationException;
-import progtest.exceptions.NotFoundTestCasesException;
-import progtest.exceptions.TestingException;
 import progtest.execution.Runner;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class AddAssignment {
 
 	private int step = 1;
 
-	private boolean advancedOptions = false;
+	private List<String> languages = loadLanguages();
 
-	private SelectItem[] oracles = loadOracles();
+	private String language = null;
 
-	private String oracle = oracles[0].toString();
+	private List<Oracle> oracles = new ArrayList<Oracle>();
+
+	private Integer oracle = null;
 
 	private String title = Constants.EMPTY;
 
@@ -40,21 +41,13 @@ public class AddAssignment {
 
 	private Date endDate = new Date();
 
-	private String weightFunctional = String.valueOf(1);
+	private List<Criterion> criteria = new ArrayList<Criterion>();
 
-	private String weightAllNodes = String.valueOf(1);
+	private List<String> selectedCriteria = new ArrayList<String>();
 
-	private String weightAllEdges = String.valueOf(1);
+	private List<Requisite> requisites = new ArrayList<Requisite>();
 
-	private String weightAllUses = String.valueOf(1);
-
-	private String weightAllPotUses = String.valueOf(1);
-
-	private String weightPalTal = String.valueOf(1);
-
-	private String weightPinstTal = String.valueOf(1);
-
-	private String weightPalTinst = String.valueOf(1);
+	private UIData requisitesTable;
 
 	public int getStep() {
 		return step;
@@ -64,27 +57,35 @@ public class AddAssignment {
 		this.step = step;
 	}
 
-	public boolean isAdvancedOptions() {
-		return advancedOptions;
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
 	}
 
-	public void setAdvancedOptions(boolean advancedOptions) {
-		this.advancedOptions = advancedOptions;
+	public List<String> getLanguages() {
+		return languages;
 	}
 
-	public SelectItem[] getOracles() {
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public List<Oracle> getOracles() {
 		return oracles;
 	}
 
-	public void setOracles(SelectItem[] oracles) {
+	public void setOracles(List<Oracle> oracles) {
 		this.oracles = oracles;
 	}
 
-	public String getOracle() {
+	public Integer getOracle() {
 		return oracle;
 	}
 
-	public void setOracle(String oracle) {
+	public void setOracle(Integer oracle) {
 		this.oracle = oracle;
 	}
 
@@ -120,143 +121,68 @@ public class AddAssignment {
 		this.endDate = endDate;
 	}
 
-	public String getWeightFunctional() {
-		return weightFunctional;
+	public List<Criterion> getCriteria() {
+		return criteria;
 	}
 
-	public void setWeightFunctional(String weightFunctional) {
-		this.weightFunctional = weightFunctional;
+	public void setCriteria(List<Criterion> criteria) {
+		this.criteria = criteria;
 	}
 
-	public String getWeightAllNodes() {
-		return weightAllNodes;
+	public List<String> getSelectedCriteria() {
+		return selectedCriteria;
 	}
 
-	public void setWeightAllNodes(String weightAllNodes) {
-		this.weightAllNodes = weightAllNodes;
+	public void setSelectedCriteria(List<String> selectedCriteria) {
+		this.selectedCriteria = selectedCriteria;
 	}
 
-	public String getWeightAllEdges() {
-		return weightAllEdges;
+	public List<Requisite> getRequisites() {
+		return requisites;
 	}
 
-	public void setWeightAllEdges(String weightAllEdges) {
-		this.weightAllEdges = weightAllEdges;
+	public void setRequisites(
+			List<Requisite> requisites) {
+		this.requisites = requisites;
 	}
 
-	public String getWeightAllUses() {
-		return weightAllUses;
+	public UIData getRequisitesTable() {
+		return requisitesTable;
 	}
 
-	public void setWeightAllUses(String weightAllUses) {
-		this.weightAllUses = weightAllUses;
-	}
-
-	public String getWeightAllPotUses() {
-		return weightAllPotUses;
-	}
-
-	public void setWeightAllPotUses(String weightAllPotUses) {
-		this.weightAllPotUses = weightAllPotUses;
-	}
-
-	public String getWeightPalTal() {
-		return weightPalTal;
-	}
-
-	public void setWeightPalTal(String weightPalTal) {
-		this.weightPalTal = weightPalTal;
-	}
-
-	public String getWeightPinstTal() {
-		return weightPinstTal;
-	}
-
-	public void setWeightPinstTal(String weightPinstTal) {
-		this.weightPinstTal = weightPinstTal;
-	}
-
-	public String getWeightPalTinst() {
-		return weightPalTinst;
-	}
-
-	public void setWeightPalTinst(String weightPalTinst) {
-		this.weightPalTinst = weightPalTinst;
-	}
-	
-	public String turnOnAdvancedOptions() {
-		advancedOptions = true;
-		return Constants.ACTION_SELECT;
-	}
-	
-	public String turnOffAdvancedOptions() {
-		advancedOptions = false;
-		return Constants.ACTION_SELECT;
-	}
-
-	private void refresh() {
-		step = 1;
-		advancedOptions = false;
-		oracles = loadOracles();
-		oracle = oracles[0].toString();
-		title = Constants.EMPTY;
-		description = Constants.EMPTY;
-		startDate = new Date();
-		endDate = new Date();
-		weightFunctional = String.valueOf(1);
-		weightAllNodes = String.valueOf(1);
-		weightAllEdges = String.valueOf(1);
-		weightAllUses = String.valueOf(1);
-		weightAllPotUses = String.valueOf(1);
-		weightPalTal = String.valueOf(1);
-		weightPinstTal = String.valueOf(1);
-		weightPalTinst = String.valueOf(1);
-	}
-
-	private SelectItem[] loadOracles() {
-
-		List<Oracle> oracles = Querier.getOracles();
-		SelectItem[] itens = new SelectItem[oracles.size()];
-
-		for (int i = 0; i < oracles.size(); i++)
-			itens[i] = new SelectItem(oracles.get(i).getIdCode() + " - "
-					+ oracles.get(i).getTitle());
-
-		return itens;
-
-	}
-
-	public String cancel() {
-		refresh();
-		return Constants.ACTION_CANCEL;
+	public void setRequisitesTable(UIData requisitesTable) {
+		this.requisitesTable = requisitesTable;
 	}
 
 	public String goToStep2() {
 
-		Oracle oracle = Querier.getOracle(Integer.parseInt(this.oracle
-				.substring(0, this.oracle.indexOf(" "))));
-
-		title = oracle.getTitle();
-		description = oracle.getDescription();
-
-		ContextManager.setSession(Constants.SESSION_ORACLE, oracle);
-		
+		oracles = Querier.getOracles(language);
 		step = 2;
 
 		return Constants.ACTION_SELECT;
 
 	}
 
-	public String backToStep1() {
-		step = 1;
+	public String goToStep3() {
+
+		Oracle oracle = Querier.getOracle(this.oracle);
+
+		title = oracle.getTitle();
+		description = oracle.getDescription();
+
+		FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
+
+		step = 3;
+
 		return Constants.ACTION_SELECT;
+
 	}
 
-	public String conclude() {
+	public String goToStep4() {
 
 		if (validate()) {
 
-			Course course = (Course) ContextManager
+			Course course = (Course) FacesUtil
 					.getSession(Constants.SESSION_COURSE);
 
 			Assignment assignment = new Assignment();
@@ -265,71 +191,132 @@ public class AddAssignment {
 			assignment.setDescription(description);
 			assignment.setStartDate(startDate);
 			assignment.setEndDate(endDate);
-			assignment.setWeightFunctional(Integer.parseInt(weightFunctional));
-			assignment.setWeightAllNodes(Integer.parseInt(weightAllNodes));
-			assignment.setWeightAllEdges(Integer.parseInt(weightAllEdges));
-			assignment.setWeightAllUses(Integer.parseInt(weightAllUses));
-			assignment.setWeightAllPotUses(Integer.parseInt(weightAllPotUses));
-			assignment.setWeightPalTal(Integer.parseInt(weightPalTal));
-			assignment.setWeightPinstTal(Integer.parseInt(weightPinstTal));
-			assignment.setWeightPalTinst(Integer.parseInt(weightPalTinst));
 
-			Oracle oracle = (Oracle) ContextManager
-					.getSession(Constants.SESSION_ORACLE);
+			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
-			try {
+			criteria = Querier.getCriteria(language);
+			step = 4;
 
-				Runner.executePinstTinst(oracle, assignment);
+		}
 
-				AssignmentDAO.insert(assignment);
+		return Constants.ACTION_SELECT;
 
-				refresh();
+	}
 
-				return Constants.ACTION_SUCCESS;
+	public String goToStep5() {
 
-			} catch (DecompressException e) {
+		requisites.clear();
 
-				ContextManager.addMessage(Constants.KEY_ERROR_DECOMPRESSING,
-						FacesMessage.SEVERITY_ERROR);
+		if (hasCriteria()) {
 
-			} catch (TestingException e) {
+			Assignment assignment = (Assignment) FacesUtil
+					.getSession(Constants.SESSION_ASSIGNMENT);
 
-				ContextManager.addMessage(Constants.KEY_ERROR_TESTING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (CompileException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_COMPILING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (CompressException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_COMPRESSING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (FileException e) {
-
-				ContextManager.addMessage(Constants.KEY_ERROR_RUNNING,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (NotFoundTestCasesException e) {
-
-				ContextManager.addMessage(
-						Constants.KEY_ERROR_NOTFOUNDTESTCASES,
-						FacesMessage.SEVERITY_ERROR);
-
-			} catch (NotFoundApplicationException e) {
-
-				ContextManager.addMessage(
-						Constants.KEY_ERROR_NOTFOUNDAPPLICATION,
-						FacesMessage.SEVERITY_ERROR);
-
+			for (String selectedCriterion : selectedCriteria) {
+				String ids[] = selectedCriterion.split("/");
+				Criterion criterion = Querier.getCriterion(
+						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
+				Requisite requisite = new Requisite();
+				requisite.setAssignment(assignment);
+				requisite.setCriterion(criterion);
+				requisites.add(requisite);
 			}
 
+			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+
+			step = 5;
+
+		}
+
+		return Constants.ACTION_SELECT;
+
+	}
+
+	public String conclude() {
+
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
+		Oracle oracle = (Oracle) FacesUtil
+				.getSession(Constants.SESSION_ORACLE);
+
+		try {
+
+			AssignmentDAO.insert(assignment);
+
+			for (Requisite requisite : requisites)
+				RequisiteDAO.insert(requisite);
+
+			Runner.run(assignment, oracle);
+			
+			AssignmentDAO.update(assignment);
+
+			refresh();
+
+			return Constants.ACTION_SUCCESS;
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return Constants.ACTION_FAILURE;
 
+	}
+
+	public String backToStep1() {
+		step = 1;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String backToStep2() {
+		step = 2;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String backToStep3() {
+		step = 3;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String backToStep4() {
+		step = 4;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String cancel() {
+		refresh();
+		return Constants.ACTION_CANCEL;
+	}
+
+	private void refresh() {
+		step = 1;
+		setLanguages(loadLanguages());
+		language = null;
+		oracles = new ArrayList<Oracle>();
+		oracle = null;
+		title = Constants.EMPTY;
+		description = Constants.EMPTY;
+		startDate = new Date();
+		endDate = new Date();
+		criteria = new ArrayList<Criterion>();
+		selectedCriteria = new ArrayList<String>();
+		requisites = new ArrayList<Requisite>();
+	}
+
+	private List<String> loadLanguages() {
+		
+		List<String> languages = new ArrayList<String>();
+		
+		for(Tool tool: Querier.getTools())
+			if(!languages.contains(tool.getLanguage()))
+				languages.add(tool.getLanguage());
+		
+		return languages;
+	
 	}
 
 	private boolean validate() {
@@ -337,12 +324,12 @@ public class AddAssignment {
 		if (title.equals(Constants.EMPTY)
 				|| description.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (startDate.getTime() > endDate.getTime()) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {
@@ -352,6 +339,20 @@ public class AddAssignment {
 		}
 
 		return false;
+
+	}
+
+	private boolean hasCriteria() {
+		if (selectedCriteria.isEmpty()) {
+
+			FacesUtil.addMessage(Constants.KEY_ERROR_ANYCRITERIONSELECTED,
+					FacesMessage.SEVERITY_ERROR);
+
+			return false;
+
+		} else
+
+			return true;
 
 	}
 

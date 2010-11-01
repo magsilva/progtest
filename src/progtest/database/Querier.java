@@ -6,9 +6,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import progtest.common.Assignment;
+import progtest.common.Requisite;
 import progtest.common.Course;
-import progtest.common.Evaluation;
+import progtest.common.Criterion;
+import progtest.common.Submission;
 import progtest.common.Oracle;
+import progtest.common.Tool;
 import progtest.common.User;
 import progtest.util.HibernateUtil;
 
@@ -30,11 +33,13 @@ public class Querier {
 
 	private static final String SELECT_STUDENTS_BY_COURSE = "select studentCourse.student from StudentCourse studentCourse where studentCourse.course = ?";
 
-	private static final String SELECT_STUDENTS_NOT_COURSE = "select studentCourse.student from StudentCourse studentCourse where studentCourse.course != ?";
-	
+	private static final String SELECT_STUDENTS_BY_NOT_COURSE = "select studentCourse.student from StudentCourse studentCourse where studentCourse.course != ?";
+
 	private static final String SELECT_ORACLE = "from Oracle oracle where oracle.idCode = ?";
 
 	private static final String SELECT_ORACLES = "from Oracle";
+
+	private static final String SELECT_ORACLES_BY_LANGUAGE = "from Oracle oracle where oracle.language = ?";
 
 	private static final String SELECT_EVALUATION = "from Evaluation evaluation where evaluation.student = ? and evaluation.assignment.course = ? and evaluation.assignment = ? order by evaluation.assignment.endDate";
 
@@ -47,8 +52,18 @@ public class Querier {
 	private static final String SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE = "from Evaluation evaluation where evaluation.student = ? and evaluation.assignment.course = ? and evaluation.submissionDate = NULL order by evaluation.assignment.endDate";
 
 	private static final String SELECT_EVALUATIONS_BY_STUDENT_AND_SUBMISSIONDATE = "from Evaluation evaluation where evaluation.student = ? and evaluation.submissionDate = NULL order by evaluation.assignment.endDate";
-	
-	private static final String SELECT_MAX_IDCODE_ASSIGNMENT = "select max(assignment.idCode) from Assignment assignment";
+
+	private static final String SELECT_CRITERIA_BY_LANGUAGE = "select tool.criteria from Tool tool where tool.language = ?";
+
+	private static final String SELECT_CRITERIA_BY_ASSIGNMENT = "select ac.criterion from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
+
+	private static final String SELECT_CRITERION_BY_TOOL_AND_ID = "from Criterion criterion where criterion.tool = ? and criterion.idCode = ?";
+
+	private static final String SELECT_TOOLS = "from Tool";
+
+	private static final String SELECT_ASSIGNMENTCRITERIA_BY_ASSIGNMENT = "from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
+
+	private static final String SELECT_TOOL_BY_ASSIGNMENT = "select ac.criterion.tool from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -85,7 +100,8 @@ public class Querier {
 		boolean result;
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery(SELECT_USER_BY_EMAIL_AND_NOT_USERNAME);
+		Query query = session
+				.createQuery(SELECT_USER_BY_EMAIL_AND_NOT_USERNAME);
 		query.setString(0, email);
 		query.setString(1, userName);
 		if (query.list().size() == 0)
@@ -159,7 +175,7 @@ public class Querier {
 	public static List<User> getStudentsNotCourse(Course course) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery(SELECT_STUDENTS_NOT_COURSE);
+		Query query = session.createQuery(SELECT_STUDENTS_BY_NOT_COURSE);
 		query.setInteger(0, course.getIdCode());
 		List<User> users = (List<User>) query.list();
 		session.getTransaction().commit();
@@ -168,12 +184,12 @@ public class Querier {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Evaluation> getEvaluations(User user) {
+	public static List<Submission> getEvaluations(User user) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session.createQuery(SELECT_EVALUATIONS_BY_STUDENT);
 		query.setInteger(0, user.getIdCode());
-		List<Evaluation> evaluations = (List<Evaluation>) query.list();
+		List<Submission> evaluations = (List<Submission>) query.list();
 		session.getTransaction().commit();
 		session.close();
 		return evaluations;
@@ -192,13 +208,13 @@ public class Querier {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Evaluation> getEvaluations(Assignment assignment) {
+	public static List<Submission> getEvaluations(Assignment assignment) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session.createQuery(SELECT_EVALUATIONS_BY_ASSIGNMENT);
 		query.setInteger(0, assignment.getCourse().getIdCode());
 		query.setInteger(1, assignment.getIdCode());
-		List<Evaluation> evaluations = (List<Evaluation>) query.list();
+		List<Submission> evaluations = (List<Submission>) query.list();
 		session.getTransaction().commit();
 		session.close();
 		return evaluations;
@@ -226,35 +242,35 @@ public class Querier {
 		return oracles;
 	}
 
-	public static Evaluation getEvaluation(User user, Assignment assignment) {
+	public static Submission getEvaluation(User user, Assignment assignment) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session.createQuery(SELECT_EVALUATION);
 		query.setInteger(0, user.getIdCode());
 		query.setInteger(1, assignment.getCourse().getIdCode());
 		query.setInteger(2, assignment.getIdCode());
-		Evaluation evaluation = (Evaluation) query.uniqueResult();
+		Submission evaluation = (Submission) query.uniqueResult();
 		session.getTransaction().commit();
 		session.close();
 		return evaluation;
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Evaluation> getEvaluations(User user, Course course) {
+	public static List<Submission> getEvaluations(User user, Course course) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session
 				.createQuery(SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE);
 		query.setInteger(0, user.getIdCode());
 		query.setInteger(1, course.getIdCode());
-		List<Evaluation> evaluations = (List<Evaluation>) query.list();
+		List<Submission> evaluations = (List<Submission>) query.list();
 		session.getTransaction().commit();
 		session.close();
 		return evaluations;
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Evaluation> getOutstandingEvaluations(User user,
+	public static List<Submission> getOutstandingEvaluations(User user,
 			Course course) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
@@ -262,41 +278,112 @@ public class Querier {
 				.createQuery(SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE);
 		query.setInteger(0, user.getIdCode());
 		query.setInteger(1, course.getIdCode());
-		List<Evaluation> evaluations = (List<Evaluation>) query.list();
+		List<Submission> evaluations = (List<Submission>) query.list();
 		session.getTransaction().commit();
 		session.close();
 		return evaluations;
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Evaluation> getOutstandingEvaluations(User user) {
+	public static List<Submission> getOutstandingEvaluations(User user) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session
 				.createQuery(SELECT_EVALUATIONS_BY_STUDENT_AND_SUBMISSIONDATE);
 		query.setInteger(0, user.getIdCode());
-		List<Evaluation> avaliations = (List<Evaluation>) query.list();
+		List<Submission> avaliations = (List<Submission>) query.list();
 		session.getTransaction().commit();
 		session.close();
 		return avaliations;
 	}
 
-	public static Integer getNewId() {
-		try {
+	@SuppressWarnings("unchecked")
+	public static List<Criterion> getCriteria(String language) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_CRITERIA_BY_LANGUAGE);
+		query.setString(0, language);
+		List<Criterion> criteria = (List<Criterion>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return criteria;
+	}
+
+	public static Criterion getCriterion(int i, int j) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_CRITERION_BY_TOOL_AND_ID);
+		query.setInteger(0, i);
+		query.setInteger(1, j);
+		Criterion criterion = (Criterion) query.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return criterion;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Oracle> getOracles(String language) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_ORACLES_BY_LANGUAGE);
+		query.setString(0, language);
+		List<Oracle> oracles = (List<Oracle>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return oracles;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Tool> getTools() {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_TOOLS);
+		List<Tool> tools = (List<Tool>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return tools;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Criterion> getCriteria(Assignment assignment) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_CRITERIA_BY_ASSIGNMENT);
+		query.setInteger(0, assignment.getCourse().getIdCode());
+		query.setInteger(1, assignment.getIdCode());
+		List<Criterion> criteria = (List<Criterion>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return criteria;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Requisite> getAssignmentCriteria(
+			Assignment assignment) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session
-				.createQuery(SELECT_MAX_IDCODE_ASSIGNMENT);
-		Integer idCode = (Integer) query.uniqueResult();
+				.createQuery(SELECT_ASSIGNMENTCRITERIA_BY_ASSIGNMENT);
+		query.setInteger(0, assignment.getCourse().getIdCode());
+		query.setInteger(1, assignment.getIdCode());
+		List<Requisite> assignmentCriteria = (List<Requisite>) query
+				.list();
 		session.getTransaction().commit();
 		session.close();
-		if(idCode == 0 || idCode == null)
-			return 1;
-		else
-			return idCode + 1;
-		} catch(Throwable e) {
-			return 1;
-		}
+		return assignmentCriteria;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Tool> getTools(Assignment assignment) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_TOOL_BY_ASSIGNMENT);
+		query.setInteger(0, assignment.getCourse().getIdCode());
+		query.setInteger(1, assignment.getIdCode());
+		List<Tool> tool = (List<Tool>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return tool;
 	}
 
 }
