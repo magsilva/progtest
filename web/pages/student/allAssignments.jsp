@@ -63,21 +63,21 @@
 
 					<af:spacer height="30" />
 
-					<h:dataTable value="#{studentAllAssignments.evaluations}"
-						var="evaluation"
-						binding="#{studentAllAssignments.evaluationsTable}" width="100%"
-						rendered="#{!empty studentAllAssignments.evaluations}">
+					<h:dataTable value="#{studentAllAssignments.submissions}"
+						var="submission"
+						binding="#{studentAllAssignments.submissionsTable}" width="100%"
+						rendered="#{!empty studentAllAssignments.submissions}">
 						<h:column>
 							<htm:table styleClass="grid">
 								<htm:tr styleClass="tableHeader">
 									<htm:td>
-										<h:outputText value="#{evaluation.assignment.title}" />
+										<h:outputText value="#{submission.assignment.title}" />
 									</htm:td>
 								</htm:tr>
 								<htm:tr>
 									<htm:td>
 										<af:spacer height="10" />
-										<h:outputText value="#{evaluation.assignment.description}" />
+										<h:outputText value="#{submission.assignment.description}" />
 										<af:spacer height="5" />
 									</htm:td>
 								</htm:tr>
@@ -85,7 +85,7 @@
 									<htm:td>
 										<af:spacer height="5" />
 										<h:outputText value="Deadline: " styleClass="label" />
-										<h:outputText value="#{evaluation.assignment.endDate}" />
+										<h:outputText value="#{submission.assignment.endDate}" />
 										<af:spacer height="5" />
 									</htm:td>
 								</htm:tr>
@@ -94,9 +94,9 @@
 										<af:spacer height="5" />
 										<h:outputText value="Status: " styleClass="label" />
 										<h:outputText value="Sent"
-											rendered="#{evaluation.submissionDate != null}" />
+											rendered="#{submission.submissionDate != null}" />
 										<h:outputText value="Pending"
-											rendered="#{evaluation.submissionDate == null}" />
+											rendered="#{submission.submissionDate == null}" />
 										<af:spacer height="5" />
 									</htm:td>
 								</htm:tr>
@@ -104,7 +104,7 @@
 									<htm:td>
 										<h:commandButton value="Send"
 											action="#{studentAllAssignments.submitAssignment}"
-											rendered="#{evaluation.submissionDate == null}" />
+											rendered="#{submission.submissionDate == null}" />
 										<af:spacer width="5" />
 										<h:commandButton value="View"
 											action="#{studentAllAssignments.assignmentInfo}" />
@@ -115,7 +115,7 @@
 						</h:column>
 					</h:dataTable>
 
-					<htm:table rendered="#{empty studentAllAssignments.evaluations}">
+					<htm:table rendered="#{empty studentAllAssignments.submissions}">
 						<htm:tr>
 							<htm:td>
 								<h:outputText value="There are no assignments." />

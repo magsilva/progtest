@@ -10,9 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
+
 @Entity
-@IdClass(EvaluationPK.class)
-public class Evaluation {
+@IdClass(SubmissionPK.class)
+public class Submission {
 
 	private User student;
 

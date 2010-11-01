@@ -16,7 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import progtest.database.Querier;
 
 @Entity
 @IdClass(AssignmentPK.class)
@@ -24,7 +23,7 @@ public class Assignment {
 
 	private Course course;
 
-	private int idCode = Querier.getNewId();
+	private int idCode;
 
 	private String title;
 
@@ -38,7 +37,7 @@ public class Assignment {
 
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
+	private List<Submission> submissions = new ArrayList<Submission>();
 
 	@Id
 	@ManyToOne
@@ -117,12 +116,12 @@ public class Assignment {
 	}
 
 	@OneToMany(mappedBy = "assignment")
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+	public List<Submission> getSubmissions() {
+		return submissions;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setSubmissions(List<Submission> submissions) {
+		this.submissions = submissions;
 	}
 
 }

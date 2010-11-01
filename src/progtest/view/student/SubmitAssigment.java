@@ -5,8 +5,8 @@ import java.util.Date;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
-import progtest.common.Evaluation;
-import progtest.database.EvaluationDAO;
+import progtest.common.Submission;
+import progtest.database.SubmissionDAO;
 import progtest.execution.Runner;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
@@ -25,16 +25,16 @@ public class SubmitAssigment {
 
 	public String upload() {
 
-		Evaluation evaluation = (Evaluation) FacesUtil
+		Submission submission = (Submission) FacesUtil
 				.getSession(Constants.SESSION_EVALUATION);
 		
 		try {
 			
-			Runner.run(evaluation, file);
+			Runner.run(submission, file);
 			
-			evaluation.setSubmissionDate(new Date());
+			submission.setSubmissionDate(new Date());
 			
-			EvaluationDAO.update(evaluation);
+			SubmissionDAO.update(submission);
 			
 			return Constants.ACTION_SUCCESS;
 			

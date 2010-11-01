@@ -1,17 +1,16 @@
 package progtest.common;
 
-import javax.persistence.Entity;
+import java.io.Serializable;
+
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="student_course")
-@IdClass(StudentCoursePK.class)
-public class StudentCourse {
+
+public class EnrollmentPK implements Serializable {
+
+	private static final long serialVersionUID = 1390851602377573353L;
 	
 	private User student;
 	

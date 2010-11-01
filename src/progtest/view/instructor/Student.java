@@ -6,7 +6,7 @@ import java.util.List;
 import javax.faces.component.UIData;
 
 import progtest.common.Course;
-import progtest.common.Evaluation;
+import progtest.common.Submission;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
@@ -22,9 +22,9 @@ public class Student {
 
 	private String email = Constants.EMPTY;
 
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>(0);
+	private List<Submission> submissions = new ArrayList<Submission>(0);
 
-	private UIData evaluationsTable;
+	private UIData submissionsTable;
 
 	public int getViewId() {
 		return viewId;
@@ -58,20 +58,20 @@ public class Student {
 		this.email = email;
 	}
 
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+	public List<Submission> getSubmissions() {
+		return submissions;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setSubmissions(List<Submission> submissions) {
+		this.submissions = submissions;
 	}
 
-	public UIData getEvaluationsTable() {
-		return evaluationsTable;
+	public UIData getSubmissionsTable() {
+		return submissionsTable;
 	}
 
-	public void setEvaluationsTable(UIData evaluationsTable) {
-		this.evaluationsTable = evaluationsTable;
+	public void setSubmissionsTable(UIData submissionsTable) {
+		this.submissionsTable = submissionsTable;
 	}
 
 	public Student() {
@@ -81,7 +81,7 @@ public class Student {
 		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 
-		evaluations = Querier.getEvaluations(user, course);
+		submissions = Querier.getEvaluations(user, course);
 
 		userName = user.getUserName();
 		name = user.getName();

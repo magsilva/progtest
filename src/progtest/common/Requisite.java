@@ -9,10 +9,11 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "assignment_criterion")
-@IdClass(AssignmentCriterionPK.class)
-public class AssignmentCriterion {
+@IdClass(RequisitePK.class)
+public class Requisite {
 
 	private Assignment assignment;
 

@@ -8,7 +8,7 @@ import java.util.List;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
-import progtest.common.Evaluation;
+import progtest.common.Submission;
 import progtest.common.Oracle;
 import progtest.common.Tool;
 import progtest.common.User;
@@ -78,11 +78,11 @@ public class Runner {
 
 	}
 
-	public static void run(Evaluation evaluation, UploadedFile uf)
+	public static void run(Submission submission, UploadedFile uf)
 			throws IOException, InterruptedException {
 
-		Assignment assignment = evaluation.getAssignment();
-		User student = evaluation.getStudent();
+		Assignment assignment = submission.getAssignment();
+		User student = submission.getStudent();
 
 		File studentDir = new File(Directories.getStudentDirPath(assignment,
 				student));
@@ -124,9 +124,9 @@ public class Runner {
 		execute(Querier.getTools(assignment), studentDir, programDir,
 				oracleTestsDir, pstiDir);
 
-		evaluate(evaluation);
+		evaluate(submission);
 
-		report(evaluation);
+		report(submission);
 
 	}
 
@@ -232,7 +232,7 @@ public class Runner {
 		Evaluator.evaluate(oracle);
 	}
 
-	private static void evaluate(Evaluation evaluation) {
+	private static void evaluate(Submission evaluation) {
 		Evaluator.evaluate(evaluation);
 	}
 
@@ -240,7 +240,7 @@ public class Runner {
 		Reporter.generateReports(oracle);
 	}
 
-	private static void report(Evaluation evaluation)
+	private static void report(Submission evaluation)
 			throws FileNotFoundException {
 		Reporter.generateReports(evaluation);
 	}

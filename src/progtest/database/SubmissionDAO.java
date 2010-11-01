@@ -2,31 +2,31 @@ package progtest.database;
 
 import org.hibernate.Session;
 
-import progtest.common.Evaluation;
+import progtest.common.Submission;
 import progtest.util.HibernateUtil;
 
-public class EvaluationDAO {
+public class SubmissionDAO {
 
-	public static void insert(Evaluation evaluation) {
+	public static void insert(Submission submission) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.save(evaluation);
+		session.save(submission);
 		session.getTransaction().commit();
 		session.close();
 	}
 	
-	public static void update(Evaluation evaluation) {
+	public static void update(Submission submission) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.update(evaluation);
+		session.update(submission);
 		session.getTransaction().commit();
 		session.close();
 	}
 	
-	public static void delete(Evaluation evaluation) {
+	public static void delete(Submission submission) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.delete(evaluation);
+		session.delete(submission);
 		session.getTransaction().commit();
 		session.close();
 	}

@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
-import progtest.common.Evaluation;
+import progtest.common.Submission;
 import progtest.execution.Directories;
 import progtest.reports.Report;
 import progtest.util.Constants;
@@ -140,28 +140,28 @@ public class AssignmentInfo {
 		
 		activedReport = Constants.EMPTY;
 
-		Evaluation evaluation = (Evaluation) FacesUtil
+		Submission submission = (Submission) FacesUtil
 				.getSession(Constants.SESSION_EVALUATION);
 
-		title = evaluation.getAssignment().getTitle();
+		title = submission.getAssignment().getTitle();
 
-		description = evaluation.getAssignment().getDescription();
+		description = submission.getAssignment().getDescription();
 
-		startDate = evaluation.getAssignment().getStartDate();
+		startDate = submission.getAssignment().getStartDate();
 
-		endDate = evaluation.getAssignment().getEndDate();
+		endDate = submission.getAssignment().getEndDate();
 
-		submissionDate = evaluation.getSubmissionDate();
+		submissionDate = submission.getSubmissionDate();
 
-		score = evaluation.getScore();
+		score = submission.getScore();
 
-		if (evaluation.getSubmissionDate() == null) {
+		if (submission.getSubmissionDate() == null) {
 
 			selectDefaultView();
 
 		} else {
 		
-			files = FileUtil.listFiles(new File(Directories.getStudentReportsDirPath(evaluation.getAssignment(), evaluation.getStudent())), Constants.EXTENSION_XML);
+			files = FileUtil.listFiles(new File(Directories.getStudentReportsDirPath(submission.getAssignment(), submission.getStudent())), Constants.EXTENSION_XML);
 			
 			File file = (File) files.get(0);
 			report = new Report(file);

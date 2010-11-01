@@ -5,16 +5,18 @@ import java.io.Serializable;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
-public class StudentCoursePK implements Serializable {
 
-	private static final long serialVersionUID = 1390851602377573353L;
+public class SubmissionPK implements Serializable {
 	
+	private static final long serialVersionUID = -4849655818034699740L;
+
 	private User student;
 	
-	private Course course;
-	
+	private Assignment assignment;
+
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "student")
@@ -28,13 +30,14 @@ public class StudentCoursePK implements Serializable {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "course")
-	public Course getCourse() {
-		return course;
+	@JoinColumns( { @JoinColumn(name = "course", referencedColumnName = "course"),
+			@JoinColumn(name = "assignment", referencedColumnName = "idCode") })
+	public Assignment getAssignment() {
+		return assignment;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setAssignment(Assignment assignment) {
+		this.assignment = assignment;
 	}
 
 }

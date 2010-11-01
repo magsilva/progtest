@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
-import progtest.common.Evaluation;
+import progtest.common.Submission;
 import progtest.database.Querier;
 import progtest.execution.Directories;
 import progtest.reports.Report;
@@ -29,9 +29,9 @@ public class Assignment {
 
 	private Date endDate;
 
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
+	private List<Submission> submissions = new ArrayList<Submission>();
 
-	private UIData evaluationsTable;
+	private UIData submissionsTable;
 
 	private List<File> files = new ArrayList<File>();
 
@@ -89,20 +89,20 @@ public class Assignment {
 		this.endDate = endDate;
 	}
 
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+	public List<Submission> getEvaluations() {
+		return submissions;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setSubmissions(List<Submission> submissions) {
+		this.submissions = submissions;
 	}
 
-	public UIData getEvaluationsTable() {
-		return evaluationsTable;
+	public UIData getSubmissionsTable() {
+		return submissionsTable;
 	}
 
-	public void setEvaluationsTable(UIData evaluationsTable) {
-		this.evaluationsTable = evaluationsTable;
+	public void setSubmissionsTable(UIData submissionsTable) {
+		this.submissionsTable = submissionsTable;
 	}
 
 	public List<File> getFiles() {
@@ -152,7 +152,7 @@ public class Assignment {
 
 		endDate = assignment.getEndDate();
 		
-		evaluations = Querier.getEvaluations(assignment);
+		submissions = Querier.getEvaluations(assignment);
 		
 		files = FileUtil.listFiles(new File(Directories.getPitiDirPath(assignment)), Constants.EXTENSION_XML);
 		

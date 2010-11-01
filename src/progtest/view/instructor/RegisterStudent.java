@@ -3,10 +3,10 @@ package progtest.view.instructor;
 import javax.faces.application.FacesMessage;
 
 import progtest.common.Course;
-import progtest.common.StudentCourse;
+import progtest.common.Enrollment;
 import progtest.common.User;
 import progtest.database.Querier;
-import progtest.database.StudentCourseDAO;
+import progtest.database.EnrollmentDAO;
 import progtest.database.UserDAO;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
@@ -88,11 +88,11 @@ public class RegisterStudent {
 			
 			Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 			
-			StudentCourse studentCourse = new StudentCourse();
-			studentCourse.setStudent(user);
-			studentCourse.setCourse(course);
+			Enrollment enrollment = new Enrollment();
+			enrollment.setStudent(user);
+			enrollment.setCourse(course);
 			
-			StudentCourseDAO.insert(studentCourse);
+			EnrollmentDAO.insert(enrollment);
 			
 			return Constants.ACTION_SUCCESS;
 

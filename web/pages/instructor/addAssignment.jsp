@@ -249,15 +249,15 @@
 
 					<h:messages styleClass="message" />
 
-					<h:dataTable value="#{instructorAddAssignment.assignmentCriteria}"
-						var="assignmentCriteria"
-						binding="#{instructorAddAssignment.assignmentCriteriaTable}"
-						rendered="#{!empty instructorAddAssignment.assignmentCriteria}">
+					<h:dataTable value="#{instructorAddAssignment.requisites}"
+						var="requisite"
+						binding="#{instructorAddAssignment.requisitesTable}"
+						rendered="#{!empty instructorAddAssignment.requisites}">
 						<h:column>
-							<h:outputText value="#{assignmentCriteria.criterion.tool.name}/#{assignmentCriteria.criterion.name}: " />
+							<h:outputText value="#{requisite.criterion.tool.name}/#{requisite.criterion.name}: " />
 						</h:column>
 						<h:column>
-							<h:selectOneMenu value="#{assignmentCriteria.weight}">
+							<h:selectOneMenu value="#{requisite.weight}">
 								<f:selectItem itemValue="1" />
 								<f:selectItem itemValue="2" />
 								<f:selectItem itemValue="3" />

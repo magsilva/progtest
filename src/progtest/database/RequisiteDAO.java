@@ -2,31 +2,31 @@ package progtest.database;
 
 import org.hibernate.Session;
 
-import progtest.common.AssignmentCriterion;
+import progtest.common.Requisite;
 import progtest.util.HibernateUtil;
 
-public class AssignmentCriterionDAO {
+public class RequisiteDAO {
 
-	public static void insert(AssignmentCriterion assignmentCriterion) {
+	public static void insert(Requisite requisite) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.save(assignmentCriterion);
+		session.save(requisite);
 		session.getTransaction().commit();
 		session.close();
 	}
 	
-	public static void update(AssignmentCriterion assignmentCriterion) {
+	public static void update(Requisite requisite) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.update(assignmentCriterion);
+		session.update(requisite);
 		session.getTransaction().commit();
 		session.close();
 	}
 	
-	public static void delete(AssignmentCriterion assignmentCriterion) {
+	public static void delete(Requisite requisite) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.delete(assignmentCriterion);
+		session.delete(requisite);
 		session.getTransaction().commit();
 		session.close();
 	}

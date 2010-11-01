@@ -3,8 +3,8 @@ package progtest.execution;
 import java.util.List;
 
 import progtest.common.Assignment;
-import progtest.common.AssignmentCriterion;
-import progtest.common.Evaluation;
+import progtest.common.Requisite;
+import progtest.common.Submission;
 import progtest.database.Querier;
 
 public class Evaluator {
@@ -13,11 +13,11 @@ public class Evaluator {
 		oracle.setPinstTinst(calculatePiTi(oracle));
 	}
 
-	public static void evaluate(Evaluation evaluation) {
-		evaluation.setPstTst(calculatePsTs(evaluation));
-		evaluation.setPinstTst(calculatePiTs(evaluation));
-		evaluation.setPstTinst(calculatePsTi(evaluation));
-		evaluation.setScore(calculateScore(evaluation));
+	public static void evaluate(Submission submission) {
+		submission.setPstTst(calculatePsTs(submission));
+		submission.setPinstTst(calculatePiTs(submission));
+		submission.setPstTinst(calculatePsTi(submission));
+		submission.setScore(calculateScore(submission));
 	}
 
 	private static double calculatePiTi(Assignment oracle) {
@@ -26,15 +26,15 @@ public class Evaluator {
 
 		double quotient = 0;
 
-		List<AssignmentCriterion> assignmentCriteria = Querier
+		List<Requisite> requisites = Querier
 				.getAssignmentCriteria(oracle);
 
-		for (AssignmentCriterion assignmentCriterion : assignmentCriteria) {
+		for (Requisite requisite : requisites) {
 
-			pinstTinst += Reader.readPiTi(assignmentCriterion)
-					* assignmentCriterion.getWeight();
+			pinstTinst += Reader.readPiTi(requisite)
+					* requisite.getWeight();
 
-			quotient += assignmentCriterion.getWeight();
+			quotient += requisite.getWeight();
 
 		}
 
@@ -45,22 +45,22 @@ public class Evaluator {
 		return pinstTinst;
 	}
 
-	private static double calculatePsTs(Evaluation evaluation) {
+	private static double calculatePsTs(Submission submission) {
 
 		double pstTst = 0;
 
 		double quotient = 0;
 
-		List<AssignmentCriterion> assignmentCriteria = Querier
-				.getAssignmentCriteria(evaluation.getAssignment());
+		List<Requisite> requisites = Querier
+				.getAssignmentCriteria(submission.getAssignment());
 
-		for (AssignmentCriterion assignmentCriterion : assignmentCriteria) {
+		for (Requisite requisite : requisites) {
 
-			pstTst += Reader.readPsTs(assignmentCriterion,
-					evaluation.getStudent())
-					* assignmentCriterion.getWeight();
+			pstTst += Reader.readPsTs(requisite,
+					submission.getStudent())
+					* requisite.getWeight();
 
-			quotient += assignmentCriterion.getWeight();
+			quotient += requisite.getWeight();
 
 		}
 
@@ -71,22 +71,22 @@ public class Evaluator {
 		return pstTst;
 	}
 
-	private static double calculatePiTs(Evaluation evaluation) {
+	private static double calculatePiTs(Submission submission) {
 
 		double pinstTst = 0;
 
 		double quotient = 0;
 
-		List<AssignmentCriterion> assignmentCriteria = Querier
-				.getAssignmentCriteria(evaluation.getAssignment());
+		List<Requisite> requisites = Querier
+				.getAssignmentCriteria(submission.getAssignment());
 
-		for (AssignmentCriterion assignmentCriterion : assignmentCriteria) {
+		for (Requisite requisite : requisites) {
 
-			pinstTst += Reader.readPiTs(assignmentCriterion,
-					evaluation.getStudent())
-					* assignmentCriterion.getWeight();
+			pinstTst += Reader.readPiTs(requisite,
+					submission.getStudent())
+					* requisite.getWeight();
 
-			quotient += assignmentCriterion.getWeight();
+			quotient += requisite.getWeight();
 
 		}
 
@@ -97,22 +97,22 @@ public class Evaluator {
 		return pinstTst;
 	}
 
-	private static double calculatePsTi(Evaluation evaluation) {
+	private static double calculatePsTi(Submission submission) {
 
 		double pstTinst = 0;
 
 		double quotient = 0;
 
-		List<AssignmentCriterion> assignmentCriteria = Querier
-				.getAssignmentCriteria(evaluation.getAssignment());
+		List<Requisite> requisites = Querier
+				.getAssignmentCriteria(submission.getAssignment());
 
-		for (AssignmentCriterion assignmentCriterion : assignmentCriteria) {
+		for (Requisite requisite : requisites) {
 
-			pstTinst += Reader.readPsTi(assignmentCriterion,
-					evaluation.getStudent())
-					* assignmentCriterion.getWeight();
+			pstTinst += Reader.readPsTi(requisite,
+					submission.getStudent())
+					* requisite.getWeight();
 
-			quotient += assignmentCriterion.getWeight();
+			quotient += requisite.getWeight();
 
 		}
 
@@ -123,12 +123,12 @@ public class Evaluator {
 		return pstTinst;
 	}
 
-	private static double calculateScore(Evaluation evaluation) {
+	private static double calculateScore(Submission submission) {
 
-		double piti = evaluation.getAssignment().getPinstTinst();
-		double psts = evaluation.getPstTst();
-		double pits = evaluation.getPinstTst();
-		double psti = evaluation.getPstTinst();
+		double piti = submission.getAssignment().getPinstTinst();
+		double psts = submission.getPstTst();
+		double pits = submission.getPinstTst();
+		double psti = submission.getPstTinst();
 
 		return (piti + psts + pits + psti) / 4;
 

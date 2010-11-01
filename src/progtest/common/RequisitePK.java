@@ -8,7 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
-public class AssignmentCriterionPK implements Serializable {
+
+public class RequisitePK implements Serializable {
 
 	private static final long serialVersionUID = -9064262612318912241L;
 	

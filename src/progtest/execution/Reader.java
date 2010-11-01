@@ -5,60 +5,60 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import progtest.common.AssignmentCriterion;
+import progtest.common.Requisite;
 import progtest.common.User;
 
 public class Reader {
 
 	public static double readPiTi(
-			AssignmentCriterion assignmentCriterion) {
+			Requisite requisite) {
 
-		File pitiDir = new File(Directories.getPitiDirPath(assignmentCriterion
+		File pitiDir = new File(Directories.getPitiDirPath(requisite
 				.getAssignment()));
 
 		File outputFile = new File(Directories.getToolOutputFilePath(pitiDir,
-				assignmentCriterion.getCriterion().getTool()));
+				requisite.getCriterion().getTool()));
 
-		return read(outputFile, assignmentCriterion.getCriterion().getIdCode());
+		return read(outputFile, requisite.getCriterion().getIdCode());
 
 	}
 
 	public static double readPsTs(
-			AssignmentCriterion assignmentCriterion, User student) {
+			Requisite requisite, User student) {
 
 		File pstsDir = new File(Directories.getPstsDirPath(
-				assignmentCriterion.getAssignment(), student));
+				requisite.getAssignment(), student));
 
 		File outputFile = new File(Directories.getToolOutputFilePath(pstsDir,
-				assignmentCriterion.getCriterion().getTool()));
+				requisite.getCriterion().getTool()));
 
-		return read(outputFile, assignmentCriterion.getCriterion().getIdCode());
+		return read(outputFile, requisite.getCriterion().getIdCode());
 
 	}
 
 	public static double readPiTs(
-			AssignmentCriterion assignmentCriterion, User student) {
+			Requisite requisite, User student) {
 
 		File pitsDir = new File(Directories.getPitsDirPath(
-				assignmentCriterion.getAssignment(), student));
+				requisite.getAssignment(), student));
 
 		File outputFile = new File(Directories.getToolOutputFilePath(pitsDir,
-				assignmentCriterion.getCriterion().getTool()));
+				requisite.getCriterion().getTool()));
 
-		return read(outputFile, assignmentCriterion.getCriterion().getIdCode());
+		return read(outputFile, requisite.getCriterion().getIdCode());
 
 	}
 
 	public static double readPsTi(
-			AssignmentCriterion assignmentCriterion, User student) {
+			Requisite requisite, User student) {
 
 		File pstiDir = new File(Directories.getPstiDirPath(
-				assignmentCriterion.getAssignment(), student));
+				requisite.getAssignment(), student));
 
 		File outputFile = new File(Directories.getToolOutputFilePath(pstiDir,
-				assignmentCriterion.getCriterion().getTool()));
+				requisite.getCriterion().getTool()));
 
-		return read(outputFile, assignmentCriterion.getCriterion().getIdCode());
+		return read(outputFile, requisite.getCriterion().getIdCode());
 
 	}
 

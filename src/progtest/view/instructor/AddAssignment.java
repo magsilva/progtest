@@ -9,12 +9,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 
 import progtest.common.Assignment;
-import progtest.common.AssignmentCriterion;
+import progtest.common.Requisite;
 import progtest.common.Course;
 import progtest.common.Criterion;
 import progtest.common.Oracle;
 import progtest.common.Tool;
-import progtest.database.AssignmentCriterionDAO;
+import progtest.database.RequisiteDAO;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
 import progtest.execution.Runner;
@@ -45,9 +45,9 @@ public class AddAssignment {
 
 	private List<String> selectedCriteria = new ArrayList<String>();
 
-	private List<AssignmentCriterion> assignmentCriteria = new ArrayList<AssignmentCriterion>();
+	private List<Requisite> requisites = new ArrayList<Requisite>();
 
-	private UIData assignmentCriteriaTable;
+	private UIData requisitesTable;
 
 	public int getStep() {
 		return step;
@@ -137,21 +137,21 @@ public class AddAssignment {
 		this.selectedCriteria = selectedCriteria;
 	}
 
-	public List<AssignmentCriterion> getAssignmentCriteria() {
-		return assignmentCriteria;
+	public List<Requisite> getRequisites() {
+		return requisites;
 	}
 
-	public void setAssignmentCriteria(
-			List<AssignmentCriterion> assignmentCriteria) {
-		this.assignmentCriteria = assignmentCriteria;
+	public void setRequisites(
+			List<Requisite> requisites) {
+		this.requisites = requisites;
 	}
 
-	public UIData getAssignmentCriteriaTable() {
-		return assignmentCriteriaTable;
+	public UIData getRequisitesTable() {
+		return requisitesTable;
 	}
 
-	public void setAssignmentCriteriaTable(UIData assignmentCriteriaTable) {
-		this.assignmentCriteriaTable = assignmentCriteriaTable;
+	public void setRequisitesTable(UIData requisitesTable) {
+		this.requisitesTable = requisitesTable;
 	}
 
 	public String goToStep2() {
@@ -205,7 +205,7 @@ public class AddAssignment {
 
 	public String goToStep5() {
 
-		assignmentCriteria.clear();
+		requisites.clear();
 
 		if (hasCriteria()) {
 
@@ -216,10 +216,10 @@ public class AddAssignment {
 				String ids[] = selectedCriterion.split("/");
 				Criterion criterion = Querier.getCriterion(
 						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
-				AssignmentCriterion assignmentCriterion = new AssignmentCriterion();
-				assignmentCriterion.setAssignment(assignment);
-				assignmentCriterion.setCriterion(criterion);
-				assignmentCriteria.add(assignmentCriterion);
+				Requisite requisite = new Requisite();
+				requisite.setAssignment(assignment);
+				requisite.setCriterion(criterion);
+				requisites.add(requisite);
 			}
 
 			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
@@ -244,8 +244,8 @@ public class AddAssignment {
 
 			AssignmentDAO.insert(assignment);
 
-			for (AssignmentCriterion assignmentCriterion : assignmentCriteria)
-				AssignmentCriterionDAO.insert(assignmentCriterion);
+			for (Requisite requisite : requisites)
+				RequisiteDAO.insert(requisite);
 
 			Runner.run(assignment, oracle);
 			
@@ -304,7 +304,7 @@ public class AddAssignment {
 		endDate = new Date();
 		criteria = new ArrayList<Criterion>();
 		selectedCriteria = new ArrayList<String>();
-		assignmentCriteria = new ArrayList<AssignmentCriterion>();
+		requisites = new ArrayList<Requisite>();
 	}
 
 	private List<String> loadLanguages() {

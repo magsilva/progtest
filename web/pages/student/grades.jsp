@@ -62,26 +62,26 @@
 
 					<af:spacer height="20" />
 
-					<h:dataTable value="#{studentGrades.evaluations}" var="evaluation"
-						binding="#{studentGrades.evaluationsTable}" width="100%"
+					<h:dataTable value="#{studentGrades.submissions}" var="submission"
+						binding="#{studentGrades.submissionsTable}" width="100%"
 						rowClasses="tableRow" headerClass="tableHeader"
-						rendered="#{!empty studentGrades.evaluations}">
+						rendered="#{!empty studentGrades.submissions}">
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Assignments" />
 							</f:facet>
-							<h:outputText value="#{evaluation.assignment.title}" />
+							<h:outputText value="#{submission.assignment.title}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Grade" />
 							</f:facet>
-							<h:outputText value="#{evaluation.score}" />
+							<h:outputText value="#{submission.score}" />
 						</h:column>
 					</h:dataTable>
 
 					<h:outputText value="There are no assignments in this course."
-						rendered="#{empty studentGrades.evaluations}" />
+						rendered="#{empty studentGrades.submissions}" />
 
 				</htm:div>
 
