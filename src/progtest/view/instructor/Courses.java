@@ -9,7 +9,7 @@ import progtest.common.Course;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class Courses {
 
@@ -59,18 +59,18 @@ public class Courses {
 
 	public String selectCourse() {
 		Course course = (Course) coursesTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_COURSE, course);
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
 		refresh();
 		return Constants.ACTION_SELECT;
 	}
 
 	private void refresh() {
 		
-		User user = (User) ContextManager.getSession(Constants.SESSION_USER);
+		User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
 		
 		courses = Querier.getCoursesAsInstructor(user);
 		
-		Course course = (Course) ContextManager
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 		
 		if(course != null)

@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-public class ContextManager {
+public class FacesUtil {
 
 	public static void setRequest(String label, Object object) {
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap()
@@ -58,11 +58,11 @@ public class ContextManager {
 
 	public static void addMessage(String clientId, String key,
 			FacesMessage.Severity severity) {
-		FacesMessage message = getFacesMessage(key, severity);
+		FacesMessage message = getMessage(key, severity);
 		FacesContext.getCurrentInstance().addMessage(clientId, message);
 	}
 
-	private static FacesMessage getFacesMessage(String key,
+	private static FacesMessage getMessage(String key,
 			FacesMessage.Severity severity) {
 		
 		String text;

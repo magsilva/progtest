@@ -12,7 +12,7 @@ import progtest.database.Querier;
 import progtest.execution.Directories;
 import progtest.reports.Report;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
 
 public class Assignment {
@@ -141,7 +141,7 @@ public class Assignment {
 		
 		activedReport = Constants.EMPTY;
 
-		progtest.common.Assignment assignment = (progtest.common.Assignment) ContextManager
+		progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
 
 		title = assignment.getTitle();

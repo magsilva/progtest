@@ -10,7 +10,7 @@ import progtest.common.Evaluation;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class Grades {
 
@@ -69,14 +69,14 @@ public class Grades {
 	}
 
 	public String selectAllCourses() {
-		ContextManager.setSession(Constants.SESSION_COURSE, null);
+		FacesUtil.setSession(Constants.SESSION_COURSE, null);
 		refresh();
 		return Constants.ACTION_SELECT;
 	}
 
 	public String selectCourse() {
 		Course course = (Course) coursesTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_COURSE, course);
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
 		refresh();
 		return Constants.ACTION_SELECT;
 	}
@@ -87,8 +87,8 @@ public class Grades {
 
 	private void refresh() {
 
-		User user = (User) ContextManager.getSession(Constants.SESSION_USER);
-		Course course = (Course) ContextManager
+		User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 
 		courses = Querier.getCoursesAsStudent(user);

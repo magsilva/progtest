@@ -9,8 +9,8 @@ import progtest.common.AssignmentCriterion;
 import progtest.common.Evaluation;
 import progtest.common.User;
 import progtest.database.Querier;
-import progtest.reports.XMLParser;
-import progtest.util.Math;
+import progtest.util.MathUtil;
+import progtest.util.XMLUtil;
 
 public class Reporter {
 
@@ -47,14 +47,14 @@ public class Reporter {
 			AssignmentCriterion ac = assignmentCriteria.get(i - 1);
 			
 			data[i][0] = ac.getCriterion().getTool().getName() + "/" + ac.getCriterion().getName();
-			data[i][1] = String.valueOf(Math.round(Reader.readPiTi(ac) * 100, 2)) + "%";
-			data[i][2] = String.valueOf(Math.round(Reader.readPsTs(ac, student) * 100, 2)) + "%";
-			data[i][3] = String.valueOf(Math.round(Reader.readPiTs(ac, student) * 100, 2)) + "%";
-			data[i][4] = String.valueOf(Math.round(Reader.readPsTi(ac, student) * 100, 2)) + "%";
+			data[i][1] = String.valueOf(MathUtil.round(Reader.readPiTi(ac) * 100, 2)) + "%";
+			data[i][2] = String.valueOf(MathUtil.round(Reader.readPsTs(ac, student) * 100, 2)) + "%";
+			data[i][3] = String.valueOf(MathUtil.round(Reader.readPiTs(ac, student) * 100, 2)) + "%";
+			data[i][4] = String.valueOf(MathUtil.round(Reader.readPsTi(ac, student) * 100, 2)) + "%";
 			
 		}
 		
-		XMLParser.generateXML(report, data);
+		XMLUtil.generateXML(report, data);
 
 	}
 
@@ -68,17 +68,17 @@ public class Reporter {
 		data[0][0] = "Measures";
 		data[0][1] = "Value";
 		data[1][0] = "Pinst-Tinst";
-		data[1][1] = String.valueOf(Math.round(evaluation.getAssignment().getPinstTinst() * 100, 2)) + "%";
+		data[1][1] = String.valueOf(MathUtil.round(evaluation.getAssignment().getPinstTinst() * 100, 2)) + "%";
 		data[2][0] = "Pst-Tst";
-		data[2][1] = String.valueOf(Math.round(evaluation.getPstTst() * 100, 2)) + "%";
+		data[2][1] = String.valueOf(MathUtil.round(evaluation.getPstTst() * 100, 2)) + "%";
 		data[3][0] = "Pinst-Tst";
-		data[3][1] = String.valueOf(Math.round(evaluation.getPinstTst() * 100, 2)) + "%";
+		data[3][1] = String.valueOf(MathUtil.round(evaluation.getPinstTst() * 100, 2)) + "%";
 		data[4][0] = "Pst-Tinst";
-		data[4][1] = String.valueOf(Math.round(evaluation.getPstTinst() * 100, 2)) + "%";
+		data[4][1] = String.valueOf(MathUtil.round(evaluation.getPstTinst() * 100, 2)) + "%";
 		data[5][0] = "Grade";
-		data[5][1] = String.valueOf(Math.round(evaluation.getScore() * 10, 2));
+		data[5][1] = String.valueOf(MathUtil.round(evaluation.getScore() * 10, 2));
 		
-		XMLParser.generateXML(report, data);
+		XMLUtil.generateXML(report, data);
 		
 	}
 

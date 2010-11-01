@@ -11,7 +11,7 @@ import progtest.common.User;
 import progtest.database.Querier;
 import progtest.database.StudentCourseDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class AddStudents {
 
@@ -43,7 +43,7 @@ public class AddStudents {
 			users.add(Querier.getStudent(student.substring(
 					student.indexOf("(") + 1, student.indexOf(")"))));
 
-		Course course = (Course) ContextManager
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 
 		for (User user : users) {
@@ -61,7 +61,7 @@ public class AddStudents {
 
 	private SelectItem[] loadStudents() {
 
-		Course course = (Course) ContextManager
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 
 		List<User> users = Querier.getStudentsNotCourse(course);

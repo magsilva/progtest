@@ -3,7 +3,7 @@ package progtest.view.student;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class AddTestCases {
 
@@ -82,7 +82,7 @@ public class AddTestCases {
 	}
 
 	public String cancel() {
-		String backPage = (String) ContextManager.getSession(Constants.SESSION_BACKPAGE);
+		String backPage = (String) FacesUtil.getSession(Constants.SESSION_BACKPAGE);
 		return backPage;
 	}
 

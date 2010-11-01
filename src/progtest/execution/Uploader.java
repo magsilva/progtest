@@ -1,4 +1,4 @@
-package progtest.util;
+package progtest.execution;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,9 +8,9 @@ import java.util.StringTokenizer;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
-public class FileUpload {
+public class Uploader {
 
-	public static File save(UploadedFile uf, File dst) throws IOException,
+	public static File upload(UploadedFile uf, File dst) throws IOException,
 			IllegalArgumentException {
 		
 		if (uf == null)

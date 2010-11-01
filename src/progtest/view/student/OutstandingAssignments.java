@@ -10,7 +10,7 @@ import progtest.common.Evaluation;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class OutstandingAssignments {
 	
@@ -69,29 +69,29 @@ public class OutstandingAssignments {
 	}
 	
 	public String selectAllCourses() {
-		ContextManager.setSession(Constants.SESSION_COURSE, null);
+		FacesUtil.setSession(Constants.SESSION_COURSE, null);
 		refresh();
 		return Constants.ACTION_SELECT;
 	}
 	
 	public String selectCourse() {
 		Course course = (Course) coursesTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_COURSE, course);
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
 		refresh();
 		return Constants.ACTION_SELECT;
 	}
 	
 	public String submitAssignment() {
 		Evaluation evaluation = (Evaluation) evaluationsTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_EVALUATION, evaluation);
-		ContextManager.setSession(Constants.SESSION_BACKPAGE,
+		FacesUtil.setSession(Constants.SESSION_EVALUATION, evaluation);
+		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_OUTSTANDING);
 		return Constants.ACTION_SEND;
 	}
 	
 	public String assignmentInfo() {
 		Evaluation evaluation = (Evaluation) evaluationsTable.getRowData();
-		ContextManager.setSession(Constants.SESSION_EVALUATION, evaluation);
+		FacesUtil.setSession(Constants.SESSION_EVALUATION, evaluation);
 		return Constants.ACTION_VIEW;
 	}
 	
@@ -101,8 +101,8 @@ public class OutstandingAssignments {
 	
 	private void refresh() {
 		
-		User user = (User) ContextManager.getSession(Constants.SESSION_USER);
-		Course course = (Course) ContextManager.getSession(Constants.SESSION_COURSE);
+		User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
+		Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 		
 		courses = Querier.getCoursesAsStudent(user);
 		

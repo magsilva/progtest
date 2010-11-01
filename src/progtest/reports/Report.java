@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import progtest.trash.XMLParser;
+import progtest.util.XMLUtil;
 
 public class Report {
 	
@@ -16,7 +16,7 @@ public class Report {
 
 	public Report(File f) {
 
-		String data[][] = XMLParser.parse(f);
+		String data[][] = XMLUtil.parse(f);
 		
 		name = f.getName().substring(0, f.getName().lastIndexOf("."));
 		

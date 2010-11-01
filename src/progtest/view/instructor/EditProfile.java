@@ -6,7 +6,7 @@ import progtest.common.User;
 import progtest.database.Querier;
 import progtest.database.UserDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class EditProfile {
 
@@ -62,7 +62,7 @@ public class EditProfile {
 
 	public EditProfile() {
 
-		User user = (User) ContextManager.getSession(Constants.SESSION_USER);
+		User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
 
 		userName = user.getUserName();
 		name = user.getName();
@@ -74,7 +74,7 @@ public class EditProfile {
 
 		if (validate()) {
 
-			User user = (User) ContextManager
+			User user = (User) FacesUtil
 					.getSession(Constants.SESSION_USER);
 
 			user.setName(name);
@@ -97,17 +97,17 @@ public class EditProfile {
 				|| password.equals(Constants.EMPTY)
 				|| confirmationPassword.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (!confirmationPassword.equals(password)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DIFFERENTPASSWORDS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DIFFERENTPASSWORDS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (Querier.checkEmail(email, userName)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DUPLICATEDEMAIL,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DUPLICATEDEMAIL,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {

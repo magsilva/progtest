@@ -6,7 +6,7 @@ import progtest.common.User;
 import progtest.database.Querier;
 import progtest.database.UserDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class Register {
 
@@ -99,22 +99,22 @@ public class Register {
 				|| confirmationPassword.equals(Constants.EMPTY)
 				|| role.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (!confirmationPassword.equals(password)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DIFFERENTPASSWORDS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DIFFERENTPASSWORDS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (Querier.checkEmail(email, userName)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DUPLICATEDEMAIL,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DUPLICATEDEMAIL,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (Querier.checkUserName(userName)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DUPLICATEDUSERNAME,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DUPLICATEDUSERNAME,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {

@@ -66,7 +66,7 @@ public class Constants {
 
 	/* Values */
 
-	public static final String RESOURCE_BUNDLE = "resources.Messages";
+	public static final String RESOURCE_BUNDLE = "messages";
 	public static final String EMPTY = "";
 
 	/* Session */

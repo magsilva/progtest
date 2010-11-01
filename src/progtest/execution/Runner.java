@@ -14,9 +14,8 @@ import progtest.common.Tool;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
-import progtest.util.FileUpload;
 import progtest.util.FileUtil;
-import progtest.util.TestCaseUtil;
+import progtest.util.JUnitUtil;
 
 public class Runner {
 
@@ -163,7 +162,7 @@ public class Runner {
 
 	private static void upload(UploadedFile uf, File packageDir)
 			throws IllegalArgumentException, IOException {
-		FileUpload.save(uf, packageDir);
+		Uploader.upload(uf, packageDir);
 	}
 
 	private static void copy(File oracleFile, File packageDir)
@@ -202,7 +201,7 @@ public class Runner {
 
 			} else {
 
-				if (TestCaseUtil.isTestCase(file)) {
+				if (JUnitUtil.isTestClass(file)) {
 					FileUtil.copy(file, testsDir);
 				} else {
 					FileUtil.copy(file, programDir);

@@ -9,7 +9,7 @@ import progtest.common.Evaluation;
 import progtest.database.EvaluationDAO;
 import progtest.execution.Runner;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class SubmitAssigment {
 
@@ -25,7 +25,7 @@ public class SubmitAssigment {
 
 	public String upload() {
 
-		Evaluation evaluation = (Evaluation) ContextManager
+		Evaluation evaluation = (Evaluation) FacesUtil
 				.getSession(Constants.SESSION_EVALUATION);
 		
 		try {
@@ -55,7 +55,7 @@ public class SubmitAssigment {
 	}
 
 	public String cancel() {
-		String backPage = (String) ContextManager.getSession(Constants.SESSION_BACKPAGE);
+		String backPage = (String) FacesUtil.getSession(Constants.SESSION_BACKPAGE);
 		return backPage;
 	}
 

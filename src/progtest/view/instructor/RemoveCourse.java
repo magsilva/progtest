@@ -5,7 +5,7 @@ import java.util.Date;
 import progtest.common.Course;
 import progtest.database.CourseDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class RemoveCourse {
 
@@ -40,7 +40,7 @@ public class RemoveCourse {
 	}
 	
 	public RemoveCourse() {
-		Course course = (Course) ContextManager.getSession(Constants.SESSION_COURSE);
+		Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 		name = course.getName();
 		startDate = course.getStartDate();
 		endDate = course.getEndDate();
@@ -48,11 +48,11 @@ public class RemoveCourse {
 
 	public String remove() {
 			
-		Course course = (Course) ContextManager.getSession(Constants.SESSION_COURSE);
+		Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 		
 		CourseDAO.delete(course);
 		
-		ContextManager.setSession(Constants.SESSION_COURSE, null);
+		FacesUtil.setSession(Constants.SESSION_COURSE, null);
 		
 		return Constants.ACTION_SUCCESS;
 	

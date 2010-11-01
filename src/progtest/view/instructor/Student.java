@@ -10,7 +10,7 @@ import progtest.common.Evaluation;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class Student {
 
@@ -76,9 +76,9 @@ public class Student {
 
 	public Student() {
 
-		User user = (User) ContextManager.getSession(Constants.SESSION_STUDENT);
+		User user = (User) FacesUtil.getSession(Constants.SESSION_STUDENT);
 
-		Course course = (Course) ContextManager
+		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 
 		evaluations = Querier.getEvaluations(user, course);

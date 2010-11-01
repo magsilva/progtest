@@ -8,7 +8,7 @@ import progtest.common.Course;
 import progtest.common.User;
 import progtest.database.CourseDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class CreateCourse {
 
@@ -51,7 +51,7 @@ public class CreateCourse {
 			course.setStartDate(startDate);
 			course.setEndDate(endDate);
 			
-			User user = (User) ContextManager.getSession(Constants.SESSION_USER);
+			User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
 			course.setInstructor(user);
 			
 			CourseDAO.insert(course);
@@ -68,12 +68,12 @@ public class CreateCourse {
 		
 		if(name.equals(Constants.EMPTY)) {
 			
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 			
 		} else if(startDate.getTime() > endDate.getTime()) {
 			
-			ContextManager.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);
 			
 		} else {

@@ -19,7 +19,7 @@ import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
 import progtest.execution.Runner;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class AddAssignment {
 
@@ -170,7 +170,7 @@ public class AddAssignment {
 		title = oracle.getTitle();
 		description = oracle.getDescription();
 
-		ContextManager.setSession(Constants.SESSION_ORACLE, oracle);
+		FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
 
 		step = 3;
 
@@ -182,7 +182,7 @@ public class AddAssignment {
 
 		if (validate()) {
 
-			Course course = (Course) ContextManager
+			Course course = (Course) FacesUtil
 					.getSession(Constants.SESSION_COURSE);
 
 			Assignment assignment = new Assignment();
@@ -192,7 +192,7 @@ public class AddAssignment {
 			assignment.setStartDate(startDate);
 			assignment.setEndDate(endDate);
 
-			ContextManager.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			criteria = Querier.getCriteria(language);
 			step = 4;
@@ -209,7 +209,7 @@ public class AddAssignment {
 
 		if (hasCriteria()) {
 
-			Assignment assignment = (Assignment) ContextManager
+			Assignment assignment = (Assignment) FacesUtil
 					.getSession(Constants.SESSION_ASSIGNMENT);
 
 			for (String selectedCriterion : selectedCriteria) {
@@ -222,7 +222,7 @@ public class AddAssignment {
 				assignmentCriteria.add(assignmentCriterion);
 			}
 
-			ContextManager.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			step = 5;
 
@@ -234,10 +234,10 @@ public class AddAssignment {
 
 	public String conclude() {
 
-		Assignment assignment = (Assignment) ContextManager
+		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
 
-		Oracle oracle = (Oracle) ContextManager
+		Oracle oracle = (Oracle) FacesUtil
 				.getSession(Constants.SESSION_ORACLE);
 
 		try {
@@ -324,12 +324,12 @@ public class AddAssignment {
 		if (title.equals(Constants.EMPTY)
 				|| description.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (startDate.getTime() > endDate.getTime()) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {
@@ -345,7 +345,7 @@ public class AddAssignment {
 	private boolean hasCriteria() {
 		if (selectedCriteria.isEmpty()) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_ANYCRITERIONSELECTED,
+			FacesUtil.addMessage(Constants.KEY_ERROR_ANYCRITERIONSELECTED,
 					FacesMessage.SEVERITY_ERROR);
 
 			return false;

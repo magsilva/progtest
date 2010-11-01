@@ -7,7 +7,7 @@ import javax.faces.application.FacesMessage;
 import progtest.common.Assignment;
 import progtest.database.AssignmentDAO;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 
 public class EditAssignment {
 
@@ -52,7 +52,7 @@ public class EditAssignment {
 	}
 
 	public EditAssignment() {
-		Assignment assignment = (Assignment) ContextManager
+		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
 		title = assignment.getTitle();
 		description = assignment.getDescription();
@@ -64,7 +64,7 @@ public class EditAssignment {
 
 		if (validate()) {
 
-			Assignment assignment = (Assignment) ContextManager
+			Assignment assignment = (Assignment) FacesUtil
 					.getSession(Constants.SESSION_ASSIGNMENT);
 			
 			assignment.setTitle(title);
@@ -74,7 +74,7 @@ public class EditAssignment {
 			
 			AssignmentDAO.update(assignment);
 			
-			ContextManager.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			return Constants.ACTION_SUCCESS;
 
@@ -89,12 +89,12 @@ public class EditAssignment {
 		if (title.equals(Constants.EMPTY)
 				|| description.equals(Constants.EMPTY)) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
+			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else if (startDate.getTime() > endDate.getTime()) {
 
-			ContextManager.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
+			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);
 
 		} else {

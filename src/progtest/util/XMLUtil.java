@@ -1,4 +1,4 @@
-package progtest.reports;
+package progtest.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,7 +13,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class XMLParser {
+public class XMLUtil {
 
 	public static String[][] parse(File f) {
 
@@ -132,9 +132,9 @@ public class XMLParser {
 
 		File XMLFile = new File("." + File.separator + "XML.xml");
 
-		XMLParser.generateXML(XMLFile, data);
+		XMLUtil.generateXML(XMLFile, data);
 
-		data = XMLParser.parse(XMLFile);
+		data = XMLUtil.parse(XMLFile);
 
 	}
 

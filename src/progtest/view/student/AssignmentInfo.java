@@ -11,7 +11,7 @@ import progtest.common.Evaluation;
 import progtest.execution.Directories;
 import progtest.reports.Report;
 import progtest.util.Constants;
-import progtest.util.ContextManager;
+import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
 
 public class AssignmentInfo {
@@ -140,7 +140,7 @@ public class AssignmentInfo {
 		
 		activedReport = Constants.EMPTY;
 
-		Evaluation evaluation = (Evaluation) ContextManager
+		Evaluation evaluation = (Evaluation) FacesUtil
 				.getSession(Constants.SESSION_EVALUATION);
 
 		title = evaluation.getAssignment().getTitle();
@@ -191,13 +191,13 @@ public class AssignmentInfo {
 	}
 	
 	public String send() {
-		ContextManager.setSession(Constants.SESSION_BACKPAGE,
+		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
 		return Constants.ACTION_SEND;
 	}
 	
 	public String add() {
-		ContextManager.setSession(Constants.SESSION_BACKPAGE,
+		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
 		return Constants.ACTION_ADD;
 	}
