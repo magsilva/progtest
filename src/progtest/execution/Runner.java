@@ -8,19 +8,17 @@ import java.util.List;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
-import progtest.common.Submission;
 import progtest.common.Oracle;
+import progtest.common.Submission;
 import progtest.common.Tool;
 import progtest.common.User;
 import progtest.database.Querier;
-import progtest.util.Constants;
 import progtest.util.FileUtil;
 import progtest.util.JUnitUtil;
 
 public class Runner {
 
-	public static void run(Assignment assignment, UploadedFile uf)
-			throws IllegalArgumentException, IOException, InterruptedException {
+	public static void run(Assignment assignment, UploadedFile uf) throws IOException, InterruptedException {
 
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
 		File packageDir = new File(Directories.getPackageDirPath(assignment));
@@ -33,9 +31,9 @@ public class Runner {
 		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir,
 				pitiDir, null, null, null);
 
-		upload(uf, packageDir);
+		File savedFile = upload(uf, packageDir);
 
-		extract(packageDir, sourceDir);
+		extract(savedFile, sourceDir);
 
 		split(sourceDir, programDir, testsDir);
 
@@ -48,8 +46,7 @@ public class Runner {
 
 	}
 
-	public static void run(Assignment assignment, Oracle oracle)
-			throws IOException, InterruptedException {
+	public static void run(Assignment assignment, Oracle oracle) throws IOException, InterruptedException {
 
 		File oracleFile = new File(Directories.getOracleFilePath(oracle));
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
@@ -78,8 +75,7 @@ public class Runner {
 
 	}
 
-	public static void run(Submission submission, UploadedFile uf)
-			throws IOException, InterruptedException {
+	public static void run(Submission submission, UploadedFile uf) throws IOException, InterruptedException {
 
 		Assignment assignment = submission.getAssignment();
 		User student = submission.getStudent();
@@ -109,9 +105,9 @@ public class Runner {
 		makeDirectories(studentDir, packageDir, sourceDir, programDir,
 				testsDir, null, pstsDir, pitsDir, pstiDir);
 
-		upload(uf, packageDir);
+		File savedFile = upload(uf, packageDir);
 
-		extract(packageDir, sourceDir);
+		extract(savedFile, sourceDir);
 
 		split(sourceDir, programDir, testsDir);
 
@@ -160,9 +156,8 @@ public class Runner {
 
 	}
 
-	private static void upload(UploadedFile uf, File packageDir)
-			throws IllegalArgumentException, IOException {
-		Uploader.upload(uf, packageDir);
+	private static File upload(UploadedFile uf, File packageDir) throws IllegalArgumentException, IOException {
+			return Uploader.upload(uf, packageDir);
 	}
 
 	private static void copy(File oracleFile, File packageDir)
@@ -170,11 +165,8 @@ public class Runner {
 		FileUtil.copy(oracleFile, packageDir);
 	}
 
-	private static void extract(File packageDir, File sourceDir)
-			throws IOException {
-		for (File file : FileUtil
-				.listFiles(packageDir, Constants.EXTENSION_JAR))
-			FileUtil.unzip(file, sourceDir);
+	private static void extract(File zipFile, File sourceDir) throws IOException {
+				FileUtil.unzip(zipFile, sourceDir);
 	}
 
 	private static void split(File sourceDir, File programDir, File testsDir)
