@@ -95,6 +95,7 @@ public class JUnitUtil {
 				+ "\n@RunWith(value=Suite.class)" + "\n@SuiteClasses(value={";
 
 		for (File file : FileUtil.listFiles(testsDir, ".class"))
+
 			if (isTestClass(file)) {
 
 				try {
@@ -123,6 +124,7 @@ public class JUnitUtil {
 					System.err.println("Class not found: " + file.getName());
 
 				}
+
 			}
 
 		text = text.substring(0, text.lastIndexOf(",")) + "\n})"

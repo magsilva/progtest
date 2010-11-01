@@ -1,6 +1,5 @@
 package progtest.view.instructor;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,14 +8,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
 
 import progtest.common.Assignment;
-import progtest.common.Requisite;
 import progtest.common.Course;
 import progtest.common.Criterion;
 import progtest.common.Oracle;
+import progtest.common.Requisite;
 import progtest.common.Tool;
-import progtest.database.RequisiteDAO;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
+import progtest.database.RequisiteDAO;
 import progtest.execution.Runner;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
@@ -141,8 +140,7 @@ public class AddAssignment {
 		return requisites;
 	}
 
-	public void setRequisites(
-			List<Requisite> requisites) {
+	public void setRequisites(List<Requisite> requisites) {
 		this.requisites = requisites;
 	}
 
@@ -237,33 +235,20 @@ public class AddAssignment {
 		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
 
-		Oracle oracle = (Oracle) FacesUtil
-				.getSession(Constants.SESSION_ORACLE);
+		Oracle oracle = (Oracle) FacesUtil.getSession(Constants.SESSION_ORACLE);
 
-		try {
+		AssignmentDAO.insert(assignment);
 
-			AssignmentDAO.insert(assignment);
+		for (Requisite requisite : requisites)
+			RequisiteDAO.insert(requisite);
 
-			for (Requisite requisite : requisites)
-				RequisiteDAO.insert(requisite);
+		Runner.run(assignment, oracle);
 
-			Runner.run(assignment, oracle);
-			
-			AssignmentDAO.update(assignment);
+		AssignmentDAO.update(assignment);
 
-			refresh();
+		refresh();
 
-			return Constants.ACTION_SUCCESS;
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return Constants.ACTION_FAILURE;
+		return Constants.ACTION_SUCCESS;
 
 	}
 
@@ -308,15 +293,15 @@ public class AddAssignment {
 	}
 
 	private List<String> loadLanguages() {
-		
+
 		List<String> languages = new ArrayList<String>();
-		
-		for(Tool tool: Querier.getTools())
-			if(!languages.contains(tool.getLanguage()))
+
+		for (Tool tool : Querier.getTools())
+			if (!languages.contains(tool.getLanguage()))
 				languages.add(tool.getLanguage());
-		
+
 		return languages;
-	
+
 	}
 
 	private boolean validate() {

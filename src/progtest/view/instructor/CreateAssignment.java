@@ -1,6 +1,5 @@
 package progtest.view.instructor;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,13 +10,13 @@ import javax.faces.component.UIData;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
-import progtest.common.Requisite;
 import progtest.common.Course;
 import progtest.common.Criterion;
+import progtest.common.Requisite;
 import progtest.common.Tool;
-import progtest.database.RequisiteDAO;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
+import progtest.database.RequisiteDAO;
 import progtest.execution.Runner;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
@@ -46,8 +45,7 @@ public class CreateAssignment {
 
 	private List<Requisite> requisites = new ArrayList<Requisite>();
 
-	private UIData requisitesTable
-	;
+	private UIData requisitesTable;
 
 	public int getStep() {
 		return step;
@@ -133,8 +131,7 @@ public class CreateAssignment {
 		return requisites;
 	}
 
-	public void setRequisites(
-			List<Requisite> requisites) {
+	public void setRequisites(List<Requisite> requisites) {
 		this.requisites = requisites;
 	}
 
@@ -147,7 +144,7 @@ public class CreateAssignment {
 	}
 
 	public String goToStep2() {
-		
+
 		step = 2;
 
 		return Constants.ACTION_SELECT;
@@ -221,30 +218,18 @@ public class CreateAssignment {
 		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
 
-		try {
+		AssignmentDAO.insert(assignment);
 
-			AssignmentDAO.insert(assignment);
+		for (Requisite requisite : requisites)
+			RequisiteDAO.insert(requisite);
 
-			for (Requisite requisite : requisites)
-				RequisiteDAO.insert(requisite);
+		Runner.run(assignment, uploadedFile);
 
-			Runner.run(assignment, uploadedFile);
-			
-			AssignmentDAO.update(assignment);
+		AssignmentDAO.update(assignment);
 
-			refresh();
+		refresh();
 
-			return Constants.ACTION_SUCCESS;
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return Constants.ACTION_FAILURE;
+		return Constants.ACTION_SUCCESS;
 
 	}
 
@@ -288,15 +273,15 @@ public class CreateAssignment {
 	}
 
 	private List<String> loadLanguages() {
-		
+
 		List<String> languages = new ArrayList<String>();
-		
-		for(Tool tool: Querier.getTools())
-			if(!languages.contains(tool.getLanguage()))
+
+		for (Tool tool : Querier.getTools())
+			if (!languages.contains(tool.getLanguage()))
 				languages.add(tool.getLanguage());
-		
+
 		return languages;
-	
+
 	}
 
 	private boolean validate() {

@@ -1,8 +1,6 @@
 package progtest.execution;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
@@ -18,7 +16,7 @@ import progtest.util.JUnitUtil;
 
 public class Runner {
 
-	public static void run(Assignment assignment, UploadedFile uf) throws IOException, InterruptedException {
+	public static void run(Assignment assignment, UploadedFile uf) {
 
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
 		File packageDir = new File(Directories.getPackageDirPath(assignment));
@@ -46,7 +44,7 @@ public class Runner {
 
 	}
 
-	public static void run(Assignment assignment, Oracle oracle) throws IOException, InterruptedException {
+	public static void run(Assignment assignment, Oracle oracle) {
 
 		File oracleFile = new File(Directories.getOracleFilePath(oracle));
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
@@ -75,7 +73,7 @@ public class Runner {
 
 	}
 
-	public static void run(Submission submission, UploadedFile uf) throws IOException, InterruptedException {
+	public static void run(Submission submission, UploadedFile uf) {
 
 		Assignment assignment = submission.getAssignment();
 		User student = submission.getStudent();
@@ -91,8 +89,6 @@ public class Runner {
 		File testsDir = new File(Directories.getTestsDirPath(assignment,
 				student));
 
-		// File pitiReportsDir = new
-		// File(Directories.getPitiReportsDirPath(assignment));
 		File pstsDir = new File(Directories.getPstsDirPath(assignment, student));
 		File pitsDir = new File(Directories.getPitsDirPath(assignment, student));
 		File pstiDir = new File(Directories.getPstiDirPath(assignment, student));
@@ -156,66 +152,86 @@ public class Runner {
 
 	}
 
-	private static File upload(UploadedFile uf, File packageDir) throws IllegalArgumentException, IOException {
+	private static File upload(UploadedFile uf, File packageDir) {
+
+		try {
+
 			return Uploader.upload(uf, packageDir);
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+		
+		return null;
+
 	}
 
-	private static void copy(File oracleFile, File packageDir)
-			throws IOException {
-		FileUtil.copy(oracleFile, packageDir);
+	private static void copy(File oracleFile, File packageDir) {
+		
+		try {
+			
+			FileUtil.copy(oracleFile, packageDir);
+		
+		} catch (Throwable t) {
+			
+			t.printStackTrace();
+			
+		}
+		
 	}
 
-	private static void extract(File zipFile, File sourceDir) throws IOException {
-				FileUtil.unzip(zipFile, sourceDir);
+	private static void extract(File zipFile, File sourceDir) {
+		
+		try {
+			
+			FileUtil.unzip(zipFile, sourceDir);
+		
+		} catch (Throwable t) {
+			
+			t.printStackTrace();
+			
+		}
+		
 	}
 
-	private static void split(File sourceDir, File programDir, File testsDir)
-			throws IOException {
+	private static void split(File sourceDir, File programDir, File testsDir) {
 
-		File[] localFiles = sourceDir.listFiles();
-
-		for (File file : localFiles) {
-
-			if (file.isDirectory()) {
-
-				File newProgramDir = new File(sourceDir + File.separator
-						+ file.getName());
-				File newTestsDir = new File(sourceDir + File.separator
-						+ file.getName());
-
-				if (!newProgramDir.exists())
-					FileUtil.mkdir(newProgramDir);
-
-				if (!newTestsDir.exists())
-					FileUtil.mkdir(newTestsDir);
-
-				split(file, newProgramDir, newTestsDir);
-
-			} else {
-
-				if (JUnitUtil.isTestClass(file)) {
-					FileUtil.copy(file, testsDir);
-				} else {
-					FileUtil.copy(file, programDir);
-				}
-
-			}
-
+		try {
+			
+			JUnitUtil.split(sourceDir, programDir, testsDir);
+		
+		} catch (Throwable t) {
+			
+			t.printStackTrace();
+		
 		}
 
 	}
 
 	private static void execute(List<Tool> tools, File rootDir,
-			File programDir, File testsDir, File outputDir) throws IOException,
-			InterruptedException {
+			File programDir, File testsDir, File outputDir) {
 
 		for (Tool tool : tools) {
+			
 			File reportsDir = new File(Directories.getToolReportsDirPath(
 					outputDir, tool));
+			
 			File outputFile = new File(Directories.getToolOutputFilePath(
 					outputDir, tool));
-			Executor.execute(tool, rootDir, programDir, testsDir, reportsDir,
-					outputFile);
+			
+			try {
+				
+				Executor.execute(tool, rootDir, programDir, testsDir, reportsDir,
+						outputFile);
+				
+			} catch (Throwable t) {
+
+				t.printStackTrace();
+			
+			}
+			
 		}
 
 	}
@@ -232,9 +248,18 @@ public class Runner {
 		Reporter.generateReports(oracle);
 	}
 
-	private static void report(Submission evaluation)
-			throws FileNotFoundException {
-		Reporter.generateReports(evaluation);
+	private static void report(Submission evaluation) {
+		
+		try {
+			
+			Reporter.generateReports(evaluation);
+		
+		} catch (Throwable t) {
+			
+			t.printStackTrace();
+			
+		}
+		
 	}
 
 }

@@ -1,6 +1,5 @@
 package progtest.view.student;
 
-import java.io.IOException;
 import java.util.Date;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
@@ -27,35 +26,20 @@ public class SubmitAssigment {
 
 		Submission submission = (Submission) FacesUtil
 				.getSession(Constants.SESSION_EVALUATION);
-		
-		try {
-			
-			Runner.run(submission, file);
-			
-			submission.setSubmissionDate(new Date());
-			
-			SubmissionDAO.update(submission);
-			
-			return Constants.ACTION_SUCCESS;
-			
-		} catch (IOException e) {
-			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		} catch (InterruptedException e) {
-			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
 
-		return Constants.ACTION_FAILURE;
+		Runner.run(submission, file);
+
+		submission.setSubmissionDate(new Date());
+
+		SubmissionDAO.update(submission);
+
+		return Constants.ACTION_SUCCESS;
 
 	}
 
 	public String cancel() {
-		String backPage = (String) FacesUtil.getSession(Constants.SESSION_BACKPAGE);
+		String backPage = (String) FacesUtil
+				.getSession(Constants.SESSION_BACKPAGE);
 		return backPage;
 	}
 
