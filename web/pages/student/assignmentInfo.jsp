@@ -117,13 +117,13 @@
 						</h:commandLink>
 					</h:panelGrid>
 
-					<h:panelGrid columns="2">
+					<!--<h:panelGrid columns="2">
 						<af:image source="/images/add.png" />
 						<h:commandLink action="#{studentAssignmentInfo.add}"
 							styleClass="link">
 							<h:outputText value="Add test Cases" styleClass="topmenu_link" />
 						</h:commandLink>
-					</h:panelGrid>
+					</h:panelGrid>-->
 
 				</htm:div>
 

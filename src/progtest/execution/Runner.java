@@ -13,8 +13,6 @@ import progtest.common.Oracle;
 import progtest.common.Tool;
 import progtest.common.User;
 import progtest.database.Querier;
-import progtest.exceptions.NotFoundApplicationException;
-import progtest.exceptions.NotFoundTestCasesException;
 import progtest.util.Constants;
 import progtest.util.FileUpload;
 import progtest.util.FileUtil;
@@ -23,9 +21,7 @@ import progtest.util.TestCaseUtil;
 public class Runner {
 
 	public static void run(Assignment assignment, UploadedFile uf)
-			throws IllegalArgumentException, IOException,
-			NotFoundTestCasesException, NotFoundApplicationException,
-			InterruptedException {
+			throws IllegalArgumentException, IOException, InterruptedException {
 
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
 		File packageDir = new File(Directories.getPackageDirPath(assignment));
@@ -33,10 +29,10 @@ public class Runner {
 		File programDir = new File(Directories.getProgramDirPath(assignment));
 		File testsDir = new File(Directories.getTestsDirPath(assignment));
 
-		File pitiDir = new File(
-				Directories.getPitiDirPath(assignment));
+		File pitiDir = new File(Directories.getPitiDirPath(assignment));
 
-		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir, pitiDir, null, null, null);
+		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir,
+				pitiDir, null, null, null);
 
 		upload(uf, packageDir);
 
@@ -44,18 +40,17 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(Querier.getTools(assignment), oracleDir, programDir,
-				testsDir, pitiDir);
+		execute(Querier.getTools(assignment), oracleDir, programDir, testsDir,
+				pitiDir);
 
 		evaluate(assignment);
-		
+
 		report(assignment);
 
 	}
 
 	public static void run(Assignment assignment, Oracle oracle)
-			throws IOException, NotFoundTestCasesException,
-			NotFoundApplicationException, InterruptedException {
+			throws IOException, InterruptedException {
 
 		File oracleFile = new File(Directories.getOracleFilePath(oracle));
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
@@ -64,10 +59,10 @@ public class Runner {
 		File programDir = new File(Directories.getProgramDirPath(assignment));
 		File testsDir = new File(Directories.getTestsDirPath(assignment));
 
-		File pitiDir = new File(
-				Directories.getPitiDirPath(assignment));
+		File pitiDir = new File(Directories.getPitiDirPath(assignment));
 
-		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir, pitiDir, null, null, null);
+		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir,
+				pitiDir, null, null, null);
 
 		copy(oracleFile, packageDir);
 
@@ -75,11 +70,11 @@ public class Runner {
 
 		split(sourceDir, programDir, testsDir);
 
-		execute(Querier.getTools(assignment), oracleDir, programDir,
-				testsDir, pitiDir);
+		execute(Querier.getTools(assignment), oracleDir, programDir, testsDir,
+				pitiDir);
 
 		evaluate(assignment);
-		
+
 		report(assignment);
 
 	}
@@ -101,22 +96,19 @@ public class Runner {
 		File testsDir = new File(Directories.getTestsDirPath(assignment,
 				student));
 
-		//File pitiReportsDir = new File(Directories.getPitiReportsDirPath(assignment));
-		File pstsDir = new File(Directories.getPstsDirPath(
-				assignment, student));
-		File pitsDir = new File(Directories.getPitsDirPath(
-				assignment, student));
-		File pstiDir = new File(Directories.getPstiDirPath(
-				assignment, student));
+		// File pitiReportsDir = new
+		// File(Directories.getPitiReportsDirPath(assignment));
+		File pstsDir = new File(Directories.getPstsDirPath(assignment, student));
+		File pitsDir = new File(Directories.getPitsDirPath(assignment, student));
+		File pstiDir = new File(Directories.getPstiDirPath(assignment, student));
 
 		File oracleProgramDir = new File(
 				Directories.getProgramDirPath(assignment));
-		
+
 		File oracleTestsDir = new File(Directories.getTestsDirPath(assignment));
 
 		makeDirectories(studentDir, packageDir, sourceDir, programDir,
-				testsDir, null, pstsDir, pitsDir,
-				pstiDir);
+				testsDir, null, pstsDir, pitsDir, pstiDir);
 
 		upload(uf, packageDir);
 
@@ -134,7 +126,7 @@ public class Runner {
 				oracleTestsDir, pstiDir);
 
 		evaluate(evaluation);
-		
+
 		report(evaluation);
 
 	}
@@ -223,16 +215,16 @@ public class Runner {
 	}
 
 	private static void execute(List<Tool> tools, File rootDir,
-			File programDir, File testsDir, File outputDir)
-			throws IOException, InterruptedException {
+			File programDir, File testsDir, File outputDir) throws IOException,
+			InterruptedException {
 
 		for (Tool tool : tools) {
 			File reportsDir = new File(Directories.getToolReportsDirPath(
 					outputDir, tool));
 			File outputFile = new File(Directories.getToolOutputFilePath(
 					outputDir, tool));
-			Executor.execute(tool, rootDir, programDir, testsDir,
-					reportsDir, outputFile);
+			Executor.execute(tool, rootDir, programDir, testsDir, reportsDir,
+					outputFile);
 		}
 
 	}
@@ -249,7 +241,8 @@ public class Runner {
 		Reporter.generateReports(oracle);
 	}
 
-	private static void report(Evaluation evaluation) throws FileNotFoundException {
+	private static void report(Evaluation evaluation)
+			throws FileNotFoundException {
 		Reporter.generateReports(evaluation);
 	}
 

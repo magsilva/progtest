@@ -18,8 +18,6 @@ import progtest.common.Tool;
 import progtest.database.AssignmentCriterionDAO;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
-import progtest.exceptions.NotFoundApplicationException;
-import progtest.exceptions.NotFoundTestCasesException;
 import progtest.execution.Runner;
 import progtest.util.Constants;
 import progtest.util.ContextManager;
@@ -238,12 +236,6 @@ public class CreateAssignment {
 			return Constants.ACTION_SUCCESS;
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotFoundTestCasesException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotFoundApplicationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
