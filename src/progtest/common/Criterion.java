@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 
+
 @Entity
 @IdClass(CriterionPK.class)
 public class Criterion {

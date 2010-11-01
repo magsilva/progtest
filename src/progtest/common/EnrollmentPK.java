@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
+
 public class EnrollmentPK implements Serializable {
 
 	private static final long serialVersionUID = 1390851602377573353L;

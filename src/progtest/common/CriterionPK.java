@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 
+
 public class CriterionPK implements Serializable {
 	
 	private static final long serialVersionUID = 4753671316385228333L;

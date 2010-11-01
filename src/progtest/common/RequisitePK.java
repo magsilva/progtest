@@ -9,6 +9,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 
+
 public class RequisitePK implements Serializable {
 
 	private static final long serialVersionUID = -9064262612318912241L;

@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 
+
 @Entity
 @IdClass(AssignmentPK.class)
 public class Assignment {

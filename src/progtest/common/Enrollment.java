@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name="student_course")
 @IdClass(EnrollmentPK.class)
