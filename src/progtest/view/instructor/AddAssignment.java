@@ -17,6 +17,13 @@ import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
 import progtest.database.RequisiteDAO;
 import progtest.execution.Runner;
+import progtest.execution.exceptions.CopyException;
+import progtest.execution.exceptions.EvaluationException;
+import progtest.execution.exceptions.ExecutionException;
+import progtest.execution.exceptions.ExtractionException;
+import progtest.execution.exceptions.ReportException;
+import progtest.execution.exceptions.RunDirectoriesException;
+import progtest.execution.exceptions.SplitException;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 
@@ -242,7 +249,30 @@ public class AddAssignment {
 		for (Requisite requisite : requisites)
 			RequisiteDAO.insert(requisite);
 
-		Runner.run(assignment, oracle);
+		try {
+			Runner.run(assignment, oracle);
+		} catch (RunDirectoriesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CopyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExtractionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SplitException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EvaluationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ReportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		AssignmentDAO.update(assignment);
 

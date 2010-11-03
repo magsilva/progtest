@@ -1,4 +1,4 @@
-package progtest.common;
+package progtest.common.keys;
 
 import java.io.Serializable;
 
@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+
+import progtest.common.Tool;
 
 
 

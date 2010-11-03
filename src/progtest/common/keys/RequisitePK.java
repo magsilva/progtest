@@ -1,4 +1,4 @@
-package progtest.common;
+package progtest.common.keys;
 
 import java.io.Serializable;
 
@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+
+import progtest.common.Assignment;
+import progtest.common.Criterion;
 
 
 

@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import progtest.common.keys.EnrollmentPK;
+
 
 
 @Entity

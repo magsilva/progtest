@@ -1,4 +1,4 @@
-package progtest.common;
+package progtest.common.keys;
 
 import java.io.Serializable;
 
@@ -6,6 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import progtest.common.Course;
+import progtest.common.User;
 
 
 

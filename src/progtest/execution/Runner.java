@@ -11,12 +11,23 @@ import progtest.common.Submission;
 import progtest.common.Tool;
 import progtest.common.User;
 import progtest.database.Querier;
+import progtest.execution.exceptions.CopyException;
+import progtest.execution.exceptions.EvaluationException;
+import progtest.execution.exceptions.ExecutionException;
+import progtest.execution.exceptions.ExtractionException;
+import progtest.execution.exceptions.ReportException;
+import progtest.execution.exceptions.RunDirectoriesException;
+import progtest.execution.exceptions.SplitException;
+import progtest.execution.exceptions.UploadException;
 import progtest.util.FileUtil;
 import progtest.util.JUnitUtil;
 
 public class Runner {
 
-	public static void run(Assignment assignment, UploadedFile uf) {
+	public static void run(Assignment assignment, UploadedFile uf)
+			throws RunDirectoriesException, UploadException,
+			ExtractionException, SplitException, ExecutionException,
+			EvaluationException, ReportException {
 
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
 		File packageDir = new File(Directories.getPackageDirPath(assignment));
@@ -44,7 +55,10 @@ public class Runner {
 
 	}
 
-	public static void run(Assignment assignment, Oracle oracle) {
+	public static void run(Assignment assignment, Oracle oracle)
+			throws RunDirectoriesException, CopyException, ExtractionException,
+			SplitException, ExecutionException, EvaluationException,
+			ReportException {
 
 		File oracleFile = new File(Directories.getOracleFilePath(oracle));
 		File oracleDir = new File(Directories.getOracleDirPath(assignment));
@@ -73,7 +87,10 @@ public class Runner {
 
 	}
 
-	public static void run(Submission submission, UploadedFile uf) {
+	public static void run(Submission submission, UploadedFile uf)
+			throws RunDirectoriesException, UploadException,
+			ExtractionException, SplitException, ExecutionException,
+			EvaluationException, ReportException {
 
 		Assignment assignment = submission.getAssignment();
 		User student = submission.getStudent();
@@ -125,34 +142,43 @@ public class Runner {
 	private static void makeDirectories(File rootDir, File packageDir,
 			File sourceDir, File programDir, File testsDir,
 			File pitiReportsDir, File pstsReportsDir, File pitsReportsDir,
-			File pstiReportsDir) {
+			File pstiReportsDir) throws RunDirectoriesException {
 
-		if (rootDir.exists())
-			FileUtil.clean(rootDir);
-		else
-			FileUtil.mkdirs(rootDir);
+		try {
 
-		if (packageDir != null)
-			FileUtil.mkdirs(packageDir);
-		if (sourceDir != null)
-			FileUtil.mkdirs(sourceDir);
-		if (programDir != null)
-			FileUtil.mkdirs(programDir);
-		if (testsDir != null)
-			FileUtil.mkdirs(testsDir);
+			if (rootDir.exists())
+				FileUtil.clean(rootDir);
+			else
+				FileUtil.mkdirs(rootDir);
 
-		if (pitiReportsDir != null)
-			FileUtil.mkdirs(pitiReportsDir);
-		if (pstsReportsDir != null)
-			FileUtil.mkdirs(pstsReportsDir);
-		if (pitsReportsDir != null)
-			FileUtil.mkdirs(pitsReportsDir);
-		if (pstiReportsDir != null)
-			FileUtil.mkdirs(pstiReportsDir);
+			if (packageDir != null)
+				FileUtil.mkdirs(packageDir);
+			if (sourceDir != null)
+				FileUtil.mkdirs(sourceDir);
+			if (programDir != null)
+				FileUtil.mkdirs(programDir);
+			if (testsDir != null)
+				FileUtil.mkdirs(testsDir);
+
+			if (pitiReportsDir != null)
+				FileUtil.mkdirs(pitiReportsDir);
+			if (pstsReportsDir != null)
+				FileUtil.mkdirs(pstsReportsDir);
+			if (pitsReportsDir != null)
+				FileUtil.mkdirs(pitsReportsDir);
+			if (pstiReportsDir != null)
+				FileUtil.mkdirs(pstiReportsDir);
+
+		} catch (Throwable t) {
+
+			throw new RunDirectoriesException(t);
+
+		}
 
 	}
 
-	private static File upload(UploadedFile uf, File packageDir) {
+	private static File upload(UploadedFile uf, File packageDir)
+			throws UploadException {
 
 		try {
 
@@ -160,106 +186,147 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			t.printStackTrace();
+			throw new UploadException(t);
 
 		}
-		
-		return null;
 
 	}
 
-	private static void copy(File oracleFile, File packageDir) {
-		
+	private static void copy(File oracleFile, File packageDir)
+			throws CopyException {
+
 		try {
-			
+
 			FileUtil.copy(oracleFile, packageDir);
-		
+
 		} catch (Throwable t) {
-			
-			t.printStackTrace();
-			
+
+			throw new CopyException(t);
+
 		}
-		
+
 	}
 
-	private static void extract(File zipFile, File sourceDir) {
-		
+	private static void extract(File zipFile, File sourceDir)
+			throws ExtractionException {
+
 		try {
-			
+
 			FileUtil.unzip(zipFile, sourceDir);
-		
+
 		} catch (Throwable t) {
-			
-			t.printStackTrace();
-			
+
+			throw new ExtractionException(t);
+
 		}
-		
+
 	}
 
-	private static void split(File sourceDir, File programDir, File testsDir) {
+	private static void split(File sourceDir, File programDir, File testsDir)
+			throws SplitException {
 
 		try {
-			
+
 			JUnitUtil.split(sourceDir, programDir, testsDir);
-		
+
 		} catch (Throwable t) {
-			
-			t.printStackTrace();
-		
+
+			throw new SplitException(t);
+
 		}
 
 	}
 
 	private static void execute(List<Tool> tools, File rootDir,
-			File programDir, File testsDir, File outputDir) {
+			File programDir, File testsDir, File outputDir)
+			throws ExecutionException {
 
-		for (Tool tool : tools) {
-			
-			File reportsDir = new File(Directories.getToolReportsDirPath(
-					outputDir, tool));
-			
-			File outputFile = new File(Directories.getToolOutputFilePath(
-					outputDir, tool));
-			
-			try {
-				
-				Executor.execute(tool, rootDir, programDir, testsDir, reportsDir,
-						outputFile);
-				
-			} catch (Throwable t) {
-
-				t.printStackTrace();
-			
-			}
-			
-		}
-
-	}
-
-	private static void evaluate(Assignment oracle) {
-		Evaluator.evaluate(oracle);
-	}
-
-	private static void evaluate(Submission evaluation) {
-		Evaluator.evaluate(evaluation);
-	}
-
-	private static void report(Assignment oracle) {
-		Reporter.generateReports(oracle);
-	}
-
-	private static void report(Submission evaluation) {
-		
 		try {
-			
-			Reporter.generateReports(evaluation);
-		
+
+			for (Tool tool : tools) {
+
+				File reportsDir = new File(Directories.getToolReportsDirPath(
+						outputDir, tool));
+
+				File outputFile = new File(Directories.getToolOutputFilePath(
+						outputDir, tool));
+
+				try {
+
+					Executor.execute(tool, rootDir, programDir, testsDir,
+							reportsDir, outputFile);
+
+				} catch (Throwable t) {
+
+					t.printStackTrace();
+
+				}
+
+			}
+
 		} catch (Throwable t) {
-			
-			t.printStackTrace();
-			
+
+			throw new ExecutionException(t);
+
 		}
-		
+
+	}
+
+	private static void evaluate(Assignment oracle) throws EvaluationException {
+
+		try {
+
+			Evaluator.evaluate(oracle);
+
+		} catch (Throwable t) {
+
+			throw new EvaluationException(t);
+
+		}
+
+	}
+
+	private static void evaluate(Submission evaluation)
+			throws EvaluationException {
+
+		try {
+
+			Evaluator.evaluate(evaluation);
+
+		} catch (Throwable t) {
+
+			throw new EvaluationException(t);
+
+		}
+
+	}
+
+	private static void report(Assignment oracle) throws ReportException {
+
+		try {
+
+			Reporter.generateReports(oracle);
+
+		} catch (Throwable t) {
+
+			throw new ReportException(t);
+
+		}
+
+	}
+
+	private static void report(Submission evaluation) throws ReportException {
+
+		try {
+
+			Reporter.generateReports(evaluation);
+
+		} catch (Throwable t) {
+
+			throw new ReportException(t);
+
+		}
+
 	}
 
 }
