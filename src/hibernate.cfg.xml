@@ -32,13 +32,13 @@
 
 		<mapping class="progtest.common.User" />
 		<mapping class="progtest.common.Course" />
-		<mapping class="progtest.common.StudentCourse" />
+		<mapping class="progtest.common.Enrollment" />
 		<mapping class="progtest.common.Oracle" />
 		<mapping class="progtest.common.Assignment" />
 		<mapping class="progtest.common.Tool" />
 		<mapping class="progtest.common.Criterion" />
-		<mapping class="progtest.common.AssignmentCriterion" />
-		<mapping class="progtest.common.Evaluation" />
+		<mapping class="progtest.common.Requisite" />
+		<mapping class="progtest.common.Submission" />
 		
 	</session-factory>
 </hibernate-configuration>

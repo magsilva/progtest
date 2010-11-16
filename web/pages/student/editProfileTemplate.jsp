@@ -4,8 +4,6 @@
 	xmlns:tiles="http://tiles.apache.org/tags-tiles">
 	<jsp:directive.page contentType="text/html;charset=iso-8859-1" />
 
-	<f:loadBundle basename="resources.Messages" var="msg" />
-
 	<tiles:insertDefinition name="page.studentTemplate">
 		<tiles:putAttribute name="title" value="ProgTest" />
 		<tiles:putAttribute name="content" type="template"

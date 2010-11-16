@@ -17,7 +17,7 @@
 	</afh:head>
 	<afh:body styleClass="body">
 
-		<f:loadBundle basename="resources.Messages" var="msg" />
+		<f:loadBundle basename="messages" var="msg" />
 
 		<htm:center>
 
