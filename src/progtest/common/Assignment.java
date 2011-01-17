@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.TableGenerator;
 
 import progtest.common.keys.AssignmentPK;
-
-
+import progtest.database.AssignmentDAO;
 
 @Entity
 @IdClass(AssignmentPK.class)
@@ -26,7 +26,7 @@ public class Assignment {
 
 	private Course course;
 
-	private int idCode;
+	private int idCode = AssignmentDAO.getId();
 
 	private String title;
 
@@ -35,7 +35,7 @@ public class Assignment {
 	private Date startDate;
 
 	private Date endDate;
-	
+
 	private double pinstTinst;
 
 	private List<Criterion> criteria = new ArrayList<Criterion>();
@@ -53,9 +53,9 @@ public class Assignment {
 		this.course = course;
 	}
 
+	@TableGenerator(name = "AssignmentIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Assignment")
 	@Id
-	@SequenceGenerator(name = "SEQ_ASSIGNMENT", sequenceName = "SEQ_ASSIGNMENT")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ASSIGNMENT")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "AssignmentIDGEN")
 	public int getIdCode() {
 		return idCode;
 	}

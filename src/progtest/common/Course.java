@@ -13,11 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.TableGenerator;
 
 @Entity
 public class Course {
-	
+
 	private int idCode;
 	
 	private String name;
@@ -32,9 +32,9 @@ public class Course {
 	
 	private List<Assignment> assignments = new ArrayList<Assignment>();
 
+	@TableGenerator(name = "CourseIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Course")
 	@Id
-	@SequenceGenerator(name = "SEQ_COURSE", sequenceName = "SEQ_COURSE")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_COURSE")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CourseIDGEN")
 	public int getIdCode() {
 		return idCode;
 	}

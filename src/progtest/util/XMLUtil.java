@@ -44,7 +44,7 @@ public class XMLUtil {
 			}
 
 			int m = root.getChildNodes().getLength() + 1;
-			int n = root.getChildNodes().item(0).getChildNodes().getLength() + 1;
+			int n = root.getChildNodes().item(0).getChildNodes().getLength();
 			int i = 0;
 			int j = 0;
 
@@ -52,20 +52,13 @@ public class XMLUtil {
 
 			for (i = 0; i < m; i++) {
 				for (j = 0; j < n; j++) {
-					if ((i == 0) && (j == 0)) {
-						report[i][j] = root.getNodeName().replace("&lt;", "<")
-								.replace("&gt;", ">");
-					} else if ((i == 0) && (j != 0)) {
+					if ((i == 0)) {
 						report[i][j] = root.getChildNodes().item(0)
-								.getChildNodes().item(j - 1).getNodeName()
+								.getChildNodes().item(j).getNodeName()
 								.replace("&lt;", "<").replace("&gt;", ">");
-					} else if ((i != 0) && (j == 0)) {
+					} else if ((i != 0)) {
 						report[i][j] = root.getChildNodes().item(i - 1)
-								.getAttributes().item(0).getNodeValue()
-								.replace("&lt;", "<").replace("&gt;", ">");
-					} else if ((i != 0) && (j != 0)) {
-						report[i][j] = root.getChildNodes().item(i - 1)
-								.getChildNodes().item(j - 1).getAttributes()
+								.getChildNodes().item(j).getAttributes()
 								.item(0).getNodeValue().replace("&lt;", "<")
 								.replace("&gt;", ">");
 					}

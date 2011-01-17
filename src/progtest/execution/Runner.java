@@ -20,7 +20,6 @@ import progtest.execution.exceptions.RunDirectoriesException;
 import progtest.execution.exceptions.SplitException;
 import progtest.execution.exceptions.UploadException;
 import progtest.util.FileUtil;
-import progtest.util.JUnitUtil;
 
 public class Runner {
 
@@ -72,9 +71,9 @@ public class Runner {
 		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir,
 				pitiDir, null, null, null);
 
-		copy(oracleFile, packageDir);
+		File savedFile = copy(oracleFile, packageDir);
 
-		extract(packageDir, sourceDir);
+		extract(savedFile, sourceDir);
 
 		split(sourceDir, programDir, testsDir);
 
@@ -192,12 +191,12 @@ public class Runner {
 
 	}
 
-	private static void copy(File oracleFile, File packageDir)
+	private static File copy(File oracleFile, File packageDir)
 			throws CopyException {
 
 		try {
 
-			FileUtil.copy(oracleFile, packageDir);
+			return FileUtil.copy(oracleFile, packageDir);
 
 		} catch (Throwable t) {
 
@@ -227,7 +226,14 @@ public class Runner {
 
 		try {
 
-			JUnitUtil.split(sourceDir, programDir, testsDir);
+			List<File> classes = FileUtil.listFiles(sourceDir, ".java");
+			
+			for(File clazz: classes) {
+				if(clazz.getName().contains("Test"))
+					FileUtil.copy(clazz, testsDir);
+				else
+					FileUtil.copy(clazz, programDir);
+			}
 
 		} catch (Throwable t) {
 

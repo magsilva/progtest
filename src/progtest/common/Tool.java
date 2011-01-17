@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.TableGenerator;
 
 @Entity
 public class Tool {
@@ -23,9 +23,9 @@ public class Tool {
 	
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
+	@TableGenerator(name = "ToolIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Tool")
 	@Id
-	@SequenceGenerator(name = "SEQ_TOOL", sequenceName = "SEQ_TOOL")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_TOOL")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "ToolIDGEN")
 	public int getIdCode() {
 		return idCode;
 	}

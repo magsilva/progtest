@@ -222,8 +222,8 @@ public class AddAssignment {
 				Criterion criterion = Querier.getCriterion(
 						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
 				Requisite requisite = new Requisite();
-				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
+				requisite.setAssignment(assignment);
 				requisites.add(requisite);
 			}
 
@@ -275,6 +275,9 @@ public class AddAssignment {
 		}
 
 		AssignmentDAO.update(assignment);
+		
+		for (Requisite requisite : requisites)
+			RequisiteDAO.insert(requisite);
 
 		refresh();
 

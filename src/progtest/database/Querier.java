@@ -27,13 +27,13 @@ public class Querier {
 
 	private static final String SELECT_COURSES_BY_INSTRUCTOR = "from Course course where instructor = ?";
 
-	private static final String SELECT_COURSES_BY_STUDENT = "select studentCourse.course from StudentCourse studentCourse where studentCourse.student = ?";
+	private static final String SELECT_COURSES_BY_STUDENT = "select enrollment.course from Enrollment enrollment where enrollment.student = ?";
 
 	private static final String SELECT_ASSIGNMENTS_BY_COURSE = "from Assignment assignment where assignment.course = ?";
 
-	private static final String SELECT_STUDENTS_BY_COURSE = "select studentCourse.student from StudentCourse studentCourse where studentCourse.course = ?";
+	private static final String SELECT_STUDENTS_BY_COURSE = "select enrollment.student from Enrollment enrollment where enrollment.course = ?";
 
-	private static final String SELECT_STUDENTS_BY_NOT_COURSE = "select studentCourse.student from StudentCourse studentCourse where studentCourse.course != ?";
+	private static final String SELECT_STUDENTS_BY_NOT_COURSE = "select enrollment.student from Enrollment enrollment where enrollment.course != ?";
 
 	private static final String SELECT_ORACLE = "from Oracle oracle where oracle.idCode = ?";
 
@@ -41,29 +41,29 @@ public class Querier {
 
 	private static final String SELECT_ORACLES_BY_LANGUAGE = "from Oracle oracle where oracle.language = ?";
 
-	private static final String SELECT_EVALUATION = "from Evaluation evaluation where evaluation.student = ? and evaluation.assignment.course = ? and evaluation.assignment = ? order by evaluation.assignment.endDate";
+	private static final String SELECT_SUBMISSION = "from Submission submission where submission.student = ? and submission.assignment.course = ? and submission.assignment = ? order by submission.assignment.endDate";
 
-	private static final String SELECT_EVALUATIONS_BY_STUDENT = "from Evaluation evaluation where evaluation.student = ? order by evaluation.assignment.endDate";
+	private static final String SELECT_SUBMISSIONS_BY_STUDENT = "from Submission submission where submission.student = ? order by submission.assignment.endDate";
 
-	private static final String SELECT_EVALUATIONS_BY_ASSIGNMENT = "from Evaluation evaluation where evaluation.assignment.course = ? and evaluation.assignment.idCode = ? order by evaluation.assignment.endDate";
+	private static final String SELECT_SUBMISSIONS_BY_ASSIGNMENT = "from Submission submission where submission.assignment.course = ? and submission.assignment.idCode = ? order by submission.assignment.endDate";
 
-	private static final String SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE = "from Evaluation evaluation where evaluation.student = ? and evaluation.assignment.course = ? order by evaluation.assignment.endDate";
+	private static final String SELECT_SUBMISSIONS_BY_STUDENT_AND_COURSE = "from Submission submission where submission.student = ? and submission.assignment.course = ? order by submission.assignment.endDate";
 
-	private static final String SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE = "from Evaluation evaluation where evaluation.student = ? and evaluation.assignment.course = ? and evaluation.submissionDate = NULL order by evaluation.assignment.endDate";
+	private static final String SELECT_SUBMISSIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE = "from Submission submission where submission.student = ? and submission.assignment.course = ? and submission.submissionDate = NULL order by submission.assignment.endDate";
 
-	private static final String SELECT_EVALUATIONS_BY_STUDENT_AND_SUBMISSIONDATE = "from Evaluation evaluation where evaluation.student = ? and evaluation.submissionDate = NULL order by evaluation.assignment.endDate";
+	private static final String SELECT_SUBMISSIONS_BY_STUDENT_AND_SUBMISSIONDATE = "from Submission submission where submission.student = ? and submission.submissionDate = NULL order by submission.assignment.endDate";
 
 	private static final String SELECT_CRITERIA_BY_LANGUAGE = "select tool.criteria from Tool tool where tool.language = ?";
 
-	private static final String SELECT_CRITERIA_BY_ASSIGNMENT = "select ac.criterion from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
+	private static final String SELECT_CRITERIA_BY_ASSIGNMENT = "select requisite.criterion from Requisite requisite where requisite.assignment.course.idCode = ? and requisite.assignment.idCode = ?";
 
 	private static final String SELECT_CRITERION_BY_TOOL_AND_ID = "from Criterion criterion where criterion.tool = ? and criterion.idCode = ?";
 
 	private static final String SELECT_TOOLS = "from Tool";
 
-	private static final String SELECT_ASSIGNMENTCRITERIA_BY_ASSIGNMENT = "from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
+	private static final String SELECT_REQUISITE_BY_ASSIGNMENT = "from Requisite requisite where requisite.assignment.course.idCode = ? and requisite.assignment.idCode = ?";
 
-	private static final String SELECT_TOOL_BY_ASSIGNMENT = "select ac.criterion.tool from AssignmentCriterion ac where ac.assignment.course.idCode = ? and ac.assignment.idCode = ?";
+	private static final String SELECT_TOOL_BY_ASSIGNMENT = "select requisite.criterion.tool from Requisite requisite where requisite.assignment.course.idCode = ? and requisite.assignment.idCode = ?";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -187,7 +187,7 @@ public class Querier {
 	public static List<Submission> getEvaluations(User user) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery(SELECT_EVALUATIONS_BY_STUDENT);
+		Query query = session.createQuery(SELECT_SUBMISSIONS_BY_STUDENT);
 		query.setInteger(0, user.getIdCode());
 		List<Submission> evaluations = (List<Submission>) query.list();
 		session.getTransaction().commit();
@@ -211,7 +211,7 @@ public class Querier {
 	public static List<Submission> getEvaluations(Assignment assignment) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery(SELECT_EVALUATIONS_BY_ASSIGNMENT);
+		Query query = session.createQuery(SELECT_SUBMISSIONS_BY_ASSIGNMENT);
 		query.setInteger(0, assignment.getCourse().getIdCode());
 		query.setInteger(1, assignment.getIdCode());
 		List<Submission> evaluations = (List<Submission>) query.list();
@@ -245,7 +245,7 @@ public class Querier {
 	public static Submission getEvaluation(User user, Assignment assignment) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery(SELECT_EVALUATION);
+		Query query = session.createQuery(SELECT_SUBMISSION);
 		query.setInteger(0, user.getIdCode());
 		query.setInteger(1, assignment.getCourse().getIdCode());
 		query.setInteger(2, assignment.getIdCode());
@@ -260,7 +260,7 @@ public class Querier {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session
-				.createQuery(SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE);
+				.createQuery(SELECT_SUBMISSIONS_BY_STUDENT_AND_COURSE);
 		query.setInteger(0, user.getIdCode());
 		query.setInteger(1, course.getIdCode());
 		List<Submission> evaluations = (List<Submission>) query.list();
@@ -275,7 +275,7 @@ public class Querier {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session
-				.createQuery(SELECT_EVALUATIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE);
+				.createQuery(SELECT_SUBMISSIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE);
 		query.setInteger(0, user.getIdCode());
 		query.setInteger(1, course.getIdCode());
 		List<Submission> evaluations = (List<Submission>) query.list();
@@ -289,7 +289,7 @@ public class Querier {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session
-				.createQuery(SELECT_EVALUATIONS_BY_STUDENT_AND_SUBMISSIONDATE);
+				.createQuery(SELECT_SUBMISSIONS_BY_STUDENT_AND_SUBMISSIONDATE);
 		query.setInteger(0, user.getIdCode());
 		List<Submission> avaliations = (List<Submission>) query.list();
 		session.getTransaction().commit();
@@ -363,7 +363,7 @@ public class Querier {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		Query query = session
-				.createQuery(SELECT_ASSIGNMENTCRITERIA_BY_ASSIGNMENT);
+				.createQuery(SELECT_REQUISITE_BY_ASSIGNMENT);
 		query.setInteger(0, assignment.getCourse().getIdCode());
 		query.setInteger(1, assignment.getIdCode());
 		List<Requisite> assignmentCriteria = (List<Requisite>) query

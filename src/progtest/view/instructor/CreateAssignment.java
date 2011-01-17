@@ -197,20 +197,14 @@ public class CreateAssignment {
 
 		if (hasCriteria()) {
 
-			Assignment assignment = (Assignment) FacesUtil
-					.getSession(Constants.SESSION_ASSIGNMENT);
-
 			for (String selectedCriterion : selectedCriteria) {
 				String ids[] = selectedCriterion.split("/");
 				Criterion criterion = Querier.getCriterion(
 						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
 				Requisite requisite = new Requisite();
-				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
 				requisites.add(requisite);
 			}
-
-			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			step = 5;
 
@@ -227,8 +221,10 @@ public class CreateAssignment {
 
 		AssignmentDAO.insert(assignment);
 
-		for (Requisite requisite : requisites)
+		for (Requisite requisite : requisites) {
+			requisite.setAssignment(assignment);
 			RequisiteDAO.insert(requisite);
+		}
 
 		try {
 			Runner.run(assignment, uploadedFile);
@@ -256,6 +252,11 @@ public class CreateAssignment {
 		}
 
 		AssignmentDAO.update(assignment);
+
+		for (Requisite requisite : requisites) {
+			requisite.setAssignment(assignment);
+			RequisiteDAO.insert(requisite);
+		}
 
 		refresh();
 

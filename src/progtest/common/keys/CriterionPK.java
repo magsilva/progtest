@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.TableGenerator;
 
 import progtest.common.Tool;
 
@@ -32,9 +32,9 @@ public class CriterionPK implements Serializable {
 		this.tool = tool;
 	}
 
+	@TableGenerator(name = "CriterionIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Criterion")
 	@Id
-	@SequenceGenerator(name = "SEQ_CRITERION", sequenceName = "SEQ_CRITERION")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CRITERION")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CriterionIDGEN")
 	public int getIdCode() {
 		return idCode;
 	}

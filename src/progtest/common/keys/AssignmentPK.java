@@ -2,16 +2,10 @@ package progtest.common.keys;
 
 import java.io.Serializable;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 
 import progtest.common.Course;
-
-
 
 public class AssignmentPK implements Serializable {
 	
@@ -21,7 +15,6 @@ public class AssignmentPK implements Serializable {
 	
 	private int idCode;
 
-	@Id
 	@ManyToOne
 	@JoinColumn(name = "course")
 	public Course getCourse() {
@@ -31,10 +24,7 @@ public class AssignmentPK implements Serializable {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-
-	@Id
-	@SequenceGenerator(name = "SEQ_ASSIGNMENT", sequenceName = "SEQ_ASSIGNMENT")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ASSIGNMENT")
+	
 	public int getIdCode() {
 		return idCode;
 	}

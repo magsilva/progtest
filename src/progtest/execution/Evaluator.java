@@ -130,7 +130,7 @@ public class Evaluator {
 		double pits = submission.getPinstTst();
 		double psti = submission.getPstTinst();
 
-		return (piti + psts + pits + psti) / 4;
+		return (psts + pits + psti) / 3;
 
 	}
 

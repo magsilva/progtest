@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.TableGenerator;
 
 @Entity
 public class User {
@@ -34,9 +34,9 @@ public class User {
 
 	private List<Submission> submissions = new ArrayList<Submission>();
 
+	@TableGenerator(name = "UserIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "User")
 	@Id
-	@SequenceGenerator(name = "SEQ_USER", sequenceName = "SEQ_USER")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_USER")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "UserIDGEN")
 	public int getIdCode() {
 		return idCode;
 	}

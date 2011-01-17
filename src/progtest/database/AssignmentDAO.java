@@ -1,10 +1,9 @@
 package progtest.database;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import progtest.common.Assignment;
-import progtest.common.Submission;
-import progtest.common.User;
 import progtest.util.HibernateUtil;
 
 public class AssignmentDAO {
@@ -15,7 +14,6 @@ public class AssignmentDAO {
 		session.save(assignment);
 		session.getTransaction().commit();
 		session.close();
-		insertEvaluations(assignment);
 	}
 
 	public static void update(Assignment assignment) {
@@ -34,13 +32,17 @@ public class AssignmentDAO {
 		session.close();
 	}
 
-	private static void insertEvaluations(Assignment assignment) {
-		for(User student : Querier.getStudents(assignment.getCourse())) {
-			Submission submission = new Submission();
-			submission.setAssignment(assignment);
-			submission.setStudent(student);
-			SubmissionDAO.insert(submission);
-		}
+	public static int getId() {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery("select max(a.idCode) from Assignment a");
+		Integer id = (Integer) query.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		if(id == null)
+			return 1;
+		else
+			return id + 1;
 	}
 
 }

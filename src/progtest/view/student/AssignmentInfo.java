@@ -9,6 +9,7 @@ import javax.faces.component.UIData;
 
 import progtest.common.Submission;
 import progtest.execution.Directories;
+import progtest.reports.Record;
 import progtest.reports.Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
@@ -39,6 +40,12 @@ public class AssignmentInfo {
 	private Report report;
 
 	private UIData reportTable;
+
+	private Report report2;
+
+	private UIData report2Table;
+	
+	private String grade;
 
 	public int getViewId() {
 		return viewId;
@@ -136,6 +143,30 @@ public class AssignmentInfo {
 		this.reportTable = reportTable;
 	}
 
+	public void setReport2Table(UIData report2Table) {
+		this.report2Table = report2Table;
+	}
+
+	public void setReport2(Report report2) {
+		this.report2 = report2;
+	}
+
+	public Report getReport2() {
+		return report2;
+	}
+
+	public UIData getReport2Table() {
+		return report2Table;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
 	public AssignmentInfo() {
 		
 		activedReport = Constants.EMPTY;
@@ -165,6 +196,17 @@ public class AssignmentInfo {
 			
 			File file = (File) files.get(0);
 			report = new Report(file);
+			file = (File) files.get(1);
+			report2 = new Report(file);
+			
+			report2.getRecords().get(0).setColumn1("Instructor's test set against instructor's program (P_Inst - T_Inst)");
+			report2.getRecords().get(1).setColumn1("Student's test set against student's program (P_St - T_St)");
+			report2.getRecords().get(2).setColumn1("Student's test set against instructor's program (P_Inst - T_St)");
+			report2.getRecords().get(3).setColumn1("Instructor's test set against student's program (P_St - T_Inst)");
+			
+			grade = report2.getRecords().get(4).getColumn2();
+			report2.getRecords().set(4, new Record());
+			
 			viewId = 2;
 			activedReport = file.getName();
 			
@@ -183,10 +225,7 @@ public class AssignmentInfo {
 	}
 
 	public String selectReportView() {
-		File file = (File) filesTable.getRowData();
-		report = new Report(file);
 		viewId = 2;
-		activedReport = file.getName();
 		return Constants.ACTION_SELECT;
 	}
 	
