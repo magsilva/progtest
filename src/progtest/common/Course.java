@@ -19,20 +19,20 @@ import javax.persistence.TableGenerator;
 public class Course {
 
 	private int idCode;
-	
+
 	private String name;
-	
+
 	private Date startDate;
-	
+
 	private Date endDate;
-	
+
 	private User instructor = new User();
-	
+
 	private List<User> students = new ArrayList<User>();
-	
+
 	private List<Assignment> assignments = new ArrayList<Assignment>();
 
-	@TableGenerator(name = "CourseIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Course")
+	@TableGenerator(name = "CourseIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Course", initialValue = 100, allocationSize = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CourseIDGEN")
 	public int getIdCode() {
@@ -86,7 +86,7 @@ public class Course {
 	public void setStudents(List<User> students) {
 		this.students = students;
 	}
-	
+
 	@OneToMany(mappedBy = "course")
 	public List<Assignment> getAssignments() {
 		return assignments;

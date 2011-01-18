@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 import progtest.common.Assignment;
@@ -34,8 +33,7 @@ public class SubmissionPK implements Serializable {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns( { @JoinColumn(name = "course", referencedColumnName = "course"),
-			@JoinColumn(name = "assignment", referencedColumnName = "idCode") })
+	@JoinColumn(name = "assignment", referencedColumnName = "idCode")
 	public Assignment getAssignment() {
 		return assignment;
 	}

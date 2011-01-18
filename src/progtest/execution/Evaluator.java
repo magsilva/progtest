@@ -124,8 +124,7 @@ public class Evaluator {
 	}
 
 	private static double calculateScore(Submission submission) {
-
-		double piti = submission.getAssignment().getPinstTinst();
+		
 		double psts = submission.getPstTst();
 		double pits = submission.getPinstTst();
 		double psti = submission.getPstTinst();

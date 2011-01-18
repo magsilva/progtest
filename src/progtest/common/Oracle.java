@@ -17,7 +17,7 @@ public class Oracle {
 	
 	private String language;
 
-	@TableGenerator(name = "OracleIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Oracle")
+	@TableGenerator(name = "OracleIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Oracle", initialValue = 100, allocationSize = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "OracleIDGEN")
 	public int getIdCode() {

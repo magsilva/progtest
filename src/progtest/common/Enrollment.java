@@ -6,14 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import progtest.common.keys.EnrollmentPK;
 
 
 
 @Entity
-@Table(name="student_course")
 @IdClass(EnrollmentPK.class)
 public class Enrollment {
 	

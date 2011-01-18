@@ -34,7 +34,7 @@ public class Criterion {
 		this.tool = tool;
 	}
 
-	@TableGenerator(name = "CriterionIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Criterion")
+	@TableGenerator(name = "CriterionIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Criterion", initialValue = 100, allocationSize = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CriterionIDGEN")
 	public int getIdCode() {

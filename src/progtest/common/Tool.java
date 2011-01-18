@@ -23,7 +23,7 @@ public class Tool {
 	
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
-	@TableGenerator(name = "ToolIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Tool")
+	@TableGenerator(name = "ToolIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Tool", initialValue = 100, allocationSize = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "ToolIDGEN")
 	public int getIdCode() {

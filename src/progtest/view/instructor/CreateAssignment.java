@@ -253,10 +253,10 @@ public class CreateAssignment {
 
 		AssignmentDAO.update(assignment);
 
-		for (Requisite requisite : requisites) {
+		/*for (Requisite requisite : requisites) {
 			requisite.setAssignment(assignment);
 			RequisiteDAO.insert(requisite);
-		}
+		}*/
 
 		refresh();
 

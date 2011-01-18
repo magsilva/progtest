@@ -23,8 +23,7 @@ public class RequisitePK implements Serializable {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns({ @JoinColumn(name = "course", referencedColumnName = "course"),
-			@JoinColumn(name = "assignment", referencedColumnName = "idCode") })
+	@JoinColumn(name = "assignment", referencedColumnName = "idCode")
 	public Assignment getAssignment() {
 		return assignment;
 	}

@@ -7,7 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 import progtest.common.keys.SubmissionPK;
@@ -45,8 +44,7 @@ public class Submission {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns( { @JoinColumn(name = "course", referencedColumnName = "course"),
-			@JoinColumn(name = "assignment", referencedColumnName = "idCode") })
+	@JoinColumn(name = "assignment", referencedColumnName = "idCode")
 	public Assignment getAssignment() {
 		return assignment;
 	}

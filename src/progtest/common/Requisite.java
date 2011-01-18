@@ -7,14 +7,12 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import progtest.common.keys.RequisitePK;
 
 
 
 @Entity
-@Table(name = "assignment_criterion")
 @IdClass(RequisitePK.class)
 public class Requisite {
 
@@ -26,8 +24,7 @@ public class Requisite {
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns({ @JoinColumn(name = "course", referencedColumnName = "course"),
-			@JoinColumn(name = "assignment", referencedColumnName = "idCode") })
+	@JoinColumn(name = "assignment", referencedColumnName = "idCode")
 	public Assignment getAssignment() {
 		return assignment;
 	}

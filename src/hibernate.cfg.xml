@@ -42,8 +42,8 @@
 		<mapping class="progtest.common.Assignment" />
 		<mapping class="progtest.common.Tool" />
 		<mapping class="progtest.common.Criterion" />
-		<mapping class="progtest.common.Requisite" />
 		<mapping class="progtest.common.Submission" />
+		<mapping class="progtest.common.Requisite" />
 		
 	</session-factory>
 </hibernate-configuration>

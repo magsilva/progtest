@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -17,16 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.TableGenerator;
 
-import progtest.common.keys.AssignmentPK;
-import progtest.database.AssignmentDAO;
-
 @Entity
-@IdClass(AssignmentPK.class)
 public class Assignment {
 
-	private Course course;
+	private int idCode;
 
-	private int idCode = AssignmentDAO.getId();
+	private Course course;
 
 	private String title;
 
@@ -42,18 +36,7 @@ public class Assignment {
 
 	private List<Submission> submissions = new ArrayList<Submission>();
 
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "course")
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
-	@TableGenerator(name = "AssignmentIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Assignment")
+	@TableGenerator(name = "AssignmentIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Assignment", initialValue = 100, allocationSize = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "AssignmentIDGEN")
 	public int getIdCode() {
@@ -63,6 +46,16 @@ public class Assignment {
 	@SuppressWarnings("unused")
 	private void setIdCode(int idCode) {
 		this.idCode = idCode;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "course")
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public String getTitle() {
@@ -106,8 +99,7 @@ public class Assignment {
 	}
 
 	@ManyToMany(targetEntity = progtest.common.Criterion.class)
-	@JoinTable(name = "assignment_criterion", joinColumns = {
-			@JoinColumn(name = "course"), @JoinColumn(name = "assignment") }, inverseJoinColumns = {
+	@JoinTable(name = "Requisite", joinColumns = { @JoinColumn(name = "assignment") }, inverseJoinColumns = {
 			@JoinColumn(name = "tool", referencedColumnName = "tool"),
 			@JoinColumn(name = "criterion", referencedColumnName = "idCode") })
 	public List<Criterion> getCriteria() {

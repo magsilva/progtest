@@ -34,7 +34,7 @@ public class User {
 
 	private List<Submission> submissions = new ArrayList<Submission>();
 
-	@TableGenerator(name = "UserIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "User")
+	@TableGenerator(name = "UserIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "User", initialValue = 100, allocationSize = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "UserIDGEN")
 	public int getIdCode() {
@@ -95,7 +95,7 @@ public class User {
 	}
 
 	@ManyToMany(targetEntity = progtest.common.Course.class)
-	@JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "student"), inverseJoinColumns = @JoinColumn(name = "course"))
+	@JoinTable(name = "Enrollment", joinColumns = @JoinColumn(name = "student"), inverseJoinColumns = @JoinColumn(name = "course"))
 	public List<Course> getCoursesAsStudent() {
 		return coursesAsStudent;
 	}
