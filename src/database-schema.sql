@@ -145,8 +145,6 @@ INSERT INTO Sequence VALUES('Oracle', 100);
 
 INSERT INTO Sequence VALUES('Tool', 100);
 
-INSERT INTO Sequence VALUES('Criterion', 100);
-
 INSERT INTO User VALUES(1, 'progtest', 'ProgTest', 'progtest@gmail.com', 'progtest', 'instructor');
 
 INSERT INTO Tool VALUES(1, 'JUnit', 'Pass Rate', 'Java');

@@ -34,8 +34,8 @@ public class User {
 
 	private List<Submission> submissions = new ArrayList<Submission>();
 
-	@TableGenerator(name = "UserIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "User", initialValue = 100, allocationSize = 1)
 	@Id
+	@TableGenerator(name = "UserIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "User", initialValue = 100, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "UserIDGEN")
 	public int getIdCode() {
 		return idCode;

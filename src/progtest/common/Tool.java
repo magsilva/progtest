@@ -3,7 +3,9 @@ package progtest.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,19 +14,19 @@ import javax.persistence.TableGenerator;
 
 @Entity
 public class Tool {
-	
+
 	private int idCode;
-	
+
 	private String name;
-	
+
 	private String type;
-	
+
 	private String language;
-	
+
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
-	@TableGenerator(name = "ToolIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Tool", initialValue = 100, allocationSize = 1)
 	@Id
+	@TableGenerator(name = "ToolIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Tool", initialValue = 100, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "ToolIDGEN")
 	public int getIdCode() {
 		return idCode;
@@ -49,7 +51,7 @@ public class Tool {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	public String getLanguage() {
 		return language;
 	}
@@ -58,7 +60,7 @@ public class Tool {
 		this.language = language;
 	}
 
-	@OneToMany(mappedBy = "tool")
+	@OneToMany(mappedBy = "tool", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	public List<Criterion> getCriteria() {
 		return criteria;
 	}

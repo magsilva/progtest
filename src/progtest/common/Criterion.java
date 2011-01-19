@@ -1,17 +1,12 @@
 package progtest.common;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.TableGenerator;
 
 import progtest.common.keys.CriterionPK;
-
-
 
 @Entity
 @IdClass(CriterionPK.class)
@@ -34,9 +29,7 @@ public class Criterion {
 		this.tool = tool;
 	}
 
-	@TableGenerator(name = "CriterionIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Criterion", initialValue = 100, allocationSize = 1)
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CriterionIDGEN")
 	public int getIdCode() {
 		return idCode;
 	}

@@ -10,8 +10,6 @@ import javax.persistence.ManyToOne;
 
 import progtest.common.keys.RequisitePK;
 
-
-
 @Entity
 @IdClass(RequisitePK.class)
 public class Requisite {

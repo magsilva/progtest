@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.TableGenerator;
@@ -31,13 +31,13 @@ public class Assignment {
 	private Date endDate;
 
 	private double pinstTinst;
-
-	private List<Criterion> criteria = new ArrayList<Criterion>();
+	
+	private List<Requisite> requisites = new ArrayList<Requisite>();
 
 	private List<Submission> submissions = new ArrayList<Submission>();
 
-	@TableGenerator(name = "AssignmentIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Assignment", initialValue = 100, allocationSize = 1)
 	@Id
+	@TableGenerator(name = "AssignmentIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Assignment", initialValue = 100, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "AssignmentIDGEN")
 	public int getIdCode() {
 		return idCode;
@@ -98,16 +98,13 @@ public class Assignment {
 		this.pinstTinst = pinstTinst;
 	}
 
-	@ManyToMany(targetEntity = progtest.common.Criterion.class)
-	@JoinTable(name = "Requisite", joinColumns = { @JoinColumn(name = "assignment") }, inverseJoinColumns = {
-			@JoinColumn(name = "tool", referencedColumnName = "tool"),
-			@JoinColumn(name = "criterion", referencedColumnName = "idCode") })
-	public List<Criterion> getCriteria() {
-		return criteria;
+	@OneToMany(mappedBy = "assignment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	public List<Requisite> getRequisites() {
+		return requisites;
 	}
 
-	public void setCriteria(List<Criterion> criteria) {
-		this.criteria = criteria;
+	public void setRequisites(List<Requisite> requisites) {
+		this.requisites = requisites;
 	}
 
 	@OneToMany(mappedBy = "assignment")

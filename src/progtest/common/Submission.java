@@ -11,8 +11,6 @@ import javax.persistence.ManyToOne;
 
 import progtest.common.keys.SubmissionPK;
 
-
-
 @Entity
 @IdClass(SubmissionPK.class)
 public class Submission {

@@ -15,7 +15,6 @@ import progtest.common.Requisite;
 import progtest.common.Tool;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
-import progtest.database.RequisiteDAO;
 import progtest.execution.Runner;
 import progtest.execution.exceptions.CopyException;
 import progtest.execution.exceptions.EvaluationException;
@@ -241,13 +240,12 @@ public class AddAssignment {
 
 		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
-
-		Oracle oracle = (Oracle) FacesUtil.getSession(Constants.SESSION_ORACLE);
+		
+		assignment.setRequisites(requisites);
 
 		AssignmentDAO.insert(assignment);
 
-		for (Requisite requisite : requisites)
-			RequisiteDAO.insert(requisite);
+		Oracle oracle = (Oracle) FacesUtil.getSession(Constants.SESSION_ORACLE);
 
 		try {
 			Runner.run(assignment, oracle);
@@ -276,9 +274,6 @@ public class AddAssignment {
 
 		AssignmentDAO.update(assignment);
 		
-		/*for (Requisite requisite : requisites)
-			RequisiteDAO.insert(requisite);*/
-
 		refresh();
 
 		return Constants.ACTION_SUCCESS;

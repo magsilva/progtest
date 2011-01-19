@@ -16,7 +16,6 @@ import progtest.common.Requisite;
 import progtest.common.Tool;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
-import progtest.database.RequisiteDAO;
 import progtest.execution.Runner;
 import progtest.execution.exceptions.EvaluationException;
 import progtest.execution.exceptions.ExecutionException;
@@ -193,6 +192,9 @@ public class CreateAssignment {
 
 	public String goToStep5() {
 
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
 		requisites.clear();
 
 		if (hasCriteria()) {
@@ -202,6 +204,7 @@ public class CreateAssignment {
 				Criterion criterion = Querier.getCriterion(
 						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
 				Requisite requisite = new Requisite();
+				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
 				requisites.add(requisite);
 			}
@@ -218,13 +221,10 @@ public class CreateAssignment {
 
 		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
+		
+		assignment.setRequisites(requisites);
 
 		AssignmentDAO.insert(assignment);
-
-		for (Requisite requisite : requisites) {
-			requisite.setAssignment(assignment);
-			RequisiteDAO.insert(requisite);
-		}
 
 		try {
 			Runner.run(assignment, uploadedFile);
@@ -252,11 +252,6 @@ public class CreateAssignment {
 		}
 
 		AssignmentDAO.update(assignment);
-
-		/*for (Requisite requisite : requisites) {
-			requisite.setAssignment(assignment);
-			RequisiteDAO.insert(requisite);
-		}*/
 
 		refresh();
 

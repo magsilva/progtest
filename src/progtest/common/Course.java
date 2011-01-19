@@ -26,14 +26,14 @@ public class Course {
 
 	private Date endDate;
 
-	private User instructor = new User();
+	private User instructor;
 
 	private List<User> students = new ArrayList<User>();
 
 	private List<Assignment> assignments = new ArrayList<Assignment>();
 
-	@TableGenerator(name = "CourseIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Course", initialValue = 100, allocationSize = 1)
 	@Id
+	@TableGenerator(name = "CourseIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Course", initialValue = 100, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CourseIDGEN")
 	public int getIdCode() {
 		return idCode;
@@ -78,7 +78,7 @@ public class Course {
 		this.instructor = instructor;
 	}
 
-	@ManyToMany(mappedBy = "coursesAsStudent", targetEntity = User.class)
+	@ManyToMany(mappedBy = "coursesAsStudent")
 	public List<User> getStudents() {
 		return students;
 	}
