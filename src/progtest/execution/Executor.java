@@ -12,8 +12,6 @@ import progtest.util.FileUtil;
 
 public class Executor {
 
-	private static final String SCRIPT = "script";
-
 	private static final String TAG_ROOT = "<root>";
 	private static final String TAG_SOURCE = "<source>";
 	private static final String TAG_BINARIES = "<binaries>";
@@ -23,15 +21,19 @@ public class Executor {
 	private static final String TAG_LIBRARIES = "<libraries>";
 	private static final String TAG_TEMPORARIES = "<temporaries>";
 	private static final String TAG_REPORTS = "<reports>";
-	private static final String TAG_OUTPUT = "<output>";
+	
+	private static final String FILE_SEPARATOR = "/";
 
 	public static void execute(Tool tool, File rootDir, File programDir,
-			File testsDir, File reportsDir, File outputFile)
+			File testsDir, File reportsDir)
 			throws IOException, InterruptedException {
 
 		File toolFile = new File(Directories.getToolFilePath(tool));
 
-		File toolDir = new File(Directories.getToolTempDirPath(rootDir, tool));
+		File toolReportsDir = new File(Directories.getToolReportsDirPath(
+				reportsDir, tool));
+
+		File toolDir = new File(Directories.getToolDirPath(rootDir, tool));
 		File srcDir = new File(Directories.getSrcDirPath(rootDir, tool));
 		File binDir = new File(Directories.getBinDirPath(rootDir, tool));
 		File progDir = new File(Directories.getProgDirPath(rootDir, tool));
@@ -40,20 +42,19 @@ public class Executor {
 		File libDir = new File(Directories.getLibDirPath(rootDir, tool));
 		File tmpDir = new File(Directories.getTmpDirPath(rootDir, tool));
 		File rptDir = new File(Directories.getRptDirPath(rootDir, tool));
-		File outFile = new File(Directories.getOutFilePath(rootDir, tool));
 
 		initialize(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir, tmpDir,
-				rptDir, outFile, toolFile, programDir, testsDir);
+				rptDir, toolFile, programDir, testsDir);
 
 		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir, tmpDir,
-				rptDir, outFile);
+				rptDir, tool.getCmdfile());
 
-		finalize(toolDir, rptDir, reportsDir, outFile, outputFile);
+		finalize(toolDir, rptDir, toolReportsDir);
 
 	}
 
 	private static void initialize(File toolDir, File srcDir, File binDir,
-			File progDir, File testDir, File instDir, File libDir, File tmpDir, File rptDir, File outFile,
+			File progDir, File testDir, File instDir, File libDir, File tmpDir, File rptDir,
 			File toolFile, File programDir, File testsDir)
 			throws IOException {
 
@@ -100,12 +101,6 @@ public class Executor {
 		else
 			rptDir.mkdirs();
 
-		if (outFile.exists())
-			FileUtil.delete(outFile);
-		
-		if (!outFile.getParentFile().exists())
-			outFile.getParentFile().mkdirs();
-
 		FileUtil.unzip(toolFile, toolDir);
 
 		FileUtil.merge(programDir, testsDir, srcDir);
@@ -113,9 +108,9 @@ public class Executor {
 	}
 
 	private static void process(File toolDir, File srcDir, File binDir,
-			File progDir, File testDir, File instDir, File libDir, File tmpDir, File rptDir, File outFile) throws IOException, InterruptedException {
+			File progDir, File testDir, File instDir, File libDir, File tmpDir, File rptDir, String cmdFileName) throws IOException, InterruptedException {
 
-		File script = new File(toolDir.getPath() + File.separator + SCRIPT);
+		File script = new File(toolDir.getPath() + File.separator + cmdFileName);
 
 		BufferedReader input = new BufferedReader(new FileReader(script));
 
@@ -135,7 +130,7 @@ public class Executor {
 							.replace(TAG_LIBRARIES, libDir.getPath())
 							.replace(TAG_TEMPORARIES, tmpDir.getPath())
 							.replace(TAG_REPORTS, rptDir.getPath())
-							.replace(TAG_OUTPUT, outFile.getPath());
+							.replace(FILE_SEPARATOR, File.separator);
 
 				Process p = Runtime.getRuntime().exec(args);
 
@@ -164,21 +159,14 @@ public class Executor {
 	}
 
 	private static void finalize(File toolDir, File rptDir,
-			File reportsDir, File outFile, File outputFile) throws IOException {
+			File reportsDir) throws IOException {
 
 		if (reportsDir.exists())
 			FileUtil.clean(reportsDir);
 		else
 			reportsDir.mkdirs();
-
-		if (outputFile.exists())
-			FileUtil.delete(outputFile);
-
-		if (!outputFile.getParentFile().exists())
-			outputFile.getParentFile().mkdirs();
 		
 		FileUtil.copyContent(rptDir, reportsDir);
-		FileUtil.copyContent(outFile, outputFile);
 		
 		FileUtil.delete(toolDir);
 		

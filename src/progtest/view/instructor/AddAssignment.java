@@ -16,13 +16,6 @@ import progtest.common.Tool;
 import progtest.database.AssignmentDAO;
 import progtest.database.Querier;
 import progtest.execution.Runner;
-import progtest.execution.exceptions.CopyException;
-import progtest.execution.exceptions.EvaluationException;
-import progtest.execution.exceptions.ExecutionException;
-import progtest.execution.exceptions.ExtractionException;
-import progtest.execution.exceptions.ReportException;
-import progtest.execution.exceptions.RunDirectoriesException;
-import progtest.execution.exceptions.SplitException;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 
@@ -247,30 +240,7 @@ public class AddAssignment {
 
 		Oracle oracle = (Oracle) FacesUtil.getSession(Constants.SESSION_ORACLE);
 
-		try {
-			Runner.run(assignment, oracle);
-		} catch (RunDirectoriesException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CopyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExtractionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SplitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EvaluationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ReportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Runner.run(assignment, oracle);
 
 		AssignmentDAO.update(assignment);
 		

@@ -10,138 +10,258 @@ import progtest.common.Oracle;
 import progtest.common.Submission;
 import progtest.common.Tool;
 import progtest.common.User;
-import progtest.database.Querier;
-import progtest.execution.exceptions.CopyException;
-import progtest.execution.exceptions.EvaluationException;
-import progtest.execution.exceptions.ExecutionException;
-import progtest.execution.exceptions.ExtractionException;
-import progtest.execution.exceptions.ReportException;
-import progtest.execution.exceptions.RunDirectoriesException;
-import progtest.execution.exceptions.SplitException;
-import progtest.execution.exceptions.UploadException;
 import progtest.util.FileUtil;
 
 public class Runner {
 
-	public static void run(Assignment assignment, UploadedFile uf)
-			throws RunDirectoriesException, UploadException,
-			ExtractionException, SplitException, ExecutionException,
-			EvaluationException, ReportException {
+	private static final String KEY_INFO_RUN_START = "info_runStart";
+	private static final String KEY_INFO_RUN_FINISH = "info_runFinish";
+	
+	private static final String KEY_INFO_MAKEDIRECTORIES = "info_makeDirectories";
+	private static final String KEY_INFO_UPLOAD = "info_upload";
+	private static final String KEY_INFO_COPYORACLE = "info_copyOracle";
+	private static final String KEY_INFO_EXTRACT = "info_extract";
+	private static final String KEY_INFO_SPLIT = "info_split";
+	private static final String KEY_INFO_EXECUTE_PINSTTINST = "info_executePinstTinst";
+	private static final String KEY_INFO_EXECUTE_PSTTST = "info_executePstTst";
+	private static final String KEY_INFO_EXECUTE_PINSTTST = "info_executePinstTst";
+	private static final String KEY_INFO_EXECUTE_PSTTINST = "info_executePstTinst";
+	private static final String KEY_INFO_EVALUATE = "info_evaluate";
+	private static final String KEY_INFO_REPORT = "info_report";
+	
+	private static final String KEY_WARN_RUN = "warn_run";
+	private static final String KEY_WARN_EXECUTE = "warn_execute";
+	
+	private static final String KEY_ERROR_MAKEDIRECTORIES = "error_makeDirectories";
+	private static final String KEY_ERROR_UPLOAD = "error_upload";
+	private static final String KEY_ERROR_COPYORACLE = "error_copyOracle";
+	private static final String KEY_ERROR_EXTRACT = "error_extract";
+	private static final String KEY_ERROR_SPLIT = "error_split";
+	private static final String KEY_ERROR_EXECUTE = "error_execute";
+	private static final String KEY_ERROR_EVALUATE = "error_evaluate";
+	private static final String KEY_ERROR_REPORT = "error_report";
+	
+	private static Logger logger = new Logger();
 
-		File oracleDir = new File(Directories.getOracleDirPath(assignment));
-		File packageDir = new File(Directories.getPackageDirPath(assignment));
-		File sourceDir = new File(Directories.getSourceDirPath(assignment));
-		File programDir = new File(Directories.getProgramDirPath(assignment));
-		File testsDir = new File(Directories.getTestsDirPath(assignment));
+	public static void run(Assignment assignment, UploadedFile uf) {
 
-		File pitiDir = new File(Directories.getPitiDirPath(assignment));
+		try {
 
-		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir,
-				pitiDir, null, null, null);
+			File oracleDir = new File(Directories.getOracleDirPath(assignment));
+			File packageDir = new File(
+					Directories.getPackageDirPath(assignment));
+			File sourceDir = new File(Directories.getSourceDirPath(assignment));
+			File programDir = new File(
+					Directories.getProgramDirPath(assignment));
+			File testsDir = new File(Directories.getTestsDirPath(assignment));
 
-		File savedFile = upload(uf, packageDir);
+			File pitiDir = new File(Directories.getPitiDirPath(assignment));
+			
+			File logFile = null;
+			
+			logger.start(logFile);
+			
+			logger.info(KEY_INFO_RUN_START);
+			
+			logger.info(KEY_INFO_MAKEDIRECTORIES);
 
-		extract(savedFile, sourceDir);
+			makeDirectories(oracleDir, packageDir, sourceDir, programDir,
+					testsDir, pitiDir, null, null, null);
+			
+			logger.info(KEY_INFO_UPLOAD);
 
-		split(sourceDir, programDir, testsDir);
+			File savedFile = upload(uf, packageDir);
+			
+			logger.info(KEY_INFO_EXTRACT);
 
-		execute(Querier.getTools(assignment), oracleDir, programDir, testsDir,
-				pitiDir);
+			extract(savedFile, sourceDir);
+			
+			logger.info(KEY_INFO_SPLIT);
 
-		evaluate(assignment);
+			split(sourceDir, programDir, testsDir);
+			
+			logger.info(KEY_INFO_EXECUTE_PINSTTINST);
 
-		report(assignment);
+			execute(assignment, oracleDir, programDir, testsDir, pitiDir);
+			
+			logger.info(KEY_INFO_EVALUATE);
+
+			evaluate(assignment);
+			
+			logger.info(KEY_INFO_REPORT);
+
+			report(assignment);
+			
+			logger.info(KEY_INFO_RUN_FINISH);
+
+		} catch (Throwable t) {
+			
+			logger.warning(KEY_WARN_RUN);
+
+		} finally {
+			
+			logger.stop();
+			
+		}
 
 	}
 
-	public static void run(Assignment assignment, Oracle oracle)
-			throws RunDirectoriesException, CopyException, ExtractionException,
-			SplitException, ExecutionException, EvaluationException,
-			ReportException {
+	public static void run(Assignment assignment, Oracle oracle) {
 
-		File oracleFile = new File(Directories.getOracleFilePath(oracle));
-		File oracleDir = new File(Directories.getOracleDirPath(assignment));
-		File packageDir = new File(Directories.getPackageDirPath(assignment));
-		File sourceDir = new File(Directories.getSourceDirPath(assignment));
-		File programDir = new File(Directories.getProgramDirPath(assignment));
-		File testsDir = new File(Directories.getTestsDirPath(assignment));
+		try {
 
-		File pitiDir = new File(Directories.getPitiDirPath(assignment));
+			File oracleFile = new File(Directories.getOracleFilePath(oracle));
+			File oracleDir = new File(Directories.getOracleDirPath(assignment));
+			File packageDir = new File(
+					Directories.getPackageDirPath(assignment));
+			File sourceDir = new File(Directories.getSourceDirPath(assignment));
+			File programDir = new File(
+					Directories.getProgramDirPath(assignment));
+			File testsDir = new File(Directories.getTestsDirPath(assignment));
 
-		makeDirectories(oracleDir, packageDir, sourceDir, programDir, testsDir,
-				pitiDir, null, null, null);
+			File pitiDir = new File(Directories.getPitiDirPath(assignment));
+			
+			File logFile = null;
+			
+			logger.start(logFile);
+			
+			logger.info(KEY_INFO_RUN_START);
+			
+			logger.info(KEY_INFO_MAKEDIRECTORIES);
 
-		File savedFile = copy(oracleFile, packageDir);
+			makeDirectories(oracleDir, packageDir, sourceDir, programDir,
+					testsDir, pitiDir, null, null, null);
+			
+			logger.info(KEY_INFO_COPYORACLE);
 
-		extract(savedFile, sourceDir);
+			File savedFile = copy(oracleFile, packageDir);
+			
+			logger.info(KEY_INFO_EXTRACT);
 
-		split(sourceDir, programDir, testsDir);
+			extract(savedFile, sourceDir);
+			
+			logger.info(KEY_INFO_SPLIT);
 
-		execute(Querier.getTools(assignment), oracleDir, programDir, testsDir,
-				pitiDir);
+			split(sourceDir, programDir, testsDir);
+			
+			logger.info(KEY_INFO_EXECUTE_PINSTTINST);
 
-		evaluate(assignment);
+			execute(assignment, oracleDir, programDir, testsDir, pitiDir);
+			
+			logger.info(KEY_INFO_EVALUATE);
 
-		report(assignment);
+			evaluate(assignment);
+			
+			logger.info(KEY_INFO_REPORT);
+
+			report(assignment);
+			
+			logger.info(KEY_INFO_RUN_FINISH);
+
+		} catch (Throwable t) {
+			
+			logger.warning(KEY_WARN_RUN);
+
+		} finally {
+			
+			logger.stop();
+			
+		}
 
 	}
 
-	public static void run(Submission submission, UploadedFile uf)
-			throws RunDirectoriesException, UploadException,
-			ExtractionException, SplitException, ExecutionException,
-			EvaluationException, ReportException {
+	public static void run(Submission submission, UploadedFile uf) {
 
-		Assignment assignment = submission.getAssignment();
-		User student = submission.getStudent();
+		try {
 
-		File studentDir = new File(Directories.getStudentDirPath(assignment,
-				student));
-		File packageDir = new File(Directories.getPackageDirPath(assignment,
-				student));
-		File sourceDir = new File(Directories.getSourceDirPath(assignment,
-				student));
-		File programDir = new File(Directories.getProgramDirPath(assignment,
-				student));
-		File testsDir = new File(Directories.getTestsDirPath(assignment,
-				student));
+			Assignment assignment = submission.getAssignment();
+			User student = submission.getStudent();
 
-		File pstsDir = new File(Directories.getPstsDirPath(assignment, student));
-		File pitsDir = new File(Directories.getPitsDirPath(assignment, student));
-		File pstiDir = new File(Directories.getPstiDirPath(assignment, student));
+			File studentDir = new File(Directories.getStudentDirPath(
+					assignment, student));
+			File packageDir = new File(Directories.getPackageDirPath(
+					assignment, student));
+			File sourceDir = new File(Directories.getSourceDirPath(assignment,
+					student));
+			File programDir = new File(Directories.getProgramDirPath(
+					assignment, student));
+			File testsDir = new File(Directories.getTestsDirPath(assignment,
+					student));
 
-		File oracleProgramDir = new File(
-				Directories.getProgramDirPath(assignment));
+			File pstsDir = new File(Directories.getPstsDirPath(assignment,
+					student));
+			File pitsDir = new File(Directories.getPitsDirPath(assignment,
+					student));
+			File pstiDir = new File(Directories.getPstiDirPath(assignment,
+					student));
 
-		File oracleTestsDir = new File(Directories.getTestsDirPath(assignment));
+			File oracleProgramDir = new File(
+					Directories.getProgramDirPath(assignment));
 
-		makeDirectories(studentDir, packageDir, sourceDir, programDir,
-				testsDir, null, pstsDir, pitsDir, pstiDir);
+			File oracleTestsDir = new File(
+					Directories.getTestsDirPath(assignment));
+			
+			File logFile = null;
+			
+			logger.start(logFile);
+			
+			logger.info(KEY_INFO_RUN_START);
+			
+			logger.info(KEY_INFO_MAKEDIRECTORIES);
 
-		File savedFile = upload(uf, packageDir);
+			makeDirectories(studentDir, packageDir, sourceDir, programDir,
+					testsDir, null, pstsDir, pitsDir, pstiDir);
+			
+			logger.info(KEY_INFO_UPLOAD);
 
-		extract(savedFile, sourceDir);
+			File savedFile = upload(uf, packageDir);
+			
+			logger.info(KEY_INFO_EXTRACT);
 
-		split(sourceDir, programDir, testsDir);
+			extract(savedFile, sourceDir);
+			
+			logger.info(KEY_INFO_SPLIT);
 
-		execute(Querier.getTools(assignment), studentDir, programDir, testsDir,
-				pstsDir);
+			split(sourceDir, programDir, testsDir);
+			
+			logger.info(KEY_INFO_EXECUTE_PSTTST);
 
-		execute(Querier.getTools(assignment), studentDir, oracleProgramDir,
-				testsDir, pitsDir);
+			execute(assignment, studentDir, programDir, testsDir, pstsDir);
+			
+			logger.info(KEY_INFO_EXECUTE_PINSTTST);
 
-		execute(Querier.getTools(assignment), studentDir, programDir,
-				oracleTestsDir, pstiDir);
+			execute(assignment, studentDir, oracleProgramDir, testsDir, pitsDir);
+			
+			logger.info(KEY_INFO_EXECUTE_PSTTINST);
 
-		evaluate(submission);
+			execute(assignment, studentDir, programDir, oracleTestsDir, pstiDir);
+			
+			logger.info(KEY_INFO_EVALUATE);
 
-		report(submission);
+			evaluate(submission);
+			
+			logger.info(KEY_INFO_REPORT);
+
+			report(submission);
+			
+			logger.info(KEY_INFO_RUN_FINISH);
+
+		} catch (Throwable t) {
+			
+			logger.warning(KEY_WARN_RUN);
+
+		} finally {
+			
+			logger.stop();
+			
+		}
 
 	}
 
 	private static void makeDirectories(File rootDir, File packageDir,
 			File sourceDir, File programDir, File testsDir,
 			File pitiReportsDir, File pstsReportsDir, File pitsReportsDir,
-			File pstiReportsDir) throws RunDirectoriesException {
+			File pstiReportsDir) throws Throwable {
 
 		try {
 
@@ -170,14 +290,15 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			throw new RunDirectoriesException(t);
+			logger.severe(KEY_ERROR_MAKEDIRECTORIES);
+			throw t;
 
 		}
 
 	}
 
 	private static File upload(UploadedFile uf, File packageDir)
-			throws UploadException {
+			throws Throwable {
 
 		try {
 
@@ -185,14 +306,15 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			throw new UploadException(t);
+			logger.severe(KEY_ERROR_UPLOAD);
+			throw t;
 
 		}
-
+		
 	}
 
 	private static File copy(File oracleFile, File packageDir)
-			throws CopyException {
+			throws Throwable {
 
 		try {
 
@@ -200,14 +322,15 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			throw new CopyException(t);
+			logger.severe(KEY_ERROR_COPYORACLE);
+			throw t;
 
 		}
-
+		
 	}
 
 	private static void extract(File zipFile, File sourceDir)
-			throws ExtractionException {
+			throws Throwable {
 
 		try {
 
@@ -215,21 +338,22 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			throw new ExtractionException(t);
+			logger.severe(KEY_ERROR_EXTRACT);
+			throw t;
 
 		}
-
+		
 	}
 
 	private static void split(File sourceDir, File programDir, File testsDir)
-			throws SplitException {
+			throws Throwable {
 
 		try {
 
 			List<File> classes = FileUtil.listFiles(sourceDir, ".java");
-			
-			for(File clazz: classes) {
-				if(clazz.getName().contains("Test"))
+
+			for (File clazz : classes) {
+				if (clazz.getName().contains("Test"))
 					FileUtil.copy(clazz, testsDir);
 				else
 					FileUtil.copy(clazz, programDir);
@@ -237,34 +361,29 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			throw new SplitException(t);
+			logger.severe(KEY_ERROR_SPLIT);
+			throw t;
 
 		}
-
+		
 	}
 
-	private static void execute(List<Tool> tools, File rootDir,
+	private static void execute(Assignment assignment, File rootDir,
 			File programDir, File testsDir, File outputDir)
-			throws ExecutionException {
+			throws Throwable {
 
 		try {
 
-			for (Tool tool : tools) {
-
-				File reportsDir = new File(Directories.getToolReportsDirPath(
-						outputDir, tool));
-
-				File outputFile = new File(Directories.getToolOutputFilePath(
-						outputDir, tool));
+			for (Tool tool : assignment.getTools()) {
 
 				try {
 
 					Executor.execute(tool, rootDir, programDir, testsDir,
-							reportsDir, outputFile);
+							outputDir);
 
 				} catch (Throwable t) {
-
-					t.printStackTrace();
+					
+					logger.warning(KEY_WARN_EXECUTE + tool.getName());
 
 				}
 
@@ -272,13 +391,14 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			throw new ExecutionException(t);
+			logger.severe(KEY_ERROR_EXECUTE);
+			throw t;
 
 		}
-
+		
 	}
 
-	private static void evaluate(Assignment oracle) throws EvaluationException {
+	private static void evaluate(Assignment oracle) throws Throwable {
 
 		try {
 
@@ -286,53 +406,57 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			throw new EvaluationException(t);
+			logger.severe(KEY_ERROR_EVALUATE);
+			throw t;
 
 		}
-
+		
 	}
 
-	private static void evaluate(Submission evaluation)
-			throws EvaluationException {
+	private static void evaluate(Submission submission)
+			throws Throwable {
 
 		try {
 
-			Evaluator.evaluate(evaluation);
+			Evaluator.evaluate(submission);
 
 		} catch (Throwable t) {
 
-			throw new EvaluationException(t);
+			logger.severe(KEY_ERROR_EVALUATE);
+			throw t;
 
 		}
-
+		
 	}
 
-	private static void report(Assignment oracle) throws ReportException {
+	private static void report(Assignment assignment) throws Throwable {
 
 		try {
 
-			Reporter.generateReports(oracle);
+			Reporter.generateReports(assignment);
 
 		} catch (Throwable t) {
 
-			throw new ReportException(t);
+			logger.severe(KEY_ERROR_REPORT);
+			throw t;
 
 		}
-
+		
 	}
 
-	private static void report(Submission evaluation) throws ReportException {
+	private static void report(Submission submission) throws Throwable {
 
 		try {
 
-			Reporter.generateReports(evaluation);
+			Reporter.generateReports(submission);
 
 		} catch (Throwable t) {
 
-			throw new ReportException(t);
+			logger.severe(KEY_ERROR_REPORT);
+			throw t;
 
 		}
-
+		
 	}
 
 }

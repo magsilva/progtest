@@ -52,4 +52,40 @@ public class Requisite {
 		this.weight = weight;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((assignment == null) ? 0 : assignment.hashCode());
+		result = prime * result
+				+ ((criterion == null) ? 0 : criterion.hashCode());
+		result = prime * result + weight;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Requisite other = (Requisite) obj;
+		if (assignment == null) {
+			if (other.assignment != null)
+				return false;
+		} else if (!assignment.equals(other.assignment))
+			return false;
+		if (criterion == null) {
+			if (other.criterion != null)
+				return false;
+		} else if (!criterion.equals(other.criterion))
+			return false;
+		if (weight != other.weight)
+			return false;
+		return true;
+	}
+
 }

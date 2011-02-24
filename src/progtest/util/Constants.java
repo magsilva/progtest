@@ -33,40 +33,18 @@ public class Constants {
 	public static final String PATH_COMPILER = PATH_ROOT + File.separator
 			+ "compilers";
 
-	/* Directories */
-
-	public static final String DIR_PACKAGE = "package";
-	public static final String DIR_SOURCE = "source";
-	public static final String DIR_BUILD = "build";
-	public static final String DIR_REPORTS = "reports";
-	public static final String DIR_APPLICATION = "aplication";
-	public static final String DIR_TESTSET = "testSet";
-	public static final String DIR_ORACLE = "oracle";
-	public static final String DIR_JABUTI = "jabuti";
-	public static final String DIR_JUNIT = "junit";
-	public static final String DIR_TEMP = "temp";
-
-	public static final String DIR_PINSTTINST = "pinst_tinst";
-	public static final String DIR_PALTAL = "pal_tal";
-	public static final String DIR_PINSTTAL = "pinst_tal";
-	public static final String DIR_PALTINST = "pal_tinst";
-
-	/* Files */
-
-	public static final String FILE_APPLICATION = "aplication";
-	public static final String FILE_TESTSET = "testSet";
-	public static final String FILE_TESTSUITE = "testSuite";
-
 	/* Extensions */
-
-	public static final String EXTENSION_JAR = ".jar";
-	public static final String EXTENSION_JAVA = ".java";
-	public static final String EXTENSION_CLASS = ".class";
+	
 	public static final String EXTENSION_XML = ".xml";
 
-	/* Values */
+	/* Bundles */
 
-	public static final String RESOURCE_BUNDLE = "messages";
+	public static final String BUNDLE_PROGTEST = "progtest";
+	public static final String BUNDLE_MESSAGES = "messages";
+	public static final String BUNDLE_LOGGER = "logger";
+	
+	/* Values */
+	
 	public static final String EMPTY = "";
 
 	/* Session */
@@ -132,18 +110,6 @@ public class Constants {
 	public static final String ACTION_REMOVE = "remove";
 	public static final String ACTION_SEND = "send";
 	public static final String ACTION_RECIVE = "recive";
-
-	/* Reports */
-
-	public static final String REPORT_REPORTS = "reports";
-	public static final String REPORT_FUNCIONALCOVERAGE = "funcionalCoverage";
-	public static final String REPORT_REQUIREDELEMENTS = "requiredElements";
-	public static final String REPORT_METRICS = "metrics";
-	public static final String REPORT_CLASSCOVERAGE = "classCoverage";
-	public static final String REPORT_METHODCOVERAGE = "methodCoverage";
-	public static final String REPORT_CRITERIONCOVERAGE = "criterionCoverage";
-	public static final String REPORT_COVEREDANDUNCOVERED = "coveredAndUncovered";
-	public static final String REPORT_RESULTAVALIATION = "resultAvaliation";
 
 	/* Roles */
 

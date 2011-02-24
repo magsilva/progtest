@@ -7,13 +7,6 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 import progtest.common.Submission;
 import progtest.database.SubmissionDAO;
 import progtest.execution.Runner;
-import progtest.execution.exceptions.EvaluationException;
-import progtest.execution.exceptions.ExecutionException;
-import progtest.execution.exceptions.ExtractionException;
-import progtest.execution.exceptions.ReportException;
-import progtest.execution.exceptions.RunDirectoriesException;
-import progtest.execution.exceptions.SplitException;
-import progtest.execution.exceptions.UploadException;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 
@@ -34,30 +27,7 @@ public class SubmitAssigment {
 		Submission submission = (Submission) FacesUtil
 				.getSession(Constants.SESSION_EVALUATION);
 
-		try {
-			Runner.run(submission, file);
-		} catch (RunDirectoriesException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UploadException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExtractionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SplitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EvaluationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ReportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Runner.run(submission, file);
 
 		submission.setSubmissionDate(new Date());
 

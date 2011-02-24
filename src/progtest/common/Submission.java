@@ -91,4 +91,64 @@ public class Submission {
 		this.score = score;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((assignment == null) ? 0 : assignment.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(pinstTst);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(pstTinst);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(pstTst);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(score);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((student == null) ? 0 : student.hashCode());
+		result = prime * result
+				+ ((submissionDate == null) ? 0 : submissionDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Submission other = (Submission) obj;
+		if (assignment == null) {
+			if (other.assignment != null)
+				return false;
+		} else if (!assignment.equals(other.assignment))
+			return false;
+		if (Double.doubleToLongBits(pinstTst) != Double
+				.doubleToLongBits(other.pinstTst))
+			return false;
+		if (Double.doubleToLongBits(pstTinst) != Double
+				.doubleToLongBits(other.pstTinst))
+			return false;
+		if (Double.doubleToLongBits(pstTst) != Double
+				.doubleToLongBits(other.pstTst))
+			return false;
+		if (Double.doubleToLongBits(score) != Double
+				.doubleToLongBits(other.score))
+			return false;
+		if (student == null) {
+			if (other.student != null)
+				return false;
+		} else if (!student.equals(other.student))
+			return false;
+		if (submissionDate == null) {
+			if (other.submissionDate != null)
+				return false;
+		} else if (!submissionDate.equals(other.submissionDate))
+			return false;
+		return true;
+	}
+
 }

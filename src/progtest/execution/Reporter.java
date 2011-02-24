@@ -29,7 +29,7 @@ public class Reporter {
 		User student = submission.getStudent();
 
 		File report = new File(
-				Directories.getStudentReportsDirPath(assignment, student) + File.separator + "Coverages.xml");
+				Directories.getReportsDirPath(assignment, student) + File.separator + "Coverages.xml");
 
 		List<Requisite> requisites = Querier
 				.getAssignmentCriteria(assignment);
@@ -61,7 +61,7 @@ public class Reporter {
 	private static void generateEvaluationReport(Submission submission) throws FileNotFoundException {
 
 		File report = new File(
-				Directories.getStudentReportsDirPath(submission.getAssignment(), submission.getStudent()) + File.separator + "Evaluation Result.xml");
+				Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent()) + File.separator + "Evaluation Result.xml");
 		
 		String[][] data = new String[6][2];
 		

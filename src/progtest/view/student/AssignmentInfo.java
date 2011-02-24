@@ -192,7 +192,7 @@ public class AssignmentInfo {
 
 		} else {
 		
-			files = FileUtil.listFiles(new File(Directories.getStudentReportsDirPath(submission.getAssignment(), submission.getStudent())), Constants.EXTENSION_XML);
+			files = FileUtil.listFiles(new File(Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent())), Constants.EXTENSION_XML);
 			
 			File file = (File) files.get(0);
 			report = new Report(file);

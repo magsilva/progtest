@@ -1,6 +1,6 @@
 package progtest.util;
 
-import java.util.ResourceBundle;
+import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -64,24 +64,14 @@ public class FacesUtil {
 
 	private static FacesMessage getMessage(String key,
 			FacesMessage.Severity severity) {
-		
-		String text;
-		
-		try {
-			ResourceBundle bundle = ResourceBundle.getBundle(
-					Constants.RESOURCE_BUNDLE, FacesContext
-							.getCurrentInstance().getViewRoot().getLocale());
-			text = bundle.getString(key);
-		} catch (Exception e) {
-			e.printStackTrace();
-			text = key;
-		}
-		
-		FacesMessage message = new FacesMessage(text);
+		FacesMessage message = new FacesMessage(BundleUtil.getString(
+				Constants.BUNDLE_MESSAGES, key));
 		message.setSeverity(severity);
-		
 		return message;
-		
+	}
+
+	public static Locale getLocale() {
+		return FacesContext.getCurrentInstance().getViewRoot().getLocale();
 	}
 
 }

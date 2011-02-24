@@ -53,8 +53,11 @@ CREATE TABLE Oracle (
 CREATE TABLE Tool (
 	idCode INT NOT NULL,
 	name VARCHAR(50),
-	type VARCHAR(50),
 	language VARCHAR(50),
+	compiler VARCHAR(50),
+	testFormat VARCHAR(50),
+	cmdfile VARCHAR(50),
+	outputfile VARCHAR(50),
 	CONSTRAINT PK_tool PRIMARY KEY (idCode)
 );
 
@@ -62,6 +65,7 @@ CREATE TABLE Criterion (
 	tool INT NOT NULL,
 	idCode INT NOT NULL,
 	name VARCHAR(50),
+	propertyKey VARCHAR(50),
 	CONSTRAINT PK_criterion PRIMARY KEY (tool, idCode),
 	CONSTRAINT FK_criterion_tool FOREIGN KEY (tool) REFERENCES Tool (idCode)
 );
@@ -147,31 +151,31 @@ INSERT INTO Sequence VALUES('Tool', 100);
 
 INSERT INTO User VALUES(1, 'progtest', 'ProgTest', 'progtest@gmail.com', 'progtest', 'instructor');
 
-INSERT INTO Tool VALUES(1, 'JUnit', 'Pass Rate', 'Java');
+INSERT INTO Tool VALUES(1, 'JUnit', 'Java', 'Javac', 'JUnit', 'cmdlines.txt', 'output.properties');
 
-INSERT INTO Criterion VALUES(1, 1, 'Pass Rate');
+INSERT INTO Criterion VALUES(1, 1, 'Pass Rate', 'passrate');
 
-INSERT INTO Tool VALUES(2, 'JaBUTiService', 'Structural', 'Java');
+INSERT INTO Tool VALUES(2, 'JaBUTiService', 'Java', 'Javac', 'JUnit', 'cmdlines.txt', 'output.properties');
 
-INSERT INTO Criterion VALUES(2, 1, 'All-Nodes-ei');
+INSERT INTO Criterion VALUES(2, 1, 'All-Nodes-ei', 'all.nodes.ei');
 
-INSERT INTO Criterion VALUES(2, 2, 'All-Nodes-ed');
+INSERT INTO Criterion VALUES(2, 2, 'All-Nodes-ed', 'all.nodes.ed');
 
-INSERT INTO Criterion VALUES(2, 3, 'All-Edges-ei');
+INSERT INTO Criterion VALUES(2, 3, 'All-Edges-ei', 'all.edges.ei');
 
-INSERT INTO Criterion VALUES(2, 4, 'All-Edges-ed');
+INSERT INTO Criterion VALUES(2, 4, 'All-Edges-ed', 'all.edges.ed');
 
-INSERT INTO Criterion VALUES(2, 5, 'All-Uses-ei');
+INSERT INTO Criterion VALUES(2, 5, 'All-Uses-ei', 'all.uses.ei');
 
-INSERT INTO Criterion VALUES(2, 6, 'All-Uses-ed');
+INSERT INTO Criterion VALUES(2, 6, 'All-Uses-ed', 'all.uses.ed');
 
-INSERT INTO Criterion VALUES(2, 7, 'All-Pot-Uses-ei');
+INSERT INTO Criterion VALUES(2, 7, 'All-Potencial-Uses-ei', 'all.potencial.uses.ei');
 
-INSERT INTO Criterion VALUES(2, 8, 'All-Pot-Uses-ed');
+INSERT INTO Criterion VALUES(2, 8, 'All-Potencial-Uses-ed', 'all.potencial.uses.ed');
 
-INSERT INTO Tool VALUES(3, 'Jumble', 'Error-based', 'Java');
+INSERT INTO Tool VALUES(3, 'Jumble', 'Java', 'Javac', 'JUnit', 'cmdlines.txt', 'output.properties');
 
-INSERT INTO Criterion VALUES(3, 1, 'Analysis of Mutants');
+INSERT INTO Criterion VALUES(3, 1, 'Analysis of Mutants', 'score');
 
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
