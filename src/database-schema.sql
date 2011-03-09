@@ -177,6 +177,10 @@ INSERT INTO Tool VALUES(3, 'Jumble', 'Java', 'Javac', 'JUnit', 'cmdlines.txt', '
 
 INSERT INTO Criterion VALUES(3, 1, 'Analysis of Mutants', 'score');
 
+INSERT INTO Tool VALUES(4, 'CUnit', 'C', 'GCC', 'CUnit', 'cmdlines.txt', 'output.properties');
+
+INSERT INTO Criterion VALUES(4, 1, 'Pass Rate', 'passrate');
+
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
 INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 'Java');

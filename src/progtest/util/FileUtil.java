@@ -290,4 +290,10 @@ public class FileUtil {
 		return file.getName().substring(0, file.getName().lastIndexOf("."));
 	}
 
+	public static File extendTo(File f, String extension) {
+		return new File(f.getParentFile().getPath() + File.separator
+				+ f.getName().substring(0, f.getName().lastIndexOf(".")) + "."
+				+ extension);
+	}
+
 }

@@ -1,6 +1,8 @@
 package progtest.execution;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.List;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
@@ -16,7 +18,7 @@ public class Runner {
 
 	private static final String KEY_INFO_RUN_START = "info_runStart";
 	private static final String KEY_INFO_RUN_FINISH = "info_runFinish";
-	
+
 	private static final String KEY_INFO_MAKEDIRECTORIES = "info_makeDirectories";
 	private static final String KEY_INFO_UPLOAD = "info_upload";
 	private static final String KEY_INFO_COPYORACLE = "info_copyOracle";
@@ -28,10 +30,10 @@ public class Runner {
 	private static final String KEY_INFO_EXECUTE_PSTTINST = "info_executePstTinst";
 	private static final String KEY_INFO_EVALUATE = "info_evaluate";
 	private static final String KEY_INFO_REPORT = "info_report";
-	
+
 	private static final String KEY_WARN_RUN = "warn_run";
 	private static final String KEY_WARN_EXECUTE = "warn_execute";
-	
+
 	private static final String KEY_ERROR_MAKEDIRECTORIES = "error_makeDirectories";
 	private static final String KEY_ERROR_UPLOAD = "error_upload";
 	private static final String KEY_ERROR_COPYORACLE = "error_copyOracle";
@@ -40,7 +42,7 @@ public class Runner {
 	private static final String KEY_ERROR_EXECUTE = "error_execute";
 	private static final String KEY_ERROR_EVALUATE = "error_evaluate";
 	private static final String KEY_ERROR_REPORT = "error_report";
-	
+
 	private static Logger logger = new Logger();
 
 	public static void run(Assignment assignment, UploadedFile uf) {
@@ -56,52 +58,52 @@ public class Runner {
 			File testsDir = new File(Directories.getTestsDirPath(assignment));
 
 			File pitiDir = new File(Directories.getPitiDirPath(assignment));
-			
+
 			File logFile = null;
-			
+
 			logger.start(logFile);
-			
+
 			logger.info(KEY_INFO_RUN_START);
-			
+
 			logger.info(KEY_INFO_MAKEDIRECTORIES);
 
 			makeDirectories(oracleDir, packageDir, sourceDir, programDir,
 					testsDir, pitiDir, null, null, null);
-			
+
 			logger.info(KEY_INFO_UPLOAD);
 
 			File savedFile = upload(uf, packageDir);
-			
+
 			logger.info(KEY_INFO_EXTRACT);
 
 			extract(savedFile, sourceDir);
-			
+
 			logger.info(KEY_INFO_SPLIT);
 
 			split(sourceDir, programDir, testsDir);
-			
+
 			logger.info(KEY_INFO_EXECUTE_PINSTTINST);
 
 			execute(assignment, oracleDir, programDir, testsDir, pitiDir);
-			
+
 			logger.info(KEY_INFO_EVALUATE);
 
 			evaluate(assignment);
-			
+
 			logger.info(KEY_INFO_REPORT);
 
 			report(assignment);
-			
+
 			logger.info(KEY_INFO_RUN_FINISH);
 
 		} catch (Throwable t) {
-			
+
 			logger.warning(KEY_WARN_RUN);
 
 		} finally {
-			
+
 			logger.stop();
-			
+
 		}
 
 	}
@@ -120,52 +122,52 @@ public class Runner {
 			File testsDir = new File(Directories.getTestsDirPath(assignment));
 
 			File pitiDir = new File(Directories.getPitiDirPath(assignment));
-			
+
 			File logFile = null;
-			
+
 			logger.start(logFile);
-			
+
 			logger.info(KEY_INFO_RUN_START);
-			
+
 			logger.info(KEY_INFO_MAKEDIRECTORIES);
 
 			makeDirectories(oracleDir, packageDir, sourceDir, programDir,
 					testsDir, pitiDir, null, null, null);
-			
+
 			logger.info(KEY_INFO_COPYORACLE);
 
 			File savedFile = copy(oracleFile, packageDir);
-			
+
 			logger.info(KEY_INFO_EXTRACT);
 
 			extract(savedFile, sourceDir);
-			
+
 			logger.info(KEY_INFO_SPLIT);
 
 			split(sourceDir, programDir, testsDir);
-			
+
 			logger.info(KEY_INFO_EXECUTE_PINSTTINST);
 
 			execute(assignment, oracleDir, programDir, testsDir, pitiDir);
-			
+
 			logger.info(KEY_INFO_EVALUATE);
 
 			evaluate(assignment);
-			
+
 			logger.info(KEY_INFO_REPORT);
 
 			report(assignment);
-			
+
 			logger.info(KEY_INFO_RUN_FINISH);
 
 		} catch (Throwable t) {
-			
+
 			logger.warning(KEY_WARN_RUN);
 
 		} finally {
-			
+
 			logger.stop();
-			
+
 		}
 
 	}
@@ -200,60 +202,60 @@ public class Runner {
 
 			File oracleTestsDir = new File(
 					Directories.getTestsDirPath(assignment));
-			
+
 			File logFile = null;
-			
+
 			logger.start(logFile);
-			
+
 			logger.info(KEY_INFO_RUN_START);
-			
+
 			logger.info(KEY_INFO_MAKEDIRECTORIES);
 
 			makeDirectories(studentDir, packageDir, sourceDir, programDir,
 					testsDir, null, pstsDir, pitsDir, pstiDir);
-			
+
 			logger.info(KEY_INFO_UPLOAD);
 
 			File savedFile = upload(uf, packageDir);
-			
+
 			logger.info(KEY_INFO_EXTRACT);
 
 			extract(savedFile, sourceDir);
-			
+
 			logger.info(KEY_INFO_SPLIT);
 
 			split(sourceDir, programDir, testsDir);
-			
+
 			logger.info(KEY_INFO_EXECUTE_PSTTST);
 
 			execute(assignment, studentDir, programDir, testsDir, pstsDir);
-			
+
 			logger.info(KEY_INFO_EXECUTE_PINSTTST);
 
 			execute(assignment, studentDir, oracleProgramDir, testsDir, pitsDir);
-			
+
 			logger.info(KEY_INFO_EXECUTE_PSTTINST);
 
 			execute(assignment, studentDir, programDir, oracleTestsDir, pstiDir);
-			
+
 			logger.info(KEY_INFO_EVALUATE);
 
 			evaluate(submission);
-			
+
 			logger.info(KEY_INFO_REPORT);
 
 			report(submission);
-			
+
 			logger.info(KEY_INFO_RUN_FINISH);
 
 		} catch (Throwable t) {
-			
+
 			logger.warning(KEY_WARN_RUN);
 
 		} finally {
-			
+
 			logger.stop();
-			
+
 		}
 
 	}
@@ -310,11 +312,10 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
-	private static File copy(File oracleFile, File packageDir)
-			throws Throwable {
+	private static File copy(File oracleFile, File packageDir) throws Throwable {
 
 		try {
 
@@ -326,11 +327,10 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
-	private static void extract(File zipFile, File sourceDir)
-			throws Throwable {
+	private static void extract(File zipFile, File sourceDir) throws Throwable {
 
 		try {
 
@@ -342,7 +342,7 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
 	private static void split(File sourceDir, File programDir, File testsDir)
@@ -359,18 +359,58 @@ public class Runner {
 					FileUtil.copy(clazz, programDir);
 			}
 
+			List<File> files = FileUtil.listFiles(sourceDir);
+
+			for (File file : files) {
+				if (file.getName().endsWith(".c")) {
+					File hFile = FileUtil.extendTo(file, "h");
+					if (hasCUnitTests(file)) {
+						FileUtil.copy(file, testsDir);
+						if (hFile.exists())
+							FileUtil.copy(hFile, testsDir);
+					} else {
+						FileUtil.copy(file, programDir);
+					}
+				} else {
+					FileUtil.copy(file, programDir);
+				}
+			}
+
 		} catch (Throwable t) {
 
 			logger.severe(KEY_ERROR_SPLIT);
 			throw t;
 
 		}
-		
+
+	}
+
+	private static boolean hasCUnitTests(File file) {
+
+		try {
+
+			FileReader fr = new FileReader(FileUtil.extendTo(file, "h"));
+			BufferedReader br = new BufferedReader(fr);
+
+			while (br.ready()) {
+				String line = br.readLine();
+				if (line.trim().startsWith("#include"))
+					if (line.contains("CUnit"))
+						return true;
+			}
+
+		} catch (Throwable e) {
+
+			e.printStackTrace();
+
+		}
+
+		return false;
+
 	}
 
 	private static void execute(Assignment assignment, File rootDir,
-			File programDir, File testsDir, File outputDir)
-			throws Throwable {
+			File programDir, File testsDir, File outputDir) throws Throwable {
 
 		try {
 
@@ -382,7 +422,7 @@ public class Runner {
 							outputDir);
 
 				} catch (Throwable t) {
-					
+
 					logger.warning(KEY_WARN_EXECUTE + tool.getName());
 
 				}
@@ -395,7 +435,7 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
 	private static void evaluate(Assignment oracle) throws Throwable {
@@ -410,11 +450,10 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
-	private static void evaluate(Submission submission)
-			throws Throwable {
+	private static void evaluate(Submission submission) throws Throwable {
 
 		try {
 
@@ -426,7 +465,7 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
 	private static void report(Assignment assignment) throws Throwable {
@@ -441,7 +480,7 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
 	private static void report(Submission submission) throws Throwable {
@@ -456,7 +495,7 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
 }
