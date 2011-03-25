@@ -15,6 +15,8 @@ public class Courses {
 
 	private List<Course> courses = new ArrayList<Course>();
 
+	private UIData coursesMenu;
+
 	private UIData coursesTable;
 
 	private Course course = null;
@@ -27,6 +29,14 @@ public class Courses {
 
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
+	}
+
+	public UIData getCoursesMenu() {
+		return coursesMenu;
+	}
+
+	public void setCoursesMenu(UIData coursesMenu) {
+		this.coursesMenu = coursesMenu;
 	}
 
 	public UIData getCoursesTable() {
@@ -57,7 +67,21 @@ public class Courses {
 		refresh();
 	}
 
-	public String selectCourse() {
+	public String selectAllCourses() {
+		Course course = null;
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
+		refresh();
+		return Constants.ACTION_SELECT;
+	}
+
+	public String selectMenuCourse() {
+		Course course = (Course) coursesMenu.getRowData();
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
+		refresh();
+		return Constants.ACTION_SELECT;
+	}
+
+	public String selectTableCourse() {
 		Course course = (Course) coursesTable.getRowData();
 		FacesUtil.setSession(Constants.SESSION_COURSE, course);
 		refresh();

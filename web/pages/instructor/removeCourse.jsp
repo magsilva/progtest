@@ -12,7 +12,7 @@
 
 		<h:form>
 
-			<af:spacer height="30" />
+			<af:spacer height="35" />
 
 			<h:outputText value="Remove Course" styleClass="title" />
 

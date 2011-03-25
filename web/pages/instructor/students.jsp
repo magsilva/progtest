@@ -12,24 +12,39 @@
 
 		<h:form>
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+			
+				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;">
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Courses" styleClass="menu_title"
-						rendered="#{!empty instructorStudents.courses}" />
+					<h:outputText value="Courses" styleClass="menu_title" />
 
-					<af:spacer height="5"
-						rendered="#{!empty instructorStudents.courses}" />
+					<af:spacer height="10" />
+
+					<htm:table>
+						<htm:tr>
+							<htm:td>
+								<h:commandLink
+									action="#{instructorStudents.selectAllCourses}"
+									styleClass="link">
+									<h:outputText value="All Courses" styleClass="link"
+										rendered="#{course != null}" />
+									<h:outputText value="All Courses" styleClass="link_hover"
+										rendered="#{course == null}" />
+								</h:commandLink>
+							</htm:td>
+						</htm:tr>
+					</htm:table>
 
 					<h:dataTable value="#{instructorStudents.courses}" var="course"
-						binding="#{instructorStudents.coursesTable}" width="100%"
+						binding="#{instructorStudents.coursesMenu}" width="100%"
 						rendered="#{!empty instructorStudents.courses}">
 						<h:column>
-							<af:spacer height="10" />
-							<h:commandLink action="#{instructorStudents.selectCourse}"
+							<af:spacer height="5" />
+							<h:commandLink action="#{instructorStudents.selectMenuCourse}"
 								styleClass="link">
 								<h:outputText value="#{course.name}" styleClass="link"
 									rendered="#{course.name != instructorStudents.activedCourse}" />
@@ -39,74 +54,90 @@
 						</h:column>
 					</h:dataTable>
 
-					<af:spacer height="40"
-						rendered="#{!empty instructorStudents.courses}" />
+					<af:spacer height="40" />
 
-					<h:outputText value="Actions" styleClass="menu_title"
-						rendered="#{instructorStudents.activedCourse != null}" />
+					<h:outputText value="Actions" styleClass="menu_title" />
 
-					<af:spacer height="10"
-						rendered="#{instructorStudents.activedCourse != null}" />
+					<af:spacer height="10" />
 
-					<h:panelGrid columns="2"
-						rendered="#{instructorStudents.activedCourse != null}">
-						<af:image source="/images/register.png" />
-						<h:commandLink action="#{instructorStudents.register}"
-							styleClass="link">
-							<h:outputText value="Register New Student" styleClass="topmenu_link" />
-						</h:commandLink>
-					</h:panelGrid>
-
-					<h:panelGrid columns="2"
-						rendered="#{instructorStudents.activedCourse != null}">
+					<h:panelGrid columns="2">
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorStudents.add}"
 							styleClass="link">
-							<h:outputText value="Add New Student" styleClass="topmenu_link" />
+							<h:outputText value="New Student" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
 				</htm:div>
 
-				<af:spacer width="60" />
+				<af:spacer width="50" />
 
 				<htm:div style="width: 570px;"
 					rendered="#{!empty instructorStudents.students}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<h:outputText value="Students" styleClass="title" />
+					<h:outputText value="All Students" styleClass="title"
+						rendered="#{instructorStudents.activedCourse == null}" />
+					<h:outputText
+						value="Students in #{instructorStudents.activedCourse}"
+						styleClass="title"
+						rendered="#{instructorStudents.activedCourse != null}" />
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<t:dataList value="#{instructorStudents.students}"
+					<h:dataTable value="#{instructorStudents.students}"
 						var="student"
-						binding="#{instructorStudents.studentsTable}"
-						layout="orderedList">
+						binding="#{instructorStudents.studentsTable}" width="100%"
+						rowClasses="tableRow" headerClass="tableHeader">
 						<h:column>
-							<h:commandLink action="#{instructorStudents.view}" styleClass="link">
-								<h:outputText value="#{student.name}" styleClass="link"/>
-								<af:spacer height="10" />
+							<f:facet name="header">
+								<h:outputText value="Username" />
+							</f:facet>
+							<h:commandLink action="#{instructorStudents.view}"
+								styleClass="tableLink">
+								<h:outputText value="#{student.userName}" styleClass="tableLink" />
 							</h:commandLink>
 						</h:column>
-					</t:dataList>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							<h:commandLink action="#{instructorStudents.view}"
+								styleClass="tableLink">
+								<h:outputText value="#{student.name}"
+									styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="E-mail" />
+							</f:facet>
+							<h:commandLink action="#{instructorStudents.view}"
+								styleClass="tableLink">
+								<h:outputText value="#{student.email}"
+									styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
 
 				</htm:div>
 
 				<htm:div style="width: 570px;"
 					rendered="#{empty instructorStudents.students}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<h:outputText value="Students" styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:outputText value="No course selected."
+					<h:outputText value="All Students" styleClass="title"
 						rendered="#{instructorStudents.activedCourse == null}" />
-
-					<h:outputText value="There is no student in this course."
+					<h:outputText
+						value="Students in #{instructorStudents.activedCourse}"
+						styleClass="title"
 						rendered="#{instructorStudents.activedCourse != null}" />
+
+					<af:spacer height="25" />
+
+					<h:outputText value="There aren't any student." />
 
 				</htm:div>
 

@@ -16,7 +16,7 @@ public class Assignments {
 
 	private List<Course> courses = new ArrayList<Course>();
 
-	private UIData coursesTable;
+	private UIData coursesMenu;
 
 	private List<Assignment> assignments = new ArrayList<Assignment>();
 
@@ -32,12 +32,12 @@ public class Assignments {
 		this.courses = courses;
 	}
 
-	public UIData getCoursesTable() {
-		return coursesTable;
+	public UIData getCoursesMenu() {
+		return coursesMenu;
 	}
 
-	public void setCoursesTable(UIData coursesTable) {
-		this.coursesTable = coursesTable;
+	public void setCoursesMenu(UIData coursesMenu) {
+		this.coursesMenu = coursesMenu;
 	}
 
 	public List<Assignment> getAssignments() {
@@ -68,8 +68,15 @@ public class Assignments {
 		refresh();
 	}
 
-	public String selectCourse() {
-		Course course = (Course) coursesTable.getRowData();
+	public String selectAllCourses() {
+		Course course = null;
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
+		refresh();
+		return Constants.ACTION_SELECT;
+	}
+
+	public String selectMenuCourse() {
+		Course course = (Course) coursesMenu.getRowData();
 		FacesUtil.setSession(Constants.SESSION_COURSE, course);
 		refresh();
 		return Constants.ACTION_SELECT;
@@ -85,21 +92,24 @@ public class Assignments {
 				.getSession(Constants.SESSION_COURSE);
 
 		if (course != null) {
+			
 			activedCourse = course.getName();
 			assignments = Querier.getAssignments(course);
+			
 		} else {
+			
 			activedCourse = null;
 			assignments.clear();
+			
+			for(Course c: courses)
+				assignments.addAll(Querier.getAssignments(c));
+			
 		}
 
 	}
 
 	public String create() {
 		return Constants.ACTION_CREATE;
-	}
-
-	public String add() {
-		return Constants.ACTION_ADD;
 	}
 
 	public String view() {

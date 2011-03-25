@@ -12,24 +12,39 @@
 
 		<h:form>
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+			
+				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;">
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Courses" styleClass="menu_title"
-						rendered="#{!empty instructorAssignments.courses}" />
+					<h:outputText value="Courses" styleClass="menu_title" />
 
-					<af:spacer height="5"
-						rendered="#{!empty instructorAssignments.courses}" />
+					<af:spacer height="10" />
+
+					<htm:table>
+						<htm:tr>
+							<htm:td>
+								<h:commandLink
+									action="#{instructorAssignments.selectAllCourses}"
+									styleClass="link">
+									<h:outputText value="All Courses" styleClass="link"
+										rendered="#{course != null}" />
+									<h:outputText value="All Courses" styleClass="link_hover"
+										rendered="#{course == null}" />
+								</h:commandLink>
+							</htm:td>
+						</htm:tr>
+					</htm:table>
 
 					<h:dataTable value="#{instructorAssignments.courses}" var="course"
-						binding="#{instructorAssignments.coursesTable}" width="100%"
+						binding="#{instructorAssignments.coursesMenu}" width="100%"
 						rendered="#{!empty instructorAssignments.courses}">
 						<h:column>
-							<af:spacer height="10" />
-							<h:commandLink action="#{instructorAssignments.selectCourse}"
+							<af:spacer height="5" />
+							<h:commandLink action="#{instructorAssignments.selectMenuCourse}"
 								styleClass="link">
 								<h:outputText value="#{course.name}" styleClass="link"
 									rendered="#{course.name != instructorAssignments.activedCourse}" />
@@ -39,73 +54,91 @@
 						</h:column>
 					</h:dataTable>
 
-					<af:spacer height="40"
-						rendered="#{!empty instructorAssignments.courses}" />
+					<af:spacer height="40" />
 
-					<h:outputText value="Actions" styleClass="menu_title"
-						rendered="#{instructorAssignments.activedCourse != null}" />
+					<h:outputText value="Actions" styleClass="menu_title" />
 
-					<af:spacer height="10"
-						rendered="#{instructorAssignments.activedCourse != null}" />
+					<af:spacer height="10" />
 
-					<h:panelGrid columns="2"
-						rendered="#{instructorAssignments.activedCourse != null}">
+					<h:panelGrid columns="2">
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorAssignments.create}"
 							styleClass="link">
-							<h:outputText value="Create New Assignment" styleClass="topmenu_link" />
-						</h:commandLink>
-					</h:panelGrid>
-
-					<h:panelGrid columns="2"
-						rendered="#{instructorAssignments.activedCourse != null}">
-						<af:image source="/images/create.png" />
-						<h:commandLink action="#{instructorAssignments.add}"
-							styleClass="link">
-							<h:outputText value="Add New Assignment" styleClass="topmenu_link" />
+							<h:outputText value="New Assignment"
+								styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
 				</htm:div>
 
-				<af:spacer width="60" />
+				<af:spacer width="50" />
 
 				<htm:div style="width: 570px;"
 					rendered="#{!empty instructorAssignments.assignments}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<h:outputText value="Assignments" styleClass="title" />
+					<h:outputText value="All Assignments" styleClass="title"
+						rendered="#{instructorAssignments.activedCourse == null}" />
+					<h:outputText
+						value="Assignments in #{instructorAssignments.activedCourse}"
+						styleClass="title"
+						rendered="#{instructorAssignments.activedCourse != null}" />
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<t:dataList value="#{instructorAssignments.assignments}"
+					<h:dataTable value="#{instructorAssignments.assignments}"
 						var="assignment"
-						binding="#{instructorAssignments.assignmentsTable}"
-						layout="orderedList">
+						binding="#{instructorAssignments.assignmentsTable}" width="100%"
+						rowClasses="tableRow" headerClass="tableHeader">
 						<h:column>
-							<h:commandLink action="#{instructorAssignments.view}" styleClass="link">
-								<h:outputText value="#{assignment.title}" styleClass="link" />
-								<af:spacer height="10" />
+							<f:facet name="header">
+								<h:outputText value="Assignment" />
+							</f:facet>
+							<h:commandLink action="#{instructorAssignments.view}"
+								styleClass="tableLink">
+								<h:outputText value="#{assignment.title}" styleClass="tableLink" />
 							</h:commandLink>
 						</h:column>
-					</t:dataList>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Start Date" />
+							</f:facet>
+							<h:commandLink action="#{instructorAssignments.view}"
+								styleClass="tableLink">
+								<h:outputText value="#{assignment.startDate}"
+									styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="End Date" />
+							</f:facet>
+							<h:commandLink action="#{instructorAssignments.view}"
+								styleClass="tableLink">
+								<h:outputText value="#{assignment.endDate}"
+									styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
 
 				</htm:div>
 
 				<htm:div style="width: 570px;"
 					rendered="#{empty instructorAssignments.assignments}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<h:outputText value="Assignments" styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:outputText value="No courses selected."
+					<h:outputText value="All Assignments" styleClass="title"
 						rendered="#{instructorAssignments.activedCourse == null}" />
+					<h:outputText
+						value="Assignments in #{instructorAssignments.activedCourse}"
+						styleClass="title"
+						rendered="#{instructorAssignments.activedCourse != null}" />
 
-					<h:outputText value="There is no assignment in this course"
+					<af:spacer height="25" />
+
+					<h:outputText value="There aren't any assignment"
 						rendered="#{instructorAssignments.activedCourse != null}" />
 
 				</htm:div>

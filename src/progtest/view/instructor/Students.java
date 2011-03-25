@@ -15,7 +15,7 @@ public class Students {
 
 	private List<Course> courses = new ArrayList<Course>();
 
-	private UIData coursesTable;
+	private UIData coursesMenu;
 
 	private List<User> students = new ArrayList<User>();
 
@@ -31,12 +31,12 @@ public class Students {
 		this.courses = courses;
 	}
 
-	public UIData getCoursesTable() {
-		return coursesTable;
+	public UIData getCoursesMenu() {
+		return coursesMenu;
 	}
 
-	public void setCoursesTable(UIData coursesTable) {
-		this.coursesTable = coursesTable;
+	public void setCoursesMenu(UIData coursesMenu) {
+		this.coursesMenu = coursesMenu;
 	}
 
 	public List<User> getStudents() {
@@ -67,8 +67,15 @@ public class Students {
 		refresh();
 	}
 
-	public String selectCourse() {
-		Course course = (Course) coursesTable.getRowData();
+	public String selectAllCourses() {
+		Course course = null;
+		FacesUtil.setSession(Constants.SESSION_COURSE, course);
+		refresh();
+		return Constants.ACTION_SELECT;
+	}
+
+	public String selectMenuCourse() {
+		Course course = (Course) coursesMenu.getRowData();
 		FacesUtil.setSession(Constants.SESSION_COURSE, course);
 		refresh();
 		return Constants.ACTION_SELECT;
@@ -84,17 +91,20 @@ public class Students {
 				.getSession(Constants.SESSION_COURSE);
 
 		if (course != null) {
+			
 			activedCourse = course.getName();
 			students = Querier.getStudents(course);
+			
 		} else {
+			
 			activedCourse = null;
 			students.clear();
+			
+			for(Course c: courses)
+				students.addAll(Querier.getStudents(c));
+			
 		}
 
-	}
-
-	public String register() {
-		return Constants.ACTION_REGISTER;
 	}
 
 	public String add() {

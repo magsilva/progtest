@@ -12,24 +12,38 @@
 
 		<h:form>
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+
+				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;">
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Courses" styleClass="menu_title"
-						rendered="#{!empty instructorCourses.courses}" />
+					<h:outputText value="Courses" styleClass="menu_title" />
 
-					<af:spacer height="5"
-						rendered="#{!empty instructorCourses.courses}" />
+					<af:spacer height="10" />
+
+					<htm:table>
+						<htm:tr>
+							<htm:td>
+								<h:commandLink action="#{instructorCourses.selectAllCourses}"
+									styleClass="link">
+									<h:outputText value="All Courses" styleClass="link"
+										rendered="#{course != null}" />
+									<h:outputText value="All Courses" styleClass="link_hover"
+										rendered="#{course == null}" />
+								</h:commandLink>
+							</htm:td>
+						</htm:tr>
+					</htm:table>
 
 					<h:dataTable value="#{instructorCourses.courses}" var="course"
-						binding="#{instructorCourses.coursesTable}" width="100%"
+						binding="#{instructorCourses.coursesMenu}" width="100%"
 						rendered="#{!empty instructorCourses.courses}">
 						<h:column>
-							<af:spacer height="10" />
-							<h:commandLink action="#{instructorCourses.selectCourse}"
+							<af:spacer height="5" />
+							<h:commandLink action="#{instructorCourses.selectMenuCourse}"
 								styleClass="link">
 								<h:outputText value="#{course.name}" styleClass="link"
 									rendered="#{course.name != instructorCourses.activedCourse}" />
@@ -39,8 +53,7 @@
 						</h:column>
 					</h:dataTable>
 
-					<af:spacer height="40"
-						rendered="#{!empty instructorCourses.courses}" />
+					<af:spacer height="40" />
 
 					<h:outputText value="Actions" styleClass="menu_title" />
 
@@ -50,7 +63,7 @@
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorCourses.create}"
 							styleClass="link">
-							<h:outputText value="Create New Course" styleClass="topmenu_link" />
+							<h:outputText value="New Course" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -74,14 +87,70 @@
 
 				</htm:div>
 
-				<af:spacer width="60" />
+				<af:spacer width="50" />
+
+				<htm:div style="width: 570px;"
+					rendered="#{instructorCourses.course == null}">
+
+					<af:spacer height="25" />
+
+					<h:outputText value="All Courses" styleClass="title" />
+
+					<af:spacer height="25" />
+
+					<h:dataTable value="#{instructorCourses.courses}" var="course"
+						binding="#{instructorCourses.coursesTable}" width="100%"
+						rowClasses="tableRow" headerClass="tableHeader"
+						rendered="#{!empty instructorCourses.courses}">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Course" />
+							</f:facet>
+							<h:commandLink action="#{instructorCourses.selectTableCourse}"
+								styleClass="tableLink">
+								<h:outputText value="#{course.name}" styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Start Date" />
+							</f:facet>
+							<h:commandLink action="#{instructorCourses.selectTableCourse}"
+								styleClass="tableLink">
+								<h:outputText value="#{course.startDate}" styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="End Date" />
+							</f:facet>
+							<h:commandLink action="#{instructorCourses.selectTableCourse}"
+								styleClass="tableLink">
+								<h:outputText value="#{course.endDate}" styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+
+					<t:dataList value="#{instructorAssignments.assignments}" var="assignment"
+						binding="#{instructorAssignments.assignmentsTable}"
+						rendered="#{!empty instructorAssignments.assignments}">
+						<t:column>
+							<h:commandLink action="#{instructorAssignments.view}"
+								styleClass="tableLink">
+								<h:outputText value="#{asignment.title}" styleClass="tableLink" />
+							</h:commandLink>
+						</t:column>
+					</t:dataList>
+
+				</htm:div>
 
 				<htm:div style="width: 570px;"
 					rendered="#{instructorCourses.course != null}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<h:outputText value="Course Properties" styleClass="title" />
+					<h:outputText value="#{instructorCourses.course.name}"
+						styleClass="title" />
 
 					<af:spacer height="25" />
 
@@ -101,24 +170,6 @@
 					<h:outputText value="#{instructorCourses.course.endDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Instructor: " styleClass="label" />
-					<h:outputText value="#{instructorCourses.course.instructor.name}" />
-
-				</htm:div>
-
-				<htm:div style="width: 570px;"
-					rendered="#{instructorCourses.course == null}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Course Properties" styleClass="title" />
-
-					<af:spacer height="20" />
-
-					<h:outputText value="No course selected." />
 
 				</htm:div>
 

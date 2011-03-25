@@ -296,10 +296,6 @@
    <to-view-id>/pages/instructor/createAssignmentTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>add</from-outcome>
-   <to-view-id>/pages/instructor/addAssignmentTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
    <from-outcome>view</from-outcome>
    <to-view-id>/pages/instructor/assignmentTemplate.jsp</to-view-id>
   </navigation-case>
@@ -393,10 +389,6 @@
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/pages/instructor/studentsTemplate.jsp</from-view-id>
-  <navigation-case>
-   <from-outcome>register</from-outcome>
-   <to-view-id>/pages/instructor/registerStudentTemplate.jsp</to-view-id>
-  </navigation-case>
   <navigation-case>
    <from-outcome>add</from-outcome>
    <to-view-id>/pages/instructor/addStudentsTemplate.jsp</to-view-id>

@@ -16,35 +16,6 @@ import progtest.util.FileUtil;
 
 public class Runner {
 
-	private static final String KEY_INFO_RUN_START = "info_runStart";
-	private static final String KEY_INFO_RUN_FINISH = "info_runFinish";
-
-	private static final String KEY_INFO_MAKEDIRECTORIES = "info_makeDirectories";
-	private static final String KEY_INFO_UPLOAD = "info_upload";
-	private static final String KEY_INFO_COPYORACLE = "info_copyOracle";
-	private static final String KEY_INFO_EXTRACT = "info_extract";
-	private static final String KEY_INFO_SPLIT = "info_split";
-	private static final String KEY_INFO_EXECUTE_PINSTTINST = "info_executePinstTinst";
-	private static final String KEY_INFO_EXECUTE_PSTTST = "info_executePstTst";
-	private static final String KEY_INFO_EXECUTE_PINSTTST = "info_executePinstTst";
-	private static final String KEY_INFO_EXECUTE_PSTTINST = "info_executePstTinst";
-	private static final String KEY_INFO_EVALUATE = "info_evaluate";
-	private static final String KEY_INFO_REPORT = "info_report";
-
-	private static final String KEY_WARN_RUN = "warn_run";
-	private static final String KEY_WARN_EXECUTE = "warn_execute";
-
-	private static final String KEY_ERROR_MAKEDIRECTORIES = "error_makeDirectories";
-	private static final String KEY_ERROR_UPLOAD = "error_upload";
-	private static final String KEY_ERROR_COPYORACLE = "error_copyOracle";
-	private static final String KEY_ERROR_EXTRACT = "error_extract";
-	private static final String KEY_ERROR_SPLIT = "error_split";
-	private static final String KEY_ERROR_EXECUTE = "error_execute";
-	private static final String KEY_ERROR_EVALUATE = "error_evaluate";
-	private static final String KEY_ERROR_REPORT = "error_report";
-
-	private static Logger logger = new Logger();
-
 	public static void run(Assignment assignment, UploadedFile uf) {
 
 		try {
@@ -59,50 +30,24 @@ public class Runner {
 
 			File pitiDir = new File(Directories.getPitiDirPath(assignment));
 
-			File logFile = null;
-
-			logger.start(logFile);
-
-			logger.info(KEY_INFO_RUN_START);
-
-			logger.info(KEY_INFO_MAKEDIRECTORIES);
-
 			makeDirectories(oracleDir, packageDir, sourceDir, programDir,
 					testsDir, pitiDir, null, null, null);
 
-			logger.info(KEY_INFO_UPLOAD);
-
 			File savedFile = upload(uf, packageDir);
-
-			logger.info(KEY_INFO_EXTRACT);
 
 			extract(savedFile, sourceDir);
 
-			logger.info(KEY_INFO_SPLIT);
-
 			split(sourceDir, programDir, testsDir);
-
-			logger.info(KEY_INFO_EXECUTE_PINSTTINST);
 
 			execute(assignment, oracleDir, programDir, testsDir, pitiDir);
 
-			logger.info(KEY_INFO_EVALUATE);
-
 			evaluate(assignment);
-
-			logger.info(KEY_INFO_REPORT);
 
 			report(assignment);
 
-			logger.info(KEY_INFO_RUN_FINISH);
-
 		} catch (Throwable t) {
 
-			logger.warning(KEY_WARN_RUN);
-
 		} finally {
-
-			logger.stop();
 
 		}
 
@@ -123,50 +68,24 @@ public class Runner {
 
 			File pitiDir = new File(Directories.getPitiDirPath(assignment));
 
-			File logFile = null;
-
-			logger.start(logFile);
-
-			logger.info(KEY_INFO_RUN_START);
-
-			logger.info(KEY_INFO_MAKEDIRECTORIES);
-
 			makeDirectories(oracleDir, packageDir, sourceDir, programDir,
 					testsDir, pitiDir, null, null, null);
 
-			logger.info(KEY_INFO_COPYORACLE);
-
 			File savedFile = copy(oracleFile, packageDir);
-
-			logger.info(KEY_INFO_EXTRACT);
 
 			extract(savedFile, sourceDir);
 
-			logger.info(KEY_INFO_SPLIT);
-
 			split(sourceDir, programDir, testsDir);
-
-			logger.info(KEY_INFO_EXECUTE_PINSTTINST);
 
 			execute(assignment, oracleDir, programDir, testsDir, pitiDir);
 
-			logger.info(KEY_INFO_EVALUATE);
-
 			evaluate(assignment);
-
-			logger.info(KEY_INFO_REPORT);
 
 			report(assignment);
 
-			logger.info(KEY_INFO_RUN_FINISH);
-
 		} catch (Throwable t) {
 
-			logger.warning(KEY_WARN_RUN);
-
 		} finally {
-
-			logger.stop();
 
 		}
 
@@ -203,58 +122,28 @@ public class Runner {
 			File oracleTestsDir = new File(
 					Directories.getTestsDirPath(assignment));
 
-			File logFile = null;
-
-			logger.start(logFile);
-
-			logger.info(KEY_INFO_RUN_START);
-
-			logger.info(KEY_INFO_MAKEDIRECTORIES);
-
 			makeDirectories(studentDir, packageDir, sourceDir, programDir,
 					testsDir, null, pstsDir, pitsDir, pstiDir);
 
-			logger.info(KEY_INFO_UPLOAD);
-
 			File savedFile = upload(uf, packageDir);
-
-			logger.info(KEY_INFO_EXTRACT);
 
 			extract(savedFile, sourceDir);
 
-			logger.info(KEY_INFO_SPLIT);
-
 			split(sourceDir, programDir, testsDir);
-
-			logger.info(KEY_INFO_EXECUTE_PSTTST);
 
 			execute(assignment, studentDir, programDir, testsDir, pstsDir);
 
-			logger.info(KEY_INFO_EXECUTE_PINSTTST);
-
 			execute(assignment, studentDir, oracleProgramDir, testsDir, pitsDir);
-
-			logger.info(KEY_INFO_EXECUTE_PSTTINST);
 
 			execute(assignment, studentDir, programDir, oracleTestsDir, pstiDir);
 
-			logger.info(KEY_INFO_EVALUATE);
-
 			evaluate(submission);
-
-			logger.info(KEY_INFO_REPORT);
 
 			report(submission);
 
-			logger.info(KEY_INFO_RUN_FINISH);
-
 		} catch (Throwable t) {
 
-			logger.warning(KEY_WARN_RUN);
-
 		} finally {
-
-			logger.stop();
 
 		}
 
@@ -291,8 +180,7 @@ public class Runner {
 				FileUtil.mkdirs(pstiReportsDir);
 
 		} catch (Throwable t) {
-
-			logger.severe(KEY_ERROR_MAKEDIRECTORIES);
+			
 			throw t;
 
 		}
@@ -308,7 +196,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_UPLOAD);
 			throw t;
 
 		}
@@ -323,7 +210,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_COPYORACLE);
 			throw t;
 
 		}
@@ -338,7 +224,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_EXTRACT);
 			throw t;
 
 		}
@@ -378,7 +263,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_SPLIT);
 			throw t;
 
 		}
@@ -423,15 +307,12 @@ public class Runner {
 
 				} catch (Throwable t) {
 
-					logger.warning(KEY_WARN_EXECUTE + tool.getName());
-
 				}
 
 			}
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_EXECUTE);
 			throw t;
 
 		}
@@ -446,7 +327,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_EVALUATE);
 			throw t;
 
 		}
@@ -461,7 +341,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_EVALUATE);
 			throw t;
 
 		}
@@ -476,7 +355,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_REPORT);
 			throw t;
 
 		}
@@ -491,7 +369,6 @@ public class Runner {
 
 		} catch (Throwable t) {
 
-			logger.severe(KEY_ERROR_REPORT);
 			throw t;
 
 		}
