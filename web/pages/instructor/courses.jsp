@@ -131,17 +131,6 @@
 						</h:column>
 					</h:dataTable>
 
-					<t:dataList value="#{instructorAssignments.assignments}" var="assignment"
-						binding="#{instructorAssignments.assignmentsTable}"
-						rendered="#{!empty instructorAssignments.assignments}">
-						<t:column>
-							<h:commandLink action="#{instructorAssignments.view}"
-								styleClass="tableLink">
-								<h:outputText value="#{asignment.title}" styleClass="tableLink" />
-							</h:commandLink>
-						</t:column>
-					</t:dataList>
-
 				</htm:div>
 
 				<htm:div style="width: 570px;"
@@ -170,6 +159,40 @@
 					<h:outputText value="#{instructorCourses.course.endDate}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
+
+					<af:spacer height="25" />
+
+					<h:outputText value="Assignments:" styleClass="label"
+						rendered="#{!empty instructorCourses.assignments}" />
+
+					<t:dataList value="#{instructorCourses.assignments}"
+						var="assignment" binding="#{instructorCourses.assignmentsTable}"
+						rendered="#{!empty instructorCourses.assignments}"
+						rowCountVar="count" rowIndexVar="i">
+						<h:commandLink action="#{instructorCourses.viewAssignment}"
+							styleClass="link">
+							<t:outputText value="#{assignment.title}" styleClass="link" />
+						</h:commandLink>
+						<h:outputText value=", " rendered="#{i + 1 != count}" />
+						<h:outputText value="." rendered="#{i + 1 == count}" />
+					</t:dataList>
+
+					<af:spacer height="25" />
+
+					<h:outputText value="Students: " styleClass="label"
+						rendered="#{!empty instructorCourses.students}" />
+
+					<t:dataList value="#{instructorCourses.students}" var="student"
+						binding="#{instructorCourses.studentsTable}"
+						rendered="#{!empty instructorCourses.students}" 
+						rowCountVar="count" rowIndexVar="i">
+						<h:commandLink action="#{instructorCourses.viewStudent}"
+							styleClass="link">
+							<h:outputText value="#{student.name}" styleClass="link" />
+						</h:commandLink>
+						<h:outputText value=", " rendered="#{i + 1 != count}" />
+						<h:outputText value="." rendered="#{i + 1 == count}" />
+					</t:dataList>
 
 				</htm:div>
 

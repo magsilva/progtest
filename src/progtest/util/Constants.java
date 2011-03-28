@@ -104,6 +104,8 @@ public class Constants {
 	public static final String ACTION_RECOVER = "recover";
 	public static final String ACTION_SELECT = "select";
 	public static final String ACTION_VIEW = "view";
+	public static final String ACTION_VIEW_ASSIGNMENT = "viewAssignment";
+	public static final String ACTION_VIEW_STUDENT = "viewStudent";
 	public static final String ACTION_CREATE = "create";
 	public static final String ACTION_ADD = "add";
 	public static final String ACTION_EDIT = "edit";

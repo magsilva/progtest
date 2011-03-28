@@ -239,6 +239,14 @@
    <from-outcome>remove</from-outcome>
    <to-view-id>/pages/instructor/removeCourseTemplate.jsp</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>viewAssignment</from-outcome>
+   <to-view-id>/pages/instructor/assignmentTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>viewStudent</from-outcome>
+   <to-view-id>/pages/instructor/studentTemplate.jsp</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/pages/instructor/createCourseTemplate.jsp</from-view-id>

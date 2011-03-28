@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
+import progtest.common.Assignment;
 import progtest.common.Course;
 import progtest.common.User;
 import progtest.database.Querier;
@@ -15,9 +16,17 @@ public class Courses {
 
 	private List<Course> courses = new ArrayList<Course>();
 
+	private List<Assignment> assignments = new ArrayList<Assignment>();
+
+	private List<User> students = new ArrayList<User>();
+
 	private UIData coursesMenu;
 
 	private UIData coursesTable;
+
+	private UIData assignmentsTable;
+
+	private UIData studentsTable;
 
 	private Course course = null;
 
@@ -29,6 +38,22 @@ public class Courses {
 
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
+	}
+
+	public List<Assignment> getAssignments() {
+		return assignments;
+	}
+
+	public void setAssignments(List<Assignment> assignments) {
+		this.assignments = assignments;
+	}
+
+	public List<User> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<User> students) {
+		this.students = students;
 	}
 
 	public UIData getCoursesMenu() {
@@ -45,6 +70,22 @@ public class Courses {
 
 	public void setCoursesTable(UIData coursesTable) {
 		this.coursesTable = coursesTable;
+	}
+
+	public UIData getAssignmentsTable() {
+		return assignmentsTable;
+	}
+
+	public void setAssignmentsTable(UIData assignmentsTable) {
+		this.assignmentsTable = assignmentsTable;
+	}
+
+	public UIData getStudentsTable() {
+		return studentsTable;
+	}
+
+	public void setStudentsTable(UIData studentsTable) {
+		this.studentsTable = studentsTable;
 	}
 
 	public Course getCourse() {
@@ -88,6 +129,18 @@ public class Courses {
 		return Constants.ACTION_SELECT;
 	}
 
+	public String viewAssignment() {
+		Assignment assignment = (Assignment) assignmentsTable.getRowData();
+		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+		return Constants.ACTION_VIEW_ASSIGNMENT;
+	}
+
+	public String viewStudent() {
+		User student = (User) studentsTable.getRowData();
+		FacesUtil.setSession(Constants.SESSION_STUDENT, student);
+		return Constants.ACTION_VIEW_STUDENT;
+	}
+
 	private void refresh() {
 		
 		User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
@@ -97,9 +150,14 @@ public class Courses {
 		Course course = (Course) FacesUtil
 				.getSession(Constants.SESSION_COURSE);
 		
-		if(course != null)
+		if(course != null) {
+			
 			activedCourse = course.getName();
-		else
+			
+			assignments = Querier.getAssignments(course);
+			students = Querier.getStudents(course);
+		
+		} else
 			activedCourse = null;
 		
 		this.course = course; 
