@@ -181,6 +181,12 @@ INSERT INTO Tool VALUES(4, 'CUnit', 'C', 'GCC', 'CUnit', 'cmdlines.txt', 'output
 
 INSERT INTO Criterion VALUES(4, 1, 'Pass Rate', 'passrate');
 
+INSERT INTO Tool VALUES(5, 'GCov', 'C', 'GCC', 'CUnit', 'cmdlines.txt', 'output.properties');
+
+INSERT INTO Criterion VALUES(5, 1, 'All-Nodes', 'allnodes');
+
+INSERT INTO Criterion VALUES(5, 2, 'All-Edges', 'alledges');
+
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
 INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 'Java');
