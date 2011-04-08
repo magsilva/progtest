@@ -77,6 +77,10 @@ public class AddStudents {
 
 	}
 
+	public String register() {
+		return Constants.ACTION_REGISTER;
+	}
+
 	public String cancel() {
 		return Constants.ACTION_CANCEL;
 	}

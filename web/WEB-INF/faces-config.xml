@@ -435,6 +435,10 @@
  <navigation-rule>
   <from-view-id>/pages/instructor/addStudentsTemplate.jsp</from-view-id>
   <navigation-case>
+   <from-outcome>register</from-outcome>
+   <to-view-id>/pages/instructor/registerStudentTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
    <from-outcome>success</from-outcome>
    <to-view-id>/pages/instructor/studentsTemplate.jsp</to-view-id>
   </navigation-case>

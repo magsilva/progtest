@@ -12,36 +12,66 @@
 
 		<h:form>
 
-			<af:spacer height="30" />
+			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
 
-			<h:outputText value="Add Students" styleClass="title" />
+				<af:spacer width="10" />
 
-			<af:spacer height="20" />
+				<htm:div style="width: 170px;">
 
-			<h:outputText
-				value="Select the students that you want to add to the course."
-				rendered="#{!empty instructorAddStudents.students}" />
+					<af:spacer height="25" />
 
-			<af:spacer height="20"
-				rendered="#{!empty instructorAddStudents.students}" />
+					<h:outputText value="Actions" styleClass="menu_title" />
 
-			<h:selectManyCheckbox
-				value="#{instructorAddStudents.selectedStudents}"
-				layout="pageDirection"
-				rendered="#{!empty instructorAddStudents.students}">
-				<f:selectItems value="#{instructorAddStudents.students}" />
-			</h:selectManyCheckbox>
+					<af:spacer height="10" />
 
-			<h:outputText value="No student found."
-				rendered="#{empty instructorAddStudents.students}" />
+					<h:panelGrid columns="2">
+						<af:image source="/images/create.png" />
+						<h:commandLink action="#{instructorAddStudents.register}"
+							styleClass="link">
+							<h:outputText value="Register Student" styleClass="topmenu_link" />
+						</h:commandLink>
+					</h:panelGrid>
 
-			<af:spacer height="30" />
+				</htm:div>
 
-			<h:commandButton value="Cancel"
-				action="#{instructorAddStudents.cancel}" />
-			<h:commandButton value="Finalize"
-				action="#{instructorAddStudents.add}"
-				rendered="#{!empty instructorAddStudents.students}" />
+				<af:spacer width="50" />
+
+				<htm:div style="width: 570px;">
+
+					<af:spacer height="25" />
+
+					<h:outputText value="Add Students" styleClass="title" />
+
+					<af:spacer height="20" />
+
+					<h:outputText
+						value="Select the students that you want to add to the course."
+						rendered="#{!empty instructorAddStudents.students}" />
+
+					<af:spacer height="20"
+						rendered="#{!empty instructorAddStudents.students}" />
+
+					<h:selectManyCheckbox
+						value="#{instructorAddStudents.selectedStudents}"
+						layout="pageDirection"
+						rendered="#{!empty instructorAddStudents.students}">
+						<f:selectItems value="#{instructorAddStudents.students}" />
+					</h:selectManyCheckbox>
+
+					<h:outputText value="No student found."
+						rendered="#{empty instructorAddStudents.students}" />
+
+					<af:spacer height="30" />
+
+					<h:commandButton value="Cancel"
+						action="#{instructorAddStudents.cancel}" />
+					<h:commandButton value="Finalize"
+						action="#{instructorAddStudents.add}"
+						rendered="#{!empty instructorAddStudents.students}" />
+
+				</htm:div>
+
+			</h:panelGrid>
 
 		</h:form>
 
