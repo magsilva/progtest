@@ -194,9 +194,9 @@ public class AssignmentInfo {
 		
 			files = FileUtil.listFiles(new File(Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent())), Constants.EXTENSION_XML);
 			
-			File file = (File) files.get(0);
+			File file = (File) files.get(1);
 			report = new Report(file);
-			file = (File) files.get(1);
+			file = (File) files.get(0);
 			report2 = new Report(file);
 			
 			report2.getRecords().get(0).setColumn1("Instructor's test set against instructor's program (P_Inst - T_Inst)");

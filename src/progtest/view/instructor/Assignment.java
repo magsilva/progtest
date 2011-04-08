@@ -89,7 +89,7 @@ public class Assignment {
 		this.endDate = endDate;
 	}
 
-	public List<Submission> getEvaluations() {
+	public List<Submission> getSubmissions() {
 		return submissions;
 	}
 

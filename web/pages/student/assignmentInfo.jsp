@@ -89,8 +89,8 @@
 						</htm:tr>
 					</htm:table>
 
-					<af:spacer height="25" />
-
+					<!--<af:spacer height="25" />
+					
 					<h:outputText value="Reports" styleClass="menu_title"
 						rendered="#{!empty studentAssignmentInfo.files}" />
 
@@ -108,7 +108,7 @@
 								</h:commandLink>
 							</htm:td>
 						</htm:tr>
-					</htm:table>
+					</htm:table>-->
 
 					<af:spacer height="30" />
 
