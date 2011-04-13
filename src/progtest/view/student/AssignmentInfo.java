@@ -9,7 +9,6 @@ import javax.faces.component.UIData;
 
 import progtest.common.Submission;
 import progtest.execution.Directories;
-import progtest.reports.Record;
 import progtest.reports.Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
@@ -41,9 +40,13 @@ public class AssignmentInfo {
 
 	private UIData reportTable;
 
-	private Report report2;
+	private Report generalCoverages;
 
-	private UIData report2Table;
+	private UIData generalCoveragesTable;
+
+	private Report totalCoverages;
+
+	private UIData totalCoveragesTable;
 	
 	private String grade;
 
@@ -143,20 +146,36 @@ public class AssignmentInfo {
 		this.reportTable = reportTable;
 	}
 
-	public void setReport2Table(UIData report2Table) {
-		this.report2Table = report2Table;
+	public Report getGeneralCoverages() {
+		return generalCoverages;
 	}
 
-	public void setReport2(Report report2) {
-		this.report2 = report2;
+	public void setGeneralCoverages(Report generalCoverages) {
+		this.generalCoverages = generalCoverages;
 	}
 
-	public Report getReport2() {
-		return report2;
+	public UIData getGeneralCoveragesTable() {
+		return generalCoveragesTable;
 	}
 
-	public UIData getReport2Table() {
-		return report2Table;
+	public void setGeneralCoveragesTable(UIData generalCoveragesTable) {
+		this.generalCoveragesTable = generalCoveragesTable;
+	}
+
+	public Report getTotalCoverages() {
+		return totalCoverages;
+	}
+
+	public void setTotalCoverages(Report totalCoverages) {
+		this.totalCoverages = totalCoverages;
+	}
+
+	public UIData getTotalCoveragesTable() {
+		return totalCoveragesTable;
+	}
+
+	public void setTotalCoveragesTable(UIData totalCoveragesTable) {
+		this.totalCoveragesTable = totalCoveragesTable;
 	}
 
 	public void setGrade(String grade) {
@@ -192,23 +211,23 @@ public class AssignmentInfo {
 
 		} else {
 		
-			files = FileUtil.listFiles(new File(Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent())), Constants.EXTENSION_XML);
+			files = FileUtil.listFiles(new File(Directories.getPstsDirPath(submission.getAssignment(), submission.getStudent())), Constants.EXTENSION_XML);
 			
-			File file = (File) files.get(1);
-			report = new Report(file);
-			file = (File) files.get(0);
-			report2 = new Report(file);
+			File xmlFile = new File(Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent()) + File.separator + "Coverages.xml");
+			generalCoverages = new Report(xmlFile);
 			
-			report2.getRecords().get(0).setColumn1("Instructor's test set against instructor's program (P_Inst - T_Inst)");
-			report2.getRecords().get(1).setColumn1("Student's test set against student's program (P_St - T_St)");
-			report2.getRecords().get(2).setColumn1("Student's test set against instructor's program (P_Inst - T_St)");
-			report2.getRecords().get(3).setColumn1("Instructor's test set against student's program (P_St - T_Inst)");
+			xmlFile = new File(Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent()) + File.separator + "Evaluation Result.xml");
+			totalCoverages = new Report(xmlFile);
 			
-			grade = report2.getRecords().get(4).getColumn2();
-			report2.getRecords().set(4, new Record());
+			totalCoverages.getRecords().get(0).setColumn1("Instructor's test set against instructor's program (P_Inst - T_Inst)");
+			totalCoverages.getRecords().get(1).setColumn1("Student's test set against student's program (P_St - T_St)");
+			totalCoverages.getRecords().get(2).setColumn1("Student's test set against instructor's program (P_Inst - T_St)");
+			totalCoverages.getRecords().get(3).setColumn1("Instructor's test set against student's program (P_St - T_Inst)");
+			
+			grade = totalCoverages.getRecords().get(4).getColumn2();
+			totalCoverages.getRecords().remove(4);
 			
 			viewId = 2;
-			activedReport = file.getName();
 			
 		}
 
@@ -224,8 +243,16 @@ public class AssignmentInfo {
 		return Constants.ACTION_SELECT;
 	}
 
-	public String selectReportView() {
+	public String selectResultView() {
 		viewId = 2;
+		return Constants.ACTION_SELECT;
+	}
+
+	public String selectReportView() {
+		File file = (File) filesTable.getRowData();
+		report = new Report(file);
+		viewId = 3;
+		activedReport = file.getName();
 		return Constants.ACTION_SELECT;
 	}
 	

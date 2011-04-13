@@ -182,7 +182,7 @@ public class Directories {
 	}*/
 
 	public static String getPstiDirPath(Assignment assignment, User student) {
-		return getStudentDirPath(assignment, student) + File.separator
+		return getReportsDirPath(assignment, student) + File.separator
 				+ DIR_PSTI;
 	}
 
