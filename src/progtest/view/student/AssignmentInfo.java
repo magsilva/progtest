@@ -10,6 +10,8 @@ import javax.faces.component.UIData;
 import progtest.common.Submission;
 import progtest.execution.Directories;
 import progtest.reports.Report;
+import progtest.reports.TXTReport;
+import progtest.reports.XMLReport;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
@@ -29,25 +31,27 @@ public class AssignmentInfo {
 	private Date submissionDate;
 
 	private double score;
-	
+
 	private String activedReport;
 
-	private List<File> files = new ArrayList<File>();
+	private List<Report> reports = new ArrayList<Report>();
 
-	private UIData filesTable;
+	private UIData reportsTable;
 
-	private Report report;
+	private XMLReport xmlReport;
 
-	private UIData reportTable;
+	private UIData recordsTable;
 
-	private Report generalCoverages;
+	private TXTReport txtReport;
+
+	private XMLReport generalCoverages;
 
 	private UIData generalCoveragesTable;
 
-	private Report totalCoverages;
+	private XMLReport totalCoverages;
 
 	private UIData totalCoveragesTable;
-	
+
 	private String grade;
 
 	public int getViewId() {
@@ -114,43 +118,51 @@ public class AssignmentInfo {
 		this.activedReport = activedReport;
 	}
 
-	public List<File> getFiles() {
-		return files;
+	public List<Report> getReports() {
+		return reports;
 	}
 
-	public void setFiles(List<File> files) {
-		this.files = files;
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
 	}
 
-	public UIData getFilesTable() {
-		return filesTable;
+	public UIData getReportsTable() {
+		return reportsTable;
 	}
 
-	public void setFilesTable(UIData filesTable) {
-		this.filesTable = filesTable;
+	public void setReportsTable(UIData reportsTable) {
+		this.reportsTable = reportsTable;
 	}
 
-	public Report getReport() {
-		return report;
+	public XMLReport getXmlReport() {
+		return xmlReport;
 	}
 
-	public void setReport(Report report) {
-		this.report = report;
+	public void setXmlReport(XMLReport xmlReport) {
+		this.xmlReport = xmlReport;
 	}
 
-	public UIData getReportTable() {
-		return reportTable;
+	public UIData getRecordsTable() {
+		return recordsTable;
 	}
 
-	public void setReportTable(UIData reportTable) {
-		this.reportTable = reportTable;
+	public void setRecordsTable(UIData recordsTable) {
+		this.recordsTable = recordsTable;
 	}
 
-	public Report getGeneralCoverages() {
+	public TXTReport getTxtReport() {
+		return txtReport;
+	}
+
+	public void setTxtReport(TXTReport txtReport) {
+		this.txtReport = txtReport;
+	}
+
+	public XMLReport getGeneralCoverages() {
 		return generalCoverages;
 	}
 
-	public void setGeneralCoverages(Report generalCoverages) {
+	public void setGeneralCoverages(XMLReport generalCoverages) {
 		this.generalCoverages = generalCoverages;
 	}
 
@@ -162,11 +174,11 @@ public class AssignmentInfo {
 		this.generalCoveragesTable = generalCoveragesTable;
 	}
 
-	public Report getTotalCoverages() {
+	public XMLReport getTotalCoverages() {
 		return totalCoverages;
 	}
 
-	public void setTotalCoverages(Report totalCoverages) {
+	public void setTotalCoverages(XMLReport totalCoverages) {
 		this.totalCoverages = totalCoverages;
 	}
 
@@ -187,7 +199,7 @@ public class AssignmentInfo {
 	}
 
 	public AssignmentInfo() {
-		
+
 		activedReport = Constants.EMPTY;
 
 		Submission submission = (Submission) FacesUtil
@@ -210,25 +222,60 @@ public class AssignmentInfo {
 			selectDefaultView();
 
 		} else {
-		
-			files = FileUtil.listFiles(new File(Directories.getPstsDirPath(submission.getAssignment(), submission.getStudent())), Constants.EXTENSION_XML);
-			
-			File xmlFile = new File(Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent()) + File.separator + "Coverages.xml");
-			generalCoverages = new Report(xmlFile);
-			
-			xmlFile = new File(Directories.getReportsDirPath(submission.getAssignment(), submission.getStudent()) + File.separator + "Evaluation Result.xml");
-			totalCoverages = new Report(xmlFile);
-			
-			totalCoverages.getRecords().get(0).setColumn1("Instructor's test set against instructor's program (P_Inst - T_Inst)");
-			totalCoverages.getRecords().get(1).setColumn1("Student's test set against student's program (P_St - T_St)");
-			totalCoverages.getRecords().get(2).setColumn1("Student's test set against instructor's program (P_Inst - T_St)");
-			totalCoverages.getRecords().get(3).setColumn1("Instructor's test set against student's program (P_St - T_Inst)");
-			
-			grade = totalCoverages.getRecords().get(4).getColumn2();
-			totalCoverages.getRecords().remove(4);
-			
+
+			for (File file : FileUtil.listFiles(
+					new File(
+							Directories.getPstsDirPath(
+									submission.getAssignment(),
+									submission.getStudent()))))
+				if (!file.getName().endsWith(".properties"))
+					reports.add(new Report(file));
+
+			xmlReport = null;
+
+			txtReport = null;
+
+			try {
+
+				File xmlFile = new File(Directories.getReportsDirPath(
+						submission.getAssignment(), submission.getStudent())
+						+ File.separator + "Coverages.xml");
+				generalCoverages = new XMLReport(xmlFile);
+
+				xmlFile = new File(Directories.getReportsDirPath(
+						submission.getAssignment(), submission.getStudent())
+						+ File.separator + "Evaluation Result.xml");
+				totalCoverages = new XMLReport(xmlFile);
+
+				totalCoverages
+						.getRecords()
+						.get(0)
+						.setColumn1(
+								"Instructor's test set against instructor's program (P_Inst - T_Inst)");
+				totalCoverages
+						.getRecords()
+						.get(1)
+						.setColumn1(
+								"Student's test set against student's program (P_St - T_St)");
+				totalCoverages
+						.getRecords()
+						.get(2)
+						.setColumn1(
+								"Student's test set against instructor's program (P_Inst - T_St)");
+				totalCoverages
+						.getRecords()
+						.get(3)
+						.setColumn1(
+								"Instructor's test set against student's program (P_St - T_Inst)");
+
+				grade = totalCoverages.getRecords().get(4).getColumn2();
+				totalCoverages.getRecords().remove(4);
+
+			} catch (Exception e) {
+			}
+
 			viewId = 2;
-			
+
 		}
 
 	}
@@ -249,19 +296,38 @@ public class AssignmentInfo {
 	}
 
 	public String selectReportView() {
-		File file = (File) filesTable.getRowData();
-		report = new Report(file);
-		viewId = 3;
-		activedReport = file.getName();
+
+		Report report = (Report) reportsTable.getRowData();
+
+		try {
+
+			if (report.getFile().getName().endsWith(".xml")) {
+
+				xmlReport = new XMLReport(report.getFile());
+				viewId = 3;
+				activedReport = report.getName();
+
+			} else {
+
+				txtReport = new TXTReport(report.getFile());
+				viewId = 4;
+				activedReport = report.getName();
+
+			}
+
+		} catch (Exception e) {
+		}
+
 		return Constants.ACTION_SELECT;
+
 	}
-	
+
 	public String send() {
 		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
 		return Constants.ACTION_SEND;
 	}
-	
+
 	public String add() {
 		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);

@@ -11,6 +11,8 @@ import progtest.common.Submission;
 import progtest.database.Querier;
 import progtest.execution.Directories;
 import progtest.reports.Report;
+import progtest.reports.TXTReport;
+import progtest.reports.XMLReport;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
@@ -18,7 +20,7 @@ import progtest.util.FileUtil;
 public class Assignment {
 
 	private int viewId;
-	
+
 	private String activedReport;
 
 	private String title;
@@ -33,13 +35,15 @@ public class Assignment {
 
 	private UIData submissionsTable;
 
-	private List<File> files = new ArrayList<File>();
+	private List<Report> reports = new ArrayList<Report>();
 
-	private UIData filesTable;
+	private UIData reportsTable;
 
-	private Report report;
+	private XMLReport xmlReport;
 
-	private UIData reportTable;
+	private UIData recordsTable;
+
+	private TXTReport txtReport;
 
 	public int getViewId() {
 		return viewId;
@@ -105,40 +109,48 @@ public class Assignment {
 		this.submissionsTable = submissionsTable;
 	}
 
-	public List<File> getFiles() {
-		return files;
+	public List<Report> getReports() {
+		return reports;
 	}
 
-	public void setFiles(List<File> files) {
-		this.files = files;
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
 	}
 
-	public UIData getFilesTable() {
-		return filesTable;
+	public UIData getReportsTable() {
+		return reportsTable;
 	}
 
-	public void setFilesTable(UIData filesTable) {
-		this.filesTable = filesTable;
+	public void setReportsTable(UIData reportsTable) {
+		this.reportsTable = reportsTable;
 	}
 
-	public Report getReport() {
-		return report;
+	public XMLReport getXmlReport() {
+		return xmlReport;
 	}
 
-	public void setReport(Report report) {
-		this.report = report;
+	public void setXmlReport(XMLReport xmlReport) {
+		this.xmlReport = xmlReport;
 	}
 
-	public UIData getReportTable() {
-		return reportTable;
+	public UIData getRecordsTable() {
+		return recordsTable;
 	}
 
-	public void setReportTable(UIData reportTable) {
-		this.reportTable = reportTable;
+	public void setRecordsTable(UIData recordsTable) {
+		this.recordsTable = recordsTable;
+	}
+
+	public TXTReport getTxtReport() {
+		return txtReport;
+	}
+
+	public void setTxtReport(TXTReport txtReport) {
+		this.txtReport = txtReport;
 	}
 
 	public Assignment() {
-		
+
 		activedReport = Constants.EMPTY;
 
 		progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
@@ -151,12 +163,17 @@ public class Assignment {
 		startDate = assignment.getStartDate();
 
 		endDate = assignment.getEndDate();
-		
+
 		submissions = Querier.getEvaluations(assignment);
-		
-		files = FileUtil.listFiles(new File(Directories.getPitiDirPath(assignment)), Constants.EXTENSION_XML);
-		
-		report = null;
+
+		for (File file : FileUtil.listFiles(new File(Directories
+				.getPitiDirPath(assignment))))
+			if (!file.getName().endsWith(".properties"))
+				reports.add(new Report(file));
+
+		xmlReport = null;
+
+		txtReport = null;
 
 		selectAboutView();
 
@@ -173,11 +190,30 @@ public class Assignment {
 	}
 
 	public String selectReportView() {
-		File file = (File) filesTable.getRowData();
-		report = new Report(file);
-		viewId = 2;
-		activedReport = file.getName();
+
+		Report report = (Report) reportsTable.getRowData();
+
+		try {
+
+			if (report.getFile().getName().endsWith(".xml")) {
+
+				xmlReport = new XMLReport(report.getFile());
+				viewId = 2;
+				activedReport = report.getName();
+
+			} else {
+
+				txtReport = new TXTReport(report.getFile());
+				viewId = 3;
+				activedReport = report.getName();
+
+			}
+
+		} catch (Exception e) {
+		}
+
 		return Constants.ACTION_SELECT;
+
 	}
 
 	public String edit() {

@@ -1,116 +1,61 @@
 package progtest.reports;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
-import progtest.util.XMLUtil;
+import progtest.common.Tool;
+import progtest.database.Querier;
 
 public class Report {
-	
+
+	private String tool = null;
+
 	private String name = null;
-	
-	private Record header = new Record();
-	
-	private List<Record> records = new ArrayList<Record>();
+
+	private File file = null;
 
 	public Report(File f) {
 
-		String data[][] = XMLUtil.parse(f);
-		
-		name = f.getName().substring(0, f.getName().lastIndexOf("."));
-		
-		for (int j = 0; j < data[0].length; j++) {
-			
-			switch (j) {
-			case 0:
-				header.setColumn1(data[0][j]);
-				break;
-			case 1:
-				header.setColumn2(data[0][j]);
-				break;
-			case 2:
-				header.setColumn3(data[0][j]);
-				break;
-			case 3:
-				header.setColumn4(data[0][j]);
-				break;
-			case 4:
-				header.setColumn5(data[0][j]);
-				break;
-			case 5:
-				header.setColumn6(data[0][j]);
-				break;
-			case 6:
-				header.setColumn7(data[0][j]);
-				break;
-			case 7:
-				header.setColumn8(data[0][j]);
-				break;
-			case 8:
-				header.setColumn10(data[0][j]);
-				break;
-			}
-			
+		String parent = f.getParentFile().getName();
+
+		if (parent.contains("tool")) {
+			String toolId = parent.substring(4);
+			Tool t = Querier.getTool(Integer.parseInt(toolId));
+			tool = t.getName();
+		} else {
+			tool = "Others";
 		}
 
-		for (int i = 1; i < data.length; i++) {
+		if (f.getName().contains("."))
+			name = f.getName().substring(0, f.getName().lastIndexOf("."));
+		else
+			name = f.getName();
 
-			Record record = new Record();
+		file = f;
 
-			for (int j = 0; j < data[0].length; j++) {
+	}
 
-				switch (j) {
-				case 0:
-					record.setColumn1(data[i][j]);
-					break;
-				case 1:
-					record.setColumn2(data[i][j]);
-					break;
-				case 2:
-					record.setColumn3(data[i][j]);
-					break;
-				case 3:
-					record.setColumn4(data[i][j]);
-					break;
-				case 4:
-					record.setColumn5(data[i][j]);
-					break;
-				case 5:
-					record.setColumn6(data[i][j]);
-					break;
-				case 6:
-					record.setColumn7(data[i][j]);
-					break;
-				case 7:
-					record.setColumn8(data[i][j]);
-					break;
-				case 8:
-					record.setColumn9(data[i][j]);
-					break;
-				case 9:
-					record.setColumn10(data[i][j]);
-					break;
-				}
+	public String getTool() {
+		return tool;
+	}
 
-			}
-			
-			records.add(record);
-
-		}
-
+	public void setTool(String tool) {
+		this.tool = tool;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Record getHeader() {
-		return header;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<Record> getRecords() {
-		return records;
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
 	}
 
 }

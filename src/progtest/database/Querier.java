@@ -65,6 +65,8 @@ public class Querier {
 
 	private static final String SELECT_TOOL_BY_ASSIGNMENT = "select requisite.criterion.tool from Requisite requisite where requisite.assignment.course.idCode = ? and requisite.assignment.idCode = ?";
 
+	private static final String SELECT_TOOL_BY_ID = "from Tool tool where tool.idCode = ?";
+
 	public static boolean checkUserName(String userName) {
 		boolean result;
 		Session session = HibernateUtil.getSession();
@@ -381,6 +383,17 @@ public class Querier {
 		query.setInteger(0, assignment.getCourse().getIdCode());
 		query.setInteger(1, assignment.getIdCode());
 		List<Tool> tool = (List<Tool>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return tool;
+	}
+
+	public static Tool getTool(int toolId) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_TOOL_BY_ID);
+		query.setInteger(0, toolId);
+		Tool tool = (Tool) query.uniqueResult();
 		session.getTransaction().commit();
 		session.close();
 		return tool;

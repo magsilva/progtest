@@ -12,7 +12,9 @@
 
 		<h:form>
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+
+				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;"
 					rendered="#{studentAssignmentInfo.viewId == 0}">
@@ -40,7 +42,7 @@
 						</htm:tr>
 					</htm:table>
 
-					<af:spacer height="30" />
+					<af:spacer height="40" />
 
 					<h:outputText value="Action" styleClass="menu_title" />
 
@@ -89,27 +91,29 @@
 						</htm:tr>
 					</htm:table>
 
-					<af:spacer height="30" />
+					<af:spacer height="40" />
 
 					<h:outputText value="Reports" styleClass="menu_title"
-						rendered="#{!empty studentAssignmentInfo.files}" />
+						rendered="#{!empty studentAssignmentInfo.reports}" />
 
-					<h:dataTable value="#{studentAssignmentInfo.files}" var="file"
-						binding="#{studentAssignmentInfo.filesTable}" width="100%"
-						rendered="#{!empty studentAssignmentInfo.files}">
+					<h:dataTable value="#{studentAssignmentInfo.reports}" var="report"
+						binding="#{studentAssignmentInfo.reportsTable}" width="100%"
+						rendered="#{!empty studentAssignmentInfo.reports}">
 						<h:column>
 							<af:spacer height="10" />
 							<h:commandLink action="#{studentAssignmentInfo.selectReportView}"
 								styleClass="link">
-								<h:outputText value="#{file.name}" styleClass="link"
-									rendered="#{file.name != studentAssignmentInfo.activedReport}" />
-								<h:outputText value="#{file.name}" styleClass="link_hover"
-									rendered="#{file.name == studentAssignmentInfo.activedReport}" />
+								<h:outputText value="#{report.tool}/#{report.name}"
+									styleClass="link"
+									rendered="#{report.name != studentAssignmentInfo.activedReport}" />
+								<h:outputText value="#{report.tool}/#{report.name}"
+									styleClass="link_hover"
+									rendered="#{report.name == studentAssignmentInfo.activedReport}" />
 							</h:commandLink>
 						</h:column>
 					</h:dataTable>
 
-					<af:spacer height="30" />
+					<af:spacer height="40" />
 
 					<h:outputText value="Action" styleClass="menu_title" />
 
@@ -134,16 +138,16 @@
 
 				</htm:div>
 
-				<af:spacer width="15" />
+				<af:spacer width="20" />
 
-				<htm:div style="width: 615px;"
+				<htm:div style="width: 600px;"
 					rendered="#{studentAssignmentInfo.viewId == 0}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
 					<h:outputText value="Assignment Properties" styleClass="title" />
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
 					<h:outputText value="Title: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.title}" />
@@ -171,14 +175,14 @@
 
 				</htm:div>
 
-				<htm:div style="width: 615px;"
+				<htm:div style="width: 600px;"
 					rendered="#{studentAssignmentInfo.viewId == 1}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
 					<h:outputText value="Assignment Properties" styleClass="title" />
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
 					<h:outputText value="Title: " styleClass="label" />
 					<h:outputText value="#{studentAssignmentInfo.title}" />
@@ -218,14 +222,14 @@
 
 				</htm:div>
 
-				<htm:div style="width: 615px;"
+				<htm:div style="width: 600px;"
 					rendered="#{studentAssignmentInfo.viewId == 2}">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
 					<h:outputText value="Evaluation Result" styleClass="title" />
 
-					<af:spacer height="30" />
+					<af:spacer height="25" />
 
 					<h:outputText value="General Coverages" styleClass="subtitle" />
 
@@ -311,99 +315,114 @@
 
 				</htm:div>
 
-				<htm:div style="width: 615px;"
+				<htm:div style="width: 600px;"
 					rendered="#{studentAssignmentInfo.viewId == 3}">
 
 					<af:spacer height="20" />
 
-					<h:outputText value="#{studentAssignmentInfo.report.name}" styleClass="title" />
+					<h:outputText value="#{studentAssignmentInfo.xmlReport.name}"
+						styleClass="title" />
 
-					<h:dataTable
-						value="#{studentAssignmentInfo.report.records}"
+					<h:dataTable value="#{studentAssignmentInfo.xmlReport.records}"
 						var="record" headerClass="tableHeader"
-						binding="#{studentAssignmentInfo.reportTable}"
+						binding="#{studentAssignmentInfo.recordsTable}"
 						rowClasses="tableRow" width="100%">
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column1 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column1 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column1}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column1}" />
 							</f:facet>
 							<h:outputText value="#{record.column1}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column2 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column2 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column2}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column2}" />
 							</f:facet>
 							<h:outputText value="#{record.column2}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column3 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column3 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column3}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column3}" />
 							</f:facet>
 							<h:outputText value="#{record.column3}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column4 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column4 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column4}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column4}" />
 							</f:facet>
 							<h:outputText value="#{record.column4}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column5 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column5 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column5}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column5}" />
 							</f:facet>
 							<h:outputText value="#{record.column5}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column6 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column6 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column6}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column6}" />
 							</f:facet>
 							<h:outputText value="#{record.column6}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column7 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column7 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column7}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column7}" />
 							</f:facet>
 							<h:outputText value="#{record.column7}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column8 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column8 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column8}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column8}" />
 							</f:facet>
 							<h:outputText value="#{record.column8}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column9 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column9 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column9}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column9}" />
 							</f:facet>
 							<h:outputText value="#{record.column9}" />
 						</h:column>
 						<h:column
-							rendered="#{studentAssignmentInfo.report.header.column10 != null}">
+							rendered="#{studentAssignmentInfo.xmlReport.header.column10 != null}">
 							<f:facet name="header">
 								<h:outputText
-									value="#{studentAssignmentInfo.report.header.column10}" />
+									value="#{studentAssignmentInfo.xmlReport.header.column10}" />
 							</f:facet>
 							<h:outputText value="#{record.column10}" />
 						</h:column>
 					</h:dataTable>
+
+				</htm:div>
+
+				<htm:div style="width: 600px;"
+					rendered="#{studentAssignmentInfo.viewId == 4}">
+
+					<af:spacer height="25" />
+
+					<h:outputText
+						value="#{studentAssignmentInfo.txtReport.tool}/#{studentAssignmentInfo.txtReport.name}"
+						styleClass="title" />
+
+					<af:spacer height="25" />
+
+					<h:outputText value="#{studentAssignmentInfo.txtReport.content}" />
 
 				</htm:div>
 
