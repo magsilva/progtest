@@ -342,16 +342,12 @@
   <url-pattern>/adf/*</url-pattern>
  </servlet-mapping>
  <error-page>
-  <exception-type>ExpiredSessionException</exception-type>
-  <location>/pages/error/sessionError.jsp</location>
- </error-page>
- <error-page>
   <error-code>404</error-code>
   <location>/pages/error/error404.jsp</location>
  </error-page>
  <error-page>
   <error-code>500</error-code>
-  <location>/pages/error/error500.jsp</location>
+  <location>/index.jsp</location>
  </error-page>
  <!--
 		<servlet-mapping> <servlet-name>action</servlet-name>
