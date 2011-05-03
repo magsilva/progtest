@@ -196,7 +196,7 @@
   </navigation-case>
   <navigation-case>
    <from-outcome>studentHome</from-outcome>
-   <to-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/student/allAssignmentsTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -302,6 +302,10 @@
   <navigation-case>
    <from-outcome>create</from-outcome>
    <to-view-id>/pages/instructor/createAssignmentTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>add</from-outcome>
+   <to-view-id>/pages/instructor/addAssignmentTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>view</from-outcome>

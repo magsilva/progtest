@@ -26,7 +26,6 @@
 				<h:panelGrid columns="2" style="width: 800px" columnClasses="menu">
 					<htm:div style="width:100%">
 						<af:spacer height="10" />
-						<!-- <af:image source="../images/progtest.gif" /> -->
 					</htm:div>
 					<htm:div align="right" style="width:100%">
 						<af:spacer height="10" />
@@ -64,21 +63,9 @@
 									<af:spacer width="10" />
 								</htm:td>
 								<htm:td>
-									<h:commandLink action="studentPendencies"
-										styleClass="orangebar_link">
-										<h:outputText value="Pending Assignments"
-											styleClass="orangebar_link" />
-									</h:commandLink>
-								</htm:td>
-								<htm:td style="color: #ffffff">
-									<af:spacer width="10" />
-									<h:outputText value="|" />
-									<af:spacer width="10" />
-								</htm:td>
-								<htm:td>
 									<h:commandLink action="studentAssignments"
 										styleClass="orangebar_link">
-										<h:outputText value="All Assignments"
+										<h:outputText value="Assignments"
 											styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>

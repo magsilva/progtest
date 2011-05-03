@@ -12,7 +12,9 @@
 
 		<h:form>
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+
+				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;">
 
@@ -53,65 +55,64 @@
 
 				</htm:div>
 
-				<af:spacer width="15" />
+				<af:spacer width="20" />
 
-				<htm:div style="width: 615px;">
+				<htm:div style="width: 600px;">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
-					<h:outputText value="All Assignments" styleClass="title" />
+					<h:outputText value="Assignments" styleClass="title" />
 
 					<af:spacer height="30" />
 
 					<h:dataTable value="#{studentAllAssignments.submissions}"
 						var="submission"
 						binding="#{studentAllAssignments.submissionsTable}" width="100%"
+						rowClasses="tableRow" headerClass="tableHeader"
 						rendered="#{!empty studentAllAssignments.submissions}">
 						<h:column>
-							<htm:table styleClass="grid">
-								<htm:tr styleClass="tableHeader">
-									<htm:td>
-										<h:outputText value="#{submission.assignment.title}" />
-									</htm:td>
-								</htm:tr>
-								<htm:tr>
-									<htm:td>
-										<af:spacer height="10" />
-										<h:outputText value="#{submission.assignment.description}" />
-										<af:spacer height="5" />
-									</htm:td>
-								</htm:tr>
-								<htm:tr>
-									<htm:td>
-										<af:spacer height="5" />
-										<h:outputText value="Deadline: " styleClass="label" />
-										<h:outputText value="#{submission.assignment.endDate}" />
-										<af:spacer height="5" />
-									</htm:td>
-								</htm:tr>
-								<htm:tr>
-									<htm:td>
-										<af:spacer height="5" />
-										<h:outputText value="Status: " styleClass="label" />
-										<h:outputText value="Sent"
-											rendered="#{submission.submissionDate != null}" />
-										<h:outputText value="Pending"
-											rendered="#{submission.submissionDate == null}" />
-										<af:spacer height="5" />
-									</htm:td>
-								</htm:tr>
-								<htm:tr align="right">
-									<htm:td>
-										<h:commandButton value="Send"
-											action="#{studentAllAssignments.submitAssignment}"
-											rendered="#{submission.submissionDate == null}" />
-										<af:spacer width="5" />
-										<h:commandButton value="View"
-											action="#{studentAllAssignments.assignmentInfo}" />
-									</htm:td>
-								</htm:tr>
-							</htm:table>
-							<af:spacer height="20" />
+							<f:facet name="header">
+								<h:outputText value="Title" />
+							</f:facet>
+							<h:commandLink action="#{studentAllAssignments.assignmentInfo}"
+								styleClass="tableLink">
+								<h:outputText value="#{submission.assignment.title}"
+									styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Start Date" />
+							</f:facet>
+							<h:commandLink action="#{studentAllAssignments.assignmentInfo}"
+								styleClass="tableLink">
+								<h:outputText value="#{submission.assignment.startDate}"
+									styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="End Date" />
+							</f:facet>
+							<h:commandLink action="#{studentAllAssignments.assignmentInfo}"
+								styleClass="tableLink">
+								<h:outputText value="#{submission.assignment.endDate}"
+									styleClass="tableLink" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Status" />
+							</f:facet>
+							<h:commandLink action="#{studentAllAssignments.assignmentInfo}"
+								styleClass="tableLink">
+								<h:outputText value="Submitted"
+									rendered="#{submission.submissionDate != null}"
+									styleClass="tableLink" />
+								<h:outputText value="Pending"
+									rendered="#{submission.submissionDate == null}"
+									styleClass="tableLink" />
+							</h:commandLink>
 						</h:column>
 					</h:dataTable>
 

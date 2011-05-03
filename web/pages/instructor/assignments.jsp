@@ -64,7 +64,13 @@
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorAssignments.create}"
 							styleClass="link">
-							<h:outputText value="New Assignment"
+							<h:outputText value="Create Assignment"
+								styleClass="topmenu_link" />
+						</h:commandLink>
+						<af:image source="/images/create.png" />
+						<h:commandLink action="#{instructorAssignments.add}"
+							styleClass="link">
+							<h:outputText value="Add Assignment"
 								styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>

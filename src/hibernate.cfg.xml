@@ -7,10 +7,8 @@
 	<session-factory>
     	
         <!-- Database connection settings -->
-		<!-- <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <property name="connection.url">jdbc:hsqldb:file:/media/Common/Workspace/Developments/Projects/ProgTest/database/progtest</property> -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost/progtest</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/progtest</property>
         <property name="connection.username">progtest</property>
         <property name="connection.password">progtest</property>
 

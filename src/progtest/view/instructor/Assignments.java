@@ -112,6 +112,10 @@ public class Assignments {
 		return Constants.ACTION_CREATE;
 	}
 
+	public String add() {
+		return Constants.ACTION_ADD;
+	}
+
 	public String view() {
 		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignmentsTable
 				.getRowData());

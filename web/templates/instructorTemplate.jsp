@@ -26,7 +26,6 @@
 				<h:panelGrid columns="2" style="width: 800px" columnClasses="menu">
 					<htm:div style="width:100%">
 						<af:spacer height="10" />
-						<!-- <af:image source="../images/progtest.gif" /> -->
 					</htm:div>
 					<htm:div align="right" style="width:100%">
 						<af:spacer height="10" />

@@ -137,8 +137,9 @@ public class Executor {
 				InputStream st = p.getInputStream();
 				InputStreamReader isr = new InputStreamReader(st);
 				BufferedReader br = new BufferedReader(isr);
-				while (br.ready())
+				while (br.ready()) {
 					System.out.println(br.readLine());
+				}
 
 				st = p.getErrorStream();
 				isr = new InputStreamReader(st);
@@ -147,6 +148,18 @@ public class Executor {
 					System.err.println(br.readLine());
 
 				p.waitFor();
+
+				st = p.getInputStream();
+				isr = new InputStreamReader(st);
+				br = new BufferedReader(isr);
+				while (br.ready())
+					System.out.println(br.readLine());
+
+				st = p.getErrorStream();
+				isr = new InputStreamReader(st);
+				br = new BufferedReader(isr);
+				while (br.ready())
+					System.err.println(br.readLine());
 
 			}
 

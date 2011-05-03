@@ -12,7 +12,9 @@
 
 		<h:form>
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+			
+				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;">
 
@@ -52,11 +54,11 @@
 
 				</htm:div>
 
-				<af:spacer width="15" />
+				<af:spacer width="20" />
 
-				<htm:div style="width: 615px;">
+				<htm:div style="width: 600px;">
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
 
 					<h:outputText value="Grades" styleClass="title" />
 

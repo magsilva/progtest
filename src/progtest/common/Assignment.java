@@ -122,9 +122,16 @@ public class Assignment {
 	@Transient
 	public List<Tool> getTools() {
 		List<Tool> tools = new ArrayList<Tool>();
-		for (Requisite requisite : requisites)
-			if (!tools.contains(requisite.getCriterion().getTool()))
+		for (Requisite requisite : requisites) {
+			boolean contains = false;
+			for (Tool tool : tools) {
+				if (tool.getIdCode() == requisite.getCriterion().getTool()
+						.getIdCode())
+					contains = true;
+			}
+			if (!contains)
 				tools.add(requisite.getCriterion().getTool());
+		}
 		return tools;
 	}
 
