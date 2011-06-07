@@ -8,6 +8,7 @@ import java.util.List;
 import javax.faces.component.UIData;
 
 import progtest.common.Submission;
+import progtest.common.Tool;
 import progtest.database.Querier;
 import progtest.execution.Directories;
 import progtest.reports.Report;
@@ -34,6 +35,8 @@ public class Assignment {
 	private List<Submission> submissions = new ArrayList<Submission>();
 
 	private UIData submissionsTable;
+	
+	private List<Tool> tools;
 
 	private List<Report> reports = new ArrayList<Report>();
 
@@ -109,6 +112,14 @@ public class Assignment {
 		this.submissionsTable = submissionsTable;
 	}
 
+	public List<Tool> getTools() {
+		return tools;
+	}
+
+	public void setTools(List<Tool> tools) {
+		this.tools = tools;
+	}
+
 	public List<Report> getReports() {
 		return reports;
 	}
@@ -165,6 +176,8 @@ public class Assignment {
 		endDate = assignment.getEndDate();
 
 		submissions = Querier.getEvaluations(assignment);
+		
+		tools = assignment.getTools();
 
 		for (File file : FileUtil.listFiles(new File(Directories
 				.getPitiDirPath(assignment))))

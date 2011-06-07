@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TXTReport extends Report {
 
-	private String content = "";
+	private List<String> content = new ArrayList<String>();
 
 	public TXTReport(File file) throws IOException {
 		
@@ -22,7 +24,7 @@ public class TXTReport extends Report {
 			br = new BufferedReader(fr);
 
 			while (br.ready())
-				content += br.readLine() + "/n";
+				content.add(br.readLine().replace("\t", "  "));
 
 		} finally {
 
@@ -36,11 +38,11 @@ public class TXTReport extends Report {
 
 	}
 
-	public String getContent() {
+	public List<String> getContent() {
 		return content;
 	}
 
-	public void setContent(String content) {
+	public void setContent(List<String> content) {
 		this.content = content;
 	}
 

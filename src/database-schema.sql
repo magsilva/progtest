@@ -1,6 +1,6 @@
-DROP DATABASE progtest;
-CREATE DATABASE progtest;
-USE progtest;
+DROP DATABASE draylson;
+CREATE DATABASE draylson;
+USE draylson;
 
 CREATE TABLE User (
 	idCode INT NOT NULL,

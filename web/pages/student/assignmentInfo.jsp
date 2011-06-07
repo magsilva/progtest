@@ -422,7 +422,13 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="#{studentAssignmentInfo.txtReport.content}" />
+					
+
+					<h:dataTable value="#{studentAssignmentInfo.txtReport.content}" var="lines">
+						<h:column rendered="#{!empty studentAssignmentInfo.txtReport.content}">
+							<h:outputText value="#{lines}" />
+						</h:column>
+					</h:dataTable>
 
 				</htm:div>
 
