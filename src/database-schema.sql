@@ -187,6 +187,10 @@ INSERT INTO Criterion VALUES(5, 1, 'All-Nodes', 'allnodes');
 
 INSERT INTO Criterion VALUES(5, 2, 'All-Edges', 'alledges');
 
+INSERT INTO Tool VALUES(6, 'Proteum', 'C', 'GCC', 'CUnit', 'cmdlines.txt', 'output.properties');
+
+INSERT INTO Criterion VALUES(6, 1, 'Analysis of Mutants', 'score');
+
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 
 INSERT INTO Oracle VALUES(2, 'Maximum and Minimum Value', 'Obtains the highest and lowest values of a sequence of integers.', 'Java');

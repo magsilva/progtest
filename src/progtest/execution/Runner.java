@@ -255,9 +255,9 @@ public class Runner {
 							FileUtil.copy(hFile, testsDir);
 					} else {
 						FileUtil.copy(file, programDir);
+						if (hFile.exists())
+							FileUtil.copy(hFile, programDir);
 					}
-				} else {
-					FileUtil.copy(file, programDir);
 				}
 			}
 
@@ -273,13 +273,12 @@ public class Runner {
 
 		try {
 
-			FileReader fr = new FileReader(FileUtil.extendTo(file, "h"));
+			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 
 			while (br.ready()) {
 				String line = br.readLine();
-				if (line.trim().startsWith("#include"))
-					if (line.contains("CUnit"))
+				if (line.contains("CU_automated_run_tests()"))
 						return true;
 			}
 
