@@ -52,7 +52,7 @@
 						<af:image source="/images/upload.png" />
 						<h:commandLink action="#{studentAssignmentInfo.send}"
 							styleClass="link">
-							<h:outputText value="Send Assignment" styleClass="topmenu_link" />
+							<h:outputText value="Submit Assignment" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -119,22 +119,38 @@
 
 					<af:spacer height="10" />
 
+					<h:panelGrid columns="2" rendered="#{studentAssignmentInfo.downloadable != null}">
+						<af:image source="/images/download.png" />
+						<h:outputLink value="#{studentAssignmentInfo.downloadable}"
+							styleClass="link">
+							<h:outputText value="Download File" styleClass="topmenu_link" />
+						</h:outputLink>
+					</h:panelGrid>
+
 					<h:panelGrid columns="2">
 						<af:image source="/images/upload.png" />
 						<h:commandLink action="#{studentAssignmentInfo.send}"
 							styleClass="link">
-							<h:outputText value="Send Assignment Again"
+							<h:outputText value="Submit Again"
 								styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
-					<!--<h:panelGrid columns="2">
-						<af:image source="/images/add.png" />
-						<h:commandLink action="#{studentAssignmentInfo.add}"
+					<h:panelGrid columns="2">
+						<af:image source="/images/execute.png" />
+						<h:commandLink action="#{studentAssignmentInfo.execute}"
 							styleClass="link">
-							<h:outputText value="Add test Cases" styleClass="topmenu_link" />
+							<h:outputText value="Execute Again" styleClass="topmenu_link" />
 						</h:commandLink>
-					</h:panelGrid>-->
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<af:image source="/images/evaluation.png" />
+						<h:commandLink action="#{studentAssignmentInfo.evaluate}"
+							styleClass="link">
+							<h:outputText value="Evaluate Again" styleClass="topmenu_link" />
+						</h:commandLink>
+					</h:panelGrid>
 
 				</htm:div>
 

@@ -11,6 +11,7 @@ import progtest.common.Submission;
 import progtest.common.Tool;
 import progtest.database.Querier;
 import progtest.execution.Directories;
+import progtest.execution.Runner;
 import progtest.reports.Report;
 import progtest.reports.TXTReport;
 import progtest.reports.XMLReport;
@@ -35,7 +36,7 @@ public class Assignment {
 	private List<Submission> submissions = new ArrayList<Submission>();
 
 	private UIData submissionsTable;
-	
+
 	private List<Tool> tools;
 
 	private List<Report> reports = new ArrayList<Report>();
@@ -47,6 +48,8 @@ public class Assignment {
 	private UIData recordsTable;
 
 	private TXTReport txtReport;
+	
+	private String downloadable = null;
 
 	public int getViewId() {
 		return viewId;
@@ -160,6 +163,14 @@ public class Assignment {
 		this.txtReport = txtReport;
 	}
 
+	public String getDownloadable() {
+		return downloadable;
+	}
+
+	public void setDownloadable(String downloadable) {
+		this.downloadable = downloadable;
+	}
+
 	public Assignment() {
 
 		activedReport = Constants.EMPTY;
@@ -176,8 +187,18 @@ public class Assignment {
 		endDate = assignment.getEndDate();
 
 		submissions = Querier.getEvaluations(assignment);
-		
+
 		tools = assignment.getTools();
+		
+		try {
+			
+			downloadable = Runner.getDownloadable(assignment);
+			
+		} catch (Throwable t) {
+			
+			t.printStackTrace();
+			
+		}
 
 		for (File file : FileUtil.listFiles(new File(Directories
 				.getPitiDirPath(assignment))))
@@ -231,6 +252,45 @@ public class Assignment {
 
 	public String edit() {
 		return Constants.ACTION_EDIT;
+	}
+
+	public String execute() {
+
+		progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
+		try {
+
+			Runner.execute(assignment);
+			Runner.evaluate(assignment);
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+
+		return Constants.ACTION_SELECT;
+
+	}
+
+	public String evaluate() {
+
+		progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
+		try {
+
+			Runner.evaluate(assignment);
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+
+		return Constants.ACTION_SELECT;
+
 	}
 
 	public String remove() {

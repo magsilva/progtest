@@ -239,8 +239,19 @@ public class AddAssignment {
 		AssignmentDAO.insert(assignment);
 
 		Oracle oracle = (Oracle) FacesUtil.getSession(Constants.SESSION_ORACLE);
-
-		Runner.run(assignment, oracle);
+		
+		try {
+			
+			Runner.makeDirectories(assignment);
+			Runner.useOracle(assignment, oracle);
+			Runner.execute(assignment);
+			Runner.evaluate(assignment);
+		
+		} catch(Throwable t) {
+			
+			t.printStackTrace();
+			
+		}
 
 		AssignmentDAO.update(assignment);
 		

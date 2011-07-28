@@ -83,11 +83,35 @@
 
 					<af:spacer height="10" />
 
+					<h:panelGrid columns="2" rendered="#{instructorAssignment.downloadable != null}">
+						<af:image source="/images/download.png" />
+						<h:outputLink value="#{instructorAssignment.downloadable}"
+							styleClass="link">
+							<h:outputText value="Download File" styleClass="topmenu_link" />
+						</h:outputLink>
+					</h:panelGrid>
+
 					<h:panelGrid columns="2">
 						<af:image source="/images/edit.png" />
 						<h:commandLink action="#{instructorAssignment.edit}"
 							styleClass="link">
 							<h:outputText value="Edit Assignment" styleClass="topmenu_link" />
+						</h:commandLink>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<af:image source="/images/execute.png" />
+						<h:commandLink action="#{instructorAssignment.execute}"
+							styleClass="link">
+							<h:outputText value="Execute Again" styleClass="topmenu_link" />
+						</h:commandLink>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<af:image source="/images/evaluation.png" />
+						<h:commandLink action="#{instructorAssignment.evaluate}"
+							styleClass="link">
+							<h:outputText value="Evaluate Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 

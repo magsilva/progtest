@@ -33,6 +33,9 @@ public class Constants {
 	public static final String PATH_COMPILER = PATH_ROOT + File.separator
 			+ "compilers";
 
+	public static final String PATH_FILES = PATH_ROOT + File.separator
+			+ "files";
+
 	/* Extensions */
 	
 	public static final String EXTENSION_XML = ".xml";

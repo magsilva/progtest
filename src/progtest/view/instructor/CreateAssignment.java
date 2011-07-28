@@ -218,8 +218,19 @@ public class CreateAssignment {
 		assignment.setRequisites(requisites);
 
 		AssignmentDAO.insert(assignment);
-
-		Runner.run(assignment, uploadedFile);
+		
+		try {
+			
+			Runner.makeDirectories(assignment);
+			Runner.upload(assignment, uploadedFile);
+			Runner.execute(assignment);
+			Runner.evaluate(assignment);
+		
+		} catch(Throwable t) {
+			
+			t.printStackTrace();
+			
+		}
 
 		AssignmentDAO.update(assignment);
 

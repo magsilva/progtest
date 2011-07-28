@@ -9,6 +9,7 @@ import javax.faces.component.UIData;
 
 import progtest.common.Submission;
 import progtest.execution.Directories;
+import progtest.execution.Runner;
 import progtest.reports.Report;
 import progtest.reports.TXTReport;
 import progtest.reports.XMLReport;
@@ -53,6 +54,8 @@ public class AssignmentInfo {
 	private UIData totalCoveragesTable;
 
 	private String grade;
+
+	private String downloadable = null;
 
 	public int getViewId() {
 		return viewId;
@@ -198,6 +201,14 @@ public class AssignmentInfo {
 		return grade;
 	}
 
+	public String getDownloadable() {
+		return downloadable;
+	}
+
+	public void setDownloadable(String downloadable) {
+		this.downloadable = downloadable;
+	}
+
 	public AssignmentInfo() {
 
 		activedReport = Constants.EMPTY;
@@ -223,11 +234,19 @@ public class AssignmentInfo {
 
 		} else {
 
-			for (File file : FileUtil.listFiles(
-					new File(
-							Directories.getPstsDirPath(
-									submission.getAssignment(),
-									submission.getStudent()))))
+			try {
+
+				downloadable = Runner.getDownloadable(submission);
+
+			} catch (Throwable t) {
+
+				t.printStackTrace();
+
+			}
+
+			for (File file : FileUtil.listFiles(new File(Directories
+					.getPstsDirPath(submission.getAssignment(),
+							submission.getStudent()))))
 				if (!file.getName().endsWith(".properties"))
 					reports.add(new Report(file));
 
@@ -332,6 +351,48 @@ public class AssignmentInfo {
 		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
 		return Constants.ACTION_ADD;
+	}
+
+	public String execute() {
+
+		Submission submission = (Submission) FacesUtil
+				.getSession(Constants.SESSION_EVALUATION);
+
+		try {
+
+			Runner.psts(submission);
+			Runner.pits(submission);
+			Runner.psti(submission);
+			Runner.evaluate(submission);
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+
+		return Constants.ACTION_SELECT;
+
+	}
+
+	public String evaluate() {
+
+		Submission submission = (Submission) FacesUtil
+				.getSession(Constants.SESSION_EVALUATION);
+
+		try {
+
+			Runner.evaluate(submission);
+			Runner.report(submission);
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+
+		return Constants.ACTION_SELECT;
+
 	}
 
 }
