@@ -364,6 +364,7 @@ public class AssignmentInfo {
 			Runner.pits(submission);
 			Runner.psti(submission);
 			Runner.evaluate(submission);
+			Runner.report(submission);
 
 		} catch (Throwable t) {
 
