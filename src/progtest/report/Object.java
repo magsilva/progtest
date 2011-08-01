@@ -1,5 +1,8 @@
 package progtest.report;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Object {
 	
 	public final static int TYPE_TEXT = 0;
@@ -10,9 +13,13 @@ public class Object {
 	
 	private int type;
 
-	private String textValue = null;
+	private String textValue = "";
 	
-	private String textColor = null;
+	private String textColor = "";
+	
+	private Row header = new Row();
+	
+	private List<Row> rows = new ArrayList<Row>();
 
 	public Object(int type) {
 		this.type = type;
@@ -36,6 +43,14 @@ public class Object {
 
 	public void setTextColor(String textColor) {
 		this.textColor = textColor;
+	}
+
+	public Row getHeader() {
+		return header;
+	}
+
+	public List<Row> getRows() {
+		return rows;
 	}
 
 }
