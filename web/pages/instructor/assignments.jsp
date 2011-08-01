@@ -13,7 +13,7 @@
 		<h:form>
 
 			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
-			
+
 				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;">
@@ -56,22 +56,23 @@
 
 					<af:spacer height="40" />
 
-					<h:outputText value="Actions" styleClass="menu_title" />
+					<h:outputText value="Actions" styleClass="menu_title"
+						rendered="#{instructorAssignments.activedCourse != null}" />
 
-					<af:spacer height="10" />
+					<af:spacer height="10"
+						rendered="#{instructorAssignments.activedCourse != null}" />
 
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2"
+						rendered="#{instructorAssignments.activedCourse != null}">
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorAssignments.create}"
 							styleClass="link">
-							<h:outputText value="Create Assignment"
-								styleClass="topmenu_link" />
+							<h:outputText value="Create Assignment" styleClass="topmenu_link" />
 						</h:commandLink>
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorAssignments.add}"
 							styleClass="link">
-							<h:outputText value="Add Assignment"
-								styleClass="topmenu_link" />
+							<h:outputText value="Add Assignment" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
