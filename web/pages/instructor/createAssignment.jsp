@@ -137,7 +137,7 @@
 					<h:messages styleClass="message" />
 
 					<h:selectOneRadio value="#{instructorCreateAssignment.upload}"
-						onchange="goToStep2()"
+						onchange="submit()"
 						valueChangeListener="#{instructorCreateAssignment.change}">
 						<f:selectItem itemValue="true"
 							itemLabel="Upload Oracle Assignment" />

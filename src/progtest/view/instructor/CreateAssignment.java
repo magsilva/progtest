@@ -186,8 +186,13 @@ public class CreateAssignment {
 	}
 
 	public String goToStep3() {
+		
+		if (isUpload()) {
+			
+			if(uploaded())
+				step = 3;
 
-		if (!isUpload()) {
+		} else {
 
 			Oracle oracle = Querier.getOracle(this.oracle);
 
@@ -196,9 +201,9 @@ public class CreateAssignment {
 
 			FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
 
-		}
+			step = 3;
 
-		step = 3;
+		}
 
 		return Constants.ACTION_SELECT;
 
@@ -269,7 +274,7 @@ public class CreateAssignment {
 
 			Runner.makeDirectories(assignment);
 
-			if (!isUpload()) {
+			if (isUpload()) {
 				
 				Runner.upload(assignment, uploadedFile);
 				
@@ -383,6 +388,20 @@ public class CreateAssignment {
 		if (selectedCriteria.isEmpty()) {
 
 			FacesUtil.addMessage(Constants.KEY_ERROR_ANYCRITERIONSELECTED,
+					FacesMessage.SEVERITY_ERROR);
+
+			return false;
+
+		} else
+
+			return true;
+
+	}
+
+	private boolean uploaded() {
+		if (uploadedFile == null) {
+
+			FacesUtil.addMessage(Constants.KEY_ERROR_ANYFILEUPLOADED,
 					FacesMessage.SEVERITY_ERROR);
 
 			return false;

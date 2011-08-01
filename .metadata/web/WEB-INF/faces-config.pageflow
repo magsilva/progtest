@@ -9,22 +9,21 @@
   <nodes xsi:type="pageflow:PFPage" name="pages/student/submitAssigmentTemplate" x="986" y="2705" id="pf1265041007871145" referenceLink="//@navigationRule.23/@fromViewId|" outlinks="pf12658925727400 pf12663256066452 pf12663256066453 pf12663256066454" inlinks="pf12663256066455 pf12663256066456 pf12663256066457" path="/pages/student/submitAssignmentTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/student/addTestCasesTemplate" x="554" y="2929" id="pf1265041007886168" referenceLink="//@navigationRule.24/@fromViewId|" outlinks="pf12663256066459 pf126632560664510 pf126632560664511 pf126632560664512" inlinks="pf12662593533542" path="/pages/student/addTestCasesTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/student/outstandingAssignmentsTemplate" x="770" y="2342" id="pf1265041007886193" referenceLink="//@navigationRule.24/@navigationCase.1/@toViewId|" outlinks="pf12657318823213 pf12658925727451 pf12663256066455" inlinks="pf12657318823213 pf12663256066452 pf126632560664510 pf126634384387028 pf126634392032766 pf13010778779670" path="/pages/student/outstandingAssignmentsTemplate.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/student/allAssignmentsTemplate" x="770" y="2726" id="pf12657215639792" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf12658927162044 pf12658927162045 pf12663256066456" inlinks="pf12658927162045 pf12663256066453 pf126632560664511 pf126634384387029 pf13044052149440" path="/pages/student/allAssignmentsTemplate.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/student/allAssignmentsTemplate" x="770" y="2726" id="pf12657215639792" referenceLink="//@navigationRule.24/@navigationCase.2/@toViewId|" outlinks="pf12658927162044 pf12658927162045 pf12663256066456" inlinks="pf12658927162045 pf12663256066453 pf126632560664511 pf126634384387029 pf13044052149440" path="/pages/student/allAssignmentsTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/student/assignmentInfoTemplate" x="1202" y="2907" id="pf12658925727452" referenceLink="//@navigationRule.24/@navigationCase.3/@toViewId|" outlinks="pf12662593533542 pf12663256066457" inlinks="pf12658925727400 pf12658925727451 pf12658927162044 pf12663256066454 pf12663256066459 pf126632560664512" path="/pages/student/assignmentInfoTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/student/submitAssignmentTemplate" x="122" y="967" id="pf12658930111038" referenceLink="//@navigationRule.34/@navigationCase.1/@toViewId|" path="/pages/student/submitAssignmentTemplate.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/default/loginTemplate" x="554" y="2119" id="pf126634293207721" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf12664306716030 pf13044052149440" inlinks="pf126634334513926 pf126634334513927 pf126634439359667 pf12670168908691" path="/pages/default/loginTemplate.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/default/loginTemplate" x="554" y="2119" id="pf126634293207721" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf12664306716030 pf13044052149440" inlinks="pf126634334513926 pf126634334513927 pf126634439359667 pf12670168908691" path="/pages/default/loginTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/default/registerTemplate" x="338" y="1917" id="pf126634293207722" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf126634334513926 pf126634334513927" inlinks="pf12670168908690" path="/pages/default/registerTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/student/gradesTemplate" x="338" y="178" id="pf126634384387061" referenceLink="//@navigationRule.0/@navigationCase.11/@toViewId|" inlinks="pf126634384387030" path="/pages/student/gradesTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/student/coursesInfoTemplate" x="338" y="562" id="pf126634384387062" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" inlinks="pf126634384387031" path="/pages/student/coursesInfoTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/coursesTemplate" x="770" y="1181" id="pf12664306716031" referenceLink="//@navigationRule.7/@navigationCase.1/@toViewId|" outlinks="pf12665141719453 pf12665141719454 pf12665141719455 pf13013445202752 pf13013445202753" inlinks="pf12664306716030 pf12664307644192 pf12665140065070 pf12665140065071 pf12665148517466 pf12665148517467 pf12665151455379 pf126651514553710 pf12670168908844 pf12670168908845" path="/pages/instructor/coursesTemplate.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/instructor/assignmentsTemplate" x="338" y="2929" id="pf12664307644195" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf12668646901926 pf12668677331988 pf12668677331989 pf13044059463111" inlinks="pf12664307644193 pf12668677331988 pf12669310764340 pf12669310764341 pf12669324166494 pf12669324166495 pf126693478590219" path="/pages/instructor/assignmentsTemplate.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/instructor/assignmentsTemplate" x="338" y="2929" id="pf12664307644195" referenceLink="//@navigationRule.13/@navigationCase.1/@toViewId|" outlinks="pf12668646901926 pf12668677331988 pf12668677331989" inlinks="pf12664307644193 pf12668677331988 pf12669310764340 pf12669310764341 pf126693478590219" path="/pages/instructor/assignmentsTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/studentsTemplate" x="338" y="4081" id="pf12664307644196" referenceLink="//@navigationRule.18/@navigationCase.0/@toViewId|" outlinks="pf126651712555925 pf12668430589440" inlinks="pf12664307644194 pf126651668875319 pf126651668875320 pf126651695252123 pf126651695252124 pf12668610153240" path="/pages/instructor/studentsTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/addStudentsTemplate" x="122" y="4081" id="pf126651668875321" referenceLink="//@navigationRule.17/@navigationCase.3/@toViewId|" outlinks="pf126651668875319 pf126651668875320 pf12670168908846 pf13022919746290" inlinks="pf126651712555925 pf12670168908846" path="/pages/instructor/addStudentsTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/studentTemplate" x="554" y="4444" id="pf12668430589441" referenceLink="//@navigationRule.18/@navigationCase.1/@toViewId|" outlinks="pf12668610153242 pf12668610153243" inlinks="pf12668430589440 pf12668610153242 pf12668613882585 pf13013445202753" path="/pages/instructor/studentTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/removeStudentTemplate" x="122" y="4465" id="pf12668610153244" referenceLink="//@navigationRule.18/@navigationCase.2/@toViewId|" outlinks="pf12668610153240 pf12668613882585 pf12670168908847" inlinks="pf12668610153243 pf12670168908847" path="/pages/instructor/removeStudentTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/assignmentTemplate" x="554" y="3313" id="pf12668646901927" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" outlinks="pf12669341689638 pf12669341689639 pf126693416896310" inlinks="pf12668646901926 pf126693416896311 pf126693416896312 pf126693416896313 pf12669341689638 pf13013445202752" path="/pages/instructor/assignmentTemplate.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/instructor/createAssignmentTemplate" x="122" y="2545" id="pf126686773319811" referenceLink="//@navigationRule.8/@navigationCase.2/@toViewId|" outlinks="pf12669310764342 pf12669310764340 pf12669310764341 pf12669310764343" inlinks="pf12668677331989 pf12669310764342 pf12669310764343" path="/pages/instructor/createAssignmentTemplate.jsp"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/instructor/addAssignmentTemplate" x="122" y="2929" id="pf126686773319812" referenceLink="//@navigationRule.8/@navigationCase.2/@toViewId|" outlinks="pf12669324166494 pf12669324166495 pf12669324166496 pf12669324166497" inlinks="pf12669324166496 pf12669324166497 pf13044059463111" path="/pages/instructor/addAssignmentTemplate.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/instructor/createAssignmentTemplate" x="122" y="2545" id="pf126686773319811" referenceLink="//@navigationRule.10/@navigationCase.3/@toViewId|" outlinks="pf12669310764342 pf12669310764340 pf12669310764341 pf12669310764343" inlinks="pf12668677331989 pf12669310764342 pf12669310764343" path="/pages/instructor/createAssignmentTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/eAssignmentTemplate" x="338" y="3516" id="pf126693416896315" referenceLink="//@navigationRule.12/@navigationCase.3/@toViewId|" outlinks="pf126693416896316 pf126693416896311 pf126693416896312 pf126693416896317" inlinks="pf126693416896316 pf126693416896317 pf12669341689639" path="/pages/instructor/editAssignmentTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/rAssignmentTemplate" x="122" y="3313" id="pf126693416896318" referenceLink="//@navigationRule.13/@navigationCase.2/@toViewId|" outlinks="pf126693416896313 pf126693478590219 pf12670168908848" inlinks="pf126693416896310 pf12670168908848" path="/pages/instructor/removeAssignmentTemplate.jsp"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/instructor/editProfileTemplate" x="554" y="967" id="pf12670168908849" referenceLink="//@navigationRule.3/@navigationCase.2/@toViewId|" outlinks="pf12670168908844 pf12670168908845 pf126701689088410" inlinks="pf12670168908692 pf126701689088410" path="/pages/instructor/editProfileTemplate.jsp"/>
@@ -77,8 +76,6 @@
   <links id="pf12668677331989" target="pf126686773319811" source="pf12664307644195" outcome="create"/>
   <links id="pf12669310764340" target="pf12664307644195" source="pf126686773319811" outcome="cancel"/>
   <links id="pf12669310764341" target="pf12664307644195" source="pf126686773319811" outcome="success"/>
-  <links id="pf12669324166494" target="pf12664307644195" source="pf126686773319812" outcome="cancel"/>
-  <links id="pf12669324166495" target="pf12664307644195" source="pf126686773319812" outcome="success"/>
   <links id="pf126693416896311" target="pf12668646901927" source="pf126693416896315" outcome="cancel"/>
   <links id="pf126693416896312" target="pf12668646901927" source="pf126693416896315" outcome="success"/>
   <links id="pf126693416896313" target="pf12668646901927" source="pf126693416896318" outcome="cancel"/>
@@ -136,16 +133,6 @@
     <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
     <bendPoints d1Width="-94" d2Width="-94"/>
   </links>
-  <links id="pf12669324166496" target="pf126686773319812" source="pf126686773319812" outcome="select">
-    <bendPoints d1Height="-36" d2Height="-36"/>
-    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
-    <bendPoints d1Width="-64" d2Width="-64"/>
-  </links>
-  <links id="pf12669324166497" target="pf126686773319812" source="pf126686773319812" outcome="failure">
-    <bendPoints d1Height="-66" d2Height="-66"/>
-    <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
-    <bendPoints d1Width="-94" d2Width="-94"/>
-  </links>
   <links id="pf126693416896316" target="pf126693416896315" source="pf126693416896315" outcome="select">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -195,5 +182,4 @@
   <links id="pf13013445202753" target="pf12668430589441" source="pf12664306716031" outcome="viewStudent"/>
   <links id="pf13022919746290" target="pf1265041007871101" source="pf126651668875321" outcome="register"/>
   <links id="pf13044052149440" target="pf12657215639792" source="pf126634293207721" outcome="studentHome"/>
-  <links id="pf13044059463111" target="pf126686773319812" source="pf12664307644195" outcome="add"/>
 </pageflow:Pageflow>
