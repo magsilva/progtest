@@ -35,10 +35,10 @@ public class ReportBean {
 		report.getSections().add(section2);
 		
 		Object table1 = new Object(Object.TYPE_TABLE);
-		table1.getHeader().setColumn1("Header 1");
-		table1.getHeader().setColumn2("Header 2");
-		table1.getHeader().setColumn3("Header 3");
-		table1.getHeader().setColumn4("Header 4");
+		table1.getTableHeader().setColumn1("Header 1");
+		table1.getTableHeader().setColumn2("Header 2");
+		table1.getTableHeader().setColumn3("Header 3");
+		table1.getTableHeader().setColumn4("Header 4");
 		
 		Row row1 = new Row();
 		row1.setColumn1("row1 / column1");
@@ -64,16 +64,25 @@ public class ReportBean {
 		row4.setColumn3("row4 / column3");
 		row4.setColumn4("row4 / column4");
 		
-		table1.getRows().add(row1);
-		table1.getRows().add(row2);
-		table1.getRows().add(row3);
-		table1.getRows().add(row4);
+		table1.getTableRows().add(row1);
+		table1.getTableRows().add(row2);
+		table1.getTableRows().add(row3);
+		table1.getTableRows().add(row4);
 		
 		Section section3 = new Section();
 		section3.setTitle("Section 3");
 		section3.getObjects().add(table1);
 		
 		report.getSections().add(section3);
+		
+		Object figure1 = new Object(Object.TYPE_FIGURE);
+		figure1.setFigurePath("/figures/test.jpg");
+		
+		Section section4 = new Section();
+		section4.setTitle("Section 4");
+		section4.getObjects().add(figure1);
+		
+		report.getSections().add(section4);
 		
 	}
 

@@ -17,9 +17,11 @@ public class Object {
 	
 	private String textColor = "";
 	
-	private Row header = new Row();
+	private Row tableHeader = new Row();
 	
-	private List<Row> rows = new ArrayList<Row>();
+	private List<Row> tableRows = new ArrayList<Row>();
+	
+	private String figurePath = "/figures/test.jpg";
 
 	public Object(int type) {
 		this.type = type;
@@ -45,12 +47,20 @@ public class Object {
 		this.textColor = textColor;
 	}
 
-	public Row getHeader() {
-		return header;
+	public Row getTableHeader() {
+		return tableHeader;
 	}
 
-	public List<Row> getRows() {
-		return rows;
+	public List<Row> getTableRows() {
+		return tableRows;
+	}
+
+	public String getFigurePath() {
+		return figurePath;
+	}
+
+	public void setFigurePath(String figurePath) {
+		this.figurePath = figurePath;
 	}
 
 }
