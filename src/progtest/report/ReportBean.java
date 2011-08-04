@@ -1,12 +1,27 @@
 package progtest.report;
 
+import java.io.File;
+
 public class ReportBean {
 	
 	private Report report = new Report();
 	
 	public ReportBean() {
 		
-		Object text1 = new Object(Object.TYPE_TEXT);
+		File xmlFile = new File("/home/draylson/Workspace/Drafts/ProgTest/example_report.xml");
+		
+		try {
+			
+			report = XML2Report.parse(xmlFile);
+			
+		} catch (Throwable e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		
+		/*Object text1 = new Object(Object.TYPE_TEXT);
 		text1.setTextValue("Testing text report!!!");
 		text1.setTextColor("#000000");
 		
@@ -82,7 +97,7 @@ public class ReportBean {
 		section4.setTitle("Section 4");
 		section4.getObjects().add(figure1);
 		
-		report.getSections().add(section4);
+		report.getSections().add(section4);*/
 		
 	}
 

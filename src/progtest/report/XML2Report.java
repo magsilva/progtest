@@ -10,31 +10,40 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import progtest.util.Constants;
+import progtest.util.FileUtil;
+
 public class XML2Report {
 
 	private static final String TAG_REPORT = "report";
 
 	private static final String TAG_SECTION = "section";
 
-	private static final String ATTR_NAME = "attribute";
+	private static final String TAG_TEXT = "text";
+
+	private static final String TAG_TABLE = "table";
+
+	private static final String TAG_HEADER = "header";
+
+	private static final String TAG_ROW = "row";
+
+	private static final String TAG_COLUMN = "column";
+
+	private static final String TAG_FIGURE = "figure";
+
+	private static final String ATTR_NAME = "name";
 
 	private static final String ATTR_TITLE = "title";
-
-	private static final String TAG_TEXT = "text";
 
 	private static final String ATTR_TEXTVALUE = "value";
 
 	private static final String ATTR_TEXTCOLOR = "color";
 
-	private static final Object TAG_TABLE = null;
+	private static final String ATTR_COLUMNVALUE = "value";
 
-	private static final Object TAG_HEADER = null;
+	private static final String ATTR_FILENAME = "filename";
 
-	private static final Object TAG_ROW = null;
-
-	private static final Object TAG_COLUMN = null;
-
-	private static final Object ATTR_COLUMNVALUE = null;
+	private static final String DIR_FIGURES = Constants.PATH_FIGURES;
 
 	public static Report parse(File xmlFile) throws Throwable {
 
@@ -54,8 +63,9 @@ public class XML2Report {
 				if (a.getNodeName().equals(TAG_SECTION)) {
 					Section section = new Section();
 					for (int j = 0; j < a.getAttributes().getLength(); j++) {
-						if (root.getAttributes().item(j).equals(ATTR_TITLE))
-							section.setTitle(root.getAttributes().item(j)
+						if (a.getAttributes().item(j).getNodeName()
+								.equals(ATTR_TITLE))
+							section.setTitle(a.getAttributes().item(j)
 									.getNodeValue());
 					}
 					for (int j = 0; j < a.getChildNodes().getLength(); j++) {
@@ -63,15 +73,15 @@ public class XML2Report {
 						if (b.getNodeName().equals(TAG_TEXT)) {
 							Object object = new Object(Object.TYPE_TEXT);
 							for (int k = 0; k < b.getAttributes().getLength(); k++) {
-								if (b.getAttributes().item(k)
+								if (b.getAttributes().item(k).getNodeName()
 										.equals(ATTR_TEXTVALUE))
 									object.setTextValue(b.getAttributes()
 											.item(k).getNodeValue());
 							}
 							for (int k = 0; k < b.getAttributes().getLength(); k++) {
-								if (b.getAttributes().item(k)
+								if (b.getAttributes().item(k).getNodeName()
 										.equals(ATTR_TEXTCOLOR))
-									object.setTextValue(b.getAttributes()
+									object.setTextColor(b.getAttributes()
 											.item(k).getNodeValue());
 							}
 							section.getObjects().add(object);
@@ -84,63 +94,85 @@ public class XML2Report {
 									int columnx = 1;
 									for (int l = 0; l < c.getChildNodes()
 											.getLength(); l++) {
-										Node d = c.getChildNodes().item(i);
+										Node d = c.getChildNodes().item(l);
 										if (d.getNodeName().equals(TAG_COLUMN)) {
 											for (int m = 0; m < d
 													.getAttributes()
 													.getLength(); m++) {
-												if (d.getNodeName().equals(
-														ATTR_COLUMNVALUE)) {
+												if (d.getAttributes()
+														.item(m)
+														.getNodeName()
+														.equals(ATTR_COLUMNVALUE)) {
 													switch (columnx) {
 													case 1:
 														object.getTableHeader()
 																.setColumn1(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 2:
 														object.getTableHeader()
 																.setColumn2(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 3:
 														object.getTableHeader()
 																.setColumn3(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 4:
 														object.getTableHeader()
 																.setColumn4(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 5:
 														object.getTableHeader()
 																.setColumn5(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 6:
 														object.getTableHeader()
 																.setColumn6(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 7:
 														object.getTableHeader()
 																.setColumn7(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 8:
 														object.getTableHeader()
 																.setColumn8(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 9:
 														object.getTableHeader()
 																.setColumn9(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													case 10:
 														object.getTableHeader()
 																.setColumn10(
-																		d.getNodeValue());
+																		d.getAttributes()
+																				.item(m)
+																				.getNodeValue());
 														break;
 													}
 												}
@@ -154,53 +186,75 @@ public class XML2Report {
 									int columnx = 1;
 									for (int l = 0; l < c.getChildNodes()
 											.getLength(); l++) {
-										Node d = c.getChildNodes().item(i);
+										Node d = c.getChildNodes().item(l);
 										if (d.getNodeName().equals(TAG_COLUMN)) {
 											for (int m = 0; m < d
 													.getAttributes()
 													.getLength(); m++) {
-												if (d.getNodeName().equals(
-														ATTR_COLUMNVALUE)) {
+												if (d.getAttributes()
+														.item(m)
+														.getNodeName()
+														.equals(ATTR_COLUMNVALUE)) {
 													switch (columnx) {
 													case 1:
-														row.setColumn1(
-																		d.getNodeValue());
+														row.setColumn1(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 2:
-														row.setColumn2(
-																		d.getNodeValue());
+														row.setColumn2(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 3:
-														row.setColumn3(
-																		d.getNodeValue());
+														row.setColumn3(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 4:
-														row.setColumn4(
-																		d.getNodeValue());
+														row.setColumn4(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 5:
-														row.setColumn5(
-																		d.getNodeValue());
+														row.setColumn5(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 6:
-														row.setColumn6(
-																		d.getNodeValue());
+														row.setColumn6(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 7:
-														row.setColumn7(
-																		d.getNodeValue());
+														row.setColumn7(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 8:
-														row.setColumn8(
-																		d.getNodeValue());
+														row.setColumn8(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 9:
-														row.setColumn9(
-																		d.getNodeValue());
+														row.setColumn9(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													case 10:
-														row.setColumn10(
-																		d.getNodeValue());
+														row.setColumn10(d
+																.getAttributes()
+																.item(m)
+																.getNodeValue());
 														break;
 													}
 												}
@@ -208,13 +262,42 @@ public class XML2Report {
 										}
 										columnx++;
 									}
+									object.getTableRows().add(row);
 								}
 							}
 							section.getObjects().add(object);
 						}
+						if (b.getNodeName().equals(TAG_FIGURE)) {
+							Object object = new Object(Object.TYPE_FIGURE);
+							for (int k = 0; k < b.getAttributes().getLength(); k++) {
+								if (b.getAttributes().item(k).getNodeName()
+										.equals(ATTR_FILENAME)) {
 
-						// TODO
+									File figure = new File(
+											xmlFile.getParentFile(), b
+													.getAttributes().item(k)
+													.getNodeValue());
 
+									if (figure.exists()) {
+
+										File destDir = new File(DIR_FIGURES
+												+ File.separator + "1");
+										for (int l = 2; destDir.exists(); l++)
+											destDir = new File(DIR_FIGURES
+													+ File.separator + l);
+
+										FileUtil.copy(figure, destDir);
+
+										object.setFigurePath("/figures/"
+												+ destDir.getName() + "/"
+												+ figure.getName());
+
+									}
+
+								}
+							}
+							section.getObjects().add(object);
+						}
 					}
 					report.getSections().add(section);
 				}
