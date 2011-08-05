@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Report {
 	
+	private String tool = null;
+	
 	private String name = null;
 
 	private List<Section> sections = new ArrayList<Section>();
@@ -15,6 +17,14 @@ public class Report {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getTool() {
+		return tool;
+	}
+
+	public void setTool(String tool) {
+		this.tool = tool;
 	}
 
 	public List<Section> getSections() {

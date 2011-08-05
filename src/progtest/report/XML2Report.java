@@ -31,6 +31,8 @@ public class XML2Report {
 
 	private static final String TAG_FIGURE = "figure";
 
+	private static final String ATTR_TOOL = "tool";
+
 	private static final String ATTR_NAME = "name";
 
 	private static final String ATTR_TITLE = "title";
@@ -54,6 +56,9 @@ public class XML2Report {
 		if (root.getNodeName().equals(TAG_REPORT)) {
 			report = new Report();
 			for (int i = 0; i < root.getAttributes().getLength(); i++) {
+				if (root.getAttributes().item(i).getNodeName()
+						.equals(ATTR_TOOL))
+					report.setTool(root.getAttributes().item(i).getNodeValue());
 				if (root.getAttributes().item(i).getNodeName()
 						.equals(ATTR_NAME))
 					report.setName(root.getAttributes().item(i).getNodeValue());

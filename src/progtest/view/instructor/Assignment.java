@@ -12,9 +12,8 @@ import progtest.common.Tool;
 import progtest.database.Querier;
 import progtest.execution.Directories;
 import progtest.execution.Runner;
-import progtest.reports.Report;
-import progtest.reports.TXTReport;
-import progtest.reports.XMLReport;
+import progtest.report.Report;
+import progtest.report.XML2Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
@@ -43,12 +42,8 @@ public class Assignment {
 
 	private UIData reportsTable;
 
-	private XMLReport xmlReport;
+	private Report report;
 
-	private UIData recordsTable;
-
-	private TXTReport txtReport;
-	
 	private String downloadable = null;
 
 	public int getViewId() {
@@ -139,28 +134,12 @@ public class Assignment {
 		this.reportsTable = reportsTable;
 	}
 
-	public XMLReport getXmlReport() {
-		return xmlReport;
+	public Report getReport() {
+		return report;
 	}
 
-	public void setXmlReport(XMLReport xmlReport) {
-		this.xmlReport = xmlReport;
-	}
-
-	public UIData getRecordsTable() {
-		return recordsTable;
-	}
-
-	public void setRecordsTable(UIData recordsTable) {
-		this.recordsTable = recordsTable;
-	}
-
-	public TXTReport getTxtReport() {
-		return txtReport;
-	}
-
-	public void setTxtReport(TXTReport txtReport) {
-		this.txtReport = txtReport;
+	public void setReport(Report report) {
+		this.report = report;
 	}
 
 	public String getDownloadable() {
@@ -173,41 +152,39 @@ public class Assignment {
 
 	public Assignment() {
 
-		activedReport = Constants.EMPTY;
-
-		progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
-				.getSession(Constants.SESSION_ASSIGNMENT);
-
-		title = assignment.getTitle();
-
-		description = assignment.getDescription();
-
-		startDate = assignment.getStartDate();
-
-		endDate = assignment.getEndDate();
-
-		submissions = Querier.getEvaluations(assignment);
-
-		tools = assignment.getTools();
-		
 		try {
-			
+
+			activedReport = Constants.EMPTY;
+
+			progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
+					.getSession(Constants.SESSION_ASSIGNMENT);
+
+			title = assignment.getTitle();
+
+			description = assignment.getDescription();
+
+			startDate = assignment.getStartDate();
+
+			endDate = assignment.getEndDate();
+
+			submissions = Querier.getEvaluations(assignment);
+
+			tools = assignment.getTools();
+
 			downloadable = Runner.getDownloadable(assignment);
-			
+
+			report = null;
+
+			for (File file : FileUtil.listFiles(new File(Directories
+					.getPitiDirPath(assignment))))
+				if (file.getName().endsWith(".xml"))
+					reports.add(XML2Report.parse(file));
+
 		} catch (Throwable t) {
-			
+
 			t.printStackTrace();
-			
+
 		}
-
-		for (File file : FileUtil.listFiles(new File(Directories
-				.getPitiDirPath(assignment))))
-			if (!file.getName().endsWith(".properties"))
-				reports.add(new Report(file));
-
-		xmlReport = null;
-
-		txtReport = null;
 
 		selectAboutView();
 
@@ -226,25 +203,8 @@ public class Assignment {
 	public String selectReportView() {
 
 		Report report = (Report) reportsTable.getRowData();
-
-		try {
-
-			if (report.getFile().getName().endsWith(".xml")) {
-
-				xmlReport = new XMLReport(report.getFile());
-				viewId = 2;
-				activedReport = report.getName();
-
-			} else {
-
-				txtReport = new TXTReport(report.getFile());
-				viewId = 3;
-				activedReport = report.getName();
-
-			}
-
-		} catch (Exception e) {
-		}
+		viewId = 2;
+		activedReport = report.getName();
 
 		return Constants.ACTION_SELECT;
 
