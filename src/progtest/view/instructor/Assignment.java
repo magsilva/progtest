@@ -202,7 +202,7 @@ public class Assignment {
 
 	public String selectReportView() {
 
-		Report report = (Report) reportsTable.getRowData();
+		report = (Report) reportsTable.getRowData();
 		viewId = 2;
 		activedReport = report.getName();
 

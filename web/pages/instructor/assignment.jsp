@@ -209,14 +209,14 @@
 
 					<af:spacer height="25" />
 
-					<h:dataTable value="#{instructorAssignment.report.sections}" var="section">
+					<h:dataTable value="#{instructorAssignment.report.sections}" var="section" width="100%">
 						<h:column>
 
 							<h:outputText value="#{section.title}" styleClass="subtitle" />
 
 							<af:spacer height="25" />
 
-							<h:dataTable value="#{section.objects}" var="object">
+							<h:dataTable value="#{section.objects}" var="object" width="100%">
 								<h:column>
 
 									<h:outputText value="#{object.textValue}"
