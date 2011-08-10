@@ -205,11 +205,13 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="#{instructorAssignment.report.name}" styleClass="title" />
+					<h:outputText value="#{instructorAssignment.report.name}"
+						styleClass="title" />
 
 					<af:spacer height="25" />
 
-					<h:dataTable value="#{instructorAssignment.report.sections}" var="section" width="100%">
+					<h:dataTable value="#{instructorAssignment.report.sections}"
+						var="section" width="100%">
 						<h:column>
 
 							<h:outputText value="#{section.title}" styleClass="subtitle" />
@@ -220,8 +222,8 @@
 								<h:column>
 
 									<h:outputText value="#{object.textValue}"
-										style="background: #{object.textColor}"
-										rendered="#{object.type == 0}" />
+										style="background: #{object.textColor};font-family:Courier New;font-size:8pt;font-weight:bold;"
+										rendered="#{object.type == 0}" escape="false" />
 
 									<h:dataTable value="#{object.tableRows}" var="row"
 										headerClass="tableHeader" rowClasses="tableRow" width="100%"
