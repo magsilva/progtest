@@ -144,22 +144,9 @@ public class Report2XML {
 
 				}
 
-				XMLFile.println("</report>");
+				XMLFile.println("\t</section>");
 
 			}
-
-			// for (int i = 1; i < data.length; i++) {
-
-			// XMLFile.println("\t<record>");
-
-			// for (int j = 0; j < data[0].length; j++) {
-			// XMLFile.println("\t\t<" + data[0][j] + " value=\""
-			// + data[i][j] + "\"/>");
-			// }
-
-			// XMLFile.println("\t</record>");
-
-			// }
 
 			XMLFile.println("</report>");
 

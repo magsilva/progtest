@@ -83,9 +83,9 @@
 									action="#{studentAssignmentInfo.selectResultView}"
 									styleClass="link">
 									<h:outputText value="Evaluation Result" styleClass="link"
-										rendered="#{studentAssignmentInfo.viewId != 2}" />
+										rendered="#{studentAssignmentInfo.report.name != 2}" />
 									<h:outputText value="Evaluation Result" styleClass="link_hover"
-										rendered="#{studentAssignmentInfo.viewId == 2}" />
+										rendered="#{studentAssignmentInfo.report.name == 2}" />
 								</h:commandLink>
 							</htm:td>
 						</htm:tr>
@@ -243,206 +243,99 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Evaluation Result" styleClass="title" />
-
-					<af:spacer height="25" />
-
-					<h:outputText value="General Coverages" styleClass="subtitle" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable
-						value="#{studentAssignmentInfo.generalCoverages.records}"
-						var="record" headerClass="tableHeader"
-						binding="#{studentAssignmentInfo.generalCoveragesTable}"
-						rowClasses="tableRow" width="100%">
-						<h:column
-							rendered="#{studentAssignmentInfo.generalCoverages.header.column1 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.generalCoverages.header.column1}" />
-							</f:facet>
-							<h:outputText value="#{record.column1}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.generalCoverages.header.column2 != null}">
-							<f:facet name="header">
-								<h:outputText value="P_Inst - T_Inst" />
-							</f:facet>
-							<h:outputText value="#{record.column2}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.generalCoverages.header.column3 != null}">
-							<f:facet name="header">
-								<h:outputText value="P_St - T_St" />
-							</f:facet>
-							<h:outputText value="#{record.column3}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.generalCoverages.header.column4 != null}">
-							<f:facet name="header">
-								<h:outputText value="P_Inst - T_St" />
-							</f:facet>
-							<h:outputText value="#{record.column4}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.generalCoverages.header.column5 != null}">
-							<f:facet name="header">
-								<h:outputText value="P_St - T_Inst" />
-							</f:facet>
-							<h:outputText value="#{record.column5}" />
-						</h:column>
-					</h:dataTable>
-
-					<af:spacer height="30" />
-
-					<h:outputText value="Total Coverages" styleClass="subtitle" />
-
-					<af:spacer height="20" />
-
-					<h:dataTable
-						value="#{studentAssignmentInfo.totalCoverages.records}"
-						var="record2" headerClass="tableHeader"
-						binding="#{studentAssignmentInfo.totalCoveragesTable}"
-						rowClasses="tableRow" width="100%">
-						<h:column
-							rendered="#{studentAssignmentInfo.totalCoverages.header.column1 != null}">
-							<f:facet name="header">
-								<h:outputText value="Executions" />
-							</f:facet>
-							<h:outputText value="#{record2.column1}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.totalCoverages.header.column2 != null}">
-							<f:facet name="header">
-								<h:outputText value="Coverage" />
-							</f:facet>
-							<h:outputText value="#{record2.column2}" />
-						</h:column>
-					</h:dataTable>
-
-					<af:spacer height="30" />
-
-					<htm:center>
-						<h:outputText
-							value="Suggested Grade: #{studentAssignmentInfo.grade}"
-							styleClass="subtitle" />
-					</htm:center>
-
-				</htm:div>
-
-				<htm:div style="width: 600px;"
-					rendered="#{studentAssignmentInfo.viewId == 3}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="#{studentAssignmentInfo.xmlReport.name}"
-						styleClass="title" />
-
-					<h:dataTable value="#{studentAssignmentInfo.xmlReport.records}"
-						var="record" headerClass="tableHeader"
-						binding="#{studentAssignmentInfo.recordsTable}"
-						rowClasses="tableRow" width="100%">
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column1 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column1}" />
-							</f:facet>
-							<h:outputText value="#{record.column1}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column2 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column2}" />
-							</f:facet>
-							<h:outputText value="#{record.column2}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column3 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column3}" />
-							</f:facet>
-							<h:outputText value="#{record.column3}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column4 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column4}" />
-							</f:facet>
-							<h:outputText value="#{record.column4}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column5 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column5}" />
-							</f:facet>
-							<h:outputText value="#{record.column5}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column6 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column6}" />
-							</f:facet>
-							<h:outputText value="#{record.column6}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column7 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column7}" />
-							</f:facet>
-							<h:outputText value="#{record.column7}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column8 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column8}" />
-							</f:facet>
-							<h:outputText value="#{record.column8}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column9 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column9}" />
-							</f:facet>
-							<h:outputText value="#{record.column9}" />
-						</h:column>
-						<h:column
-							rendered="#{studentAssignmentInfo.xmlReport.header.column10 != null}">
-							<f:facet name="header">
-								<h:outputText
-									value="#{studentAssignmentInfo.xmlReport.header.column10}" />
-							</f:facet>
-							<h:outputText value="#{record.column10}" />
-						</h:column>
-					</h:dataTable>
-
-				</htm:div>
-
-				<htm:div style="width: 600px;"
-					rendered="#{studentAssignmentInfo.viewId == 4}">
-
-					<af:spacer height="25" />
-
-					<h:outputText
-						value="#{studentAssignmentInfo.txtReport.tool}/#{studentAssignmentInfo.txtReport.name}"
+					<h:outputText value="#{studentAssignmentInfo.report.name}"
 						styleClass="title" />
 
 					<af:spacer height="25" />
 
-					
+					<h:dataTable value="#{studentAssignmentInfo.report.sections}"
+						var="section" width="100%">
+						<h:column>
 
-					<h:dataTable value="#{studentAssignmentInfo.txtReport.content}" var="lines">
-						<h:column rendered="#{!empty studentAssignmentInfo.txtReport.content}">
-							<h:outputText value="#{lines}" />
+							<h:outputText value="#{section.title}" styleClass="subtitle" />
+
+							<af:spacer height="25" />
+
+							<h:dataTable value="#{section.objects}" var="object" width="100%">
+								<h:column>
+
+									<h:outputText value="#{object.textValue}"
+										style="background: #{object.textColor};font-family:Courier New;font-size:8pt;font-weight:bold;"
+										rendered="#{object.type == 0}" escape="false" />
+
+									<h:dataTable value="#{object.tableRows}" var="row"
+										headerClass="tableHeader" rowClasses="tableRow" width="100%"
+										rendered="#{object.type == 1}">
+										<h:column rendered="#{object.tableHeader.column1 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column1}" />
+											</f:facet>
+											<h:outputText value="#{row.column1}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column2 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column2}" />
+											</f:facet>
+											<h:outputText value="#{row.column2}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column3 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column3}" />
+											</f:facet>
+											<h:outputText value="#{row.column3}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column4 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column4}" />
+											</f:facet>
+											<h:outputText value="#{row.column4}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column5 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column5}" />
+											</f:facet>
+											<h:outputText value="#{row.column5}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column6 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column6}" />
+											</f:facet>
+											<h:outputText value="#{row.column6}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column7 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column7}" />
+											</f:facet>
+											<h:outputText value="#{row.column7}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column8 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column8}" />
+											</f:facet>
+											<h:outputText value="#{row.column8}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column9 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column9}" />
+											</f:facet>
+											<h:outputText value="#{row.column9}" />
+										</h:column>
+										<h:column rendered="#{object.tableHeader.column10 != null}">
+											<f:facet name="header">
+												<h:outputText value="#{object.tableHeader.column10}" />
+											</f:facet>
+											<h:outputText value="#{row.column10}" />
+										</h:column>
+									</h:dataTable>
+
+									<h:graphicImage value="#{object.figurePath}"
+										rendered="#{object.type == 2}" />
+
+								</h:column>
+							</h:dataTable>
+
+							<af:spacer height="25" />
+
 						</h:column>
 					</h:dataTable>
 

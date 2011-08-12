@@ -9,13 +9,12 @@ import progtest.common.Requisite;
 import progtest.common.Submission;
 import progtest.common.User;
 import progtest.database.Querier;
+import progtest.report.Object;
 import progtest.report.Report;
 import progtest.report.Report2XML;
 import progtest.report.Row;
 import progtest.report.Section;
-import progtest.report.Object;
 import progtest.util.MathUtil;
-import progtest.util.XMLUtil;
 
 public class Reporter {
 
@@ -24,43 +23,7 @@ public class Reporter {
 	}
 
 	public static void generateReports(Submission submission) throws FileNotFoundException {
-		generateCoveragesReport(submission);
 		generateEvaluationReport(submission);
-	}
-
-	public static void generateCoveragesReport(Submission submission) throws FileNotFoundException {
-		
-		Assignment assignment = submission.getAssignment();
-		User student = submission.getStudent();
-
-		File report = new File(
-				Directories.getReportsDirPath(assignment, student) + File.separator + "Coverages.xml");
-
-		List<Requisite> requisites = Querier
-				.getAssignmentCriteria(assignment);
-		
-		String[][] data = new String[requisites.size() + 1][5];
-		
-		data[0][0] = "Criteria";
-		data[0][1] = "Pinst-Tinst";
-		data[0][2] = "Pst-Tst";
-		data[0][3] = "Pinst-Tst";
-		data[0][4] = "Pst-Tinst";
-		
-		for(int i = 1; i <= requisites.size(); i++) {
-			
-			Requisite requisite = requisites.get(i - 1);
-			
-			data[i][0] = requisite.getCriterion().getTool().getName() + "/" + requisite.getCriterion().getName();
-			data[i][1] = String.valueOf(MathUtil.round(Reader.readPiTi(requisite) * 100, 2)) + "%";
-			data[i][2] = String.valueOf(MathUtil.round(Reader.readPsTs(requisite, student) * 100, 2)) + "%";
-			data[i][3] = String.valueOf(MathUtil.round(Reader.readPiTs(requisite, student) * 100, 2)) + "%";
-			data[i][4] = String.valueOf(MathUtil.round(Reader.readPsTi(requisite, student) * 100, 2)) + "%";
-			
-		}
-		
-		XMLUtil.generateXML(report, data);
-
 	}
 
 	private static void generateEvaluationReport(Submission submission) throws FileNotFoundException {
@@ -88,7 +51,7 @@ public class Reporter {
 		
 		User student = submission.getStudent();
 		
-		for(int i = 0; i <= requisites.size(); i++) {
+		for(int i = 0; i < requisites.size(); i++) {
 			
 			Requisite requisite = requisites.get(i);
 			
@@ -114,26 +77,26 @@ public class Reporter {
 		Object object2 = new Object(Object.TYPE_TABLE);
 		
 		object2.getTableHeader().setColumn1("Execution");
-		object2.getTableHeader().setColumn1("Value");
+		object2.getTableHeader().setColumn2("Value");
 		
 		Row row1 = new Row();
-		row1.setColumn1("Pinst-Tinst");
+		row1.setColumn1("Instructor's Tests against Instructor's Program (Pinst-Tinst)");
 		row1.setColumn2(String.valueOf(MathUtil.round(submission.getAssignment().getPinstTinst() * 100, 2)) + "%");
 		object2.getTableRows().add(row1);
 		
 		Row row2 = new Row();
-		row1.setColumn1("Pst-Tst");
-		row1.setColumn2(String.valueOf(MathUtil.round(submission.getPstTst() * 100, 2)) + "%");
+		row2.setColumn1("Student's Tests against Student's Program (Pst-Tst)");
+		row2.setColumn2(String.valueOf(MathUtil.round(submission.getPstTst() * 100, 2)) + "%");
 		object2.getTableRows().add(row2);
 		
 		Row row3 = new Row();
-		row1.setColumn1("Pinst-Tst");
-		row1.setColumn2(String.valueOf(MathUtil.round(submission.getPinstTst() * 100, 2)) + "%");
+		row3.setColumn1("Student's Tests against Instructor's Program (Pinst-Tst)");
+		row3.setColumn2(String.valueOf(MathUtil.round(submission.getPinstTst() * 100, 2)) + "%");
 		object2.getTableRows().add(row3);
 		
 		Row row4 = new Row();
-		row1.setColumn1("Pst-Tinst");
-		row1.setColumn2(String.valueOf(MathUtil.round(submission.getPstTinst() * 100, 2)) + "%");
+		row4.setColumn1("Instructor's Tests against Student's Program (Pst-Tinst)");
+		row4.setColumn2(String.valueOf(MathUtil.round(submission.getPstTinst() * 100, 2)) + "%");
 		object2.getTableRows().add(row4);
 		
 		section2.getObjects().add(object2);
