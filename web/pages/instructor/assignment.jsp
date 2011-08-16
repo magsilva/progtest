@@ -65,9 +65,9 @@
 										action="#{instructorAssignment.selectReportView}"
 										styleClass="link">
 										<h:outputText value="#{report.name}" styleClass="link"
-											rendered="#{!instructorAssignment.evaluationReport}" />
+											rendered="#{instructorAssignment.activedReport != report.name}" />
 										<h:outputText value="#{report.name}" styleClass="link_hover"
-											rendered="#{instructorAssignment.evaluationReport}" />
+											rendered="#{!instructorAssignment.activedReport == report.name}" />
 									</h:commandLink>
 									<af:spacer height="2" rendered="#{tool.name == report.tool}" />
 								</h:column>
