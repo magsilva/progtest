@@ -1,4 +1,4 @@
-package progtest.report;
+package progtest.reports;
 
 import java.util.ArrayList;
 import java.util.List;

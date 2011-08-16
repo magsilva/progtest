@@ -1,4 +1,4 @@
-package progtest.report;
+package progtest.reports;
 
 public class Row {
 	

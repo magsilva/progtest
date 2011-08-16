@@ -1,4 +1,4 @@
-package progtest.report;
+package progtest.reports.xml;
 
 import java.io.File;
 
@@ -10,6 +10,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import progtest.reports.Object;
+import progtest.reports.Report;
+import progtest.reports.Row;
+import progtest.reports.Section;
 import progtest.util.Constants;
 import progtest.util.FileUtil;
 

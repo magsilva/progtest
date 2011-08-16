@@ -1,9 +1,14 @@
-package progtest.report;
+package progtest.reports.xml;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+
+import progtest.reports.Object;
+import progtest.reports.Report;
+import progtest.reports.Row;
+import progtest.reports.Section;
 
 public class Report2XML {
 
