@@ -67,7 +67,7 @@
 										<h:outputText value="#{report.name}" styleClass="link"
 											rendered="#{instructorAssignment.activedReport != report.name}" />
 										<h:outputText value="#{report.name}" styleClass="link_hover"
-											rendered="#{!instructorAssignment.activedReport == report.name}" />
+											rendered="#{instructorAssignment.activedReport == report.name}" />
 									</h:commandLink>
 									<af:spacer height="2" rendered="#{tool.name == report.tool}" />
 								</h:column>
@@ -222,7 +222,7 @@
 								<h:column>
 
 									<h:outputText value="#{object.textValue}"
-										style="background: #{object.textColor};font-family:Courier New;font-size:8pt;font-weight:bold;"
+										style="background: #{object.textColor};font-family:Courier New;font-size:10pt;color:#000000;"
 										rendered="#{object.type == 0}" escape="false" />
 
 									<h:dataTable value="#{object.tableRows}" var="row"
@@ -296,7 +296,7 @@
 								</h:column>
 							</h:dataTable>
 
-							<af:spacer height="25" />
+							<af:spacer height="30" />
 
 						</h:column>
 					</h:dataTable>

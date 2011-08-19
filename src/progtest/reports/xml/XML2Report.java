@@ -86,11 +86,12 @@ public class XML2Report {
 										.equals(ATTR_TEXTVALUE))
 									object.setTextValue(b.getAttributes()
 											.item(k).getNodeValue()
-											.replace("$nbsp;", "&nbsp")
-											.replace("$quot;", "\"")
-											.replace("$amp;", "&")
-											.replace("$gt;", ">")
-											.replace("$lt;", "<"));
+											.replace("#quot", "\"")
+											.replace("#amp", "&")
+											.replace("#apos", "'")
+											.replace("#gt", ">")
+											.replace("#lt", "<")
+											.replace("#nbsp", "&nbsp;"));
 							}
 							for (int k = 0; k < b.getAttributes().getLength(); k++) {
 								if (b.getAttributes().item(k).getNodeName()
