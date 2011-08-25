@@ -1,17 +1,21 @@
 package progtest.view.instructor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
 import progtest.common.Course;
 import progtest.common.Criterion;
+import progtest.common.Oracle;
 import progtest.common.Requisite;
 import progtest.common.Tool;
 import progtest.database.AssignmentDAO;
@@ -27,6 +31,12 @@ public class CreateAssignment {
 	private List<String> languages = loadLanguages();
 
 	private String language = null;
+
+	private List<Oracle> oracles = new ArrayList<Oracle>();
+
+	private boolean upload = true;
+
+	private Integer oracle = null;
 
 	private UploadedFile uploadedFile = null;
 
@@ -76,6 +86,30 @@ public class CreateAssignment {
 
 	public void setUploadedFile(UploadedFile uploadedFile) {
 		this.uploadedFile = uploadedFile;
+	}
+
+	public List<Oracle> getOracles() {
+		return oracles;
+	}
+
+	public void setOracles(List<Oracle> oracles) {
+		this.oracles = oracles;
+	}
+
+	public boolean isUpload() {
+		return upload;
+	}
+
+	public void setUpload(boolean upload) {
+		this.upload = upload;
+	}
+
+	public Integer getOracle() {
+		return oracle;
+	}
+
+	public void setOracle(Integer oracle) {
+		this.oracle = oracle;
 	}
 
 	public String getTitle() {
@@ -144,6 +178,7 @@ public class CreateAssignment {
 
 	public String goToStep2() {
 
+		oracles = Querier.getOracles(language);
 		step = 2;
 
 		return Constants.ACTION_SELECT;
@@ -151,8 +186,24 @@ public class CreateAssignment {
 	}
 
 	public String goToStep3() {
+		
+		if (isUpload()) {
+			
+			if(uploaded())
+				step = 3;
 
-		step = 3;
+		} else {
+
+			Oracle oracle = Querier.getOracle(this.oracle);
+
+			title = oracle.getTitle();
+			description = oracle.getDescription();
+
+			FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
+
+			step = 3;
+
+		}
 
 		return Constants.ACTION_SELECT;
 
@@ -214,22 +265,35 @@ public class CreateAssignment {
 
 		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
-		
+
 		assignment.setRequisites(requisites);
 
 		AssignmentDAO.insert(assignment);
-		
+
 		try {
-			
+
 			Runner.makeDirectories(assignment);
-			Runner.upload(assignment, uploadedFile);
+
+			if (isUpload()) {
+				
+				Runner.upload(assignment, uploadedFile);
+				
+			} else {
+				
+				Oracle oracle = (Oracle) FacesUtil
+						.getSession(Constants.SESSION_ORACLE);
+				
+				Runner.useOracle(assignment, oracle);
+				
+			}
+
 			Runner.execute(assignment);
 			Runner.evaluate(assignment);
-		
-		} catch(Throwable t) {
-			
+
+		} catch (Throwable t) {
+
 			t.printStackTrace();
-			
+
 		}
 
 		AssignmentDAO.update(assignment);
@@ -278,6 +342,12 @@ public class CreateAssignment {
 		selectedCriteria = new ArrayList<String>();
 		requisites = new ArrayList<Requisite>();
 	}
+	
+	public void change(ValueChangeEvent event) throws IOException {
+	    String page = (String) event.getNewValue();
+	    FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+	}
+
 
 	private List<String> loadLanguages() {
 
@@ -318,6 +388,20 @@ public class CreateAssignment {
 		if (selectedCriteria.isEmpty()) {
 
 			FacesUtil.addMessage(Constants.KEY_ERROR_ANYCRITERIONSELECTED,
+					FacesMessage.SEVERITY_ERROR);
+
+			return false;
+
+		} else
+
+			return true;
+
+	}
+
+	private boolean uploaded() {
+		if (uploadedFile == null) {
+
+			FacesUtil.addMessage(Constants.KEY_ERROR_ANYFILEUPLOADED,
 					FacesMessage.SEVERITY_ERROR);
 
 			return false;

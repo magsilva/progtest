@@ -13,7 +13,7 @@
 		<h:form>
 
 			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
-			
+
 				<af:spacer width="10" />
 
 				<htm:div style="width: 170px;">
@@ -27,8 +27,7 @@
 					<htm:table>
 						<htm:tr>
 							<htm:td>
-								<h:commandLink
-									action="#{instructorStudents.selectAllCourses}"
+								<h:commandLink action="#{instructorStudents.selectAllCourses}"
 									styleClass="link">
 									<h:outputText value="All Courses" styleClass="link"
 										rendered="#{course != null}" />
@@ -56,11 +55,14 @@
 
 					<af:spacer height="40" />
 
-					<h:outputText value="Actions" styleClass="menu_title" />
+					<h:outputText value="Actions" styleClass="menu_title"
+						rendered="#{instructorStudents.activedCourse != null}" />
 
-					<af:spacer height="10" />
+					<af:spacer height="10"
+						rendered="#{instructorStudents.activedCourse != null}" />
 
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2"
+						rendered="#{instructorStudents.activedCourse != null}">
 						<af:image source="/images/create.png" />
 						<h:commandLink action="#{instructorStudents.add}"
 							styleClass="link">
@@ -86,8 +88,7 @@
 
 					<af:spacer height="25" />
 
-					<h:dataTable value="#{instructorStudents.students}"
-						var="student"
+					<h:dataTable value="#{instructorStudents.students}" var="student"
 						binding="#{instructorStudents.studentsTable}" width="100%"
 						rowClasses="tableRow" headerClass="tableHeader">
 						<h:column>
@@ -105,8 +106,7 @@
 							</f:facet>
 							<h:commandLink action="#{instructorStudents.view}"
 								styleClass="tableLink">
-								<h:outputText value="#{student.name}"
-									styleClass="tableLink" />
+								<h:outputText value="#{student.name}" styleClass="tableLink" />
 							</h:commandLink>
 						</h:column>
 						<h:column>
@@ -115,8 +115,7 @@
 							</f:facet>
 							<h:commandLink action="#{instructorStudents.view}"
 								styleClass="tableLink">
-								<h:outputText value="#{student.email}"
-									styleClass="tableLink" />
+								<h:outputText value="#{student.email}" styleClass="tableLink" />
 							</h:commandLink>
 						</h:column>
 					</h:dataTable>

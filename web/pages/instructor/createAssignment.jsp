@@ -25,55 +25,55 @@
 					<htm:table>
 						<htm:tr>
 							<htm:td>
-									<h:outputText value="Step 1: Programming Language"
-										styleClass="link"
-										rendered="#{instructorCreateAssignment.step != 1}" />
-									<h:outputText value="Step 1: Programming Language"
-										styleClass="link_hover"
-										rendered="#{instructorCreateAssignment.step == 1}" />
+								<h:outputText value="Step 1: Programming Language"
+									styleClass="link"
+									rendered="#{instructorCreateAssignment.step != 1}" />
+								<h:outputText value="Step 1: Programming Language"
+									styleClass="link_hover"
+									rendered="#{instructorCreateAssignment.step == 1}" />
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-									<h:outputText value="Step 2: Upload Assignment"
-										styleClass="link"
-										rendered="#{instructorCreateAssignment.step != 2}" />
-									<h:outputText value="Step 2: Upload Assignment"
-										styleClass="link_hover"
-										rendered="#{instructorCreateAssignment.step == 2}" />
+								<h:outputText value="Step 2: Oracle Assignment"
+									styleClass="link"
+									rendered="#{instructorCreateAssignment.step != 2}" />
+								<h:outputText value="Step 2: Oracle Assignment"
+									styleClass="link_hover"
+									rendered="#{instructorCreateAssignment.step == 2}" />
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-									<h:outputText value="Step 3: Assignment Properties"
-										styleClass="link"
-										rendered="#{instructorCreateAssignment.step != 3}" />
-									<h:outputText value="Step 3: Assignment Properties"
-										styleClass="link_hover"
-										rendered="#{instructorCreateAssignment.step == 3}" />
+								<h:outputText value="Step 3: Assignment Properties"
+									styleClass="link"
+									rendered="#{instructorCreateAssignment.step != 3}" />
+								<h:outputText value="Step 3: Assignment Properties"
+									styleClass="link_hover"
+									rendered="#{instructorCreateAssignment.step == 3}" />
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-									<h:outputText value="Step 4: Test Criteria" styleClass="link"
-										rendered="#{instructorCreateAssignment.step != 4}" />
-									<h:outputText value="Step 4: Test Criteria"
-										styleClass="link_hover"
-										rendered="#{instructorCreateAssignment.step == 4}" />
+								<h:outputText value="Step 4: Test Criteria" styleClass="link"
+									rendered="#{instructorCreateAssignment.step != 4}" />
+								<h:outputText value="Step 4: Test Criteria"
+									styleClass="link_hover"
+									rendered="#{instructorCreateAssignment.step == 4}" />
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
 							<htm:td>
-									<h:outputText value="Step 5: Evaluation Weigths"
-										styleClass="link"
-										rendered="#{instructorCreateAssignment.step != 5}" />
-									<h:outputText value="Step 5: Evaluation Weigths"
-										styleClass="link_hover"
-										rendered="#{instructorCreateAssignment.step == 5}" />
+								<h:outputText value="Step 5: Evaluation Weigths"
+									styleClass="link"
+									rendered="#{instructorCreateAssignment.step != 5}" />
+								<h:outputText value="Step 5: Evaluation Weigths"
+									styleClass="link_hover"
+									rendered="#{instructorCreateAssignment.step == 5}" />
 								<af:spacer height="10" />
 							</htm:td>
 						</htm:tr>
@@ -102,7 +102,8 @@
 						rendered="#{!empty instructorCreateAssignment.languages}">
 						<h:outputText value="Programming languages*:" />
 						<h:selectOneMenu value="#{instructorCreateAssignment.language}">
-							<t:selectItems value="#{instructorCreateAssignment.languages}" var="l" itemLabel="#{l}" itemValue="#{l}" />
+							<t:selectItems value="#{instructorCreateAssignment.languages}"
+								var="l" itemLabel="#{l}" itemValue="#{l}" />
 						</h:selectOneMenu>
 					</h:panelGrid>
 
@@ -113,7 +114,7 @@
 
 					<h:commandButton value="Cancel"
 						action="#{instructorCreateAssignment.cancel}" />
-					<h:commandButton value="Back" disabled="true"/>
+					<h:commandButton value="Back" disabled="true" />
 					<h:commandButton value="Next"
 						action="#{instructorCreateAssignment.goToStep2}" />
 
@@ -129,19 +130,47 @@
 					<af:spacer height="20" />
 
 					<h:outputText
-						value="Step 2 - Upload an implementations." />
+						value="Step 2 - Upload an oracle assignment or choice one from the ProgTest's oracle assignments base." />
 
 					<af:spacer height="20" />
 
 					<h:messages styleClass="message" />
 
-					<h:panelGrid columns="2">
-						<h:outputText value="File*:" />
-						<t:inputFileUpload value="#{instructorCreateAssignment.uploadedFile}"
-							storage="file" />
+					<h:selectOneRadio value="#{instructorCreateAssignment.upload}"
+						onchange="submit()"
+						valueChangeListener="#{instructorCreateAssignment.change}">
+						<f:selectItem itemValue="true"
+							itemLabel="Upload Oracle Assignment" />
+						<f:selectItem itemValue="false"
+							itemLabel="Use ProgTest's Oracle Assignment" />
+					</h:selectOneRadio>
+
+					<af:spacer height="25" />
+
+					<h:panelGrid columns="2"
+						rendered="#{instructorCreateAssignment.upload}">
+						<h:outputText value="Upload Assignment:" />
+						<t:inputFileUpload
+							value="#{instructorCreateAssignment.uploadedFile}" storage="file" />
 					</h:panelGrid>
 
-					<af:spacer height="20" />
+					<af:spacer height="25" />
+
+					<h:panelGrid columns="2"
+						rendered="#{!empty instructorCreateAssignment.oracles}">
+						<h:outputText value="ProgTest's Oracle Assignment: "
+							rendered="#{!instructorCreateAssignment.upload}" />
+						<h:selectOneMenu value="#{instructorCreateAssignment.oracle}"
+							rendered="#{!instructorCreateAssignment.upload}">
+							<t:selectItems value="#{instructorCreateAssignment.oracles}"
+								var="o" itemLabel="#{o.title}" itemValue="#{o.idCode}" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+
+					<h:outputText value="Any ProgTest's oracle assignment avaible!"
+						rendered="#{empty instructorCreateAssignment.oracles}" />
+
+					<af:spacer height="25" />
 
 					<h:commandButton value="Cancel"
 						action="#{instructorCreateAssignment.cancel}" />
@@ -214,7 +243,9 @@
 						value="#{instructorCreateAssignment.selectedCriteria}"
 						layout="pageDirection"
 						rendered="#{!empty instructorCreateAssignment.criteria}">
-						<t:selectItems value="#{instructorCreateAssignment.criteria}" var="c2" itemLabel="#{c2.tool.name}/#{c2.name}" itemValue="#{c2.tool.idCode}/#{c2.idCode}" />
+						<t:selectItems value="#{instructorCreateAssignment.criteria}"
+							var="c2" itemLabel="#{c2.tool.name}/#{c2.name}"
+							itemValue="#{c2.tool.idCode}/#{c2.idCode}" />
 					</h:selectManyCheckbox>
 
 					<af:spacer height="20" />
@@ -249,7 +280,8 @@
 						binding="#{instructorCreateAssignment.requisitesTable}"
 						rendered="#{!empty instructorCreateAssignment.requisites}">
 						<h:column>
-							<h:outputText value="#{requisite.criterion.tool.name}/#{requisite.criterion.name}: " />
+							<h:outputText
+								value="#{requisite.criterion.tool.name}/#{requisite.criterion.name}: " />
 						</h:column>
 						<h:column>
 							<h:selectOneMenu value="#{requisite.weight}">
