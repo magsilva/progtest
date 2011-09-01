@@ -293,12 +293,12 @@
 									<h:graphicImage value="#{object.figurePath}"
 										rendered="#{object.type == 2}" />
 										
-								<af:spacer height="25" />
+								<af:spacer height="25" rendered="#{object.type == 1}"/>
 
 								</h:column>
 							</h:dataTable>
 
-							<af:spacer height="5" />
+							<af:spacer height="25" />
 
 						</h:column>
 					</h:dataTable>
