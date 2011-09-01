@@ -89,8 +89,8 @@ public class XML2Report {
 											.replace("#quot", "\"")
 											.replace("#amp", "&")
 											.replace("#apos", "'")
-											.replace("#gt", ">")
-											.replace("#lt", "<")
+											.replace("#gt", "&gt;")
+											.replace("#lt", "&lt;")
 											.replace("#nbsp", "&nbsp;"));
 							}
 							for (int k = 0; k < b.getAttributes().getLength(); k++) {

@@ -293,6 +293,8 @@
 									<h:graphicImage value="#{object.figurePath}"
 										rendered="#{object.type == 2}" />
 										
+								<af:spacer height="10" rendered="#{object.type == 0}"/>
+								
 								<af:spacer height="25" rendered="#{object.type == 1}"/>
 
 								</h:column>
