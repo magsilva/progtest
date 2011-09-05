@@ -289,6 +289,8 @@
 											<h:outputText value="#{row.column10}" />
 										</h:column>
 									</h:dataTable>
+										
+								<af:spacer height="10" rendered="#{object.type == 2}"/>
 
 									<h:graphicImage value="#{object.figurePath}"
 										rendered="#{object.type == 2}" />
