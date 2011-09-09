@@ -293,7 +293,7 @@
 								<af:spacer height="10" rendered="#{object.type == 2}"/>
 
 									<h:graphicImage value="#{object.figurePath}"
-										rendered="#{object.type == 2}" />
+										rendered="#{object.type == 2}"/>
 										
 								<af:spacer height="10" rendered="#{object.type == 0}"/>
 								
