@@ -248,6 +248,15 @@
 							itemValue="#{c2.tool.idCode}/#{c2.idCode}" />
 					</h:selectManyCheckbox>
 
+					<h:selectManyCheckbox
+						value="#{instructorCreateAssignment.selectedOperators}"
+						layout="pageDirection"
+						rendered="#{!empty instructorCreateAssignment.operators}">
+						<t:selectItems value="#{instructorCreateAssignment.operators}"
+							var="op" itemLabel="#{op.criterion.tool.name}/#{op.name}"
+							itemValue="#{op.criterion.tool.idCode}/#{op.criterion}/#{op.idCode}" />
+					</h:selectManyCheckbox>
+
 					<af:spacer height="20" />
 
 					<h:commandButton value="Cancel"

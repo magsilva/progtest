@@ -15,6 +15,7 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 import progtest.common.Assignment;
 import progtest.common.Course;
 import progtest.common.Criterion;
+import progtest.common.Operator;
 import progtest.common.Oracle;
 import progtest.common.Requisite;
 import progtest.common.Tool;
@@ -48,9 +49,17 @@ public class CreateAssignment {
 
 	private Date endDate = new Date();
 
+	private List<Tool> tools = new ArrayList<Tool>();
+
+	private List<String> selectedTools = new ArrayList<String>();
+
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
 	private List<String> selectedCriteria = new ArrayList<String>();
+
+	private List<Operator> operators = new ArrayList<Operator>();
+
+	private List<String> selectedOperators = new ArrayList<String>();
 
 	private List<Requisite> requisites = new ArrayList<Requisite>();
 
@@ -144,6 +153,22 @@ public class CreateAssignment {
 		this.endDate = endDate;
 	}
 
+	public List<Tool> getTools() {
+		return tools;
+	}
+
+	public void setTools(List<Tool> tools) {
+		this.tools = tools;
+	}
+
+	public List<String> getSelectedTools() {
+		return selectedTools;
+	}
+
+	public void setSelectedTools(List<String> selectedTools) {
+		this.selectedTools = selectedTools;
+	}
+
 	public List<Criterion> getCriteria() {
 		return criteria;
 	}
@@ -158,6 +183,22 @@ public class CreateAssignment {
 
 	public void setSelectedCriteria(List<String> selectedCriteria) {
 		this.selectedCriteria = selectedCriteria;
+	}
+
+	public List<Operator> getOperators() {
+		return operators;
+	}
+
+	public void setOperators(List<Operator> operators) {
+		this.operators = operators;
+	}
+
+	public List<String> getSelectedOperators() {
+		return selectedOperators;
+	}
+
+	public void setSelectedOperators(List<String> selectedOperators) {
+		this.selectedOperators = selectedOperators;
 	}
 
 	public List<Requisite> getRequisites() {
@@ -186,10 +227,10 @@ public class CreateAssignment {
 	}
 
 	public String goToStep3() {
-		
+
 		if (isUpload()) {
-			
-			if(uploaded())
+
+			if (uploaded())
 				step = 3;
 
 		} else {
@@ -226,6 +267,10 @@ public class CreateAssignment {
 			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			criteria = Querier.getCriteria(language);
+
+			for (Criterion criterion : criteria)
+				operators.addAll(Querier.getOperators(criterion));
+
 			step = 4;
 
 		}
@@ -275,16 +320,16 @@ public class CreateAssignment {
 			Runner.makeDirectories(assignment);
 
 			if (isUpload()) {
-				
+
 				Runner.upload(assignment, uploadedFile);
-				
+
 			} else {
-				
+
 				Oracle oracle = (Oracle) FacesUtil
 						.getSession(Constants.SESSION_ORACLE);
-				
+
 				Runner.useOracle(assignment, oracle);
-				
+
 			}
 
 			Runner.execute(assignment);
@@ -342,12 +387,11 @@ public class CreateAssignment {
 		selectedCriteria = new ArrayList<String>();
 		requisites = new ArrayList<Requisite>();
 	}
-	
-	public void change(ValueChangeEvent event) throws IOException {
-	    String page = (String) event.getNewValue();
-	    FacesContext.getCurrentInstance().getExternalContext().redirect(page);
-	}
 
+	public void change(ValueChangeEvent event) throws IOException {
+		String page = (String) event.getNewValue();
+		FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+	}
 
 	private List<String> loadLanguages() {
 

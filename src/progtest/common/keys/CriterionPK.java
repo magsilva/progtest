@@ -11,12 +11,10 @@ import javax.persistence.TableGenerator;
 
 import progtest.common.Tool;
 
-
-
 public class CriterionPK implements Serializable {
 	
 	private static final long serialVersionUID = 4753671316385228333L;
-
+	
 	private Tool tool;
 	
 	private int idCode;

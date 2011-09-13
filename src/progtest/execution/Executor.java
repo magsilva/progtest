@@ -21,11 +21,17 @@ public class Executor {
 	private static final String TAG_LIBRARIES = "<libraries>";
 	private static final String TAG_TEMPORARIES = "<temporaries>";
 	private static final String TAG_REPORTS = "<reports>";
-	
+
 	private static final String FILE_SEPARATOR = "/";
 
 	public static void execute(Tool tool, File rootDir, File programDir,
-			File testsDir, File reportsDir)
+			File testsDir, File reportsDir) throws IOException,
+			InterruptedException {
+		execute(tool, rootDir, programDir, testsDir, reportsDir, "");
+	}
+
+	public static void execute(Tool tool, File rootDir, File programDir,
+			File testsDir, File reportsDir, String additionals)
 			throws IOException, InterruptedException {
 
 		File toolFile = new File(Directories.getToolFilePath(tool));
@@ -43,19 +49,19 @@ public class Executor {
 		File tmpDir = new File(Directories.getTmpDirPath(rootDir, tool));
 		File rptDir = new File(Directories.getRptDirPath(rootDir, tool));
 
-		initialize(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir, tmpDir,
-				rptDir, toolFile, programDir, testsDir);
+		initialize(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
+				tmpDir, rptDir, toolFile, programDir, testsDir);
 
-		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir, tmpDir,
-				rptDir, tool.getCmdfile());
+		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
+				tmpDir, rptDir, tool.getCmdfile(), additionals);
 
 		finalize(toolDir, rptDir, toolReportsDir);
 
 	}
 
 	private static void initialize(File toolDir, File srcDir, File binDir,
-			File progDir, File testDir, File instDir, File libDir, File tmpDir, File rptDir,
-			File toolFile, File programDir, File testsDir)
+			File progDir, File testDir, File instDir, File libDir, File tmpDir,
+			File rptDir, File toolFile, File programDir, File testsDir)
 			throws IOException {
 
 		if (toolDir.exists())
@@ -108,7 +114,9 @@ public class Executor {
 	}
 
 	private static void process(File toolDir, File srcDir, File binDir,
-			File progDir, File testDir, File instDir, File libDir, File tmpDir, File rptDir, String cmdFileName) throws IOException, InterruptedException {
+			File progDir, File testDir, File instDir, File libDir, File tmpDir,
+			File rptDir, String cmdFileName, String additionals)
+			throws IOException, InterruptedException {
 
 		File script = new File(toolDir.getPath() + File.separator + cmdFileName);
 
@@ -118,7 +126,7 @@ public class Executor {
 
 			while (input.ready()) {
 
-				String[] args = input.readLine().split(" ");
+				String[] args = (input.readLine() + additionals).split(" ");
 
 				for (int i = 0; i < args.length; i++)
 					args[i] = args[i].replace(TAG_ROOT, toolDir.getPath())
@@ -171,18 +179,18 @@ public class Executor {
 
 	}
 
-	private static void finalize(File toolDir, File rptDir,
-			File reportsDir) throws IOException {
+	private static void finalize(File toolDir, File rptDir, File reportsDir)
+			throws IOException {
 
 		if (reportsDir.exists())
 			FileUtil.clean(reportsDir);
 		else
 			reportsDir.mkdirs();
-		
+
 		FileUtil.copyContent(rptDir, reportsDir);
-		
+
 		FileUtil.delete(toolDir);
-		
+
 	}
 
 }
