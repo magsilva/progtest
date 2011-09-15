@@ -268,9 +268,6 @@ public class CreateAssignment {
 
 			criteria = Querier.getCriteria(language);
 
-			for (Criterion criterion : criteria)
-				operators.addAll(Querier.getOperators(criterion));
-
 			step = 4;
 
 		}
@@ -388,9 +385,21 @@ public class CreateAssignment {
 		requisites = new ArrayList<Requisite>();
 	}
 
-	public void change(ValueChangeEvent event) throws IOException {
-		String page = (String) event.getNewValue();
-		FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+	public void change(ValueChangeEvent vce) throws IOException {
+
+	}
+
+	public void changeCriteria(ValueChangeEvent event) throws IOException {
+
+		operators.clear();
+
+		for (String selectedCriterion : selectedCriteria) {
+			String ids[] = selectedCriterion.split("/");
+			Criterion criterion = Querier.getCriterion(
+					Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
+			operators.addAll(Querier.getOperators(criterion));
+		}
+
 	}
 
 	private List<String> loadLanguages() {

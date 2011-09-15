@@ -239,7 +239,12 @@
 					<h:outputText value="Any criterion avaible!"
 						rendered="#{empty instructorCreateAssignment.criteria}" />
 
-					<h:selectManyCheckbox
+					<h:outputText value="Criteria"
+						rendered="#{!empty instructorCreateAssignment.criteria}"
+						styleClass="subtitle" />
+
+					<h:selectManyCheckbox onchange="submit()"
+						valueChangeListener="#{instructorCreateAssignment.changeCriteria}"
 						value="#{instructorCreateAssignment.selectedCriteria}"
 						layout="pageDirection"
 						rendered="#{!empty instructorCreateAssignment.criteria}">
@@ -247,6 +252,12 @@
 							var="c2" itemLabel="#{c2.tool.name}/#{c2.name}"
 							itemValue="#{c2.tool.idCode}/#{c2.idCode}" />
 					</h:selectManyCheckbox>
+					
+					<af:spacer height="20"/>
+
+					<h:outputText value="Mutant Operators"
+						rendered="#{!empty instructorCreateAssignment.operators}"
+						styleClass="subtitle" />
 
 					<h:selectManyCheckbox
 						value="#{instructorCreateAssignment.selectedOperators}"
