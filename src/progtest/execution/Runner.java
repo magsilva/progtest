@@ -466,9 +466,13 @@ public class Runner {
 			for (Tool tool : assignment.getTools()) {
 
 				try {
-
-					Executor.execute(tool, rootDir, programDir, testsDir,
+					
+					if(assignment.getExecInfo() == null || assignment.getExecInfo().isEmpty())
+						Executor.execute(tool, rootDir, programDir, testsDir,
 							outputDir);
+					else
+						Executor.execute(tool, rootDir, programDir, testsDir,
+								outputDir, assignment.getExecInfo());
 
 				} catch (Throwable t) {
 

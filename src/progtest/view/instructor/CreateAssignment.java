@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
-import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
 import javax.faces.event.ValueChangeEvent;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
@@ -56,6 +56,10 @@ public class CreateAssignment {
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
 	private List<String> selectedCriteria = new ArrayList<String>();
+
+	private List<Operator> requiredOperators = new ArrayList<Operator>();
+
+	private List<String> selectedRequiredOperators = new ArrayList<String>();
 
 	private List<Operator> operators = new ArrayList<Operator>();
 
@@ -185,6 +189,23 @@ public class CreateAssignment {
 		this.selectedCriteria = selectedCriteria;
 	}
 
+	public List<Operator> getRequiredOperators() {
+		return requiredOperators;
+	}
+
+	public void setRequiredOperators(List<Operator> requiredOperators) {
+		this.requiredOperators = requiredOperators;
+	}
+
+	public List<String> getSelectedRequiredOperators() {
+		return selectedRequiredOperators;
+	}
+
+	public void setSelectedRequiredOperators(
+			List<String> selectedRequiredOperators) {
+		this.selectedRequiredOperators = selectedRequiredOperators;
+	}
+
 	public List<Operator> getOperators() {
 		return operators;
 	}
@@ -310,6 +331,8 @@ public class CreateAssignment {
 
 		assignment.setRequisites(requisites);
 
+		assignment.setExecInfo(getExecInfo());
+
 		AssignmentDAO.insert(assignment);
 
 		try {
@@ -391,13 +414,37 @@ public class CreateAssignment {
 
 	public void changeCriteria(ValueChangeEvent event) throws IOException {
 
-		operators.clear();
+		PhaseId phaseId = event.getPhaseId();
 
-		for (String selectedCriterion : selectedCriteria) {
-			String ids[] = selectedCriterion.split("/");
-			Criterion criterion = Querier.getCriterion(
-					Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
-			operators.addAll(Querier.getOperators(criterion));
+		if (phaseId.equals(PhaseId.ANY_PHASE)) {
+
+			event.setPhaseId(PhaseId.UPDATE_MODEL_VALUES);
+			event.queue();
+
+		} else {
+
+			requiredOperators.clear();
+			operators.clear();
+
+			for (String selectedCriterion : selectedCriteria) {
+				String ids[] = selectedCriterion.split("/");
+				Criterion criterion = Querier.getCriterion(
+						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
+				for (Operator operator : Querier.getOperators(criterion)) {
+					if (operator.isRequired()) {
+						requiredOperators.add(operator);
+						selectedRequiredOperators.add(operator.getCriterion()
+								.getTool().getIdCode()
+								+ "/"
+								+ operator.getCriterion().getIdCode()
+								+ "/" + operator.getIdCode());
+					} else {
+						operators.add(operator);
+					}
+				}
+
+			}
+
 		}
 
 	}
@@ -463,6 +510,43 @@ public class CreateAssignment {
 
 			return true;
 
+	}
+
+	private String getExecInfo() {
+
+		String execInfo = "";
+
+		for (String selectedOperator : selectedRequiredOperators) {
+
+			int tool = Integer.parseInt(selectedOperator.split("/")[0]);
+			int criterion = Integer.parseInt(selectedOperator.split("/")[1]);
+			int idCode = Integer.parseInt(selectedOperator.split("/")[2]);
+
+			Operator operator = Querier.getOperator(tool, criterion, idCode);
+
+			String parameter = operator.getParameter();
+
+			if (parameter != null && !parameter.isEmpty())
+				execInfo += " " + parameter;
+
+		}
+
+		for (String selectedOperator : selectedOperators) {
+
+			int tool = Integer.parseInt(selectedOperator.split("/")[0]);
+			int criterion = Integer.parseInt(selectedOperator.split("/")[1]);
+			int idCode = Integer.parseInt(selectedOperator.split("/")[2]);
+
+			Operator operator = Querier.getOperator(tool, criterion, idCode);
+
+			String parameter = operator.getParameter();
+
+			if (parameter != null && !parameter.isEmpty())
+				execInfo += " " + parameter;
+
+		}
+
+		return execInfo;
 	}
 
 }

@@ -252,20 +252,28 @@
 							var="c2" itemLabel="#{c2.tool.name}/#{c2.name}"
 							itemValue="#{c2.tool.idCode}/#{c2.idCode}" />
 					</h:selectManyCheckbox>
-					
-					<af:spacer height="20"/>
+
+					<af:spacer height="20" />
 
 					<h:outputText value="Mutant Operators"
 						rendered="#{!empty instructorCreateAssignment.operators}"
 						styleClass="subtitle" />
 
-					<h:selectManyCheckbox
+					<h:selectManyCheckbox id="required"
+						value="#{instructorCreateAssignment.selectedRequiredOperators}"
+						layout="pageDirection"
+						rendered="#{!empty instructorCreateAssignment.requiredOperators}" disabled="true">
+						<t:selectItems value="#{instructorCreateAssignment.requiredOperators}"
+							var="requiredOperator" itemLabel="#{requiredOperator.criterion.tool.name}/#{requiredOperator.name}"
+							itemValue="#{requiredOperator.criterion.tool.idCode}/#{requiredOperator.criterion.idCode}/#{requiredOperator.idCode}" />
+					</h:selectManyCheckbox>
+					<h:selectManyCheckbox id="unrequired"
 						value="#{instructorCreateAssignment.selectedOperators}"
 						layout="pageDirection"
 						rendered="#{!empty instructorCreateAssignment.operators}">
 						<t:selectItems value="#{instructorCreateAssignment.operators}"
-							var="op" itemLabel="#{op.criterion.tool.name}/#{op.name}"
-							itemValue="#{op.criterion.tool.idCode}/#{op.criterion}/#{op.idCode}" />
+							var="operator" itemLabel="#{operator.criterion.tool.name}/#{operator.name}"
+							itemValue="#{operator.criterion.tool.idCode}/#{operator.criterion.idCode}/#{operator.idCode}" />
 					</h:selectManyCheckbox>
 
 					<af:spacer height="20" />

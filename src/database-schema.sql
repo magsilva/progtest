@@ -37,6 +37,7 @@ CREATE TABLE Assignment (
 	description VARCHAR(500),
 	startDate DATETIME,
 	endDate DATETIME,
+	execInfo VARCHAR(500),
 	pinstTinst DOUBLE,
 	CONSTRAINT PK_assignment PRIMARY KEY (idCode),
 	CONSTRAINT FK_assignment_course FOREIGN KEY (course) REFERENCES Course (idCode) ON UPDATE CASCADE ON DELETE CASCADE
@@ -75,7 +76,7 @@ CREATE TABLE Operator (
 	criterion INT NOT NULL,
 	idCode INT NOT NULL,
 	name VARCHAR(50),
-	additional VARCHAR(50),
+	parameter VARCHAR(50),
 	required BOOLEAN,
 	CONSTRAINT PK_operator PRIMARY KEY (tool, criterion, idCode),
 	CONSTRAINT FK_operator_criterion FOREIGN KEY (tool, criterion) REFERENCES Criterion (tool, idCode)
@@ -190,7 +191,7 @@ INSERT INTO Criterion VALUES(3, 1, 'Analysis of Mutants', 'score');
 
 INSERT INTO Operator VALUES(3, 1, 1, 'Conditionals', NULL, TRUE);
 
-INSERT INTO Operator VALUES(3, 1, 2, 'Binary Arithmetic Operations', NULL, FALSE);
+INSERT INTO Operator VALUES(3, 1, 2, 'Binary Arithmetic Operations', NULL, TRUE);
 
 INSERT INTO Operator VALUES(3, 1, 3, 'Increments', '-i', FALSE);
 

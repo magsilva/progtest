@@ -70,6 +70,8 @@ public class Querier {
 
 	private static final String SELECT_TOOL_BY_ID = "from Tool tool where tool.idCode = ?";
 
+	private static final String SELECT_OPERATOR_BY_IDS = "from Operator operator where operator.criterion.tool.idCode = ? and operator.criterion.idCode = ? and operator.idCode = ?";
+
 	public static boolean checkUserName(String userName) {
 		boolean result;
 		Session session = HibernateUtil.getSession();
@@ -413,6 +415,19 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return tool;
+	}
+
+	public static Operator getOperator(int tool, int criterion, int idCode) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_OPERATOR_BY_IDS);
+		query.setInteger(0, tool);
+		query.setInteger(1, criterion);
+		query.setInteger(2, idCode);
+		Operator operator = (Operator) query.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return operator;
 	}
 
 }

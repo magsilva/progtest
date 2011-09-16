@@ -20,7 +20,7 @@ public class Operator {
 	
 	private String name;
 	
-	private String additional;
+	private String parameter;
 	
 	private boolean required;
 	
@@ -54,12 +54,12 @@ public class Operator {
 		this.name = name;
 	}
 
-	public String getAdditional() {
-		return additional;
+	public String getParameter() {
+		return parameter;
 	}
 
-	public void setAdditional(String additional) {
-		this.additional = additional;
+	public void setParameter(String parameter) {
+		this.parameter = parameter;
 	}
 
 	public boolean isRequired() {
@@ -75,11 +75,11 @@ public class Operator {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((additional == null) ? 0 : additional.hashCode());
-		result = prime * result
 				+ ((criterion == null) ? 0 : criterion.hashCode());
 		result = prime * result + idCode;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((parameter == null) ? 0 : parameter.hashCode());
 		result = prime * result + (required ? 1231 : 1237);
 		return result;
 	}
@@ -93,11 +93,6 @@ public class Operator {
 		if (getClass() != obj.getClass())
 			return false;
 		Operator other = (Operator) obj;
-		if (additional == null) {
-			if (other.additional != null)
-				return false;
-		} else if (!additional.equals(other.additional))
-			return false;
 		if (criterion == null) {
 			if (other.criterion != null)
 				return false;
@@ -109,6 +104,11 @@ public class Operator {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (parameter == null) {
+			if (other.parameter != null)
+				return false;
+		} else if (!parameter.equals(other.parameter))
 			return false;
 		if (required != other.required)
 			return false;
