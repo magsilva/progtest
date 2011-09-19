@@ -313,6 +313,7 @@ public class CreateAssignment {
 				Requisite requisite = new Requisite();
 				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
+				requisite.setExecInfo(generateExecInfo(criterion));
 				requisites.add(requisite);
 			}
 
@@ -330,8 +331,6 @@ public class CreateAssignment {
 				.getSession(Constants.SESSION_ASSIGNMENT);
 
 		assignment.setRequisites(requisites);
-
-		assignment.setExecInfo(getExecInfo());
 
 		AssignmentDAO.insert(assignment);
 
@@ -512,37 +511,49 @@ public class CreateAssignment {
 
 	}
 
-	private String getExecInfo() {
+	private String generateExecInfo(Criterion criterion) {
 
 		String execInfo = "";
 
 		for (String selectedOperator : selectedRequiredOperators) {
 
-			int tool = Integer.parseInt(selectedOperator.split("/")[0]);
-			int criterion = Integer.parseInt(selectedOperator.split("/")[1]);
+			int toolId = Integer.parseInt(selectedOperator.split("/")[0]);
+			int criterionId = Integer.parseInt(selectedOperator.split("/")[1]);
 			int idCode = Integer.parseInt(selectedOperator.split("/")[2]);
 
-			Operator operator = Querier.getOperator(tool, criterion, idCode);
+			if (toolId == criterion.getTool().getIdCode()
+					&& criterionId == criterion.getIdCode()) {
 
-			String parameter = operator.getParameter();
+				Operator operator = Querier.getOperator(toolId, criterionId,
+						idCode);
 
-			if (parameter != null && !parameter.isEmpty())
-				execInfo += " " + parameter;
+				String parameter = operator.getParameter();
+
+				if (parameter != null && !parameter.isEmpty())
+					execInfo += " " + parameter;
+
+			}
 
 		}
 
 		for (String selectedOperator : selectedOperators) {
 
-			int tool = Integer.parseInt(selectedOperator.split("/")[0]);
-			int criterion = Integer.parseInt(selectedOperator.split("/")[1]);
+			int toolId = Integer.parseInt(selectedOperator.split("/")[0]);
+			int criterionId = Integer.parseInt(selectedOperator.split("/")[1]);
 			int idCode = Integer.parseInt(selectedOperator.split("/")[2]);
 
-			Operator operator = Querier.getOperator(tool, criterion, idCode);
+			if (toolId == criterion.getTool().getIdCode()
+					&& criterionId == criterion.getIdCode()) {
 
-			String parameter = operator.getParameter();
+				Operator operator = Querier.getOperator(toolId, criterionId,
+						idCode);
 
-			if (parameter != null && !parameter.isEmpty())
-				execInfo += " " + parameter;
+				String parameter = operator.getParameter();
+
+				if (parameter != null && !parameter.isEmpty())
+					execInfo += " " + parameter;
+
+			}
 
 		}
 

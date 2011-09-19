@@ -19,6 +19,8 @@ public class Requisite {
 	private Criterion criterion;
 
 	private int weight = 0;
+	
+	private String execInfo;
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -52,6 +54,14 @@ public class Requisite {
 		this.weight = weight;
 	}
 
+	public String getExecInfo() {
+		return execInfo;
+	}
+
+	public void setExecInfo(String execInfo) {
+		this.execInfo = execInfo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -60,6 +70,8 @@ public class Requisite {
 				+ ((assignment == null) ? 0 : assignment.hashCode());
 		result = prime * result
 				+ ((criterion == null) ? 0 : criterion.hashCode());
+		result = prime * result
+				+ ((execInfo == null) ? 0 : execInfo.hashCode());
 		result = prime * result + weight;
 		return result;
 	}
@@ -82,6 +94,11 @@ public class Requisite {
 			if (other.criterion != null)
 				return false;
 		} else if (!criterion.equals(other.criterion))
+			return false;
+		if (execInfo == null) {
+			if (other.execInfo != null)
+				return false;
+		} else if (!execInfo.equals(other.execInfo))
 			return false;
 		if (weight != other.weight)
 			return false;

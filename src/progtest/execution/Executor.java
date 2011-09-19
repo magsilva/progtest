@@ -25,12 +25,6 @@ public class Executor {
 	private static final String FILE_SEPARATOR = "/";
 
 	public static void execute(Tool tool, File rootDir, File programDir,
-			File testsDir, File reportsDir) throws IOException,
-			InterruptedException {
-		execute(tool, rootDir, programDir, testsDir, reportsDir, "");
-	}
-
-	public static void execute(Tool tool, File rootDir, File programDir,
 			File testsDir, File reportsDir, String additionals)
 			throws IOException, InterruptedException {
 

@@ -37,7 +37,6 @@ CREATE TABLE Assignment (
 	description VARCHAR(500),
 	startDate DATETIME,
 	endDate DATETIME,
-	execInfo VARCHAR(500),
 	pinstTinst DOUBLE,
 	CONSTRAINT PK_assignment PRIMARY KEY (idCode),
 	CONSTRAINT FK_assignment_course FOREIGN KEY (course) REFERENCES Course (idCode) ON UPDATE CASCADE ON DELETE CASCADE
@@ -87,6 +86,7 @@ CREATE TABLE Requisite (
 	tool INT NOT NULL,
 	criterion INT NOT NULL,
 	weight DOUBLE,
+	execInfo VARCHAR(500),
 	CONSTRAINT PK_requisite PRIMARY KEY (assignment, tool, criterion),
 	CONSTRAINT FK_requisite_assignment FOREIGN KEY (assignment) REFERENCES Assignment (idCode),
 	CONSTRAINT FK_requisite_criterion FOREIGN KEY (tool, criterion) REFERENCES Criterion (tool, idCode)

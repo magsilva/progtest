@@ -30,8 +30,6 @@ public class Assignment {
 	private Date startDate;
 
 	private Date endDate;
-	
-	private String execInfo;
 
 	private double pinstTinst;
 
@@ -95,14 +93,6 @@ public class Assignment {
 		this.endDate = endDate;
 	}
 
-	public String getExecInfo() {
-		return execInfo;
-	}
-
-	public void setExecInfo(String execInfo) {
-		this.execInfo = execInfo;
-	}
-
 	public double getPinstTinst() {
 		return pinstTinst;
 	}
@@ -153,8 +143,6 @@ public class Assignment {
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result
-				+ ((execInfo == null) ? 0 : execInfo.hashCode());
 		result = prime * result + hashCode;
 		result = prime * result + idCode;
 		long temp;
@@ -193,11 +181,6 @@ public class Assignment {
 			if (other.endDate != null)
 				return false;
 		} else if (!endDate.equals(other.endDate))
-			return false;
-		if (execInfo == null) {
-			if (other.execInfo != null)
-				return false;
-		} else if (!execInfo.equals(other.execInfo))
 			return false;
 		if (hashCode != other.hashCode)
 			return false;
