@@ -407,6 +407,8 @@ public class CreateAssignment {
 		criteria = new ArrayList<Criterion>();
 		selectedCriteria = new ArrayList<String>();
 		requisites = new ArrayList<Requisite>();
+		operators = new ArrayList<Operator>();
+		selectedOperators = new ArrayList<String>();
 	}
 
 	public void change(ValueChangeEvent vce) throws IOException {

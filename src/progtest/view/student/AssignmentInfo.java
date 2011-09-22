@@ -50,6 +50,8 @@ public class AssignmentInfo {
 	private Report report;
 
 	private String downloadable = null;
+	
+	private boolean instructorTests = false;
 
 	public int getViewId() {
 		return viewId;
@@ -163,6 +165,14 @@ public class AssignmentInfo {
 		this.downloadable = downloadable;
 	}
 
+	public boolean getInstructorTests() {
+		return instructorTests;
+	}
+
+	public void setInstructorTests(boolean instructorTests) {
+		this.instructorTests = instructorTests;
+	}
+
 	public AssignmentInfo() {
 		init();
 	}
@@ -206,8 +216,15 @@ public class AssignmentInfo {
 
 				reports.clear();
 
-				List<File> reportFiles = FileUtil.listFiles(new File(
-						Directories.getPstsDirPath(assignment, student)));
+				List<File> reportFiles = null;
+				
+				if(instructorTests)
+					reportFiles = FileUtil.listFiles(new File(
+							Directories.getPstiDirPath(assignment, student)));
+				else
+					reportFiles = FileUtil.listFiles(new File(
+							Directories.getPstsDirPath(assignment, student)));
+					
 
 				Collections.sort(reportFiles);
 
@@ -227,6 +244,18 @@ public class AssignmentInfo {
 
 		}
 
+	}
+	
+	public String selectPsTsReports() {
+		instructorTests = false;
+		init();
+		return Constants.ACTION_SELECT;
+	}
+	
+	public String selectPsTiReports() {
+		instructorTests = true;
+		init();
+		return Constants.ACTION_SELECT;
 	}
 
 	public String selectDefaultView() {

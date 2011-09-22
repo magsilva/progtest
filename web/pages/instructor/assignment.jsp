@@ -16,11 +16,9 @@
 
 				<af:spacer width="10" />
 
-				<htm:div style="width: 170px; background-color::#999999">
+				<htm:div style="width: 170px;">
 
 					<af:spacer height="25" />
-
-					<h:outputText value="Processing..." styleClass="menu_title" rendered="#{instructorAssignment.processing}" />
 
 					<h:outputText value="Assignment" styleClass="menu_title" />
 
@@ -51,7 +49,7 @@
 
 					<h:dataTable value="#{instructorAssignment.tools}" var="tool"
 						width="100%" rendered="#{!empty instructorAssignment.tools}"
-						cellpadding="0px" cellspacing="0px">
+						cellpadding="0" cellspacing="0">
 						<h:column>
 							<af:spacer height="20" />
 							<h:outputText value="#{tool.name} Reports"
@@ -59,7 +57,7 @@
 							<h:dataTable value="#{instructorAssignment.reports}" var="report"
 								binding="#{instructorAssignment.reportsTable}" width="100%"
 								rendered="#{!empty instructorAssignment.reports}"
-								cellpadding="0px" cellspacing="0px">
+								cellpadding="0" cellspacing="0">
 								<h:column>
 									<h:commandLink rendered="#{tool.name == report.tool}"
 										action="#{instructorAssignment.selectReportView}"
@@ -99,8 +97,8 @@
 
 					<h:panelGrid columns="2">
 						<af:image source="/images/execute.png" />
-						<h:commandLink action="#{instructorAssignment.execute}"
-							actionListener="#{instructorAssignment.process}" immediate="true"
+						<h:commandLink id="cl" action="#{instructorAssignment.execute}"
+							actionListener="#{instructorAssignment.process}"
 							styleClass="link">
 							<h:outputText value="Execute Again" styleClass="topmenu_link" />
 						</h:commandLink>

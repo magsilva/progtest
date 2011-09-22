@@ -91,30 +91,56 @@
 							</htm:td>
 						</htm:tr>
 					</htm:table>
-
+					
 					<af:spacer height="20" />
 
-					<h:outputText value="Reports" styleClass="menu_title"
-						rendered="#{!empty studentAssignmentInfo.reports}" />
+					<h:outputText value="Test Sets" styleClass="menu_title" />
+
+					<htm:table>
+						<htm:tr>
+							<htm:td>
+								<h:commandLink action="#{studentAssignmentInfo.selectPsTsReports}"
+									styleClass="link">
+									<h:outputText value="Student Tests" styleClass="link"
+										rendered="#{studentAssignmentInfo.instructorTests}" />
+									<h:outputText value="Student Tests"
+										styleClass="link_hover"
+										rendered="#{!studentAssignmentInfo.instructorTests}" />
+								</h:commandLink>
+							</htm:td>
+						</htm:tr>
+						<htm:tr>
+							<htm:td>
+								<h:commandLink action="#{studentAssignmentInfo.selectPsTiReports}"
+									styleClass="link">
+									<h:outputText value="Instructor Tests" styleClass="link"
+										rendered="#{!studentAssignmentInfo.instructorTests}" />
+									<h:outputText value="Instructor Tests"
+										styleClass="link_hover"
+										rendered="#{studentAssignmentInfo.instructorTests}" />
+								</h:commandLink>
+							</htm:td>
+						</htm:tr>
+					</htm:table>
 
 					<h:dataTable value="#{studentAssignmentInfo.tools}" var="tool"
 						width="100%" rendered="#{!empty studentAssignmentInfo.reports}"
-						cellpadding="0px" cellspacing="0px">
+						cellpadding="0" cellspacing="0">
 						<h:column>
 							<af:spacer height="20" />
 							<h:outputText value="#{tool.name} Reports"
 								styleClass="menu_title" />
 							<h:dataTable value="#{studentAssignmentInfo.reports}"
 								var="report" binding="#{studentAssignmentInfo.reportsTable}"
-								width="100%" cellpadding="0px" cellspacing="0px">
+								width="100%" cellpadding="0" cellspacing="0">
 								<h:column>
 									<h:commandLink rendered="#{tool.name == report.tool}"
 										action="#{studentAssignmentInfo.selectReportView}"
 										styleClass="link">
 										<h:outputText value="#{report.name}" styleClass="link"
-											rendered="#{!studentAssignmentInfo.evaluationReport}" />
+											rendered="#{studentAssignmentInfo.report.name != report.name}" />
 										<h:outputText value="#{report.name}" styleClass="link_hover"
-											rendered="#{studentAssignmentInfo.activedReport.evaluationReport}" />
+											rendered="#{studentAssignmentInfo.report.name == report.name}" />
 									</h:commandLink>
 								</h:column>
 							</h:dataTable>

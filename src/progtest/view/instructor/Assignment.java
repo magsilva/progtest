@@ -9,8 +9,6 @@ import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import edu.emory.mathcs.backport.java.util.Collections;
-
 import progtest.common.Submission;
 import progtest.common.Tool;
 import progtest.database.Querier;
@@ -21,6 +19,7 @@ import progtest.reports.xml.XML2Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
+import edu.emory.mathcs.backport.java.util.Collections;
 
 public class Assignment {
 
@@ -297,6 +296,10 @@ public class Assignment {
 	public void process(ActionEvent event) {
 
 		processing = true;
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.setViewRoot(context.getApplication().getViewHandler()
+				.createView(context, context.getViewRoot().getViewId()));
 
 		FacesContext
 				.getCurrentInstance()
