@@ -65,8 +65,6 @@
 
 					<h:outputText value="Assignment" styleClass="menu_title" />
 
-					<af:spacer height="10" />
-
 					<htm:table>
 						<htm:tr>
 							<htm:td>
@@ -78,7 +76,10 @@
 										styleClass="link_hover"
 										rendered="#{studentAssignmentInfo.viewId == 1}" />
 								</h:commandLink>
-								<af:spacer height="5" />
+							</htm:td>
+						</htm:tr>
+						<htm:tr>
+							<htm:td>
 								<h:commandLink
 									action="#{studentAssignmentInfo.selectResultView}"
 									styleClass="link">
@@ -91,35 +92,41 @@
 						</htm:tr>
 					</htm:table>
 
-					<af:spacer height="40" />
+					<af:spacer height="20" />
 
 					<h:outputText value="Reports" styleClass="menu_title"
 						rendered="#{!empty studentAssignmentInfo.reports}" />
 
-					<h:dataTable value="#{studentAssignmentInfo.reports}" var="report"
-						binding="#{studentAssignmentInfo.reportsTable}" width="100%"
-						rendered="#{!empty studentAssignmentInfo.reports}">
+					<h:dataTable value="#{studentAssignmentInfo.tools}" var="tool"
+						width="100%" rendered="#{!empty studentAssignmentInfo.reports}"
+						cellpadding="0px" cellspacing="0px">
 						<h:column>
-							<af:spacer height="10" />
-							<h:commandLink action="#{studentAssignmentInfo.selectReportView}"
-								styleClass="link">
-								<h:outputText value="#{report.tool}/#{report.name}"
-									styleClass="link"
-									rendered="#{report.name != studentAssignmentInfo.activedReport}" />
-								<h:outputText value="#{report.tool}/#{report.name}"
-									styleClass="link_hover"
-									rendered="#{report.name == studentAssignmentInfo.activedReport}" />
-							</h:commandLink>
+							<af:spacer height="20" />
+							<h:outputText value="#{tool.name} Reports"
+								styleClass="menu_title" />
+							<h:dataTable value="#{studentAssignmentInfo.reports}"
+								var="report" binding="#{studentAssignmentInfo.reportsTable}"
+								width="100%" cellpadding="0px" cellspacing="0px">
+								<h:column>
+									<h:commandLink rendered="#{tool.name == report.tool}"
+										action="#{studentAssignmentInfo.selectReportView}"
+										styleClass="link">
+										<h:outputText value="#{report.name}" styleClass="link"
+											rendered="#{!studentAssignmentInfo.evaluationReport}" />
+										<h:outputText value="#{report.name}" styleClass="link_hover"
+											rendered="#{studentAssignmentInfo.activedReport.evaluationReport}" />
+									</h:commandLink>
+								</h:column>
+							</h:dataTable>
 						</h:column>
 					</h:dataTable>
 
-					<af:spacer height="40" />
+					<af:spacer height="20" />
 
-					<h:outputText value="Action" styleClass="menu_title" />
+					<h:outputText value="Actions" styleClass="menu_title" />
 
-					<af:spacer height="10" />
-
-					<h:panelGrid columns="2" rendered="#{studentAssignmentInfo.downloadable != null}">
+					<h:panelGrid columns="2"
+						rendered="#{studentAssignmentInfo.downloadable != null}">
 						<af:image source="/images/download.png" />
 						<h:outputLink value="#{studentAssignmentInfo.downloadable}"
 							styleClass="link">
@@ -131,8 +138,7 @@
 						<af:image source="/images/upload.png" />
 						<h:commandLink action="#{studentAssignmentInfo.send}"
 							styleClass="link">
-							<h:outputText value="Submit Again"
-								styleClass="topmenu_link" />
+							<h:outputText value="Submit Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
@@ -238,7 +244,7 @@
 
 				</htm:div>
 
-				<htm:div style="width: 600px;"
+				<htm:div style="width: 570px;"
 					rendered="#{studentAssignmentInfo.viewId == 2}">
 
 					<af:spacer height="25" />
@@ -260,7 +266,7 @@
 								<h:column>
 
 									<h:outputText value="#{object.textValue}"
-										style="background: #{object.textColor};font-family:Courier New;font-size:8pt;font-weight:bold;"
+										style="background: #{object.textColor};font-family:Courier New;font-size:10pt;color:#000000;"
 										rendered="#{object.type == 0}" escape="false" />
 
 									<h:dataTable value="#{object.tableRows}" var="row"
@@ -328,8 +334,14 @@
 										</h:column>
 									</h:dataTable>
 
+									<af:spacer height="10" rendered="#{object.type == 2}" />
+
 									<h:graphicImage value="#{object.figurePath}"
 										rendered="#{object.type == 2}" />
+
+									<af:spacer height="10" rendered="#{object.type == 0}" />
+
+									<af:spacer height="25" rendered="#{object.type == 1}" />
 
 								</h:column>
 							</h:dataTable>

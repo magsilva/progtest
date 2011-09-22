@@ -7,7 +7,12 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
+import edu.emory.mathcs.backport.java.util.Collections;
+
+import progtest.common.Assignment;
 import progtest.common.Submission;
+import progtest.common.Tool;
+import progtest.common.User;
 import progtest.execution.Directories;
 import progtest.execution.Runner;
 import progtest.reports.Report;
@@ -19,6 +24,8 @@ import progtest.util.FileUtil;
 public class AssignmentInfo {
 
 	private int viewId;
+
+	private String activedReport;
 
 	private String title;
 
@@ -32,15 +39,15 @@ public class AssignmentInfo {
 
 	private double score;
 
-	private String activedReport;
+	private boolean evaluationReport;
+
+	private List<Tool> tools;
 
 	private List<Report> reports = new ArrayList<Report>();
 
 	private UIData reportsTable;
 
 	private Report report;
-
-	private boolean evaluationReport;
 
 	private String downloadable = null;
 
@@ -50,6 +57,14 @@ public class AssignmentInfo {
 
 	public void setViewId(int viewId) {
 		this.viewId = viewId;
+	}
+
+	public String getActivedReport() {
+		return activedReport;
+	}
+
+	public void setActivedReport(String activedReport) {
+		this.activedReport = activedReport;
 	}
 
 	public String getTitle() {
@@ -100,12 +115,20 @@ public class AssignmentInfo {
 		this.score = score;
 	}
 
-	public String getActivedReport() {
-		return activedReport;
+	public boolean isEvaluationReport() {
+		return evaluationReport;
 	}
 
-	public void setActivedReport(String activedReport) {
-		this.activedReport = activedReport;
+	public void setEvaluationReport(boolean evaluationReport) {
+		this.evaluationReport = evaluationReport;
+	}
+
+	public List<Tool> getTools() {
+		return tools;
+	}
+
+	public void setTools(List<Tool> tools) {
+		this.tools = tools;
 	}
 
 	public List<Report> getReports() {
@@ -132,14 +155,6 @@ public class AssignmentInfo {
 		this.report = report;
 	}
 
-	public boolean isEvaluationReport() {
-		return evaluationReport;
-	}
-
-	public void setEvaluationReport(boolean evaluationReport) {
-		this.evaluationReport = evaluationReport;
-	}
-
 	public String getDownloadable() {
 		return downloadable;
 	}
@@ -149,6 +164,10 @@ public class AssignmentInfo {
 	}
 
 	public AssignmentInfo() {
+		init();
+	}
+
+	public void init() {
 
 		activedReport = Constants.EMPTY;
 
@@ -175,7 +194,26 @@ public class AssignmentInfo {
 
 			try {
 
+				Assignment assignment = submission.getAssignment();
+
+				User student = submission.getStudent();
+
+				tools = assignment.getTools();
+
 				downloadable = Runner.getDownloadable(submission);
+
+				report = null;
+
+				reports.clear();
+
+				List<File> reportFiles = FileUtil.listFiles(new File(
+						Directories.getPstsDirPath(assignment, student)));
+
+				Collections.sort(reportFiles);
+
+				for (File file : reportFiles)
+					if (file.getName().endsWith(".xml"))
+						reports.add(XML2Report.parse(file));
 
 			} catch (Throwable t) {
 
@@ -183,22 +221,8 @@ public class AssignmentInfo {
 
 			}
 
-			try {
-
-				for (File file : FileUtil.listFiles(new File(Directories
-						.getPstsDirPath(submission.getAssignment(),
-								submission.getStudent()))))
-					if (file.getName().endsWith(".xml"))
-						reports.add(XML2Report.parse(file));
-
-				report = null;
-
-			} catch (Throwable t) {
-
-			}
-
 			selectResultView();
-			
+
 			viewId = 2;
 
 		}
@@ -207,28 +231,41 @@ public class AssignmentInfo {
 
 	public String selectDefaultView() {
 		viewId = 0;
+		evaluationReport = false;
 		return Constants.ACTION_SELECT;
 	}
 
 	public String selectAboutView() {
 		viewId = 1;
+		evaluationReport = false;
 		return Constants.ACTION_SELECT;
 	}
 
 	public String selectResultView() {
-		Submission submission = (Submission) FacesUtil
-				.getSession(Constants.SESSION_EVALUATION);
-		File xmlFile = new File(Directories.getReportsDirPath(
-				submission.getAssignment(), submission.getStudent())
-				+ File.separator + "Evaluation Result.xml");
+
 		try {
+
+			Submission submission = (Submission) FacesUtil
+					.getSession(Constants.SESSION_EVALUATION);
+			
+			File xmlFile = new File(Directories.getReportsDirPath(
+					submission.getAssignment(), submission.getStudent())
+					+ File.separator + "Evaluation Result.xml");
+			
 			report = XML2Report.parse(xmlFile);
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
 		}
+		
+		activedReport = null;
+
 		evaluationReport = true;
+
 		return Constants.ACTION_SELECT;
+
 	}
 
 	public String selectReportView() {
@@ -243,15 +280,12 @@ public class AssignmentInfo {
 	}
 
 	public String send() {
+		
 		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
+		
 		return Constants.ACTION_SEND;
-	}
-
-	public String add() {
-		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
-				Constants.BACKPAGE_ASSIGNMENT);
-		return Constants.ACTION_ADD;
+		
 	}
 
 	public String execute() {
@@ -272,6 +306,8 @@ public class AssignmentInfo {
 			t.printStackTrace();
 
 		}
+		
+		init();
 
 		return Constants.ACTION_SELECT;
 
@@ -292,6 +328,8 @@ public class AssignmentInfo {
 			t.printStackTrace();
 
 		}
+		
+		init();
 
 		return Constants.ACTION_SELECT;
 

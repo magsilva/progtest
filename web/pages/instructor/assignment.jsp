@@ -16,13 +16,13 @@
 
 				<af:spacer width="10" />
 
-				<htm:div style="width: 170px;">
+				<htm:div style="width: 170px; background-color::#999999">
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Assignment" styleClass="menu_title" />
+					<h:outputText value="Processing..." styleClass="menu_title" rendered="#{instructorAssignment.processing}" />
 
-					<af:spacer height="5" />
+					<h:outputText value="Assignment" styleClass="menu_title" />
 
 					<htm:table>
 						<htm:tr>
@@ -34,7 +34,6 @@
 									<h:outputText value="Properties" styleClass="link_hover"
 										rendered="#{instructorAssignment.viewId == 0}" />
 								</h:commandLink>
-								<af:spacer height="2" />
 							</htm:td>
 						</htm:tr>
 						<htm:tr>
@@ -46,20 +45,21 @@
 									<h:outputText value="Grades" styleClass="link_hover"
 										rendered="#{instructorAssignment.viewId == 1}" />
 								</h:commandLink>
-								<af:spacer height="2" />
 							</htm:td>
 						</htm:tr>
 					</htm:table>
 
 					<h:dataTable value="#{instructorAssignment.tools}" var="tool"
-						width="100%" rendered="#{!empty instructorAssignment.tools}">
+						width="100%" rendered="#{!empty instructorAssignment.tools}"
+						cellpadding="0px" cellspacing="0px">
 						<h:column>
 							<af:spacer height="20" />
 							<h:outputText value="#{tool.name} Reports"
 								styleClass="menu_title" />
 							<h:dataTable value="#{instructorAssignment.reports}" var="report"
 								binding="#{instructorAssignment.reportsTable}" width="100%"
-								rendered="#{!empty instructorAssignment.reports}">
+								rendered="#{!empty instructorAssignment.reports}"
+								cellpadding="0px" cellspacing="0px">
 								<h:column>
 									<h:commandLink rendered="#{tool.name == report.tool}"
 										action="#{instructorAssignment.selectReportView}"
@@ -69,7 +69,6 @@
 										<h:outputText value="#{report.name}" styleClass="link_hover"
 											rendered="#{instructorAssignment.activedReport == report.name}" />
 									</h:commandLink>
-									<af:spacer height="2" rendered="#{tool.name == report.tool}" />
 								</h:column>
 							</h:dataTable>
 						</h:column>
@@ -101,6 +100,7 @@
 					<h:panelGrid columns="2">
 						<af:image source="/images/execute.png" />
 						<h:commandLink action="#{instructorAssignment.execute}"
+							actionListener="#{instructorAssignment.process}" immediate="true"
 							styleClass="link">
 							<h:outputText value="Execute Again" styleClass="topmenu_link" />
 						</h:commandLink>

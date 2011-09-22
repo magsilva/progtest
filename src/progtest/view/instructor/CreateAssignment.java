@@ -363,6 +363,8 @@ public class CreateAssignment {
 		AssignmentDAO.update(assignment);
 
 		refresh();
+		
+		FacesUtil.removeSession("instructorAssignment");
 
 		return Constants.ACTION_SUCCESS;
 

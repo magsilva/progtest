@@ -63,6 +63,8 @@ public class RemoveAssignment {
 		
 		AssignmentDAO.delete(assignment);
 		
+		FacesUtil.removeSession("instructorAssignment");
+		
 		return Constants.ACTION_SUCCESS;
 	
 	}

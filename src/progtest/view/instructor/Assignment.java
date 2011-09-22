@@ -6,6 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import edu.emory.mathcs.backport.java.util.Collections;
 
 import progtest.common.Submission;
 import progtest.common.Tool;
@@ -45,6 +49,8 @@ public class Assignment {
 	private Report report;
 
 	private String downloadable = null;
+
+	private boolean processing = false;
 
 	public int getViewId() {
 		return viewId;
@@ -150,7 +156,19 @@ public class Assignment {
 		this.downloadable = downloadable;
 	}
 
+	public boolean isProcessing() {
+		return processing;
+	}
+
+	public void setProcessing(boolean processing) {
+		this.processing = processing;
+	}
+
 	public Assignment() {
+		init();
+	}
+
+	public void init() {
 
 		try {
 
@@ -173,10 +191,18 @@ public class Assignment {
 
 			downloadable = Runner.getDownloadable(assignment);
 
+			processing = false;
+
 			report = null;
 
-			for (File file : FileUtil.listFiles(new File(Directories
-					.getPitiDirPath(assignment))))
+			reports.clear();
+
+			List<File> reportFiles = FileUtil.listFiles(new File(Directories
+					.getPitiDirPath(assignment)));
+
+			Collections.sort(reportFiles);
+
+			for (File file : reportFiles)
 				if (file.getName().endsWith(".xml"))
 					reports.add(XML2Report.parse(file));
 
@@ -230,6 +256,15 @@ public class Assignment {
 
 		}
 
+		init();
+
+		FacesContext
+				.getCurrentInstance()
+				.getApplication()
+				.getNavigationHandler()
+				.handleNavigation(FacesContext.getCurrentInstance(), null,
+						Constants.ACTION_SELECT);
+
 		return Constants.ACTION_SELECT;
 
 	}
@@ -249,12 +284,27 @@ public class Assignment {
 
 		}
 
+		init();
+
 		return Constants.ACTION_SELECT;
 
 	}
 
 	public String remove() {
 		return Constants.ACTION_REMOVE;
+	}
+
+	public void process(ActionEvent event) {
+
+		processing = true;
+
+		FacesContext
+				.getCurrentInstance()
+				.getApplication()
+				.getNavigationHandler()
+				.handleNavigation(FacesContext.getCurrentInstance(), null,
+						Constants.ACTION_SELECT);
+
 	}
 
 }

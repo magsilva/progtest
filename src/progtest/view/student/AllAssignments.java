@@ -92,6 +92,7 @@ public class AllAssignments {
 	public String assignmentInfo() {
 		Submission evaluation = (Submission) submissionsTable.getRowData();
 		FacesUtil.setSession(Constants.SESSION_EVALUATION, evaluation);
+		FacesUtil.removeSession("studentAssignmentInfo");
 		return Constants.ACTION_VIEW;
 	}
 
