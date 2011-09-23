@@ -136,6 +136,29 @@ public class Assignment {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((course == null) ? 0 : course.hashCode());
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + hashCode;
+		result = prime * result + idCode;
+		long temp;
+		temp = Double.doubleToLongBits(pinstTinst);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result
+				+ ((requisites == null) ? 0 : requisites.hashCode());
+		result = prime * result
+				+ ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result
+				+ ((submissions == null) ? 0 : submissions.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -187,29 +210,6 @@ public class Assignment {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((course == null) ? 0 : course.hashCode());
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result + hashCode;
-		result = prime * result + idCode;
-		long temp;
-		temp = Double.doubleToLongBits(pinstTinst);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result
-				+ ((requisites == null) ? 0 : requisites.hashCode());
-		result = prime * result
-				+ ((startDate == null) ? 0 : startDate.hashCode());
-		result = prime * result
-				+ ((submissions == null) ? 0 : submissions.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		return result;
 	}
 
 }

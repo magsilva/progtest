@@ -75,6 +75,8 @@ public class EditAssignment {
 			AssignmentDAO.update(assignment);
 			
 			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+			
+			FacesUtil.removeSession("instructorAssignment");
 
 			return Constants.ACTION_SUCCESS;
 

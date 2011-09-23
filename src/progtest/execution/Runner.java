@@ -7,9 +7,11 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
 import progtest.common.Oracle;
+import progtest.common.Requisite;
 import progtest.common.Submission;
 import progtest.common.Tool;
 import progtest.common.User;
+import progtest.database.Querier;
 import progtest.util.FileUtil;
 
 public class Runner {
@@ -464,12 +466,17 @@ public class Runner {
 		try {
 
 			for (Tool tool : assignment.getTools()) {
+				
+				String execInfo = "";
+				
+				for(Requisite requisite : Querier.getAssignmentCriteria(assignment))
+					execInfo += requisite.getExecInfo();
 
 				try {
-
-					Executor.execute(tool, rootDir, programDir, testsDir,
-							outputDir);
-
+					
+						Executor.execute(tool, rootDir, programDir, testsDir,
+								outputDir, execInfo);
+						
 				} catch (Throwable t) {
 
 				}

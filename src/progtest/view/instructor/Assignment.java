@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import progtest.common.Submission;
 import progtest.common.Tool;
@@ -13,11 +15,11 @@ import progtest.database.Querier;
 import progtest.execution.Directories;
 import progtest.execution.Runner;
 import progtest.reports.Report;
-import progtest.reports.TXTReport;
-import progtest.reports.XMLReport;
+import progtest.reports.xml.XML2Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
+import edu.emory.mathcs.backport.java.util.Collections;
 
 public class Assignment {
 
@@ -43,13 +45,11 @@ public class Assignment {
 
 	private UIData reportsTable;
 
-	private XMLReport xmlReport;
+	private Report report;
 
-	private UIData recordsTable;
-
-	private TXTReport txtReport;
-	
 	private String downloadable = null;
+
+	private boolean processing = false;
 
 	public int getViewId() {
 		return viewId;
@@ -139,28 +139,12 @@ public class Assignment {
 		this.reportsTable = reportsTable;
 	}
 
-	public XMLReport getXmlReport() {
-		return xmlReport;
+	public Report getReport() {
+		return report;
 	}
 
-	public void setXmlReport(XMLReport xmlReport) {
-		this.xmlReport = xmlReport;
-	}
-
-	public UIData getRecordsTable() {
-		return recordsTable;
-	}
-
-	public void setRecordsTable(UIData recordsTable) {
-		this.recordsTable = recordsTable;
-	}
-
-	public TXTReport getTxtReport() {
-		return txtReport;
-	}
-
-	public void setTxtReport(TXTReport txtReport) {
-		this.txtReport = txtReport;
+	public void setReport(Report report) {
+		this.report = report;
 	}
 
 	public String getDownloadable() {
@@ -171,43 +155,61 @@ public class Assignment {
 		this.downloadable = downloadable;
 	}
 
+	public boolean isProcessing() {
+		return processing;
+	}
+
+	public void setProcessing(boolean processing) {
+		this.processing = processing;
+	}
+
 	public Assignment() {
+		init();
+	}
 
-		activedReport = Constants.EMPTY;
+	public void init() {
 
-		progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
-				.getSession(Constants.SESSION_ASSIGNMENT);
-
-		title = assignment.getTitle();
-
-		description = assignment.getDescription();
-
-		startDate = assignment.getStartDate();
-
-		endDate = assignment.getEndDate();
-
-		submissions = Querier.getEvaluations(assignment);
-
-		tools = assignment.getTools();
-		
 		try {
-			
+
+			activedReport = Constants.EMPTY;
+
+			progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
+					.getSession(Constants.SESSION_ASSIGNMENT);
+
+			title = assignment.getTitle();
+
+			description = assignment.getDescription();
+
+			startDate = assignment.getStartDate();
+
+			endDate = assignment.getEndDate();
+
+			submissions = Querier.getEvaluations(assignment);
+
+			tools = assignment.getTools();
+
 			downloadable = Runner.getDownloadable(assignment);
-			
+
+			processing = false;
+
+			report = null;
+
+			reports.clear();
+
+			List<File> reportFiles = FileUtil.listFiles(new File(Directories
+					.getPitiDirPath(assignment)));
+
+			Collections.sort(reportFiles);
+
+			for (File file : reportFiles)
+				if (file.getName().endsWith(".xml"))
+					reports.add(XML2Report.parse(file));
+
 		} catch (Throwable t) {
-			
+
 			t.printStackTrace();
-			
+
 		}
-
-		for (File file : FileUtil.listFiles(new File(Directories
-				.getPitiDirPath(assignment))))
-			if (!file.getName().endsWith(".properties"))
-				reports.add(new Report(file));
-
-		xmlReport = null;
-
-		txtReport = null;
 
 		selectAboutView();
 
@@ -225,26 +227,9 @@ public class Assignment {
 
 	public String selectReportView() {
 
-		Report report = (Report) reportsTable.getRowData();
-
-		try {
-
-			if (report.getFile().getName().endsWith(".xml")) {
-
-				xmlReport = new XMLReport(report.getFile());
-				viewId = 2;
-				activedReport = report.getName();
-
-			} else {
-
-				txtReport = new TXTReport(report.getFile());
-				viewId = 3;
-				activedReport = report.getName();
-
-			}
-
-		} catch (Exception e) {
-		}
+		report = (Report) reportsTable.getRowData();
+		viewId = 2;
+		activedReport = report.getName();
 
 		return Constants.ACTION_SELECT;
 
@@ -270,6 +255,15 @@ public class Assignment {
 
 		}
 
+		init();
+
+		FacesContext
+				.getCurrentInstance()
+				.getApplication()
+				.getNavigationHandler()
+				.handleNavigation(FacesContext.getCurrentInstance(), null,
+						Constants.ACTION_SELECT);
+
 		return Constants.ACTION_SELECT;
 
 	}
@@ -289,12 +283,31 @@ public class Assignment {
 
 		}
 
+		init();
+
 		return Constants.ACTION_SELECT;
 
 	}
 
 	public String remove() {
 		return Constants.ACTION_REMOVE;
+	}
+
+	public void process(ActionEvent event) {
+
+		processing = true;
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.setViewRoot(context.getApplication().getViewHandler()
+				.createView(context, context.getViewRoot().getViewId()));
+
+		FacesContext
+				.getCurrentInstance()
+				.getApplication()
+				.getNavigationHandler()
+				.handleNavigation(FacesContext.getCurrentInstance(), null,
+						Constants.ACTION_SELECT);
+
 	}
 
 }

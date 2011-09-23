@@ -46,6 +46,8 @@ public class SubmitAssigment {
 		submission.setSubmissionDate(new Date());
 
 		SubmissionDAO.update(submission);
+		
+		FacesUtil.removeSession("studentAssignmentInfo");
 
 		return Constants.ACTION_SUCCESS;
 

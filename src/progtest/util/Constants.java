@@ -36,6 +36,9 @@ public class Constants {
 	public static final String PATH_FILES = PATH_ROOT + File.separator
 			+ "files";
 
+	public static final String PATH_FIGURES = PATH_ROOT + File.separator
+			+ "figures";
+
 	/* Extensions */
 	
 	public static final String EXTENSION_XML = ".xml";

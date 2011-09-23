@@ -50,7 +50,7 @@
  <managed-bean>
   <managed-bean-name>instructorAssignment</managed-bean-name>
   <managed-bean-class>progtest.view.instructor.Assignment</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>instructorCreateAssignment</managed-bean-name>
@@ -120,7 +120,7 @@
  <managed-bean>
   <managed-bean-name>studentAssignmentInfo</managed-bean-name>
   <managed-bean-class>progtest.view.student.AssignmentInfo</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>studentSubmitAssigment</managed-bean-name>

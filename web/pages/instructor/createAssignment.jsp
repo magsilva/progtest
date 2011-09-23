@@ -239,13 +239,41 @@
 					<h:outputText value="Any criterion avaible!"
 						rendered="#{empty instructorCreateAssignment.criteria}" />
 
-					<h:selectManyCheckbox
+					<h:outputText value="Criteria"
+						rendered="#{!empty instructorCreateAssignment.criteria}"
+						styleClass="subtitle" />
+
+					<h:selectManyCheckbox onchange="submit()"
+						valueChangeListener="#{instructorCreateAssignment.changeCriteria}"
 						value="#{instructorCreateAssignment.selectedCriteria}"
 						layout="pageDirection"
 						rendered="#{!empty instructorCreateAssignment.criteria}">
 						<t:selectItems value="#{instructorCreateAssignment.criteria}"
 							var="c2" itemLabel="#{c2.tool.name}/#{c2.name}"
 							itemValue="#{c2.tool.idCode}/#{c2.idCode}" />
+					</h:selectManyCheckbox>
+
+					<af:spacer height="20" />
+
+					<h:outputText value="Mutant Operators"
+						rendered="#{!empty instructorCreateAssignment.operators}"
+						styleClass="subtitle" />
+
+					<h:selectManyCheckbox id="required"
+						value="#{instructorCreateAssignment.selectedRequiredOperators}"
+						layout="pageDirection"
+						rendered="#{!empty instructorCreateAssignment.requiredOperators}" disabled="true">
+						<t:selectItems value="#{instructorCreateAssignment.requiredOperators}"
+							var="requiredOperator" itemLabel="#{requiredOperator.criterion.tool.name}/#{requiredOperator.name}"
+							itemValue="#{requiredOperator.criterion.tool.idCode}/#{requiredOperator.criterion.idCode}/#{requiredOperator.idCode}" />
+					</h:selectManyCheckbox>
+					<h:selectManyCheckbox id="unrequired"
+						value="#{instructorCreateAssignment.selectedOperators}"
+						layout="pageDirection"
+						rendered="#{!empty instructorCreateAssignment.operators}">
+						<t:selectItems value="#{instructorCreateAssignment.operators}"
+							var="operator" itemLabel="#{operator.criterion.tool.name}/#{operator.name}"
+							itemValue="#{operator.criterion.tool.idCode}/#{operator.criterion.idCode}/#{operator.idCode}" />
 					</h:selectManyCheckbox>
 
 					<af:spacer height="20" />

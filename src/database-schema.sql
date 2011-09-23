@@ -70,11 +70,23 @@ CREATE TABLE Criterion (
 	CONSTRAINT FK_criterion_tool FOREIGN KEY (tool) REFERENCES Tool (idCode)
 );
 
+CREATE TABLE Operator (
+	tool INT NOT NULL,
+	criterion INT NOT NULL,
+	idCode INT NOT NULL,
+	name VARCHAR(50),
+	parameter VARCHAR(50),
+	required BOOLEAN,
+	CONSTRAINT PK_operator PRIMARY KEY (tool, criterion, idCode),
+	CONSTRAINT FK_operator_criterion FOREIGN KEY (tool, criterion) REFERENCES Criterion (tool, idCode)
+);
+
 CREATE TABLE Requisite (
 	assignment INT NOT NULL,
 	tool INT NOT NULL,
 	criterion INT NOT NULL,
 	weight DOUBLE,
+	execInfo VARCHAR(500),
 	CONSTRAINT PK_requisite PRIMARY KEY (assignment, tool, criterion),
 	CONSTRAINT FK_requisite_assignment FOREIGN KEY (assignment) REFERENCES Assignment (idCode),
 	CONSTRAINT FK_requisite_criterion FOREIGN KEY (tool, criterion) REFERENCES Criterion (tool, idCode)
@@ -176,6 +188,20 @@ INSERT INTO Criterion VALUES(2, 8, 'All-Potencial-Uses-ed', 'all.potencial.uses.
 INSERT INTO Tool VALUES(3, 'Jumble', 'Java', 'Javac', 'JUnit', 'cmdlines.txt', 'output.properties');
 
 INSERT INTO Criterion VALUES(3, 1, 'Analysis of Mutants', 'score');
+
+INSERT INTO Operator VALUES(3, 1, 1, 'Conditionals', NULL, TRUE);
+
+INSERT INTO Operator VALUES(3, 1, 2, 'Binary Arithmetic Operations', NULL, TRUE);
+
+INSERT INTO Operator VALUES(3, 1, 3, 'Increments', '-i', FALSE);
+
+INSERT INTO Operator VALUES(3, 1, 4, 'Inline Constants', '-k', FALSE);
+
+INSERT INTO Operator VALUES(3, 1, 5, 'Class Pool Constants', '-w', FALSE);
+
+INSERT INTO Operator VALUES(3, 1, 6, 'Return Values', '-r', FALSE);
+
+INSERT INTO Operator VALUES(3, 1, 7, 'Switch Statements', '-j', FALSE);
 
 INSERT INTO Tool VALUES(4, 'CUnit', 'C', 'GCC', 'CUnit', 'cmdlines.txt', 'output.properties');
 

@@ -7,12 +7,16 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 
+import edu.emory.mathcs.backport.java.util.Collections;
+
+import progtest.common.Assignment;
 import progtest.common.Submission;
+import progtest.common.Tool;
+import progtest.common.User;
 import progtest.execution.Directories;
 import progtest.execution.Runner;
 import progtest.reports.Report;
-import progtest.reports.TXTReport;
-import progtest.reports.XMLReport;
+import progtest.reports.xml.XML2Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
@@ -20,6 +24,8 @@ import progtest.util.FileUtil;
 public class AssignmentInfo {
 
 	private int viewId;
+
+	private String activedReport;
 
 	private String title;
 
@@ -33,29 +39,19 @@ public class AssignmentInfo {
 
 	private double score;
 
-	private String activedReport;
+	private boolean evaluationReport;
+
+	private List<Tool> tools;
 
 	private List<Report> reports = new ArrayList<Report>();
 
 	private UIData reportsTable;
 
-	private XMLReport xmlReport;
-
-	private UIData recordsTable;
-
-	private TXTReport txtReport;
-
-	private XMLReport generalCoverages;
-
-	private UIData generalCoveragesTable;
-
-	private XMLReport totalCoverages;
-
-	private UIData totalCoveragesTable;
-
-	private String grade;
+	private Report report;
 
 	private String downloadable = null;
+	
+	private boolean instructorTests = false;
 
 	public int getViewId() {
 		return viewId;
@@ -63,6 +59,14 @@ public class AssignmentInfo {
 
 	public void setViewId(int viewId) {
 		this.viewId = viewId;
+	}
+
+	public String getActivedReport() {
+		return activedReport;
+	}
+
+	public void setActivedReport(String activedReport) {
+		this.activedReport = activedReport;
 	}
 
 	public String getTitle() {
@@ -113,12 +117,20 @@ public class AssignmentInfo {
 		this.score = score;
 	}
 
-	public String getActivedReport() {
-		return activedReport;
+	public boolean isEvaluationReport() {
+		return evaluationReport;
 	}
 
-	public void setActivedReport(String activedReport) {
-		this.activedReport = activedReport;
+	public void setEvaluationReport(boolean evaluationReport) {
+		this.evaluationReport = evaluationReport;
+	}
+
+	public List<Tool> getTools() {
+		return tools;
+	}
+
+	public void setTools(List<Tool> tools) {
+		this.tools = tools;
 	}
 
 	public List<Report> getReports() {
@@ -137,68 +149,12 @@ public class AssignmentInfo {
 		this.reportsTable = reportsTable;
 	}
 
-	public XMLReport getXmlReport() {
-		return xmlReport;
+	public Report getReport() {
+		return report;
 	}
 
-	public void setXmlReport(XMLReport xmlReport) {
-		this.xmlReport = xmlReport;
-	}
-
-	public UIData getRecordsTable() {
-		return recordsTable;
-	}
-
-	public void setRecordsTable(UIData recordsTable) {
-		this.recordsTable = recordsTable;
-	}
-
-	public TXTReport getTxtReport() {
-		return txtReport;
-	}
-
-	public void setTxtReport(TXTReport txtReport) {
-		this.txtReport = txtReport;
-	}
-
-	public XMLReport getGeneralCoverages() {
-		return generalCoverages;
-	}
-
-	public void setGeneralCoverages(XMLReport generalCoverages) {
-		this.generalCoverages = generalCoverages;
-	}
-
-	public UIData getGeneralCoveragesTable() {
-		return generalCoveragesTable;
-	}
-
-	public void setGeneralCoveragesTable(UIData generalCoveragesTable) {
-		this.generalCoveragesTable = generalCoveragesTable;
-	}
-
-	public XMLReport getTotalCoverages() {
-		return totalCoverages;
-	}
-
-	public void setTotalCoverages(XMLReport totalCoverages) {
-		this.totalCoverages = totalCoverages;
-	}
-
-	public UIData getTotalCoveragesTable() {
-		return totalCoveragesTable;
-	}
-
-	public void setTotalCoveragesTable(UIData totalCoveragesTable) {
-		this.totalCoveragesTable = totalCoveragesTable;
-	}
-
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
-
-	public String getGrade() {
-		return grade;
+	public void setReport(Report report) {
+		this.report = report;
 	}
 
 	public String getDownloadable() {
@@ -209,7 +165,19 @@ public class AssignmentInfo {
 		this.downloadable = downloadable;
 	}
 
+	public boolean getInstructorTests() {
+		return instructorTests;
+	}
+
+	public void setInstructorTests(boolean instructorTests) {
+		this.instructorTests = instructorTests;
+	}
+
 	public AssignmentInfo() {
+		init();
+	}
+
+	public void init() {
 
 		activedReport = Constants.EMPTY;
 
@@ -236,7 +204,33 @@ public class AssignmentInfo {
 
 			try {
 
+				Assignment assignment = submission.getAssignment();
+
+				User student = submission.getStudent();
+
+				tools = assignment.getTools();
+
 				downloadable = Runner.getDownloadable(submission);
+
+				report = null;
+
+				reports.clear();
+
+				List<File> reportFiles = null;
+				
+				if(instructorTests)
+					reportFiles = FileUtil.listFiles(new File(
+							Directories.getPstiDirPath(assignment, student)));
+				else
+					reportFiles = FileUtil.listFiles(new File(
+							Directories.getPstsDirPath(assignment, student)));
+					
+
+				Collections.sort(reportFiles);
+
+				for (File file : reportFiles)
+					if (file.getName().endsWith(".xml"))
+						reports.add(XML2Report.parse(file));
 
 			} catch (Throwable t) {
 
@@ -244,113 +238,83 @@ public class AssignmentInfo {
 
 			}
 
-			for (File file : FileUtil.listFiles(new File(Directories
-					.getPstsDirPath(submission.getAssignment(),
-							submission.getStudent()))))
-				if (!file.getName().endsWith(".properties"))
-					reports.add(new Report(file));
-
-			xmlReport = null;
-
-			txtReport = null;
-
-			try {
-
-				File xmlFile = new File(Directories.getReportsDirPath(
-						submission.getAssignment(), submission.getStudent())
-						+ File.separator + "Coverages.xml");
-				generalCoverages = new XMLReport(xmlFile);
-
-				xmlFile = new File(Directories.getReportsDirPath(
-						submission.getAssignment(), submission.getStudent())
-						+ File.separator + "Evaluation Result.xml");
-				totalCoverages = new XMLReport(xmlFile);
-
-				totalCoverages
-						.getRecords()
-						.get(0)
-						.setColumn1(
-								"Instructor's test set against instructor's program (P_Inst - T_Inst)");
-				totalCoverages
-						.getRecords()
-						.get(1)
-						.setColumn1(
-								"Student's test set against student's program (P_St - T_St)");
-				totalCoverages
-						.getRecords()
-						.get(2)
-						.setColumn1(
-								"Student's test set against instructor's program (P_Inst - T_St)");
-				totalCoverages
-						.getRecords()
-						.get(3)
-						.setColumn1(
-								"Instructor's test set against student's program (P_St - T_Inst)");
-
-				grade = totalCoverages.getRecords().get(4).getColumn2();
-				totalCoverages.getRecords().remove(4);
-
-			} catch (Exception e) {
-			}
+			selectResultView();
 
 			viewId = 2;
 
 		}
 
 	}
+	
+	public String selectPsTsReports() {
+		instructorTests = false;
+		init();
+		return Constants.ACTION_SELECT;
+	}
+	
+	public String selectPsTiReports() {
+		instructorTests = true;
+		init();
+		return Constants.ACTION_SELECT;
+	}
 
 	public String selectDefaultView() {
 		viewId = 0;
+		evaluationReport = false;
 		return Constants.ACTION_SELECT;
 	}
 
 	public String selectAboutView() {
 		viewId = 1;
+		evaluationReport = false;
 		return Constants.ACTION_SELECT;
 	}
 
 	public String selectResultView() {
-		viewId = 2;
+
+		try {
+
+			Submission submission = (Submission) FacesUtil
+					.getSession(Constants.SESSION_EVALUATION);
+			
+			File xmlFile = new File(Directories.getReportsDirPath(
+					submission.getAssignment(), submission.getStudent())
+					+ File.separator + "Evaluation Result.xml");
+			
+			report = XML2Report.parse(xmlFile);
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+		
+		activedReport = null;
+
+		evaluationReport = true;
+
 		return Constants.ACTION_SELECT;
+
 	}
 
 	public String selectReportView() {
 
-		Report report = (Report) reportsTable.getRowData();
-
-		try {
-
-			if (report.getFile().getName().endsWith(".xml")) {
-
-				xmlReport = new XMLReport(report.getFile());
-				viewId = 3;
-				activedReport = report.getName();
-
-			} else {
-
-				txtReport = new TXTReport(report.getFile());
-				viewId = 4;
-				activedReport = report.getName();
-
-			}
-
-		} catch (Exception e) {
-		}
+		report = (Report) reportsTable.getRowData();
+		viewId = 2;
+		activedReport = report.getName();
+		evaluationReport = false;
 
 		return Constants.ACTION_SELECT;
 
 	}
 
 	public String send() {
+		
 		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
+		
 		return Constants.ACTION_SEND;
-	}
-
-	public String add() {
-		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
-				Constants.BACKPAGE_ASSIGNMENT);
-		return Constants.ACTION_ADD;
+		
 	}
 
 	public String execute() {
@@ -371,6 +335,8 @@ public class AssignmentInfo {
 			t.printStackTrace();
 
 		}
+		
+		init();
 
 		return Constants.ACTION_SELECT;
 
@@ -391,6 +357,8 @@ public class AssignmentInfo {
 			t.printStackTrace();
 
 		}
+		
+		init();
 
 		return Constants.ACTION_SELECT;
 

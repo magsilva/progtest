@@ -117,9 +117,14 @@ public class Assignments {
 	}
 
 	public String view() {
+		
 		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignmentsTable
 				.getRowData());
+		
+		FacesUtil.removeSession("instructorAssignment");
+		
 		return Constants.ACTION_VIEW;
+		
 	}
 
 }

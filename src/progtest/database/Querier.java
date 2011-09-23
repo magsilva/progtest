@@ -6,11 +6,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import progtest.common.Assignment;
-import progtest.common.Requisite;
 import progtest.common.Course;
 import progtest.common.Criterion;
-import progtest.common.Submission;
+import progtest.common.Operator;
 import progtest.common.Oracle;
+import progtest.common.Requisite;
+import progtest.common.Submission;
 import progtest.common.Tool;
 import progtest.common.User;
 import progtest.util.HibernateUtil;
@@ -52,10 +53,12 @@ public class Querier {
 	private static final String SELECT_SUBMISSIONS_BY_STUDENT_AND_COURSE_AND_SUBMISSIONDATE = "from Submission submission where submission.student = ? and submission.assignment.course = ? and submission.submissionDate = NULL order by submission.assignment.endDate";
 
 	private static final String SELECT_SUBMISSIONS_BY_STUDENT_AND_SUBMISSIONDATE = "from Submission submission where submission.student = ? and submission.submissionDate = NULL order by submission.assignment.endDate";
-
+	
 	private static final String SELECT_CRITERIA_BY_LANGUAGE = "select tool.criteria from Tool tool where tool.language = ?";
 
 	private static final String SELECT_CRITERIA_BY_ASSIGNMENT = "select requisite.criterion from Requisite requisite where requisite.assignment.course.idCode = ? and requisite.assignment.idCode = ?";
+	
+	private static final String SELECT_OPERATOR_BY_CRITERION = "from Operator operator where operator.criterion.tool.idCode = ? and operator.criterion.idCode = ?";
 
 	private static final String SELECT_CRITERION_BY_TOOL_AND_ID = "from Criterion criterion where criterion.tool = ? and criterion.idCode = ?";
 
@@ -66,6 +69,8 @@ public class Querier {
 	private static final String SELECT_TOOL_BY_ASSIGNMENT = "select requisite.criterion.tool from Requisite requisite where requisite.assignment.course.idCode = ? and requisite.assignment.idCode = ?";
 
 	private static final String SELECT_TOOL_BY_ID = "from Tool tool where tool.idCode = ?";
+
+	private static final String SELECT_OPERATOR_BY_IDS = "from Operator operator where operator.criterion.tool.idCode = ? and operator.criterion.idCode = ? and operator.idCode = ?";
 
 	public static boolean checkUserName(String userName) {
 		boolean result;
@@ -360,6 +365,19 @@ public class Querier {
 	}
 
 	@SuppressWarnings("unchecked")
+	public static List<Operator> getOperators(Criterion criterion) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_OPERATOR_BY_CRITERION);
+		query.setInteger(0, criterion.getTool().getIdCode());
+		query.setInteger(1, criterion.getIdCode());
+		List<Operator> operators = (List<Operator>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return operators;
+	}
+
+	@SuppressWarnings("unchecked")
 	public static List<Requisite> getAssignmentCriteria(
 			Assignment assignment) {
 		Session session = HibernateUtil.getSession();
@@ -397,6 +415,19 @@ public class Querier {
 		session.getTransaction().commit();
 		session.close();
 		return tool;
+	}
+
+	public static Operator getOperator(int tool, int criterion, int idCode) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_OPERATOR_BY_IDS);
+		query.setInteger(0, tool);
+		query.setInteger(1, criterion);
+		query.setInteger(2, idCode);
+		Operator operator = (Operator) query.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return operator;
 	}
 
 }

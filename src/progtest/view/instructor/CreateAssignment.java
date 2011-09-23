@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIData;
-import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
 import javax.faces.event.ValueChangeEvent;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
@@ -15,6 +15,7 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 import progtest.common.Assignment;
 import progtest.common.Course;
 import progtest.common.Criterion;
+import progtest.common.Operator;
 import progtest.common.Oracle;
 import progtest.common.Requisite;
 import progtest.common.Tool;
@@ -48,9 +49,21 @@ public class CreateAssignment {
 
 	private Date endDate = new Date();
 
+	private List<Tool> tools = new ArrayList<Tool>();
+
+	private List<String> selectedTools = new ArrayList<String>();
+
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
 	private List<String> selectedCriteria = new ArrayList<String>();
+
+	private List<Operator> requiredOperators = new ArrayList<Operator>();
+
+	private List<String> selectedRequiredOperators = new ArrayList<String>();
+
+	private List<Operator> operators = new ArrayList<Operator>();
+
+	private List<String> selectedOperators = new ArrayList<String>();
 
 	private List<Requisite> requisites = new ArrayList<Requisite>();
 
@@ -144,6 +157,22 @@ public class CreateAssignment {
 		this.endDate = endDate;
 	}
 
+	public List<Tool> getTools() {
+		return tools;
+	}
+
+	public void setTools(List<Tool> tools) {
+		this.tools = tools;
+	}
+
+	public List<String> getSelectedTools() {
+		return selectedTools;
+	}
+
+	public void setSelectedTools(List<String> selectedTools) {
+		this.selectedTools = selectedTools;
+	}
+
 	public List<Criterion> getCriteria() {
 		return criteria;
 	}
@@ -158,6 +187,39 @@ public class CreateAssignment {
 
 	public void setSelectedCriteria(List<String> selectedCriteria) {
 		this.selectedCriteria = selectedCriteria;
+	}
+
+	public List<Operator> getRequiredOperators() {
+		return requiredOperators;
+	}
+
+	public void setRequiredOperators(List<Operator> requiredOperators) {
+		this.requiredOperators = requiredOperators;
+	}
+
+	public List<String> getSelectedRequiredOperators() {
+		return selectedRequiredOperators;
+	}
+
+	public void setSelectedRequiredOperators(
+			List<String> selectedRequiredOperators) {
+		this.selectedRequiredOperators = selectedRequiredOperators;
+	}
+
+	public List<Operator> getOperators() {
+		return operators;
+	}
+
+	public void setOperators(List<Operator> operators) {
+		this.operators = operators;
+	}
+
+	public List<String> getSelectedOperators() {
+		return selectedOperators;
+	}
+
+	public void setSelectedOperators(List<String> selectedOperators) {
+		this.selectedOperators = selectedOperators;
 	}
 
 	public List<Requisite> getRequisites() {
@@ -186,10 +248,10 @@ public class CreateAssignment {
 	}
 
 	public String goToStep3() {
-		
+
 		if (isUpload()) {
-			
-			if(uploaded())
+
+			if (uploaded())
 				step = 3;
 
 		} else {
@@ -226,6 +288,7 @@ public class CreateAssignment {
 			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			criteria = Querier.getCriteria(language);
+
 			step = 4;
 
 		}
@@ -250,6 +313,7 @@ public class CreateAssignment {
 				Requisite requisite = new Requisite();
 				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
+				requisite.setExecInfo(generateExecInfo(criterion));
 				requisites.add(requisite);
 			}
 
@@ -275,16 +339,16 @@ public class CreateAssignment {
 			Runner.makeDirectories(assignment);
 
 			if (isUpload()) {
-				
+
 				Runner.upload(assignment, uploadedFile);
-				
+
 			} else {
-				
+
 				Oracle oracle = (Oracle) FacesUtil
 						.getSession(Constants.SESSION_ORACLE);
-				
+
 				Runner.useOracle(assignment, oracle);
-				
+
 			}
 
 			Runner.execute(assignment);
@@ -299,6 +363,8 @@ public class CreateAssignment {
 		AssignmentDAO.update(assignment);
 
 		refresh();
+		
+		FacesUtil.removeSession("instructorAssignment");
 
 		return Constants.ACTION_SUCCESS;
 
@@ -341,13 +407,50 @@ public class CreateAssignment {
 		criteria = new ArrayList<Criterion>();
 		selectedCriteria = new ArrayList<String>();
 		requisites = new ArrayList<Requisite>();
-	}
-	
-	public void change(ValueChangeEvent event) throws IOException {
-	    String page = (String) event.getNewValue();
-	    FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+		operators = new ArrayList<Operator>();
+		selectedOperators = new ArrayList<String>();
 	}
 
+	public void change(ValueChangeEvent vce) throws IOException {
+
+	}
+
+	public void changeCriteria(ValueChangeEvent event) throws IOException {
+
+		PhaseId phaseId = event.getPhaseId();
+
+		if (phaseId.equals(PhaseId.ANY_PHASE)) {
+
+			event.setPhaseId(PhaseId.UPDATE_MODEL_VALUES);
+			event.queue();
+
+		} else {
+
+			requiredOperators.clear();
+			operators.clear();
+
+			for (String selectedCriterion : selectedCriteria) {
+				String ids[] = selectedCriterion.split("/");
+				Criterion criterion = Querier.getCriterion(
+						Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
+				for (Operator operator : Querier.getOperators(criterion)) {
+					if (operator.isRequired()) {
+						requiredOperators.add(operator);
+						selectedRequiredOperators.add(operator.getCriterion()
+								.getTool().getIdCode()
+								+ "/"
+								+ operator.getCriterion().getIdCode()
+								+ "/" + operator.getIdCode());
+					} else {
+						operators.add(operator);
+					}
+				}
+
+			}
+
+		}
+
+	}
 
 	private List<String> loadLanguages() {
 
@@ -410,6 +513,55 @@ public class CreateAssignment {
 
 			return true;
 
+	}
+
+	private String generateExecInfo(Criterion criterion) {
+
+		String execInfo = "";
+
+		for (String selectedOperator : selectedRequiredOperators) {
+
+			int toolId = Integer.parseInt(selectedOperator.split("/")[0]);
+			int criterionId = Integer.parseInt(selectedOperator.split("/")[1]);
+			int idCode = Integer.parseInt(selectedOperator.split("/")[2]);
+
+			if (toolId == criterion.getTool().getIdCode()
+					&& criterionId == criterion.getIdCode()) {
+
+				Operator operator = Querier.getOperator(toolId, criterionId,
+						idCode);
+
+				String parameter = operator.getParameter();
+
+				if (parameter != null && !parameter.isEmpty())
+					execInfo += " " + parameter;
+
+			}
+
+		}
+
+		for (String selectedOperator : selectedOperators) {
+
+			int toolId = Integer.parseInt(selectedOperator.split("/")[0]);
+			int criterionId = Integer.parseInt(selectedOperator.split("/")[1]);
+			int idCode = Integer.parseInt(selectedOperator.split("/")[2]);
+			
+			if (toolId == criterion.getTool().getIdCode()
+					&& criterionId == criterion.getIdCode()) {
+
+				Operator operator = Querier.getOperator(toolId, criterionId,
+						idCode);
+
+				String parameter = operator.getParameter();
+
+				if (parameter != null && !parameter.isEmpty())
+					execInfo += " " + parameter;
+
+			}
+
+		}
+
+		return execInfo;
 	}
 
 }

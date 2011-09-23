@@ -1,10 +1,14 @@
 package progtest.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import progtest.common.keys.CriterionPK;
 
@@ -19,6 +23,8 @@ public class Criterion {
 	private String name;
 	
 	private String propertyKey;
+	
+	private List<Operator> operators = new ArrayList<Operator>();
 	
 	@Id
 	@ManyToOne
@@ -54,6 +60,15 @@ public class Criterion {
 
 	public void setPropertyKey(String propertyKey) {
 		this.propertyKey = propertyKey;
+	}
+
+	@OneToMany(mappedBy = "criterion")
+	public List<Operator> getOperators() {
+		return operators;
+	}
+
+	public void setOperators(List<Operator> operators) {
+		this.operators = operators;
 	}
 
 	@Override
