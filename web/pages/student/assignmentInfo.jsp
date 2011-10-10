@@ -92,7 +92,7 @@
 						</htm:tr>
 					</htm:table>
 					
-					<!--<af:spacer height="20" />
+					<af:spacer height="20" />
 
 					<h:outputText value="Test Sets" styleClass="menu_title" />
 
@@ -121,7 +121,7 @@
 								</h:commandLink>
 							</htm:td>
 						</htm:tr>
-					</htm:table>-->
+					</htm:table>
 
 					<h:dataTable value="#{studentAssignmentInfo.tools}" var="tool"
 						width="100%" rendered="#{!empty studentAssignmentInfo.reports}"
