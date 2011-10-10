@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import progtest.common.Tool;
 import progtest.util.FileUtil;
@@ -112,6 +110,10 @@ public class Executor {
 			File rptDir, String cmdFileName, String additionals)
 			throws IOException, InterruptedException {
 
+		ProcessBuilder processBuilder = null;
+		Process process = null;
+		Worker worker = null;
+
 		File script = new File(toolDir.getPath() + File.separator + cmdFileName);
 
 		BufferedReader input = new BufferedReader(new FileReader(script));
@@ -120,7 +122,7 @@ public class Executor {
 
 			while (input.ready()) {
 
-				String[] args = (input.readLine() + additionals).split(" ");
+				String[] args = input.readLine().split(" ");
 
 				for (int i = 0; i < args.length; i++)
 					args[i] = args[i].replace(TAG_ROOT, toolDir.getPath())
@@ -134,40 +136,26 @@ public class Executor {
 							.replace(TAG_REPORTS, rptDir.getPath())
 							.replace(FILE_SEPARATOR, File.separator);
 
-				Process p = Runtime.getRuntime().exec(args);
+				processBuilder = new ProcessBuilder(args);
+				process = processBuilder.start();
 
-				InputStream st = p.getInputStream();
-				InputStreamReader isr = new InputStreamReader(st);
-				BufferedReader br = new BufferedReader(isr);
-				while (br.ready()) {
-					System.out.println(br.readLine());
-				}
+				worker = new Worker(process);
+				worker.start();
 
-				st = p.getErrorStream();
-				isr = new InputStreamReader(st);
-				br = new BufferedReader(isr);
-				while (br.ready())
-					System.err.println(br.readLine());
-
-				p.waitFor();
-
-				st = p.getInputStream();
-				isr = new InputStreamReader(st);
-				br = new BufferedReader(isr);
-				while (br.ready())
-					System.out.println(br.readLine());
-
-				st = p.getErrorStream();
-				isr = new InputStreamReader(st);
-				br = new BufferedReader(isr);
-				while (br.ready())
-					System.err.println(br.readLine());
+				worker.join(60000);
 
 			}
+
+		} catch (InterruptedException e) {
+
+			worker.interrupt();
+			Thread.currentThread().interrupt();
+			throw e;
 
 		} finally {
 
 			input.close();
+			process.destroy();
 
 		}
 
@@ -185,6 +173,24 @@ public class Executor {
 
 		FileUtil.delete(toolDir);
 
+	}
+
+	private static class Worker extends Thread {
+		
+		private final Process process;
+
+		private Worker(Process process) {
+			this.process = process;
+		}
+
+		public void run() {
+			try {
+				process.waitFor();
+			} catch (InterruptedException ignore) {
+				return;
+			}
+		}
+		
 	}
 
 }
