@@ -2,12 +2,9 @@ package progtest.view.student;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
-
-import edu.emory.mathcs.backport.java.util.Collections;
 
 import progtest.common.Assignment;
 import progtest.common.Submission;
@@ -20,22 +17,13 @@ import progtest.reports.xml.XML2Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
+import edu.emory.mathcs.backport.java.util.Collections;
 
 public class AssignmentInfo {
-
-	private int viewId;
 
 	private String activedReport;
 
 	private String title;
-
-	private String description;
-
-	private Date startDate;
-
-	private Date endDate;
-
-	private Date submissionDate;
 
 	private double score;
 
@@ -53,14 +41,6 @@ public class AssignmentInfo {
 	
 	private boolean instructorTests = false;
 
-	public int getViewId() {
-		return viewId;
-	}
-
-	public void setViewId(int viewId) {
-		this.viewId = viewId;
-	}
-
 	public String getActivedReport() {
 		return activedReport;
 	}
@@ -75,38 +55,6 @@ public class AssignmentInfo {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	public Date getSubmissionDate() {
-		return submissionDate;
-	}
-
-	public void setSubmissionDate(Date submissionDate) {
-		this.submissionDate = submissionDate;
 	}
 
 	public double getScore() {
@@ -186,21 +134,7 @@ public class AssignmentInfo {
 
 		title = submission.getAssignment().getTitle();
 
-		description = submission.getAssignment().getDescription();
-
-		startDate = submission.getAssignment().getStartDate();
-
-		endDate = submission.getAssignment().getEndDate();
-
-		submissionDate = submission.getSubmissionDate();
-
 		score = submission.getScore();
-
-		if (submission.getSubmissionDate() == null) {
-
-			selectDefaultView();
-
-		} else {
 
 			try {
 
@@ -240,10 +174,6 @@ public class AssignmentInfo {
 
 			selectResultView();
 
-			viewId = 2;
-
-		}
-
 	}
 	
 	public String selectPsTsReports() {
@@ -255,18 +185,6 @@ public class AssignmentInfo {
 	public String selectPsTiReports() {
 		instructorTests = true;
 		init();
-		return Constants.ACTION_SELECT;
-	}
-
-	public String selectDefaultView() {
-		viewId = 0;
-		evaluationReport = false;
-		return Constants.ACTION_SELECT;
-	}
-
-	public String selectAboutView() {
-		viewId = 1;
-		evaluationReport = false;
 		return Constants.ACTION_SELECT;
 	}
 
@@ -288,8 +206,6 @@ public class AssignmentInfo {
 			t.printStackTrace();
 
 		}
-		
-		activedReport = null;
 
 		evaluationReport = true;
 
@@ -300,8 +216,6 @@ public class AssignmentInfo {
 	public String selectReportView() {
 
 		report = (Report) reportsTable.getRowData();
-		viewId = 2;
-		activedReport = report.getName();
 		evaluationReport = false;
 
 		return Constants.ACTION_SELECT;
@@ -362,6 +276,15 @@ public class AssignmentInfo {
 
 		return Constants.ACTION_SELECT;
 
+	}
+
+	public String back() {
+		
+		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
+				Constants.BACKPAGE_ASSIGNMENT);
+		
+		return Constants.ACTION_BACK;
+		
 	}
 
 }

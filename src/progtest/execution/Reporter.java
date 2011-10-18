@@ -45,7 +45,7 @@ public class Reporter {
 
 		object1.getTableHeader().setColumn1("Criteria");
 		object1.getTableHeader().setColumn2("Pinst-Tinst");
-		object1.getTableHeader().setColumn3("Pst-Pst");
+		object1.getTableHeader().setColumn3("Pst-Tst");
 		object1.getTableHeader().setColumn4("Pinst-Tst");
 		object1.getTableHeader().setColumn5("Pst-Tinst");
 

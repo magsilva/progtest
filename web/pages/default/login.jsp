@@ -16,27 +16,31 @@
 
 				<af:spacer height="70" />
 
-				<h:outputText value="Login" styleClass="title" />
+				<htm:div
+					style="width: 400px; padding-left: 20px; padding-right: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;">
 
-				<af:spacer height="30" />
+					<h:outputText value="Login" styleClass="title" />
 
-				<h:outputText
-					value="Enter your username and password." />
+					<af:spacer height="20" />
 
-				<af:spacer height="20" />
+					<h:outputText value="Enter your username and password." />
 
-				<h:messages styleClass="message" />
+					<af:spacer height="20" />
 
-				<h:panelGrid columns="2">
-					<h:outputText value="Username*:" styleClass="label" />
-					<h:inputText value="#{login.userName}" />
-					<h:outputText value="Password*:" styleClass="label" />
-					<h:inputSecret value="#{login.password}" />
-				</h:panelGrid>
+					<h:messages styleClass="message" />
 
-				<af:spacer height="20" />
+					<h:panelGrid columns="2">
+						<h:outputText value="Username*:" styleClass="label" />
+						<h:inputText value="#{login.userName}" />
+						<h:outputText value="Password*:" styleClass="label" />
+						<h:inputSecret value="#{login.password}" />
+					</h:panelGrid>
 
-				<h:commandButton value="Sign in" action="#{login.login}" />
+					<af:spacer height="20" />
+
+					<h:commandButton value="Sign in" action="#{login.login}" />
+
+				</htm:div>
 
 				<af:spacer height="120" />
 

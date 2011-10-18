@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import progtest.common.Tool;
 import progtest.util.FileUtil;
@@ -45,7 +47,7 @@ public class Executor {
 				tmpDir, rptDir, toolFile, programDir, testsDir);
 
 		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
-				tmpDir, rptDir, tool.getCmdfile(), additionals);
+				tmpDir, rptDir, tool.getName(), tool.getCmdfile(), additionals);
 
 		finalize(toolDir, rptDir, toolReportsDir);
 
@@ -107,11 +109,14 @@ public class Executor {
 
 	private static void process(File toolDir, File srcDir, File binDir,
 			File progDir, File testDir, File instDir, File libDir, File tmpDir,
-			File rptDir, String cmdFileName, String additionals)
+			File rptDir, String toolName, String cmdFileName, String additionals)
 			throws IOException, InterruptedException {
 
 		ProcessBuilder processBuilder = null;
 		Process process = null;
+
+		Listener listener = null;
+
 		Worker worker = null;
 
 		File script = new File(toolDir.getPath() + File.separator + cmdFileName);
@@ -139,9 +144,11 @@ public class Executor {
 				processBuilder = new ProcessBuilder(args);
 				process = processBuilder.start();
 
-				worker = new Worker(process);
-				worker.start();
+				listener = new Listener(toolName, toolDir.getPath(), new File(rptDir, toolName
+						+ " Listener.xml"));
 
+				worker = new Worker(process, listener);
+				worker.start();
 				worker.join(60000);
 
 			}
@@ -176,21 +183,65 @@ public class Executor {
 	}
 
 	private static class Worker extends Thread {
-		
+
 		private final Process process;
 
-		private Worker(Process process) {
+		private final Listener listener;
+
+		private Worker(Process process, Listener listener) {
 			this.process = process;
+			this.listener = listener;
 		}
 
 		public void run() {
+
+			listener.start();
+
 			try {
+
+				InputStream st = process.getInputStream();
+				InputStreamReader isr = new InputStreamReader(st);
+				BufferedReader br = new BufferedReader(isr);
+				while (br.ready())
+					listener.listen(br.readLine());
+
+				st = process.getErrorStream();
+				isr = new InputStreamReader(st);
+				br = new BufferedReader(isr);
+				while (br.ready())
+					listener.listen(br.readLine());
+
 				process.waitFor();
+
+				st = process.getInputStream();
+				isr = new InputStreamReader(st);
+				br = new BufferedReader(isr);
+				while (br.ready())
+					listener.listen(br.readLine());
+
+				st = process.getErrorStream();
+				isr = new InputStreamReader(st);
+				br = new BufferedReader(isr);
+				while (br.ready())
+					listener.listen(br.readLine());
+
 			} catch (InterruptedException ignore) {
+
+				System.out.println("Time out expired!!!");
 				return;
+
+			} catch (IOException e) {
+
+				return;
+
+			} finally {
+
+				listener.finish();
+
 			}
+
 		}
-		
+
 	}
 
 }

@@ -12,116 +12,65 @@
 
 		<h:form>
 
-			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+			<htm:div style="width: 800px; text-align: left">
 
-				<af:spacer width="10" />
+				<af:spacer height="20" />
 
-				<htm:div style="width: 170px;"
-					rendered="#{studentAssignmentInfo.viewId == 0}">
+				<af:spacer width="5" />
 
-					<af:spacer height="25" />
+				<h:commandLink
+					action="#{studentAssignmentInfo.back}" styleClass="topmenu_link">
+					<h:outputText value="&lt;&lt; Back to Assignments"
+						styleClass="topmenu_link" />
+				</h:commandLink>
 
-					<h:outputText value="Assignment" styleClass="menu_title" />
+			</htm:div>
 
-					<af:spacer height="10" />
+			<h:panelGrid columns="2" style="width: 800px;" columnClasses="menu">
 
-					<htm:table>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{studentAssignmentInfo.selectDefaultView}"
-									styleClass="link">
-									<h:outputText value="Assignment Properties" styleClass="link"
-										rendered="#{studentAssignmentInfo.viewId != 0}" />
-									<h:outputText value="Assignment Properties"
-										styleClass="link_hover"
-										rendered="#{studentAssignmentInfo.viewId == 0}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-					</htm:table>
-
-					<af:spacer height="40" />
-
-					<h:outputText value="Action" styleClass="menu_title" />
-
-					<af:spacer height="10" />
-
-					<h:panelGrid columns="2">
-						<af:image source="/images/upload.png" />
-						<h:commandLink action="#{studentAssignmentInfo.send}"
-							styleClass="link">
-							<h:outputText value="Submit Assignment" styleClass="topmenu_link" />
-						</h:commandLink>
-					</h:panelGrid>
-
-				</htm:div>
-
-				<htm:div style="width: 170px;"
-					rendered="#{studentAssignmentInfo.viewId != 0}">
+				<htm:div
+					style="width: 150px; padding-right: 10px; padding-left: 10px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC; min-height: 400px;">
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Assignment" styleClass="menu_title" />
+					<h:outputText value="Reports for" styleClass="menu_title" />
 
-					<htm:table>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink action="#{studentAssignmentInfo.selectAboutView}"
-									styleClass="link">
-									<h:outputText value="Assignment Properties" styleClass="link"
-										rendered="#{studentAssignmentInfo.viewId != 1}" />
-									<h:outputText value="Assignment Properties"
-										styleClass="link_hover"
-										rendered="#{studentAssignmentInfo.viewId == 1}" />
-								</h:commandLink>
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{studentAssignmentInfo.selectResultView}"
-									styleClass="link">
-									<h:outputText value="Evaluation Result" styleClass="link"
-										rendered="#{studentAssignmentInfo.report.name != 2}" />
-									<h:outputText value="Evaluation Result" styleClass="link_hover"
-										rendered="#{studentAssignmentInfo.report.name == 2}" />
-								</h:commandLink>
-							</htm:td>
-						</htm:tr>
-					</htm:table>
-					
+					<af:spacer height="0" />
+
+					<h:commandLink
+						action="#{studentAssignmentInfo.selectPsTsReports}"
+						styleClass="link">
+						<h:outputText value="Student Tests" styleClass="link"
+							rendered="#{studentAssignmentInfo.instructorTests}" />
+						<h:outputText value="Student Tests" styleClass="link_hover"
+							rendered="#{!studentAssignmentInfo.instructorTests}" />
+					</h:commandLink>
+
+					<af:spacer height="0" />
+
+					<h:commandLink
+						action="#{studentAssignmentInfo.selectPsTiReports}"
+						styleClass="link">
+						<h:outputText value="Instructor Tests" styleClass="link"
+							rendered="#{!studentAssignmentInfo.instructorTests}" />
+						<h:outputText value="Instructor Tests" styleClass="link_hover"
+							rendered="#{studentAssignmentInfo.instructorTests}" />
+					</h:commandLink>
+
 					<af:spacer height="20" />
 
-					<h:outputText value="Test Sets" styleClass="menu_title" />
+					<h:outputText value="ProgTest Reports" styleClass="menu_title" />
 
-					<htm:table>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink action="#{studentAssignmentInfo.selectPsTsReports}"
-									styleClass="link">
-									<h:outputText value="Student Tests" styleClass="link"
-										rendered="#{studentAssignmentInfo.instructorTests}" />
-									<h:outputText value="Student Tests"
-										styleClass="link_hover"
-										rendered="#{!studentAssignmentInfo.instructorTests}" />
-								</h:commandLink>
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink action="#{studentAssignmentInfo.selectPsTiReports}"
-									styleClass="link">
-									<h:outputText value="Instructor Tests" styleClass="link"
-										rendered="#{!studentAssignmentInfo.instructorTests}" />
-									<h:outputText value="Instructor Tests"
-										styleClass="link_hover"
-										rendered="#{studentAssignmentInfo.instructorTests}" />
-								</h:commandLink>
-							</htm:td>
-						</htm:tr>
-					</htm:table>
+					<af:spacer height="0" />
+
+					<h:commandLink
+						action="#{studentAssignmentInfo.selectResultView}"
+						styleClass="link">
+						<h:outputText value="Evaluation Result" styleClass="link"
+							rendered="#{!studentAssignmentInfo.evaluationReport}" />
+						<h:outputText value="Evaluation Result" styleClass="link_hover"
+							rendered="#{studentAssignmentInfo.evaluationReport}" />
+					</h:commandLink>
 
 					<h:dataTable value="#{studentAssignmentInfo.tools}" var="tool"
 						width="100%" rendered="#{!empty studentAssignmentInfo.reports}"
@@ -162,120 +111,39 @@
 
 					<h:panelGrid columns="2">
 						<af:image source="/images/upload.png" />
-						<h:commandLink action="#{studentAssignmentInfo.send}"
-							styleClass="link">
+						<h:commandLink
+							action="#{studentAssignmentInfo.send}" styleClass="link">
 							<h:outputText value="Submit Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
 					<h:panelGrid columns="2">
 						<af:image source="/images/execute.png" />
-						<h:commandLink action="#{studentAssignmentInfo.execute}"
-							styleClass="link">
+						<h:commandLink
+							onclick="document.getElementById('hidepage').style.visibility = 'visible';"
+							action="#{studentAssignmentInfo.execute}" styleClass="link">
 							<h:outputText value="Execute Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
 					<h:panelGrid columns="2">
 						<af:image source="/images/evaluation.png" />
-						<h:commandLink action="#{studentAssignmentInfo.evaluate}"
-							styleClass="link">
+						<h:commandLink
+							onclick="document.getElementById('hidepage').style.visibility = 'visible';"
+							action="#{studentAssignmentInfo.evaluate}" styleClass="link">
 							<h:outputText value="Evaluate Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
 				</htm:div>
 
-				<af:spacer width="20" />
-
-				<htm:div style="width: 600px;"
-					rendered="#{studentAssignmentInfo.viewId == 0}">
+				<htm:div
+					style="width: 595px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;">
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Assignment Properties" styleClass="title" />
-
-					<af:spacer height="25" />
-
-					<h:outputText value="Title: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.title}" />
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Description: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.description}" />
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Start Date: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.startDate}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Deadline: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.endDate}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-
-					<af:spacer height="10" />
-
-				</htm:div>
-
-				<htm:div style="width: 600px;"
-					rendered="#{studentAssignmentInfo.viewId == 1}">
-
-					<af:spacer height="25" />
-
-					<h:outputText value="Assignment Properties" styleClass="title" />
-
-					<af:spacer height="25" />
-
-					<h:outputText value="Title: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.title}" />
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Description: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.description}" />
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Start Date: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.startDate}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Deadline: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.endDate}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Submission Date: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.submissionDate}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-
-					<af:spacer height="10" />
-
-					<h:outputText value="Suggested Grade: " styleClass="label" />
-					<h:outputText value="#{studentAssignmentInfo.score}" />
-
-					<af:spacer height="10" />
-
-				</htm:div>
-
-				<htm:div style="width: 570px;"
-					rendered="#{studentAssignmentInfo.viewId == 2}">
-
-					<af:spacer height="25" />
-
-					<h:outputText value="#{studentAssignmentInfo.report.name}"
+					<h:outputText
+						value="#{studentAssignmentInfo.title} Program &gt; #{studentAssignmentInfo.report.name}"
 						styleClass="title" />
 
 					<af:spacer height="25" />
@@ -292,11 +160,11 @@
 								<h:column>
 
 									<h:outputText value="#{object.textValue}"
-										style="background: #{object.textColor};font-family:Courier New;font-size:10pt;color:#000000;"
+										style="background: #{object.textColor};font-family:Courier New;font-size:10pt;color:#000000"
 										rendered="#{object.type == 0}" escape="false" />
 
 									<h:dataTable value="#{object.tableRows}" var="row"
-										headerClass="tableHeader" rowClasses="tableRow" width="100%"
+										headerClass="tableHeader" rowClasses="tableRow" width="95%"
 										rendered="#{object.type == 1}">
 										<h:column rendered="#{object.tableHeader.column1 != null}">
 											<f:facet name="header">
@@ -362,8 +230,10 @@
 
 									<af:spacer height="10" rendered="#{object.type == 2}" />
 
-									<h:graphicImage value="#{object.figurePath}"
-										rendered="#{object.type == 2}" />
+									<htm:center rendered="#{object.type == 2}">
+										<h:graphicImage value="#{object.figurePath}"
+											rendered="#{object.type == 2}" />
+									</htm:center>
 
 									<af:spacer height="10" rendered="#{object.type == 0}" />
 

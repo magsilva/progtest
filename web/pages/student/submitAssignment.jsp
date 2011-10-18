@@ -12,31 +12,37 @@
 
 		<h:form enctype="multipart/form-data">
 
-			<af:spacer height="30" />
+			<af:spacer height="75" />
 
-			<h:outputText value="Send Assignment" styleClass="title" />
+			<htm:div
+				style="width: 500px; padding-left: 20px; padding-right: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;">
 
-			<af:spacer height="30" />
+				<h:outputText value="Submit Assignment" styleClass="title" />
 
-			<h:outputText
-				value="Select a .jar file with the source code (.java files) of the program and test cases." />
+				<af:spacer height="30" />
 
-			<af:spacer height="30" />
+				<h:outputText
+					value="Select a .zip file with the source code (.java files) of the program and test cases." />
 
-			<h:messages styleClass="message" />
+				<af:spacer height="30" />
 
-			<h:panelGrid columns="2">
-				<h:outputText value="File*:" styleClass="label" />
-				<t:inputFileUpload value="#{studentSubmitAssigment.file}"
-					storage="file" />
-			</h:panelGrid>
+				<h:messages styleClass="message" />
 
-			<af:spacer height="30" />
+				<h:panelGrid columns="2">
+					<h:outputText value="File*:" styleClass="label" />
+					<t:inputFileUpload value="#{studentSubmitAssigment.file}"
+						storage="file" />
+				</h:panelGrid>
 
-			<h:commandButton value="Cancel"
-				action="#{studentSubmitAssigment.cancel}" />
-			<h:commandButton value="Finalize"
-				action="#{studentSubmitAssigment.upload}" />
+				<af:spacer height="30" />
+
+				<h:commandButton value="Cancel"
+					action="#{studentSubmitAssigment.cancel}" />
+				<h:commandButton value="Finalize"
+					onclick="document.getElementById('hidepage').style.visibility = 'visible';"
+					action="#{studentSubmitAssigment.upload}" />
+
+			</htm:div>
 
 		</h:form>
 

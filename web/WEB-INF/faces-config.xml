@@ -132,6 +132,11 @@
   <managed-bean-class>progtest.view.student.AddTestCases</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>studentHome</managed-bean-name>
+ 	<managed-bean-class>progtest.view.student.Home</managed-bean-class>
+ 	<managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
@@ -167,20 +172,8 @@
    <to-view-id>/pages/student/editProfileTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>studentCourses</from-outcome>
-   <to-view-id>/pages/student/coursesInfoTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>studentPendencies</from-outcome>
-   <to-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
    <from-outcome>studentAssignments</from-outcome>
-   <to-view-id>/pages/student/allAssignmentsTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>studentGrades</from-outcome>
-   <to-view-id>/pages/student/gradesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -191,7 +184,7 @@
   </navigation-case>
   <navigation-case>
    <from-outcome>studentHome</from-outcome>
-   <to-view-id>/pages/student/allAssignmentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -446,11 +439,11 @@
   <from-view-id>/pages/student/editProfileTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
@@ -458,25 +451,10 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</from-view-id>
+  <from-view-id>/pages/student/homeTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>select</from-outcome>
-   <to-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>send</from-outcome>
-   <to-view-id>/pages/student/submitAssignmentTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>view</from-outcome>
-   <to-view-id>/pages/student/assignmentInfoTemplate.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/pages/student/allAssignmentsTemplate.jsp</from-view-id>
-  <navigation-case>
-   <from-outcome>select</from-outcome>
-   <to-view-id>/pages/student/allAssignmentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>send</from-outcome>
@@ -494,8 +472,8 @@
    <to-view-id>/pages/student/submitAssignmentTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>add</from-outcome>
-   <to-view-id>/pages/student/addTestCasesTemplate.jsp</to-view-id>
+   <from-outcome>back</from-outcome>
+   <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -505,35 +483,12 @@
    <to-view-id>/pages/student/assignmentInfoTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>outstanding</from-outcome>
-   <to-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</to-view-id>
+   <from-outcome>cancel</from-outcome>
+   <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>assignments</from-outcome>
-   <to-view-id>/pages/student/allAssignmentsTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>assignment</from-outcome>
-   <to-view-id>/pages/student/assignmentInfoTemplate.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/pages/student/addTestCasesTemplate.jsp</from-view-id>
-  <navigation-case>
-   <from-outcome>success</from-outcome>
-   <to-view-id>/pages/student/assignmentInfoTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>outstanding</from-outcome>
-   <to-view-id>/pages/student/outstandingAssignmentsTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>assignments</from-outcome>
-   <to-view-id>/pages/student/allAssignmentsTemplate.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>assignment</from-outcome>
-   <to-view-id>/pages/student/assignmentInfoTemplate.jsp</to-view-id>
+   <from-outcome>failure</from-outcome>
+   <to-view-id>/pages/student/submitAssignmentTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application>

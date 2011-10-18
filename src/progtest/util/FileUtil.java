@@ -30,9 +30,8 @@ public class FileUtil {
 				copy(new File(src, children[i]), new File(dst, src.getName()));
 
 		} else {
-			
-			copyContent(src, new File(dst + File.separator
-					+ src.getName()));
+
+			copyContent(src, new File(dst + File.separator + src.getName()));
 
 		}
 
@@ -53,7 +52,7 @@ public class FileUtil {
 				copy(new File(src, children[i]), dst);
 
 		} else {
-			
+
 			InputStream in = new FileInputStream(src);
 			OutputStream out = new FileOutputStream(dst);
 
@@ -65,7 +64,7 @@ public class FileUtil {
 
 			in.close();
 			out.close();
-			
+
 		}
 
 	}
@@ -219,6 +218,14 @@ public class FileUtil {
 		return files;
 	}
 
+	public static List<File> listLocalFiles(File dir) {
+		List<File> files = new ArrayList<File>();
+		File[] localFiles = dir.listFiles();
+		for (File file : localFiles)
+			files.add(file);
+		return files;
+	}
+
 	public static List<File> listFiles(File dir, String extensionFilter) {
 		List<File> files = new ArrayList<File>();
 		File[] localFiles = dir.listFiles();
@@ -226,6 +233,17 @@ public class FileUtil {
 			if (file.isDirectory()) {
 				files.addAll(FileUtil.listFiles(file, extensionFilter));
 			} else if (file.getName().endsWith(extensionFilter)) {
+				files.add(file);
+			}
+		}
+		return files;
+	}
+
+	public static List<File> listLocalFiles(File dir, String extensionFilter) {
+		List<File> files = new ArrayList<File>();
+		File[] localFiles = dir.listFiles();
+		for (File file : localFiles) {
+			if (file.getName().endsWith(extensionFilter)) {
 				files.add(file);
 			}
 		}

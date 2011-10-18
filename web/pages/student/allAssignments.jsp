@@ -16,7 +16,7 @@
 
 				<af:spacer width="10" />
 
-				<htm:div style="width: 170px;">
+				<htm:div style="width: 150px;border-right: 1px solid #CCCCCC;min-height: 400px;padding-right: 10px;">
 
 					<af:spacer height="25" />
 
@@ -57,7 +57,7 @@
 
 				<af:spacer width="20" />
 
-				<htm:div style="width: 600px;">
+				<htm:div style="width: 630px;">
 
 					<af:spacer height="25" />
 

@@ -2,6 +2,8 @@ package progtest.view.student;
 
 import java.util.Date;
 
+import javax.faces.application.FacesMessage;
+
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Submission;
@@ -24,39 +26,58 @@ public class SubmitAssigment {
 
 	public String upload() {
 
-		Submission submission = (Submission) FacesUtil
-				.getSession(Constants.SESSION_EVALUATION);
+		if (uploaded()) {
 
-		try {
+			Submission submission = (Submission) FacesUtil
+					.getSession(Constants.SESSION_EVALUATION);
 
-			Runner.makeDirectories(submission);
-			Runner.upload(submission, file);
-			Runner.psts(submission);
-			Runner.pits(submission);
-			Runner.psti(submission);
-			Runner.evaluate(submission);
-			Runner.report(submission);
+			try {
 
-		} catch (Throwable t) {
+				Runner.makeDirectories(submission);
+				Runner.upload(submission, file);
+				Runner.psts(submission);
+				Runner.pits(submission);
+				Runner.psti(submission);
+				Runner.evaluate(submission);
+				Runner.report(submission);
 
-			t.printStackTrace();
+			} catch (Throwable t) {
+
+				t.printStackTrace();
+
+			}
+
+			submission.setSubmissionDate(new Date());
+
+			SubmissionDAO.update(submission);
+
+			FacesUtil.removeSession("studentAssignmentInfo");
+
+			return Constants.ACTION_SUCCESS;
 
 		}
 
-		submission.setSubmissionDate(new Date());
+		return Constants.ACTION_FAILURE;
 
-		SubmissionDAO.update(submission);
-		
-		FacesUtil.removeSession("studentAssignmentInfo");
+	}
 
-		return Constants.ACTION_SUCCESS;
+	private boolean uploaded() {
+
+		if (file == null) {
+
+			FacesUtil.addMessage(Constants.KEY_ERROR_ANYFILEUPLOADED,
+					FacesMessage.SEVERITY_ERROR);
+
+			return false;
+
+		} else
+
+			return true;
 
 	}
 
 	public String cancel() {
-		String backPage = (String) FacesUtil
-				.getSession(Constants.SESSION_BACKPAGE);
-		return backPage;
+		return Constants.ACTION_CANCEL;
 	}
 
 }

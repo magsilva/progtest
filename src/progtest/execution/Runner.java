@@ -13,6 +13,7 @@ import progtest.common.Tool;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.FileUtil;
+import progtest.util.TestCaseUtil;
 
 public class Runner {
 
@@ -56,7 +57,7 @@ public class Runner {
 			File savedFile = upload(uf, packageDir);
 
 			extract(savedFile, sourceDir);
-			
+
 			split(sourceDir, programDir, testsDir);
 
 		} catch (Throwable t) {
@@ -83,7 +84,7 @@ public class Runner {
 			File savedFile = useOracle(oracleFile, packageDir);
 
 			extract(savedFile, sourceDir);
-			
+
 			split(sourceDir, programDir, testsDir);
 
 		} catch (Throwable t) {
@@ -129,15 +130,16 @@ public class Runner {
 
 	}
 
-	public static String getDownloadable(Assignment assignment) throws Throwable {
+	public static String getDownloadable(Assignment assignment)
+			throws Throwable {
 
 		try {
-			
+
 			File packageDir = new File(
 					Directories.getPackageDirPath(assignment));
 			File downloadableDir = new File(
 					Directories.getDownloadableDirPath(assignment));
-			
+
 			File savedFile = packageDir.listFiles()[0];
 
 			return toDownload(savedFile, downloadableDir);
@@ -157,17 +159,23 @@ public class Runner {
 			Assignment assignment = submission.getAssignment();
 			User student = submission.getStudent();
 
-			File studentDir = new File(Directories.getStudentDirPath(assignment, student));
-			File packageDir = new File(
-					Directories.getPackageDirPath(assignment, student));
-			File sourceDir = new File(Directories.getSourceDirPath(assignment, student));
-			File programDir = new File(
-					Directories.getProgramDirPath(assignment, student));
-			File testsDir = new File(Directories.getTestsDirPath(assignment, student));
+			File studentDir = new File(Directories.getStudentDirPath(
+					assignment, student));
+			File packageDir = new File(Directories.getPackageDirPath(
+					assignment, student));
+			File sourceDir = new File(Directories.getSourceDirPath(assignment,
+					student));
+			File programDir = new File(Directories.getProgramDirPath(
+					assignment, student));
+			File testsDir = new File(Directories.getTestsDirPath(assignment,
+					student));
 
-			File pstsDir = new File(Directories.getPstsDirPath(assignment, student));
-			File pitsDir = new File(Directories.getPitsDirPath(assignment, student));
-			File pstiDir = new File(Directories.getPstiDirPath(assignment, student));
+			File pstsDir = new File(Directories.getPstsDirPath(assignment,
+					student));
+			File pitsDir = new File(Directories.getPitsDirPath(assignment,
+					student));
+			File pstiDir = new File(Directories.getPstiDirPath(assignment,
+					student));
 
 			makeDirectories(studentDir, packageDir, sourceDir, programDir,
 					testsDir, null, pstsDir, pitsDir, pstiDir);
@@ -188,17 +196,19 @@ public class Runner {
 			Assignment assignment = submission.getAssignment();
 			User student = submission.getStudent();
 
-			File packageDir = new File(
-					Directories.getPackageDirPath(assignment, student));
-			File sourceDir = new File(Directories.getSourceDirPath(assignment, student));
-			File programDir = new File(
-					Directories.getProgramDirPath(assignment, student));
-			File testsDir = new File(Directories.getTestsDirPath(assignment, student));
+			File packageDir = new File(Directories.getPackageDirPath(
+					assignment, student));
+			File sourceDir = new File(Directories.getSourceDirPath(assignment,
+					student));
+			File programDir = new File(Directories.getProgramDirPath(
+					assignment, student));
+			File testsDir = new File(Directories.getTestsDirPath(assignment,
+					student));
 
 			File savedFile = upload(uf, packageDir);
 
 			extract(savedFile, sourceDir);
-			
+
 			split(sourceDir, programDir, testsDir);
 
 		} catch (Throwable t) {
@@ -216,10 +226,12 @@ public class Runner {
 			Assignment assignment = submission.getAssignment();
 			User student = submission.getStudent();
 
-			File studentDir = new File(Directories.getStudentDirPath(assignment, student));
-			File programDir = new File(
-					Directories.getProgramDirPath(assignment, student));
-			File testsDir = new File(Directories.getTestsDirPath(assignment, student));
+			File studentDir = new File(Directories.getStudentDirPath(
+					assignment, student));
+			File programDir = new File(Directories.getProgramDirPath(
+					assignment, student));
+			File testsDir = new File(Directories.getTestsDirPath(assignment,
+					student));
 
 			File pstsDir = new File(Directories.getPstsDirPath(assignment,
 					student));
@@ -241,10 +253,12 @@ public class Runner {
 			Assignment assignment = submission.getAssignment();
 			User student = submission.getStudent();
 
-			File studentDir = new File(Directories.getStudentDirPath(assignment, student));
+			File studentDir = new File(Directories.getStudentDirPath(
+					assignment, student));
 			File programDir = new File(
 					Directories.getProgramDirPath(assignment));
-			File testsDir = new File(Directories.getTestsDirPath(assignment, student));
+			File testsDir = new File(Directories.getTestsDirPath(assignment,
+					student));
 
 			File pitsDir = new File(Directories.getPitsDirPath(assignment,
 					student));
@@ -266,9 +280,10 @@ public class Runner {
 			Assignment assignment = submission.getAssignment();
 			User student = submission.getStudent();
 
-			File studentDir = new File(Directories.getStudentDirPath(assignment, student));
-			File programDir = new File(
-					Directories.getProgramDirPath(assignment, student));
+			File studentDir = new File(Directories.getStudentDirPath(
+					assignment, student));
+			File programDir = new File(Directories.getProgramDirPath(
+					assignment, student));
 			File testsDir = new File(Directories.getTestsDirPath(assignment));
 
 			File pstiDir = new File(Directories.getPstiDirPath(assignment,
@@ -312,18 +327,19 @@ public class Runner {
 
 	}
 
-	public static String getDownloadable(Submission submission) throws Throwable {
+	public static String getDownloadable(Submission submission)
+			throws Throwable {
 
 		try {
 
 			Assignment assignment = submission.getAssignment();
 			User student = submission.getStudent();
-			
-			File packageDir = new File(
-					Directories.getPackageDirPath(assignment, student));
-			File downloadableDir = new File(
-					Directories.getDownloadableDirPath(assignment, student));
-			
+
+			File packageDir = new File(Directories.getPackageDirPath(
+					assignment, student));
+			File downloadableDir = new File(Directories.getDownloadableDirPath(
+					assignment, student));
+
 			File savedFile = packageDir.listFiles()[0];
 
 			return toDownload(savedFile, downloadableDir);
@@ -389,31 +405,34 @@ public class Runner {
 
 	}
 
-	private static String toDownload(File savedFile, File downloadableDir) throws Throwable {
+	private static String toDownload(File savedFile, File downloadableDir)
+			throws Throwable {
 
 		try {
 
-			if(!downloadableDir.exists())
+			if (!downloadableDir.exists())
 				downloadableDir.mkdir();
 			else
 				FileUtil.clean(downloadableDir);
-			
+
 			FileUtil.copy(savedFile, downloadableDir);
-			
-			return "/ProgTest/files/" + downloadableDir.getName() + "/" + savedFile.getName();
+
+			return "/ProgTest/files/" + downloadableDir.getName() + "/"
+					+ savedFile.getName();
 
 		} catch (Throwable t) {
 
 			throw t;
 
 		}
-		
+
 	}
 
-	private static File useOracle(File oracleFile, File packageDir) throws Throwable {
+	private static File useOracle(File oracleFile, File packageDir)
+			throws Throwable {
 
 		try {
-			
+
 			return FileUtil.copy(oracleFile, packageDir);
 
 		} catch (Throwable t) {
@@ -421,7 +440,7 @@ public class Runner {
 			throw t;
 
 		}
-		
+
 	}
 
 	private static void extract(File zipFile, File sourceDir) throws Throwable {
@@ -443,15 +462,27 @@ public class Runner {
 
 		try {
 
-			List<File> classes = FileUtil.listFiles(sourceDir);
+			List<File> classes = FileUtil.listFiles(sourceDir, ".java");
 
 			for (File clazz : classes) {
-				if (clazz.getName().contains("Test"))
-					FileUtil.copy(clazz, testsDir);
+
+				File dstDir = null;
+
+				if (TestCaseUtil.isTestCase(clazz))
+					dstDir = new File(testsDir
+							+ File.separator
+							+ TestCaseUtil.getPackage(clazz).replace(".",
+									File.separator));
 				else
-					FileUtil.copy(clazz, programDir);
+					dstDir = new File(programDir
+							+ File.separator
+							+ TestCaseUtil.getPackage(clazz).replace(".",
+									File.separator));
+
+				FileUtil.copy(clazz, dstDir);
+
 			}
-			
+
 		} catch (Throwable t) {
 
 			throw t;
@@ -466,17 +497,18 @@ public class Runner {
 		try {
 
 			for (Tool tool : assignment.getTools()) {
-				
+
 				String execInfo = "";
-				
-				for(Requisite requisite : Querier.getAssignmentCriteria(assignment))
+
+				for (Requisite requisite : Querier
+						.getAssignmentCriteria(assignment))
 					execInfo += requisite.getExecInfo();
 
 				try {
-					
-						Executor.execute(tool, rootDir, programDir, testsDir,
-								outputDir, execInfo);
-						
+
+					Executor.execute(tool, rootDir, programDir, testsDir,
+							outputDir, execInfo);
+
 				} catch (Throwable t) {
 
 				}

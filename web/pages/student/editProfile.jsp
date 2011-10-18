@@ -14,33 +14,40 @@
 
 			<h:form>
 
-				<af:spacer height="30" />
+				<af:spacer height="75" />
 
-				<h:outputText value="Edit Profile" styleClass="title"/>
+				<htm:div
+					style="width: 500px; padding-left: 20px; padding-right: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;">
 
-				<af:spacer height="30" />
+					<h:outputText value="Edit Profile" styleClass="title" />
 
-				<h:messages styleClass="message"/>
+					<af:spacer height="30" />
 
-				<h:panelGrid columns="2">
-					<h:outputText value="Full Name*:" />
-					<h:inputText value="#{studentEditProfile.name}" />
-					<h:outputText value="E-mail*:" />
-					<h:inputText value="#{studentEditProfile.email}" />
-					<h:outputText value="Password*:" />
-					<h:inputSecret value="#{studentEditProfile.password}" />
-					<h:outputText value="Confirmation Password*:" />
-					<h:inputSecret value="#{studentEditProfile.confirmationPassword}" />
-				</h:panelGrid>
+					<h:messages styleClass="message" />
 
-				<af:spacer height="30" />
+					<h:panelGrid columns="2">
+						<h:outputText value="Full Name*:" />
+						<h:inputText value="#{studentEditProfile.name}" />
+						<h:outputText value="E-mail*:" />
+						<h:inputText value="#{studentEditProfile.email}" />
+						<h:outputText value="Password*:" />
+						<h:inputSecret value="#{studentEditProfile.password}" />
+						<h:outputText value="Confirmation Password*:" />
+						<h:inputSecret value="#{studentEditProfile.confirmationPassword}" />
+					</h:panelGrid>
 
-				<h:commandButton value="Cancel" action="#{studentEditProfile.cancel}" />
-				<h:commandButton value="Save" action="#{studentEditProfile.edit}" />
+					<af:spacer height="30" />
+
+					<h:commandButton value="Cancel"
+							action="#{studentEditProfile.cancel}" />
+					<h:commandButton value="Save" 
+							action="#{studentEditProfile.edit}" />
+
+				</htm:div>
 
 			</h:form>
 
 		</htm:center>
-		
+
 	</f:subview>
 </jsp:root>
