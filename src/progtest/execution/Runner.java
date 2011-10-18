@@ -13,7 +13,7 @@ import progtest.common.Tool;
 import progtest.common.User;
 import progtest.database.Querier;
 import progtest.util.FileUtil;
-import progtest.util.TestCaseUtil;
+import progtest.util.SourceUtil;
 
 public class Runner {
 
@@ -462,24 +462,28 @@ public class Runner {
 
 		try {
 
-			List<File> classes = FileUtil.listFiles(sourceDir, ".java");
+			List<File> sources = FileUtil.listFiles(sourceDir, ".java");
 
-			for (File clazz : classes) {
+			for (File source : sources) {
 
-				File dstDir = null;
+				if (SourceUtil.isSource(source)) {
 
-				if (TestCaseUtil.isTestCase(clazz))
-					dstDir = new File(testsDir
-							+ File.separator
-							+ TestCaseUtil.getPackage(clazz).replace(".",
-									File.separator));
-				else
-					dstDir = new File(programDir
-							+ File.separator
-							+ TestCaseUtil.getPackage(clazz).replace(".",
-									File.separator));
+					File dstDir = null;
 
-				FileUtil.copy(clazz, dstDir);
+					if (SourceUtil.isTestSource(source))
+						dstDir = new File(testsDir
+								+ File.separator
+								+ SourceUtil.getPackage(source).replace(".",
+										File.separator));
+					else
+						dstDir = new File(programDir
+								+ File.separator
+								+ SourceUtil.getPackage(source).replace(".",
+										File.separator));
+
+					FileUtil.copy(source, dstDir);
+
+				}
 
 			}
 
