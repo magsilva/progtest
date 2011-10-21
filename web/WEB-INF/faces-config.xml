@@ -28,11 +28,6 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
-  <managed-bean-name>instructorCourses</managed-bean-name>
-  <managed-bean-class>progtest.view.instructor.Courses</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
   <managed-bean-name>instructorCreateCourse</managed-bean-name>
   <managed-bean-class>progtest.view.instructor.CreateCourse</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
@@ -45,11 +40,6 @@
  <managed-bean>
   <managed-bean-name>instructorRemoveCourse</managed-bean-name>
   <managed-bean-class>progtest.view.instructor.RemoveCourse</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>instructorAssignments</managed-bean-name>
-  <managed-bean-class>progtest.view.instructor.Assignments</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
@@ -70,11 +60,6 @@
  <managed-bean>
   <managed-bean-name>instructorRemoveAssignment</managed-bean-name>
   <managed-bean-class>progtest.view.instructor.RemoveAssignment</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>instructorStudents</managed-bean-name>
-  <managed-bean-class>progtest.view.instructor.Students</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
@@ -103,26 +88,6 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
-  <managed-bean-name>studentCoursesInfo</managed-bean-name>
-  <managed-bean-class>progtest.view.student.CoursesInfo</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>studentOutstandingAssignments</managed-bean-name>
-  <managed-bean-class>progtest.view.student.OutstandingAssignments</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>studentAllAssignments</managed-bean-name>
-  <managed-bean-class>progtest.view.student.AllAssignments</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>studentGrades</managed-bean-name>
-  <managed-bean-class>progtest.view.student.Grades</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
   <managed-bean-name>studentAssignmentInfo</managed-bean-name>
   <managed-bean-class>progtest.view.student.AssignmentInfo</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
@@ -130,11 +95,6 @@
  <managed-bean>
   <managed-bean-name>studentSubmitAssigment</managed-bean-name>
   <managed-bean-class>progtest.view.student.SubmitAssigment</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>studentAddTestCases</managed-bean-name>
-  <managed-bean-class>progtest.view.student.AddTestCases</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
