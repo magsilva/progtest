@@ -3,6 +3,7 @@ package progtest.view.instructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 import progtest.common.Course;
@@ -15,9 +16,21 @@ import progtest.util.FacesUtil;
 
 public class AddStudents {
 
-	private SelectItem[] students = loadStudents();
+	private String keyword = Constants.EMPTY;
+
+	private SelectItem[] students = new SelectItem[0];
+
+	private SelectItem[] enrolledStudents = new SelectItem[0];
 
 	private List<String> selectedStudents = new ArrayList<String>();
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	public SelectItem[] getStudents() {
 		return students;
@@ -25,6 +38,14 @@ public class AddStudents {
 
 	public void setStudents(SelectItem[] students) {
 		this.students = students;
+	}
+
+	public SelectItem[] getEnrolledStudents() {
+		return enrolledStudents;
+	}
+
+	public void setEnrolledStudents(SelectItem[] enrolledStudents) {
+		this.enrolledStudents = enrolledStudents;
 	}
 
 	public List<String> getSelectedStudents() {
@@ -35,6 +56,46 @@ public class AddStudents {
 		this.selectedStudents = selectedStudents;
 	}
 
+	public AddStudents() {
+		search();
+	}
+
+	public String search() {
+
+		selectedStudents.clear();
+
+		Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
+
+		List<User> students = new ArrayList<User>();
+
+		List<User> enrolledStudents = new ArrayList<User>();
+
+		for (User student : Querier.getStudentsLike(keyword))
+			if (Querier.getStudents(course).contains(student))
+				enrolledStudents.add(student);
+			else
+				students.add(student);
+
+		this.enrolledStudents = new SelectItem[enrolledStudents.size()];
+
+		for (int i = 0; i < enrolledStudents.size(); i++)
+			this.enrolledStudents[i] = new SelectItem(enrolledStudents.get(i)
+					.getUserName()
+					+ " - "
+					+ enrolledStudents.get(i).getName()
+					+ " (" + enrolledStudents.get(i).getEmail() + ") ");
+
+		this.students = new SelectItem[students.size()];
+
+		for (int i = 0; i < students.size(); i++)
+			this.students[i] = new SelectItem(students.get(i).getUserName()
+					+ " - " + students.get(i).getName() + " ("
+					+ students.get(i).getEmail() + ") ");
+
+		return Constants.ACTION_SELECT;
+
+	}
+
 	public String add() {
 
 		List<User> users = new ArrayList<User>();
@@ -43,8 +104,7 @@ public class AddStudents {
 			users.add(Querier.getStudent(student.substring(
 					student.indexOf("(") + 1, student.indexOf(")"))));
 
-		Course course = (Course) FacesUtil
-				.getSession(Constants.SESSION_COURSE);
+		Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
 
 		for (User user : users) {
 
@@ -55,34 +115,36 @@ public class AddStudents {
 
 		}
 
+		refresh();
+
 		return Constants.ACTION_SUCCESS;
 
 	}
 
-	private SelectItem[] loadStudents() {
-
-		Course course = (Course) FacesUtil
-				.getSession(Constants.SESSION_COURSE);
-
-		List<User> users = Querier.getStudentsNotCourse(course);
-
-		SelectItem[] itens = new SelectItem[users.size()];
-
-		for (int i = 0; i < users.size(); i++)
-			itens[i] = new SelectItem(users.get(i).getUserName() + " - "
-					+ users.get(i).getName() + " (" + users.get(i).getEmail()
-					+ ") ");
-
-		return itens;
-
+	public String cancel() {
+		refresh();
+		return Constants.ACTION_CANCEL;
 	}
 
 	public String register() {
-		return Constants.ACTION_REGISTER;
+		refresh();
+		return Constants.ACTION_REGISTER_STUDENT;
 	}
 
-	public String cancel() {
-		return Constants.ACTION_CANCEL;
+	public String back() {
+		refresh();
+		return Constants.ACTION_BACK;
+	}
+
+	public void change(ValueChangeEvent event) {
+	}
+
+	private void refresh() {
+		keyword = Constants.EMPTY;
+		students = new SelectItem[0];
+		enrolledStudents = new SelectItem[0];
+		selectedStudents = new ArrayList<String>();
+		search();
 	}
 
 }

@@ -63,7 +63,7 @@
 									<af:spacer width="10" />
 								</htm:td>
 								<htm:td>
-									<h:commandLink action="studentAssignments"
+									<h:commandLink action="studentHome"
 										styleClass="orangebar_link">
 										<h:outputText value="Home Page" styleClass="orangebar_link" />
 									</h:commandLink>

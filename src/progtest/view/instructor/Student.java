@@ -102,7 +102,11 @@ public class Student {
 	}
 
 	public String remove() {
-		return Constants.ACTION_REMOVE;
+		return Constants.ACTION_REMOVE_STUDENT;
+	}
+
+	public String back() {
+		return Constants.ACTION_BACK;
 	}
 
 }

@@ -7,7 +7,7 @@
 	<tiles:insertDefinition name="page.instructorTemplate">
 		<tiles:putAttribute name="title" value="ProgTest" />
 		<tiles:putAttribute name="content" type="template"
-			value="/pages/instructor/courses.jsp" />
+			value="/pages/instructor/home.jsp" />
 	</tiles:insertDefinition>
 
 </jsp:root>

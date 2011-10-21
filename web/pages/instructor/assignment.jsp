@@ -12,11 +12,24 @@
 
 		<h:form>
 
-			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+			<htm:div style="width: 800px; text-align: left">
 
-				<af:spacer width="10" />
+				<af:spacer height="20" />
 
-				<htm:div style="width: 170px;">
+				<af:spacer width="5" />
+
+				<h:commandLink action="#{instructorAssignment.back}"
+					styleClass="topmenu_link">
+					<h:outputText value="&lt;&lt; Back to Courses"
+						styleClass="topmenu_link" />
+				</h:commandLink>
+
+			</htm:div>
+
+			<h:panelGrid columns="2" style="width: 800px;" columnClasses="menu">
+
+				<htm:div
+					style="width: 150px; padding-right: 10px; padding-left: 10px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC; min-height: 400px;">
 
 					<af:spacer height="25" />
 
@@ -48,7 +61,7 @@
 					</htm:table>
 
 					<h:dataTable value="#{instructorAssignment.tools}" var="tool"
-						width="100%" rendered="#{!empty instructorAssignment.tools}"
+						width="100%" rendered="#{!empty instructorAssignment.reports}"
 						cellpadding="0" cellspacing="0">
 						<h:column>
 							<af:spacer height="20" />
@@ -56,16 +69,15 @@
 								styleClass="menu_title" />
 							<h:dataTable value="#{instructorAssignment.reports}" var="report"
 								binding="#{instructorAssignment.reportsTable}" width="100%"
-								rendered="#{!empty instructorAssignment.reports}"
 								cellpadding="0" cellspacing="0">
 								<h:column>
 									<h:commandLink rendered="#{tool.name == report.tool}"
 										action="#{instructorAssignment.selectReportView}"
 										styleClass="link">
 										<h:outputText value="#{report.name}" styleClass="link"
-											rendered="#{instructorAssignment.activedReport != report.name}" />
+											rendered="#{instructorAssignment.report.name != report.name}" />
 										<h:outputText value="#{report.name}" styleClass="link_hover"
-											rendered="#{instructorAssignment.activedReport == report.name}" />
+											rendered="#{instructorAssignment.report.name == report.name}" />
 									</h:commandLink>
 								</h:column>
 							</h:dataTable>
@@ -75,8 +87,6 @@
 					<af:spacer height="20" />
 
 					<h:outputText value="Actions" styleClass="menu_title" />
-
-					<af:spacer height="10" />
 
 					<h:panelGrid columns="2"
 						rendered="#{instructorAssignment.downloadable != null}">
@@ -97,34 +107,26 @@
 
 					<h:panelGrid columns="2">
 						<af:image source="/images/execute.png" />
-						<h:commandLink id="cl" action="#{instructorAssignment.execute}"
-							actionListener="#{instructorAssignment.process}"
-							styleClass="link">
+						<h:commandLink
+							onclick="document.getElementById('hidepage').style.visibility = 'visible';"
+							action="#{instructorAssignment.execute}" styleClass="link">
 							<h:outputText value="Execute Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
 					<h:panelGrid columns="2">
 						<af:image source="/images/evaluation.png" />
-						<h:commandLink action="#{instructorAssignment.evaluate}"
-							styleClass="link">
+						<h:commandLink
+							onclick="document.getElementById('hidepage').style.visibility = 'visible';"
+							action="#{instructorAssignment.evaluate}" styleClass="link">
 							<h:outputText value="Evaluate Again" styleClass="topmenu_link" />
-						</h:commandLink>
-					</h:panelGrid>
-
-					<h:panelGrid columns="2">
-						<af:image source="/images/remove.png" />
-						<h:commandLink action="#{instructorAssignment.remove}"
-							styleClass="link">
-							<h:outputText value="Remove Assignment" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
 
 				</htm:div>
 
-				<af:spacer width="50" />
-
-				<htm:div style="width: 570px;"
+				<htm:div
+					style="width: 595px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorAssignment.viewId == 0}">
 
 					<af:spacer height="25" />
@@ -159,7 +161,8 @@
 
 				</htm:div>
 
-				<htm:div style="width: 570px;"
+				<htm:div
+					style="width: 595px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorAssignment.viewId == 1}">
 
 					<af:spacer height="25" />
@@ -170,7 +173,7 @@
 
 					<h:dataTable value="#{instructorAssignment.submissions}"
 						var="submission"
-						binding="#{instructorAssignment.submissionsTable}" width="100%"
+						binding="#{instructorAssignment.submissionsTable}" width="96%"
 						rowClasses="tableRow" headerClass="tableHeader"
 						rendered="#{!empty instructorAssignment.submissions}">
 						<h:column>
@@ -198,12 +201,14 @@
 
 				</htm:div>
 
-				<htm:div style="width: 570px;"
+				<htm:div
+					style="width: 595px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorAssignment.viewId == 2}">
 
 					<af:spacer height="25" />
 
-					<h:outputText value="#{instructorAssignment.report.name}"
+					<h:outputText
+						value="#{instructorAssignment.title} Program &gt; #{instructorAssignment.report.name}"
 						styleClass="title" />
 
 					<af:spacer height="25" />
@@ -220,11 +225,11 @@
 								<h:column>
 
 									<h:outputText value="#{object.textValue}"
-										style="background: #{object.textColor};font-family:Courier New;font-size:10pt;color:#000000;"
+										style="background: #{object.textColor};font-family:Courier New;font-size:10pt;color:#000000"
 										rendered="#{object.type == 0}" escape="false" />
 
 									<h:dataTable value="#{object.tableRows}" var="row"
-										headerClass="tableHeader" rowClasses="tableRow" width="100%"
+										headerClass="tableHeader" rowClasses="tableRow" width="95%"
 										rendered="#{object.type == 1}">
 										<h:column rendered="#{object.tableHeader.column1 != null}">
 											<f:facet name="header">
@@ -290,8 +295,10 @@
 
 									<af:spacer height="10" rendered="#{object.type == 2}" />
 
-									<h:graphicImage value="#{object.figurePath}"
-										rendered="#{object.type == 2}" />
+									<htm:center rendered="#{object.type == 2}">
+										<h:graphicImage value="#{object.figurePath}"
+											rendered="#{object.type == 2}" />
+									</htm:center>
 
 									<af:spacer height="10" rendered="#{object.type == 0}" />
 

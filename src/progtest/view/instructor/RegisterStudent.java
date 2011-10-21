@@ -2,11 +2,8 @@ package progtest.view.instructor;
 
 import javax.faces.application.FacesMessage;
 
-import progtest.common.Course;
-import progtest.common.Enrollment;
 import progtest.common.User;
 import progtest.database.Querier;
-import progtest.database.EnrollmentDAO;
 import progtest.database.UserDAO;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
@@ -85,14 +82,6 @@ public class RegisterStudent {
 			user.setRole(role);
 			
 			UserDAO.insert(user);
-			
-			Course course = (Course) FacesUtil.getSession(Constants.SESSION_COURSE);
-			
-			Enrollment enrollment = new Enrollment();
-			enrollment.setStudent(user);
-			enrollment.setCourse(course);
-			
-			EnrollmentDAO.insert(enrollment);
 			
 			return Constants.ACTION_SUCCESS;
 

@@ -36,6 +36,8 @@ public class Querier {
 
 	private static final String SELECT_STUDENTS_BY_NOT_COURSE = "select enrollment.student from Enrollment enrollment where enrollment.course != ?";
 
+	private static final String SELECT_STUDENTS_LIKE = "from User user where (user.userName like ? or user.name like ? or user.email like ?) and user.role = 'student'";
+
 	private static final String SELECT_ORACLE = "from Oracle oracle where oracle.idCode = ?";
 
 	private static final String SELECT_ORACLES = "from Oracle";
@@ -184,6 +186,20 @@ public class Querier {
 		session.beginTransaction();
 		Query query = session.createQuery(SELECT_STUDENTS_BY_NOT_COURSE);
 		query.setInteger(0, course.getIdCode());
+		List<User> users = (List<User>) query.list();
+		session.getTransaction().commit();
+		session.close();
+		return users;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<User> getStudentsLike(String keyword) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		Query query = session.createQuery(SELECT_STUDENTS_LIKE);
+		query.setString(0, '%' + keyword + '%');
+		query.setString(1, '%' + keyword + '%');
+		query.setString(2, '%' + keyword + '%');
 		List<User> users = (List<User>) query.list();
 		session.getTransaction().commit();
 		session.close();

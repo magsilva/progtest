@@ -11,12 +11,25 @@
 	<f:subview id="content">
 
 		<h:form>
+		
+			<htm:div style="width: 800px; text-align: left">
 
-			<h:panelGrid columns="4" style="width: 800px" columnClasses="menu">
+				<af:spacer height="20" />
 
-				<af:spacer width="10" />
+				<af:spacer width="5" />
 
-				<htm:div style="width: 170px;">
+				<h:commandLink
+					action="#{instructorAddStudents.back}" styleClass="topmenu_link">
+					<h:outputText value="&lt;&lt; Back to Courses"
+						styleClass="topmenu_link" />
+				</h:commandLink>
+
+			</htm:div>
+
+			<h:panelGrid columns="2" style="width: 800px" columnClasses="menu">
+
+				<htm:div
+					style="width: 150px; padding-left: 10px; padding-right: 20px; border-right: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; min-height: 400px;">
 
 					<af:spacer height="25" />
 
@@ -34,9 +47,8 @@
 
 				</htm:div>
 
-				<af:spacer width="50" />
-
-				<htm:div style="width: 570px;">
+				<htm:div
+					style="width: 585px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;">
 
 					<af:spacer height="25" />
 
@@ -45,21 +57,35 @@
 					<af:spacer height="20" />
 
 					<h:outputText
-						value="Select the students that you want to add to the course."
-						rendered="#{!empty instructorAddStudents.students}" />
+						value="Search and select the students that you want to add to the course." />
 
-					<af:spacer height="20"
-						rendered="#{!empty instructorAddStudents.students}" />
+					<af:spacer height="20" />
+
+					<h:inputText value="#{instructorAddStudents.keyword}" />
+
+					<h:commandButton value="Search"
+						action="#{instructorAddStudents.search}" />
+
+					<af:spacer height="20" />
+
+					<h:selectManyCheckbox disabled="true"
+						value="#{instructorAddStudents.selectedStudents}"
+						layout="pageDirection"
+						rendered="#{!empty instructorAddStudents.enrolledStudents}">
+						<f:selectItems value="#{instructorAddStudents.enrolledStudents}" />
+					</h:selectManyCheckbox>
 
 					<h:selectManyCheckbox
 						value="#{instructorAddStudents.selectedStudents}"
 						layout="pageDirection"
-						rendered="#{!empty instructorAddStudents.students}">
+						rendered="#{!empty instructorAddStudents.students}"
+						onchange="submit()"
+						valueChangeListener="#{instructorAddStudents.change}">
 						<f:selectItems value="#{instructorAddStudents.students}" />
 					</h:selectManyCheckbox>
 
 					<h:outputText value="No student found."
-						rendered="#{empty instructorAddStudents.students}" />
+						rendered="#{empty instructorAddStudents.students and empty instructorAddStudents.enrolledStudents}" />
 
 					<af:spacer height="30" />
 
@@ -67,7 +93,7 @@
 						action="#{instructorAddStudents.cancel}" />
 					<h:commandButton value="Finalize"
 						action="#{instructorAddStudents.add}"
-						rendered="#{!empty instructorAddStudents.students}" />
+						disabled="#{empty instructorAddStudents.selectedStudents}" />
 
 				</htm:div>
 

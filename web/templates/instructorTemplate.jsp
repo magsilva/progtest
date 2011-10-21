@@ -18,6 +18,13 @@
 	<afh:body styleClass="body">
 
 		<f:loadBundle basename="messages" var="msg" />
+		
+		<div id="hidepage"
+			style="position: absolute; left: 0px; top: 100px; text-align: center; background-color: #FFFFFF; layer-background-color: #FFFFFF; height: 100%; width: 100%; visibility: hidden">
+			<af:spacer height="100" />
+			<h:graphicImage value="/images/wait.gif"/>
+			<af:spacer height="100" />
+		</div>
 
 		<htm:center>
 
@@ -52,32 +59,20 @@
 					<htm:div align="left" style="width: 800px">
 						<htm:table>
 							<htm:tr style="height: 30px">
-								<htm:td>
-									<h:commandLink action="instructorCourses" styleClass="orangebar_link">
-										<h:outputText value="Courses" styleClass="orangebar_link" />
-									</h:commandLink>
-								</htm:td>
 								<htm:td style="color: #ffffff">
-									<af:spacer width="10" />
 									<h:outputText value="|" />
 									<af:spacer width="10" />
 								</htm:td>
 								<htm:td>
-									<h:commandLink action="instructorAssignments"
+									<h:commandLink action="instructorHome"
 										styleClass="orangebar_link">
-										<h:outputText value="Assignments"
-											styleClass="orangebar_link" />
+										<h:outputText value="Home Page" styleClass="orangebar_link" />
 									</h:commandLink>
 								</htm:td>
 								<htm:td style="color: #ffffff">
 									<af:spacer width="10" />
 									<h:outputText value="|" />
 									<af:spacer width="10" />
-								</htm:td>
-								<htm:td>
-									<h:commandLink action="instructorStudents" styleClass="orangebar_link">
-										<h:outputText value="Students" styleClass="orangebar_link" />
-									</h:commandLink>
 								</htm:td>
 							</htm:tr>
 						</htm:table>

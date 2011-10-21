@@ -12,33 +12,40 @@
 
 		<h:form>
 
-			<af:spacer height="35" />
+			<af:spacer height="75" />
 
-			<h:outputText value="Create New Course" styleClass="title" />
+			<htm:div
+				style="width: 500px; padding-left: 20px; padding-right: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;">
 
-			<af:spacer height="20" />
+				<h:outputText value="Create New Course" styleClass="title" />
 
-			<h:outputText value="Enter the course properties." />
+				<af:spacer height="30" />
 
-			<af:spacer height="20" />
+				<h:outputText value="Enter the course properties." />
 
-			<h:messages styleClass="message" />
+				<af:spacer height="30" />
 
-			<h:panelGrid columns="2">
-				<h:outputText value="Name*:" />
-				<h:inputText value="#{instructorCreateCourse.name}" />
-				<h:outputText value="Start Date*:" />
-				<t:inputDate value="#{instructorCreateCourse.startDate}" popupCalendar="true"/>
-				<h:outputText value="End Date*:" />
-				<t:inputDate value="#{instructorCreateCourse.endDate}" popupCalendar="true"/>
-			</h:panelGrid>
+				<h:messages styleClass="message" />
 
-			<af:spacer height="30" />
+				<h:panelGrid columns="2">
+					<h:outputText value="Name*:" />
+					<h:inputText value="#{instructorCreateCourse.name}" />
+					<h:outputText value="Start Date*:" />
+					<t:inputDate value="#{instructorCreateCourse.startDate}"
+						popupCalendar="true" />
+					<h:outputText value="End Date*:" />
+					<t:inputDate value="#{instructorCreateCourse.endDate}"
+						popupCalendar="true" />
+				</h:panelGrid>
 
-			<h:commandButton value="Cancel"
-				action="#{instructorCreateCourse.cancel}" />
-			<h:commandButton value="Finalize"
-				action="#{instructorCreateCourse.create}" />
+				<af:spacer height="30" />
+
+				<h:commandButton value="Cancel"
+					action="#{instructorCreateCourse.cancel}" />
+				<h:commandButton value="Finalize"
+					action="#{instructorCreateCourse.create}" />
+
+			</htm:div>
 
 		</h:form>
 

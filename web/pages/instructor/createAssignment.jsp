@@ -12,9 +12,24 @@
 
 		<h:form enctype="multipart/form-data">
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<htm:div style="width: 800px; text-align: left">
 
-				<htm:div style="width: 170px;">
+				<af:spacer height="20" />
+
+				<af:spacer width="5" />
+
+				<h:commandLink action="#{instructorAssignment.back}"
+					styleClass="topmenu_link">
+					<h:outputText value="&lt;&lt; Back to Courses"
+						styleClass="topmenu_link" />
+				</h:commandLink>
+
+			</htm:div>
+
+			<h:panelGrid columns="2" style="width: 800px" columnClasses="menu">
+
+				<htm:div
+					style="width: 150px; padding-left: 10px; padding-right: 20px; border-right: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; min-height: 400px;">
 
 					<af:spacer height="25" />
 
@@ -80,9 +95,9 @@
 					</htm:table>
 
 				</htm:div>
-				<af:spacer width="30" />
 
-				<htm:div style="width: 600px;"
+				<htm:div
+					style="width: 585px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorCreateAssignment.step == 1}">
 
 					<af:spacer height="20" />
@@ -120,7 +135,8 @@
 
 				</htm:div>
 
-				<htm:div style="width: 600px;"
+				<htm:div
+					style="width: 585px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorCreateAssignment.step == 2}">
 
 					<af:spacer height="20" />
@@ -181,7 +197,8 @@
 
 				</htm:div>
 
-				<htm:div style="width: 600px;"
+				<htm:div
+					style="width: 585px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorCreateAssignment.step == 3}">
 
 					<af:spacer height="20" />
@@ -220,7 +237,8 @@
 
 				</htm:div>
 
-				<htm:div style="width: 600px;"
+				<htm:div
+					style="width: 585px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorCreateAssignment.step == 4}">
 
 					<af:spacer height="20" />
@@ -262,9 +280,12 @@
 					<h:selectManyCheckbox id="required"
 						value="#{instructorCreateAssignment.selectedRequiredOperators}"
 						layout="pageDirection"
-						rendered="#{!empty instructorCreateAssignment.requiredOperators}" disabled="true">
-						<t:selectItems value="#{instructorCreateAssignment.requiredOperators}"
-							var="requiredOperator" itemLabel="#{requiredOperator.criterion.tool.name}/#{requiredOperator.name}"
+						rendered="#{!empty instructorCreateAssignment.requiredOperators}"
+						disabled="true">
+						<t:selectItems
+							value="#{instructorCreateAssignment.requiredOperators}"
+							var="requiredOperator"
+							itemLabel="#{requiredOperator.criterion.tool.name}/#{requiredOperator.name}"
 							itemValue="#{requiredOperator.criterion.tool.idCode}/#{requiredOperator.criterion.idCode}/#{requiredOperator.idCode}" />
 					</h:selectManyCheckbox>
 					<h:selectManyCheckbox id="unrequired"
@@ -272,7 +293,8 @@
 						layout="pageDirection"
 						rendered="#{!empty instructorCreateAssignment.operators}">
 						<t:selectItems value="#{instructorCreateAssignment.operators}"
-							var="operator" itemLabel="#{operator.criterion.tool.name}/#{operator.name}"
+							var="operator"
+							itemLabel="#{operator.criterion.tool.name}/#{operator.name}"
 							itemValue="#{operator.criterion.tool.idCode}/#{operator.criterion.idCode}/#{operator.idCode}" />
 					</h:selectManyCheckbox>
 
@@ -287,7 +309,8 @@
 
 				</htm:div>
 
-				<htm:div style="width: 600px;"
+				<htm:div
+					style="width: 585px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;"
 					rendered="#{instructorCreateAssignment.step == 5}">
 
 					<af:spacer height="20" />
@@ -334,6 +357,7 @@
 					<h:commandButton value="Back"
 						action="#{instructorCreateAssignment.backToStep4}" />
 					<h:commandButton value="Finalize"
+						onclick="document.getElementById('hidepage').style.visibility = 'visible';"
 						action="#{instructorCreateAssignment.conclude}" />
 
 				</htm:div>

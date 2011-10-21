@@ -12,7 +12,7 @@ import progtest.database.Querier;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 
-public class Courses {
+public class Home {
 
 	private List<Course> courses = new ArrayList<Course>();
 
@@ -104,7 +104,7 @@ public class Courses {
 		this.activedCourse = activedCourse;
 	}
 
-	public Courses() {
+	public Home() {
 		refresh();
 	}
 
@@ -132,6 +132,7 @@ public class Courses {
 	public String viewAssignment() {
 		Assignment assignment = (Assignment) assignmentsTable.getRowData();
 		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
+		FacesUtil.removeSession("instructorAssignment");
 		return Constants.ACTION_VIEW_ASSIGNMENT;
 	}
 
@@ -139,6 +140,26 @@ public class Courses {
 		User student = (User) studentsTable.getRowData();
 		FacesUtil.setSession(Constants.SESSION_STUDENT, student);
 		return Constants.ACTION_VIEW_STUDENT;
+	}
+	
+	public String newCourse() {
+		return Constants.ACTION_NEW_COURSE;
+	}
+	
+	public String newAssignment() {
+		return Constants.ACTION_NEW_ASSIGNMENT;
+	}
+	
+	public String newStudent() {
+		return Constants.ACTION_NEW_STUDENT;
+	}
+	
+	public String editCourse() {
+		return Constants.ACTION_EDIT_COURSE;
+	}
+	
+	public String removeCourse() {
+		return Constants.ACTION_REMOVE_COURSE;
 	}
 
 	private void refresh() {
@@ -157,23 +178,17 @@ public class Courses {
 			assignments = Querier.getAssignments(course);
 			students = Querier.getStudents(course);
 		
-		} else
+		} else {
+			
 			activedCourse = null;
+			
+			assignments.clear();
+			students.clear();
+			
+		}
 		
 		this.course = course; 
 		
-	}
-	
-	public String create() {
-		return Constants.ACTION_CREATE;
-	}
-	
-	public String edit() {
-		return Constants.ACTION_EDIT;
-	}
-	
-	public String remove() {
-		return Constants.ACTION_REMOVE;
 	}
 
 }

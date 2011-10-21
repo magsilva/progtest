@@ -395,8 +395,14 @@ public class CreateAssignment {
 		return Constants.ACTION_CANCEL;
 	}
 
+	public String back() {
+		refresh();
+		return Constants.ACTION_BACK;
+	}
+
 	private void refresh() {
 		step = 1;
+		upload = false;
 		setLanguages(loadLanguages());
 		language = null;
 		uploadedFile = null;

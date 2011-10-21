@@ -293,6 +293,10 @@ public class Assignment {
 		return Constants.ACTION_REMOVE;
 	}
 
+	public String back() {
+		return Constants.ACTION_BACK;
+	}
+
 	public void process(ActionEvent event) {
 
 		processing = true;

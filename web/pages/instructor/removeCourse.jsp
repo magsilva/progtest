@@ -12,21 +12,26 @@
 
 		<h:form>
 
-			<af:spacer height="35" />
+			<af:spacer height="75" />
 
-			<h:outputText value="Remove Course" styleClass="title" />
+			<htm:div
+				style="width: 500px; padding-left: 20px; padding-right: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;">
 
-			<af:spacer height="20" />
+				<h:outputText value="Remove Course" styleClass="title" />
 
-			<h:outputText
-				value="Are you sure you want to remove the course #{instructorRemoveCourse.name}?" />
+				<af:spacer height="30" />
 
-			<af:spacer height="30" />
+				<h:outputText
+					value="Are you sure you want to remove the course #{instructorRemoveCourse.name}?" />
 
-			<h:commandButton value="Cancel"
-				action="#{instructorRemoveCourse.cancel}" />
-			<h:commandButton value="Finalize"
-				action="#{instructorRemoveCourse.remove}" />
+				<af:spacer height="30" />
+
+				<h:commandButton value="Cancel"
+					action="#{instructorRemoveCourse.cancel}" />
+				<h:commandButton value="Finalize"
+					action="#{instructorRemoveCourse.remove}" />
+
+			</htm:div>
 
 		</h:form>
 

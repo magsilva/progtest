@@ -12,38 +12,43 @@
 
 		<h:form>
 
-			<af:spacer height="30" />
+			<af:spacer height="75" />
 
-			<h:outputText value="Register New Student" styleClass="title" />
+			<htm:div
+				style="width: 500px; padding-left: 20px; padding-right: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;">
 
-			<af:spacer height="20" />
+				<h:outputText value="Register New Student" styleClass="title" />
 
-			<h:outputText value="Enter the student informations." />
+				<af:spacer height="20" />
 
-			<af:spacer height="20" />
+				<h:outputText value="Enter the student informations." />
 
-			<h:messages styleClass="message" />
+				<af:spacer height="20" />
 
-			<h:panelGrid columns="2">
-				<h:outputText value="Username*:" />
-				<h:inputText value="#{instructorRegisterStudent.userName}" />
-				<h:outputText value="Full Name*:" />
-				<h:inputText value="#{instructorRegisterStudent.name}" />
-				<h:outputText value="E-mail*:" />
-				<h:inputText value="#{instructorRegisterStudent.email}" />
-				<h:outputText value="Password*:" />
-				<h:inputSecret value="#{instructorRegisterStudent.password}" />
-				<h:outputText value="Confirmation Password*:" />
-				<h:inputSecret
-					value="#{instructorRegisterStudent.confirmationPassword}" />
-			</h:panelGrid>
+				<h:messages styleClass="message" />
 
-			<af:spacer height="30" />
+				<h:panelGrid columns="2">
+					<h:outputText value="Username*:" />
+					<h:inputText value="#{instructorRegisterStudent.userName}" />
+					<h:outputText value="Full Name*:" />
+					<h:inputText value="#{instructorRegisterStudent.name}" />
+					<h:outputText value="E-mail*:" />
+					<h:inputText value="#{instructorRegisterStudent.email}" />
+					<h:outputText value="Password*:" />
+					<h:inputSecret value="#{instructorRegisterStudent.password}" />
+					<h:outputText value="Confirmation Password*:" />
+					<h:inputSecret
+						value="#{instructorRegisterStudent.confirmationPassword}" />
+				</h:panelGrid>
 
-			<h:commandButton value="Cancel"
-				action="#{instructorRegisterStudent.cancel}" />
-			<h:commandButton value="Finalize"
-				action="#{instructorRegisterStudent.register}" />
+				<af:spacer height="30" />
+
+				<h:commandButton value="Cancel"
+					action="#{instructorRegisterStudent.cancel}" />
+				<h:commandButton value="Finalize"
+					action="#{instructorRegisterStudent.register}" />
+
+			</htm:div>
 
 		</h:form>
 

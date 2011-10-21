@@ -106,13 +106,20 @@ public class Constants {
 	public static final String ACTION_FAILURE = "failure";
 	public static final String ACTION_BACK = "back";
 	public static final String ACTION_CANCEL = "cancel";
-
-	public static final String ACTION_REGISTER = "register";
+	
+	public static final String ACTION_NEW_COURSE = "newCourse";
+	public static final String ACTION_NEW_ASSIGNMENT = "newAssignment";
+	public static final String ACTION_NEW_STUDENT = "newStudent";
+	public static final String ACTION_EDIT_COURSE = "editCourse";
+	public static final String ACTION_REMOVE_COURSE = "removeCourse";
+	public static final String ACTION_REMOVE_STUDENT = "removeStudent";
+	public static final String ACTION_REGISTER_STUDENT = "registerStudent";
+	public static final String ACTION_VIEW_ASSIGNMENT = "viewAssignment";
+	public static final String ACTION_VIEW_STUDENT = "viewStudent";
+	
 	public static final String ACTION_RECOVER = "recover";
 	public static final String ACTION_SELECT = "select";
 	public static final String ACTION_VIEW = "view";
-	public static final String ACTION_VIEW_ASSIGNMENT = "viewAssignment";
-	public static final String ACTION_VIEW_STUDENT = "viewStudent";
 	public static final String ACTION_CREATE = "create";
 	public static final String ACTION_ADD = "add";
 	public static final String ACTION_EDIT = "edit";

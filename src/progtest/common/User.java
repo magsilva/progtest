@@ -112,28 +112,12 @@ public class User {
 	public void setSubmissions(List<Submission> submissions) {
 		this.submissions = submissions;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
-				+ ((coursesAsInstructor == null) ? 0 : coursesAsInstructor
-						.hashCode());
-		result = prime
-				* result
-				+ ((coursesAsStudent == null) ? 0 : coursesAsStudent.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + idCode;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result
-				+ ((submissions == null) ? 0 : submissions.hashCode());
-		result = prime * result
-				+ ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
 
@@ -146,47 +130,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (coursesAsInstructor == null) {
-			if (other.coursesAsInstructor != null)
-				return false;
-		} else if (!coursesAsInstructor.equals(other.coursesAsInstructor))
-			return false;
-		if (coursesAsStudent == null) {
-			if (other.coursesAsStudent != null)
-				return false;
-		} else if (!coursesAsStudent.equals(other.coursesAsStudent))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (idCode != other.idCode)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (role == null) {
-			if (other.role != null)
-				return false;
-		} else if (!role.equals(other.role))
-			return false;
-		if (submissions == null) {
-			if (other.submissions != null)
-				return false;
-		} else if (!submissions.equals(other.submissions))
-			return false;
-		if (userName == null) {
-			if (other.userName != null)
-				return false;
-		} else if (!userName.equals(other.userName))
 			return false;
 		return true;
 	}

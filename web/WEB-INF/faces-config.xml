@@ -23,6 +23,11 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
+  <managed-bean-name>instructorHome</managed-bean-name>
+  <managed-bean-class>progtest.view.instructor.Home</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
   <managed-bean-name>instructorCourses</managed-bean-name>
   <managed-bean-class>progtest.view.instructor.Courses</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
@@ -85,7 +90,7 @@
  <managed-bean>
   <managed-bean-name>instructorAddStudents</managed-bean-name>
   <managed-bean-class>progtest.view.instructor.AddStudents</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>instructorRemoveStudent</managed-bean-name>
@@ -156,6 +161,10 @@
    <to-view-id>/pages/instructor/editProfileTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
+   <from-outcome>instructorHome</from-outcome>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
    <from-outcome>instructorCourses</from-outcome>
    <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
   </navigation-case>
@@ -172,7 +181,7 @@
    <to-view-id>/pages/student/editProfileTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>studentAssignments</from-outcome>
+   <from-outcome>studentHome</from-outcome>
    <to-view-id>/pages/student/homeTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
@@ -180,7 +189,7 @@
   <from-view-id>/pages/default/loginTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>instructorHome</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>studentHome</from-outcome>
@@ -201,16 +210,47 @@
  <navigation-rule>
   <from-view-id>/pages/instructor/editProfileTemplate.jsp</from-view-id>
   <navigation-case>
-   <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <from-outcome>cancel</from-outcome>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
    <to-view-id>/pages/instructor/editProfileTemplate.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/pages/instructor/homeTemplate.jsp</from-view-id>
+  <navigation-case>
+   <from-outcome>newCourse</from-outcome>
+   <to-view-id>/pages/instructor/createCourseTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>newAssignment</from-outcome>
+   <to-view-id>/pages/instructor/createAssignmentTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>newStudent</from-outcome>
+   <to-view-id>/pages/instructor/addStudentsTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>editCourse</from-outcome>
+   <to-view-id>/pages/instructor/editCourseTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>removeCourse</from-outcome>
+   <to-view-id>/pages/instructor/removeCourseTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>viewAssignment</from-outcome>
+   <to-view-id>/pages/instructor/assignmentTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>viewStudent</from-outcome>
+   <to-view-id>/pages/instructor/studentTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -240,11 +280,11 @@
   <from-view-id>/pages/instructor/createCourseTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
@@ -255,11 +295,11 @@
   <from-view-id>/pages/instructor/editCourseTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
@@ -270,11 +310,11 @@
   <from-view-id>/pages/instructor/removeCourseTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/coursesTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
@@ -299,6 +339,10 @@
  <navigation-rule>
   <from-view-id>/pages/instructor/assignmentTemplate.jsp</from-view-id>
   <navigation-case>
+   <from-outcome>back</from-outcome>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
    <from-outcome>select</from-outcome>
    <to-view-id>/pages/instructor/assignmentTemplate.jsp</to-view-id>
   </navigation-case>
@@ -319,15 +363,19 @@
   </navigation-case>
   <navigation-case>
    <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/instructor/assignmentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/assignmentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/assignmentTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
    <to-view-id>/pages/instructor/createAssignmentTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>back</from-outcome>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -378,23 +426,27 @@
  <navigation-rule>
   <from-view-id>/pages/instructor/studentTemplate.jsp</from-view-id>
   <navigation-case>
+   <from-outcome>removeStudent</from-outcome>
+   <to-view-id>/pages/instructor/removeStudentTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
    <from-outcome>select</from-outcome>
    <to-view-id>/pages/instructor/studentTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>remove</from-outcome>
-   <to-view-id>/pages/instructor/removeStudentTemplate.jsp</to-view-id>
+   <from-outcome>back</from-outcome>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/pages/instructor/registerStudentTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/instructor/studentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/addStudentsTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/studentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/addStudentsTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
@@ -404,27 +456,31 @@
  <navigation-rule>
   <from-view-id>/pages/instructor/addStudentsTemplate.jsp</from-view-id>
   <navigation-case>
-   <from-outcome>register</from-outcome>
+   <from-outcome>registerStudent</from-outcome>
    <to-view-id>/pages/instructor/registerStudentTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/studentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>cancel</from-outcome>
-   <to-view-id>/pages/instructor/studentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>failure</from-outcome>
    <to-view-id>/pages/instructor/addStudentsTemplate.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>back</from-outcome>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/pages/instructor/removeStudentTemplate.jsp</from-view-id>
   <navigation-case>
    <from-outcome>success</from-outcome>
-   <to-view-id>/pages/instructor/studentsTemplate.jsp</to-view-id>
+   <to-view-id>/pages/instructor/homeTemplate.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>cancel</from-outcome>

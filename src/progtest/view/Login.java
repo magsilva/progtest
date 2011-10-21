@@ -77,7 +77,7 @@ public class Login {
 	}
 
 	public String register() {
-		return Constants.ACTION_REGISTER;
+		return Constants.ACTION_REGISTER_STUDENT;
 	}
 
 	public String recover() {

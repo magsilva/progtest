@@ -12,50 +12,26 @@
 
 		<h:form>
 
-			<h:panelGrid columns="3" style="width: 800px" columnClasses="menu">
+			<htm:div style="width: 800px; text-align: left">
 
-				<htm:div style="width: 170px;">
+				<af:spacer height="20" />
+
+				<af:spacer width="5" />
+
+				<h:commandLink action="#{instructorStudent.back}"
+					styleClass="topmenu_link">
+					<h:outputText value="&lt;&lt; Back to Courses"
+						styleClass="topmenu_link" />
+				</h:commandLink>
+
+			</htm:div>
+
+			<h:panelGrid columns="2" style="width: 800px" columnClasses="menu">
+
+				<htm:div
+					style="width: 150px; padding-left: 10px; padding-right: 20px; border-right: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; min-height: 400px;">
 
 					<af:spacer height="25" />
-
-					<h:outputText value="Student" styleClass="menu_title" />
-
-					<af:spacer height="10" />
-
-					<htm:table>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorStudent.selectAboutView}"
-									styleClass="link">
-									<h:outputText value="Student Informations"
-										styleClass="link"
-										rendered="#{instructorStudent.viewId != 0}" />
-									<h:outputText value="Student Informations"
-										styleClass="link_hover"
-										rendered="#{instructorStudent.viewId == 0}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:commandLink
-									action="#{instructorStudent.selectGradesView}"
-									styleClass="link">
-									<h:outputText value="Grades"
-										styleClass="link"
-										rendered="#{instructorStudent.viewId != 1}" />
-									<h:outputText value="Grades"
-										styleClass="link_hover"
-										rendered="#{instructorStudent.viewId == 1}" />
-								</h:commandLink>
-								<af:spacer height="5" />
-							</htm:td>
-						</htm:tr>
-					</htm:table>
-
-					<af:spacer height="40" />
 
 					<h:outputText value="Action" styleClass="menu_title" />
 
@@ -71,46 +47,35 @@
 
 				</htm:div>
 
-				<af:spacer width="60" />
+				<htm:div
+					style="width: 585px; padding-left: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;  min-height: 400px;">
 
-				<htm:div style="width: 570px;"
-					rendered="#{instructorStudent.viewId == 0}">
+					<af:spacer height="25" />
 
-					<af:spacer height="20" />
-
-					<h:outputText value="Student Information"
+					<h:outputText value="#{instructorStudent.name}"
 						styleClass="title" />
 
-					<af:spacer height="20" />
+					<af:spacer height="3" />
 
 					<h:outputText value="Username: " styleClass="label" />
 					<h:outputText value="#{instructorStudent.userName}" />
 
-					<af:spacer height="10" />
-
-					<h:outputText value="Name: " styleClass="label" />
-					<h:outputText value="#{instructorStudent.name}" />
-
-					<af:spacer height="10" />
+					<af:spacer width="25" />
 
 					<h:outputText value="E-mail: " styleClass="label" />
 					<h:outputText value="#{instructorStudent.email}" />
 
-					<af:spacer height="10" />
+					<af:spacer height="30" />
+					
+					<h:outputText value="Grades" styleClass="subtitle" />
 
-				</htm:div>
+					<af:spacer height="15" />
 
-				<htm:div style="width: 570px;"
-					rendered="#{instructorStudent.viewId == 1}">
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Grades" styleClass="title" />
-
-					<af:spacer height="20" />
+					<h:outputText value="There is no assignment for this student."
+						rendered="#{empty instructorStudent.submissions}" />
 
 					<h:dataTable value="#{instructorStudent.submissions}" var="submission"
-						binding="#{instructorStudent.submissionsTable}" width="100%"
+						binding="#{instructorStudent.submissionsTable}" width="96%"
 						rowClasses="tableRow" headerClass="tableHeader"
 						rendered="#{!empty instructorStudent.submissions}">
 						<h:column>
@@ -126,9 +91,6 @@
 							<h:outputText value="#{submission.score}" />
 						</h:column>
 					</h:dataTable>
-
-					<h:outputText value="There is no assignment for this student."
-						rendered="#{empty instructorStudent.submissions}" />
 
 				</htm:div>
 
