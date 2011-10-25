@@ -12,9 +12,10 @@
 
 		<h:form>
 
-			<htm:div style="width: 800px;">
+			<af:spacer height="75" />
 
-				<af:spacer height="30" />
+			<htm:div
+				style="width: 500px; padding-left: 20px; padding-right: 20px; border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;">
 
 				<h:outputText value="Edit Assignment" styleClass="title" />
 

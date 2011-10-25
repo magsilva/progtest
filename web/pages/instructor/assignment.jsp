@@ -123,6 +123,14 @@
 						</h:commandLink>
 					</h:panelGrid>
 
+					<h:panelGrid columns="2">
+						<af:image source="/images/remove.png" />
+						<h:commandLink
+							action="#{instructorAssignment.remove}" styleClass="link">
+							<h:outputText value="Remove Assignment" styleClass="topmenu_link" />
+						</h:commandLink>
+					</h:panelGrid>
+
 				</htm:div>
 
 				<htm:div

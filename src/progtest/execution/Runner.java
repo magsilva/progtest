@@ -462,7 +462,7 @@ public class Runner {
 
 		try {
 
-			List<File> sources = FileUtil.listFiles(sourceDir, ".java");
+			List<File> sources = FileUtil.listFiles(sourceDir);
 
 			for (File source : sources) {
 

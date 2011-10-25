@@ -86,7 +86,7 @@ CREATE TABLE Requisite (
 	tool INT NOT NULL,
 	criterion INT NOT NULL,
 	weight DOUBLE,
-	execInfo VARCHAR(500),
+	execInfo VARCHAR(2000),
 	CONSTRAINT PK_requisite PRIMARY KEY (assignment, tool, criterion),
 	CONSTRAINT FK_requisite_assignment FOREIGN KEY (assignment) REFERENCES Assignment (idCode),
 	CONSTRAINT FK_requisite_criterion FOREIGN KEY (tool, criterion) REFERENCES Criterion (tool, idCode)
@@ -187,7 +187,7 @@ INSERT INTO Criterion VALUES(2, 8, 'All-Potencial-Uses-ed', 'all.potencial.uses.
 
 INSERT INTO Tool VALUES(3, 'Jumble', 'Java', 'Javac', 'JUnit', 'cmdlines.txt', 'output.properties');
 
-INSERT INTO Criterion VALUES(3, 1, 'Analysis of Mutants', 'score');
+INSERT INTO Criterion VALUES(3, 1, 'Mutants Analysis', 'score');
 
 INSERT INTO Operator VALUES(3, 1, 1, 'Conditionals', NULL, TRUE);
 
@@ -215,7 +215,157 @@ INSERT INTO Criterion VALUES(5, 2, 'All-Edges', 'alledges');
 
 INSERT INTO Tool VALUES(6, 'Proteum', 'C', 'GCC', 'CUnit', 'cmdlines.txt', 'output.properties');
 
-INSERT INTO Criterion VALUES(6, 1, 'Analysis of Mutants', 'score');
+INSERT INTO Criterion VALUES(6, 1, 'Mutants Analysis', 'score');
+
+INSERT INTO Operator VALUES(6, 1, 1, 'OAAA - Arithmetic Assignment Mutation', '-u-OAAA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 2, 'OAAN - Arithmetic Operator Mutation', '-u-OAAN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 3, 'OABA - Arithmetic Assignment by Bitwise Assignment', '-u-OABA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 4, 'OABN - Arithmetic by Bitwise Operator', '-u-OABN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 5, 'OAEA - Arithmetic Assignment by Plain Assignment', '-u-OAEA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 6, 'OALN - Arithmetic Operator by Logical Operator', '-u-OALN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 7, 'OARN - Arithmetic Operator by Relacional Operator', '-u-OARN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 8, 'OASA - Arithmetic Assignment by Shift Assignment', '-u-OASA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 9, 'OASN - Arithmetic Operator by Shift Operator', '-u-OASN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 10, 'OBAA - Bitwise Assignment by Arithmetic Assignment', '-u-OBAA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 11, 'OBAN - Bitwise Operator by Arithmetic Assignment', '-u-OBAN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 12, 'OBBA - Bitwise Assignment Mutation', '-u-OBBA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 13, 'OBBN - Bitwise Operator Mutation', '-u-OBBN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 14, 'OBEA - Bitwise Assignment by Plain Assignment', '-u-OBEA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 15, 'OBLN - Bitwise Operator by Logical Operator', '-u-OBLN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 16, 'OBNG - Bitwise Negation', '-u-OBNG 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 17, 'OBRN - Bitwise Operator by Relational Operator', '-u-OBRN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 18, 'OBSA - Bitwise Assignment by Shift Assignment', '-u-OBSA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 19, 'OBSN - Bitwise Operator by Shift Operator', '-u-OBSN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 20, 'OCNG - Logical Context Negation', '-u-OCNG 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 21, 'OCOR - Cast Operator by Cast Operator', '-u-OCOR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 22, 'OEAA - Plain Assignment by Arithmetic Assignment', '-u-OEAA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 23, 'OEBA - Plain Assignment by Bitwise Assignment', '-u-OEBA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 24, 'OESA - Plain Assignment by Shift Assignment', '-u-OESA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 25, 'Oido - Increment/Decrement Mutation', '-u-Oido 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 26, 'OIPM - Indirection Operator Precedence Mutation', '-u-OIPM 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 27, 'OLAN - Logical Operator by Arithmentic Operator', '-u-OLAN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 28, 'OLBN - Logical Operator by Bitwise Operator', '-u-OLBN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 29, 'OLLN - Logical Operator Mutation', '-u-OLLN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 30, 'OLNG - Logical Negation', '-u-OLNG 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 31, 'OLRN - Logical Operator by Relational Operator', '-u-OLRN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 32, 'OLSN - Logial Operator by Shift Operator', '-u-OLSN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 33, 'ORAN - Relational Operator by Arithmentic Operator', '-u-ORAN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 34, 'ORBN - Relational Operator by Bitwise Operator', '-u-ORBN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 35, 'ORLN - Relational Operator by Logical Operator', '-u-ORLN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 36, 'ORRN - Relational Operator Mutation', '-u-ORRN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 37, 'ORSN - Relational Operator by Shift Operator', '-u-ORSN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 38, 'OSAA - Shift Assignment by Arithmetic Assignment', '-u-OSAA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 39, 'OSAN - Shift Operator by Arithmetic Operator', '-u-OSAN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 40, 'OSBA - Shift Assignment by Bitwise Assignment', '-u-OSBA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 41, 'OSBN - Shift Operator by Bitwise Operator', '-u-OSBN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 42, 'OSEA - Shift Assignment by Plain Assignment', '-u-OSEA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 43, 'OSLN - Shift Operator by Logical Operator', '-u-OSLN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 44, 'OSRN - Shift Operator by Relational Operator', '-u-OSRN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 45, 'OSSA - Shift Assignment Mutation', '-u-OSSA 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 46, 'OSSN - Shift Operator Mutation', '-u-OSSN 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 47, 'SBRC - break Replacement by continue', '-u-SBRC 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 48, 'SBRn - break Out to Nth Level', '-u-SBRn 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 49, 'SCRB - continue Replacement by break', '-u-SCRB 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 50, 'SCRn - continue Out to Nth Level', '-u-SCRn 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 51, 'SDWD - do-while Replacement by while', '-u-SDWD 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 52, 'SGLR - goto Label Replacement', '-u-SGLR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 53, 'SMTC - n-trip continue', '-u-SMTC 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 54, 'SMTT - n-trip trap', '-u-SMTT 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 55, 'SMVB - Move Brace Up and Down', '-u-SMVB 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 56, 'SRSR - return Replacement', '-u-SRSR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 57, 'SSDL - Statement Deletion', '-u-SSDL 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 58, 'SSWM - switch Statement Mutation', '-u-SSWM 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 59, 'STRI - Trap on if Condition', '-u-STRI 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 60, 'STRP - Trap on Statement Execution', '-u-STRP 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 61, 'SWDD - while Replacement by do-while', '-u-SWDD 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 62, 'VDTR - Domain Traps', '-u-VDTR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 63, 'VGAR - Mutate Global Array References', '-u-VGAR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 64, 'VGPR - Mutate Global Pointer references', '-u-VGPR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 65, 'VGSR - Mutate Global Scalar References', '-u-VGSR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 66, 'VGTR - Mutate Global Structure References', '-u-VGTR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 67, 'VLAR - Mutate Local Array References', '-u-VLAR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 68, 'VLPR - Mutate Local Pointer References', '-u-VLPR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 69, 'VLSR - Mutate Local Scalar References', '-u-VLSR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 70, 'VLTR - Mutate Local Structure References', '-u-VLTR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 71, 'VSCR - Structure Component Replacement', '-u-VSCR 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 72, 'VTWD - Twiddle Mutations', '-u-VTWD 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 73, 'Cccr - Constant for Constant Replacement', '-u-Cccr 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 74, 'Ccsr - Constant for Scalar Replacement', '-u-Ccsr 100 0', FALSE);
+
+INSERT INTO Operator VALUES(6, 1, 75, 'CRCR - Required Constant Replacement', '-u-CRCR 100 0', FALSE);
 
 INSERT INTO Oracle VALUES(1, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'Java');
 

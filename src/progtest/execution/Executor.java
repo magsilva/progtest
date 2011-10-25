@@ -127,7 +127,7 @@ public class Executor {
 
 			while (input.ready()) {
 
-				String[] args = input.readLine().split(" ");
+				String[] args = (input.readLine() + additionals).split(" ");
 
 				for (int i = 0; i < args.length; i++)
 					args[i] = args[i].replace(TAG_ROOT, toolDir.getPath())

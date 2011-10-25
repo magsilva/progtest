@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import progtest.common.Submission;
 import progtest.common.Tool;
@@ -295,23 +294,6 @@ public class Assignment {
 
 	public String back() {
 		return Constants.ACTION_BACK;
-	}
-
-	public void process(ActionEvent event) {
-
-		processing = true;
-
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.setViewRoot(context.getApplication().getViewHandler()
-				.createView(context, context.getViewRoot().getViewId()));
-
-		FacesContext
-				.getCurrentInstance()
-				.getApplication()
-				.getNavigationHandler()
-				.handleNavigation(FacesContext.getCurrentInstance(), null,
-						Constants.ACTION_SELECT);
-
 	}
 
 }
