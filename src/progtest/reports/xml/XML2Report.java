@@ -85,13 +85,7 @@ public class XML2Report {
 								if (b.getAttributes().item(k).getNodeName()
 										.equals(ATTR_TEXTVALUE))
 									object.setTextValue(b.getAttributes()
-											.item(k).getNodeValue()
-											.replace("#quot", "\"")
-											.replace("#amp", "&")
-											.replace("#apos", "'")
-											.replace("#gt", "&gt;")
-											.replace("#lt", "&lt;")
-											.replace("#nbsp", "&nbsp;"));
+											.item(k).getNodeValue());
 							}
 							for (int k = 0; k < b.getAttributes().getLength(); k++) {
 								if (b.getAttributes().item(k).getNodeName()
@@ -99,6 +93,20 @@ public class XML2Report {
 									object.setTextColor(b.getAttributes()
 											.item(k).getNodeValue());
 							}
+							while (object.getTextValue().length() > 70) {
+								Object object2 = new Object(Object.TYPE_TEXT);
+								object2.setTextColor(object.getTextColor());
+								object2.setTextValue(object.getTextValue().substring(0, 70)
+										.replace("&", "&amp;").replace("\"", "&quot;")
+										.replace("'", "&apos;").replace(">", "&gt;")
+										.replace("<", "&lt;").replace(" ", "&nbsp;"));
+								section.getObjects().add(object2);
+								object.setTextValue(object.getTextValue().substring(70));
+							}
+							object.setTextValue(object.getTextValue()
+									.replace("&", "&amp;").replace("\"", "&quot;")
+									.replace("'", "&apos;").replace(">", "&gt;")
+									.replace("<", "&lt;").replace(" ", "&nbsp;"));
 							section.getObjects().add(object);
 						}
 						if (b.getNodeName().equals(TAG_TABLE)) {

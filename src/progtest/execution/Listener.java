@@ -22,7 +22,7 @@ public class Listener {
 
 	public void start() {
 		XMLFile.println("<?xml version='1.0'?>");
-		XMLFile.println("<report name=\"" + tool + " Listener\" tool=\"" + tool
+		XMLFile.println("<report name=\"" + tool + " Output\" tool=\"" + tool
 				+ "\">");
 		XMLFile.println("\t<section title=\"Standard Output\">");
 	}
@@ -31,16 +31,8 @@ public class Listener {
 		
 		line = line.replace(root, "");
 		
-		while (line.length() > 70) {
-			XMLFile.println("\t\t<text value=\"" + line.substring(0, 70).replace("\"", "#quot").replace("&", "#amp")
-					.replace("'", "#apos").replace(">", "#gt").replace("<", "#lt")
-					.replace(" ", "#nbsp") + "\" color=\"#FFFFFF\"/>");
-			line = line.substring(70);
-		}
-		
-		XMLFile.println("\t\t<text value=\"" + line.replace("\"", "#quot").replace("&", "#amp")
-				.replace("'", "#apos").replace(">", "#gt").replace("<", "#lt")
-				.replace(" ", "#nbsp") + "\" color=\"#FFFFFF\"/>");
+		XMLFile.println("\t\t<text value=\"" + line.replace("&", "&amp;").replace("\"", "&quot;")
+				.replace("'", "&apos;").replace(">", "&gt;").replace("<", "&lt;") + "\" color=\"#FFFFFF\"/>");
 		
 	}
 
