@@ -29,6 +29,8 @@ public class CreateAssignment {
 
 	private int step = 1;
 
+	private Assignment assignment = new Assignment();
+
 	private List<String> languages = loadLanguages();
 
 	private String language = null;
@@ -40,14 +42,6 @@ public class CreateAssignment {
 	private Integer oracle = null;
 
 	private UploadedFile uploadedFile = null;
-
-	private String title = Constants.EMPTY;
-
-	private String description = Constants.EMPTY;
-
-	private Date startDate = new Date();
-
-	private Date endDate = new Date();
 
 	private List<Tool> tools = new ArrayList<Tool>();
 
@@ -75,6 +69,14 @@ public class CreateAssignment {
 
 	public void setStep(int step) {
 		this.step = step;
+	}
+
+	public Assignment getAssignment() {
+		return assignment;
+	}
+
+	public void setAssignment(Assignment assignment) {
+		this.assignment = assignment;
 	}
 
 	public void setLanguages(List<String> languages) {
@@ -123,38 +125,6 @@ public class CreateAssignment {
 
 	public void setOracle(Integer oracle) {
 		this.oracle = oracle;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
 	}
 
 	public List<Tool> getTools() {
@@ -257,9 +227,11 @@ public class CreateAssignment {
 		} else {
 
 			Oracle oracle = Querier.getOracle(this.oracle);
-
-			title = oracle.getTitle();
-			description = oracle.getDescription();
+			
+			assignment.setTitle(oracle.getTitle());
+			assignment.setDescription(oracle.getDescription());
+			assignment.setStartDate(new Date());
+			assignment.setEndDate(new Date());
 
 			FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
 
@@ -277,15 +249,8 @@ public class CreateAssignment {
 
 			Course course = (Course) FacesUtil
 					.getSession(Constants.SESSION_COURSE);
-
-			Assignment assignment = new Assignment();
+			
 			assignment.setCourse(course);
-			assignment.setTitle(title);
-			assignment.setDescription(description);
-			assignment.setStartDate(startDate);
-			assignment.setEndDate(endDate);
-
-			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			criteria = Querier.getCriteria(language);
 
@@ -299,9 +264,6 @@ public class CreateAssignment {
 
 	public String goToStep5() {
 
-		Assignment assignment = (Assignment) FacesUtil
-				.getSession(Constants.SESSION_ASSIGNMENT);
-
 		requisites.clear();
 
 		if (hasCriteria()) {
@@ -313,7 +275,7 @@ public class CreateAssignment {
 				Requisite requisite = new Requisite();
 				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
-				requisite.setExecInfo(generateExecInfo(criterion));
+				requisite.setExecutionParameters(generateExecInfo(criterion));
 				requisites.add(requisite);
 			}
 
@@ -326,9 +288,6 @@ public class CreateAssignment {
 	}
 
 	public String conclude() {
-
-		Assignment assignment = (Assignment) FacesUtil
-				.getSession(Constants.SESSION_ASSIGNMENT);
 
 		assignment.setRequisites(requisites);
 
@@ -361,6 +320,8 @@ public class CreateAssignment {
 		}
 
 		AssignmentDAO.update(assignment);
+		
+		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		refresh();
 		
@@ -406,10 +367,7 @@ public class CreateAssignment {
 		setLanguages(loadLanguages());
 		language = null;
 		uploadedFile = null;
-		title = Constants.EMPTY;
-		description = Constants.EMPTY;
-		startDate = new Date();
-		endDate = new Date();
+		assignment = new Assignment();
 		criteria = new ArrayList<Criterion>();
 		selectedCriteria = new ArrayList<String>();
 		requisites = new ArrayList<Requisite>();
@@ -474,13 +432,13 @@ public class CreateAssignment {
 
 	private boolean validate() {
 
-		if (title.equals(Constants.EMPTY)
-				|| description.equals(Constants.EMPTY)) {
+		if (assignment.getTitle().equals(Constants.EMPTY)
+				|| assignment.getDescription().equals(Constants.EMPTY)) {
 
 			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
-		} else if (startDate.getTime() > endDate.getTime()) {
+		} else if (assignment.getStartDate().getTime() > assignment.getEndDate().getTime()) {
 
 			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);

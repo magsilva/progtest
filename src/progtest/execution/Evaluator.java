@@ -10,14 +10,14 @@ import progtest.database.Querier;
 public class Evaluator {
 
 	public static void evaluate(Assignment oracle) {
-		oracle.setPinstTinst(calculatePiTi(oracle));
+		oracle.setPitiCoverage(calculatePiTi(oracle));
 	}
 
 	public static void evaluate(Submission submission) {
-		submission.setPstTst(calculatePsTs(submission));
-		submission.setPinstTst(calculatePiTs(submission));
-		submission.setPstTinst(calculatePsTi(submission));
-		submission.setScore(calculateScore(submission));
+		submission.setPstsCoverage(calculatePsTs(submission));
+		submission.setPitsCoverage(calculatePiTs(submission));
+		submission.setPstiCoverage(calculatePsTi(submission));
+		submission.setGrade(calculateScore(submission));
 	}
 
 	private static double calculatePiTi(Assignment oracle) {
@@ -125,9 +125,9 @@ public class Evaluator {
 
 	private static double calculateScore(Submission submission) {
 		
-		double psts = submission.getPstTst();
-		double pits = submission.getPinstTst();
-		double psti = submission.getPstTinst();
+		double psts = submission.getPstsCoverage();
+		double pits = submission.getPitsCoverage();
+		double psti = submission.getPstsCoverage();
 
 		return (psts + pits + psti) / 3;
 

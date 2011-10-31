@@ -94,26 +94,26 @@ public class Reporter {
 		Row row1 = new Row();
 		row1.setColumn1("Instructor's Tests against Instructor's Program (Pinst-Tinst)");
 		row1.setColumn2(String.valueOf(MathUtil.round(submission
-				.getAssignment().getPinstTinst() * 100, 2))
+				.getAssignment().getPitiCoverage() * 100, 2))
 				+ "%");
 		object2.getTableRows().add(row1);
 
 		Row row2 = new Row();
 		row2.setColumn1("Student's Tests against Student's Program (Pst-Tst)");
 		row2.setColumn2(String.valueOf(MathUtil.round(
-				submission.getPstTst() * 100, 2)) + "%");
+				submission.getPstsCoverage() * 100, 2)) + "%");
 		object2.getTableRows().add(row2);
 
 		Row row3 = new Row();
 		row3.setColumn1("Student's Tests against Instructor's Program (Pinst-Tst)");
 		row3.setColumn2(String.valueOf(MathUtil.round(
-				submission.getPinstTst() * 100, 2)) + "%");
+				submission.getPitsCoverage() * 100, 2)) + "%");
 		object2.getTableRows().add(row3);
 
 		Row row4 = new Row();
 		row4.setColumn1("Instructor's Tests against Student's Program (Pst-Tinst)");
 		row4.setColumn2(String.valueOf(MathUtil.round(
-				submission.getPstTinst() * 100, 2)) + "%");
+				submission.getPstiCoverage() * 100, 2)) + "%");
 		object2.getTableRows().add(row4);
 
 		section2.getObjects().add(object2);
@@ -122,7 +122,7 @@ public class Reporter {
 
 		Section section3 = new Section();
 		section3.setTitle("SUGGESTED GRADE: "
-				+ String.valueOf(MathUtil.round(submission.getScore() * 10, 2)));
+				+ String.valueOf(MathUtil.round(submission.getGrade() * 10, 2)));
 
 		report.getSections().add(section3);
 

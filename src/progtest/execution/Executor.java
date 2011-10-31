@@ -47,7 +47,7 @@ public class Executor {
 				tmpDir, rptDir, toolFile, programDir, testsDir);
 
 		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
-				tmpDir, rptDir, tool.getName(), tool.getCmdfile(), additionals);
+				tmpDir, rptDir, tool.getName(), tool.getCommandFile(), additionals);
 
 		finalize(toolDir, rptDir, toolReportsDir);
 

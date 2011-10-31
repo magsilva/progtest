@@ -77,10 +77,6 @@ public class Operator {
 		result = prime * result
 				+ ((criterion == null) ? 0 : criterion.hashCode());
 		result = prime * result + idCode;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((parameter == null) ? 0 : parameter.hashCode());
-		result = prime * result + (required ? 1231 : 1237);
 		return result;
 	}
 
@@ -99,18 +95,6 @@ public class Operator {
 		} else if (!criterion.equals(other.criterion))
 			return false;
 		if (idCode != other.idCode)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (parameter == null) {
-			if (other.parameter != null)
-				return false;
-		} else if (!parameter.equals(other.parameter))
-			return false;
-		if (required != other.required)
 			return false;
 		return true;
 	}

@@ -30,14 +30,28 @@ public class Assignment {
 	private Date startDate;
 
 	private Date endDate;
+	
+	private int timeout;
+	
+	private int minimumCoverage;
+	
+	private boolean pstsVisible;
+	
+	private boolean pitsVisible;
+	
+	private boolean pstiVisible;
+	
+	private double pstsWeight;
+	
+	private double pitsWeight;
+	
+	private double pstiWeight;
 
-	private double pinstTinst;
+	private double pitiCoverage;
 
 	private List<Requisite> requisites = new ArrayList<Requisite>();
 
 	private List<Submission> submissions = new ArrayList<Submission>();
-
-	private volatile int hashCode = 0;
 
 	@Id
 	@TableGenerator(name = "AssignmentIDGEN", table = "Sequence", pkColumnName = "entity", valueColumnName = "id", pkColumnValue = "Assignment", initialValue = 100, allocationSize = 1)
@@ -93,12 +107,76 @@ public class Assignment {
 		this.endDate = endDate;
 	}
 
-	public double getPinstTinst() {
-		return pinstTinst;
+	public int getTimeout() {
+		return timeout;
 	}
 
-	public void setPinstTinst(double pinstTinst) {
-		this.pinstTinst = pinstTinst;
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
+	}
+
+	public int getMinimumCoverage() {
+		return minimumCoverage;
+	}
+
+	public void setMinimumCoverage(int minimumCoverage) {
+		this.minimumCoverage = minimumCoverage;
+	}
+
+	public boolean isPstsVisible() {
+		return pstsVisible;
+	}
+
+	public void setPstsVisible(boolean pstsVisible) {
+		this.pstsVisible = pstsVisible;
+	}
+
+	public boolean isPitsVisible() {
+		return pitsVisible;
+	}
+
+	public void setPitsVisible(boolean pitsVisible) {
+		this.pitsVisible = pitsVisible;
+	}
+
+	public boolean isPstiVisible() {
+		return pstiVisible;
+	}
+
+	public void setPstiVisible(boolean pstiVisible) {
+		this.pstiVisible = pstiVisible;
+	}
+
+	public double getPstsWeight() {
+		return pstsWeight;
+	}
+
+	public void setPstsWeight(double pstsWeight) {
+		this.pstsWeight = pstsWeight;
+	}
+
+	public double getPitsWeight() {
+		return pitsWeight;
+	}
+
+	public void setPitsWeight(double pitsWeight) {
+		this.pitsWeight = pitsWeight;
+	}
+
+	public double getPstiWeight() {
+		return pstiWeight;
+	}
+
+	public void setPstiWeight(double pstiWeight) {
+		this.pstiWeight = pstiWeight;
+	}
+
+	public double getPitiCoverage() {
+		return pitiCoverage;
+	}
+
+	public void setPitiCoverage(double pitiCoverage) {
+		this.pitiCoverage = pitiCoverage;
 	}
 
 	@OneToMany(mappedBy = "assignment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -140,21 +218,7 @@ public class Assignment {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((course == null) ? 0 : course.hashCode());
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result + hashCode;
 		result = prime * result + idCode;
-		long temp;
-		temp = Double.doubleToLongBits(pinstTinst);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result
-				+ ((requisites == null) ? 0 : requisites.hashCode());
-		result = prime * result
-				+ ((startDate == null) ? 0 : startDate.hashCode());
-		result = prime * result
-				+ ((submissions == null) ? 0 : submissions.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 
@@ -172,42 +236,7 @@ public class Assignment {
 				return false;
 		} else if (!course.equals(other.course))
 			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (endDate == null) {
-			if (other.endDate != null)
-				return false;
-		} else if (!endDate.equals(other.endDate))
-			return false;
-		if (hashCode != other.hashCode)
-			return false;
 		if (idCode != other.idCode)
-			return false;
-		if (Double.doubleToLongBits(pinstTinst) != Double
-				.doubleToLongBits(other.pinstTinst))
-			return false;
-		if (requisites == null) {
-			if (other.requisites != null)
-				return false;
-		} else if (!requisites.equals(other.requisites))
-			return false;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
-			return false;
-		if (submissions == null) {
-			if (other.submissions != null)
-				return false;
-		} else if (!submissions.equals(other.submissions))
-			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
 			return false;
 		return true;
 	}

@@ -76,9 +76,7 @@ public class Criterion {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idCode;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((tool == null) ? 0 : tool.hashCode());
-		result = prime * result + ((propertyKey == null) ? 0 : propertyKey.hashCode());
 		return result;
 	}
 
@@ -93,20 +91,10 @@ public class Criterion {
 		Criterion other = (Criterion) obj;
 		if (idCode != other.idCode)
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
 		if (tool == null) {
 			if (other.tool != null)
 				return false;
 		} else if (!tool.equals(other.tool))
-			return false;
-		if (propertyKey == null) {
-			if (other.propertyKey != null)
-				return false;
-		} else if (!propertyKey.equals(other.propertyKey))
 			return false;
 		return true;
 	}

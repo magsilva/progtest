@@ -134,7 +134,7 @@ public class AssignmentInfo {
 
 		title = submission.getAssignment().getTitle();
 
-		score = submission.getScore();
+		score = submission.getGrade();
 
 			try {
 

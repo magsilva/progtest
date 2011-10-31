@@ -25,9 +25,9 @@ public class Tool {
 
 	private String testFormat;
 
-	private String cmdfile;
+	private String commandFile;
 
-	private String outputfile;
+	private String outputFile;
 
 	private List<Criterion> criteria = new ArrayList<Criterion>();
 
@@ -74,20 +74,20 @@ public class Tool {
 		this.testFormat = testFormat;
 	}
 
-	public String getCmdfile() {
-		return cmdfile;
+	public String getCommandFile() {
+		return commandFile;
 	}
 
-	public void setCmdfile(String cmdfile) {
-		this.cmdfile = cmdfile;
+	public void setCommandFile(String commandFile) {
+		this.commandFile = commandFile;
 	}
 
-	public String getOutputfile() {
-		return outputfile;
+	public String getOutputFile() {
+		return outputFile;
 	}
 
-	public void setOutputfile(String outputfile) {
-		this.outputfile = outputfile;
+	public void setOutputFile(String outputFile) {
+		this.outputFile = outputFile;
 	}
 
 	@OneToMany(mappedBy = "tool", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -103,16 +103,7 @@ public class Tool {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((criteria == null) ? 0 : criteria.hashCode());
 		result = prime * result + idCode;
-		result = prime * result
-				+ ((language == null) ? 0 : language.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((compiler == null) ? 0 : compiler.hashCode());
-		result = prime * result + ((testFormat == null) ? 0 : testFormat.hashCode());
-		result = prime * result + ((cmdfile == null) ? 0 : cmdfile.hashCode());
-		result = prime * result + ((outputfile == null) ? 0 : outputfile.hashCode());
 		return result;
 	}
 
@@ -125,42 +116,7 @@ public class Tool {
 		if (getClass() != obj.getClass())
 			return false;
 		Tool other = (Tool) obj;
-		if (criteria == null) {
-			if (other.criteria != null)
-				return false;
-		} else if (!criteria.equals(other.criteria))
-			return false;
 		if (idCode != other.idCode)
-			return false;
-		if (language == null) {
-			if (other.language != null)
-				return false;
-		} else if (!language.equals(other.language))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (compiler == null) {
-			if (other.compiler != null)
-				return false;
-		} else if (!compiler.equals(other.compiler))
-			return false;
-		if (testFormat == null) {
-			if (other.testFormat != null)
-				return false;
-		} else if (!testFormat.equals(other.testFormat))
-			return false;
-		if (cmdfile == null) {
-			if (other.cmdfile != null)
-				return false;
-		} else if (!cmdfile.equals(other.cmdfile))
-			return false;
-		if (outputfile == null) {
-			if (other.outputfile != null)
-				return false;
-		} else if (!outputfile.equals(other.outputfile))
 			return false;
 		return true;
 	}

@@ -18,9 +18,15 @@ public class Requisite {
 
 	private Criterion criterion;
 
-	private int weight = 0;
+	private int weight;
 	
-	private String execInfo;
+	private boolean pstsRequired;
+	
+	private boolean pitsRequired;
+	
+	private boolean pstiRequired;
+	
+	private String executionParameters;
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -54,12 +60,36 @@ public class Requisite {
 		this.weight = weight;
 	}
 
-	public String getExecInfo() {
-		return execInfo;
+	public boolean isPstsRequired() {
+		return pstsRequired;
 	}
 
-	public void setExecInfo(String execInfo) {
-		this.execInfo = execInfo;
+	public void setPstsRequired(boolean pstsRequired) {
+		this.pstsRequired = pstsRequired;
+	}
+
+	public boolean isPitsRequired() {
+		return pitsRequired;
+	}
+
+	public void setPitsRequired(boolean pitsRequired) {
+		this.pitsRequired = pitsRequired;
+	}
+
+	public boolean isPstiRequired() {
+		return pstiRequired;
+	}
+
+	public void setPstiRequired(boolean pstiRequired) {
+		this.pstiRequired = pstiRequired;
+	}
+
+	public String getExecutionParameters() {
+		return executionParameters;
+	}
+
+	public void setExecutionParameters(String executionParameters) {
+		this.executionParameters = executionParameters;
 	}
 
 	@Override
@@ -70,9 +100,6 @@ public class Requisite {
 				+ ((assignment == null) ? 0 : assignment.hashCode());
 		result = prime * result
 				+ ((criterion == null) ? 0 : criterion.hashCode());
-		result = prime * result
-				+ ((execInfo == null) ? 0 : execInfo.hashCode());
-		result = prime * result + weight;
 		return result;
 	}
 
@@ -94,13 +121,6 @@ public class Requisite {
 			if (other.criterion != null)
 				return false;
 		} else if (!criterion.equals(other.criterion))
-			return false;
-		if (execInfo == null) {
-			if (other.execInfo != null)
-				return false;
-		} else if (!execInfo.equals(other.execInfo))
-			return false;
-		if (weight != other.weight)
 			return false;
 		return true;
 	}

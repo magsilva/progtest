@@ -18,7 +18,7 @@ public class Reader {
 				pitiDir, requisite.getCriterion().getTool()));
 
 		String outputFile = toolReportsFile.getPath() + File.separator
-				+ requisite.getCriterion().getTool().getOutputfile();
+				+ requisite.getCriterion().getTool().getOutputFile();
 
 		return read(outputFile, requisite.getCriterion().getPropertyKey());
 
@@ -33,7 +33,7 @@ public class Reader {
 				pstsDir, requisite.getCriterion().getTool()));
 
 		String outputFile = toolReportsFile.getPath() + File.separator
-				+ requisite.getCriterion().getTool().getOutputfile();
+				+ requisite.getCriterion().getTool().getOutputFile();
 
 		return read(outputFile, requisite.getCriterion().getPropertyKey());
 
@@ -48,7 +48,7 @@ public class Reader {
 				pitsDir, requisite.getCriterion().getTool()));
 
 		String outputFile = toolReportsFile.getPath() + File.separator
-				+ requisite.getCriterion().getTool().getOutputfile();
+				+ requisite.getCriterion().getTool().getOutputFile();
 
 		return read(outputFile, requisite.getCriterion().getPropertyKey());
 
@@ -63,7 +63,7 @@ public class Reader {
 				pstiDir, requisite.getCriterion().getTool()));
 
 		String outputFile = toolReportsFile.getPath() + File.separator
-				+ requisite.getCriterion().getTool().getOutputfile();
+				+ requisite.getCriterion().getTool().getOutputFile();
 
 		return read(outputFile, requisite.getCriterion().getPropertyKey());
 
