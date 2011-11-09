@@ -26,13 +26,11 @@ public class Evaluator {
 
 		double quotient = 0;
 
-		List<Requisite> requisites = Querier
-				.getAssignmentCriteria(oracle);
+		List<Requisite> requisites = Querier.getAssignmentCriteria(oracle);
 
 		for (Requisite requisite : requisites) {
 
-			pinstTinst += Reader.readPiTi(requisite)
-					* requisite.getWeight();
+			pinstTinst += Reader.readPiTi(requisite) * requisite.getWeight();
 
 			quotient += requisite.getWeight();
 
@@ -51,16 +49,19 @@ public class Evaluator {
 
 		double quotient = 0;
 
-		List<Requisite> requisites = Querier
-				.getAssignmentCriteria(submission.getAssignment());
+		List<Requisite> requisites = Querier.getAssignmentCriteria(submission
+				.getAssignment());
 
 		for (Requisite requisite : requisites) {
 
-			pstTst += Reader.readPsTs(requisite,
-					submission.getStudent())
-					* requisite.getWeight();
+			if (requisite.isPstsRequired()) {
 
-			quotient += requisite.getWeight();
+				pstTst += Reader.readPsTs(requisite, submission.getStudent())
+						* requisite.getWeight();
+
+				quotient += requisite.getWeight();
+
+			}
 
 		}
 
@@ -77,16 +78,24 @@ public class Evaluator {
 
 		double quotient = 0;
 
-		List<Requisite> requisites = Querier
-				.getAssignmentCriteria(submission.getAssignment());
+		List<Requisite> requisites = Querier.getAssignmentCriteria(submission
+				.getAssignment());
 
 		for (Requisite requisite : requisites) {
 
-			pinstTst += Reader.readPiTs(requisite,
-					submission.getStudent())
-					* requisite.getWeight();
+			if (requisite.isPitsRequired()) {
 
-			quotient += requisite.getWeight();
+				pinstTst += Reader.readPiTs(requisite, submission.getStudent())
+						/ submission.getAssignment().getPitiCoverage();
+
+				if (pinstTst > 1)
+					pinstTst = 1;
+
+				pinstTst *= requisite.getWeight();
+
+				quotient += requisite.getWeight();
+
+			}
 
 		}
 
@@ -103,16 +112,19 @@ public class Evaluator {
 
 		double quotient = 0;
 
-		List<Requisite> requisites = Querier
-				.getAssignmentCriteria(submission.getAssignment());
+		List<Requisite> requisites = Querier.getAssignmentCriteria(submission
+				.getAssignment());
 
 		for (Requisite requisite : requisites) {
 
-			pstTinst += Reader.readPsTi(requisite,
-					submission.getStudent())
-					* requisite.getWeight();
+			if (requisite.isPstiRequired()) {
 
-			quotient += requisite.getWeight();
+				pstTinst += Reader.readPsTi(requisite, submission.getStudent())
+						* requisite.getWeight();
+
+				quotient += requisite.getWeight();
+
+			}
 
 		}
 
@@ -124,12 +136,21 @@ public class Evaluator {
 	}
 
 	private static double calculateScore(Submission submission) {
-		
+
 		double psts = submission.getPstsCoverage();
 		double pits = submission.getPitsCoverage();
 		double psti = submission.getPstsCoverage();
 
-		return (psts + pits + psti) / 3;
+		double pstsWeight = submission.getAssignment().getPstsWeight();
+		double pitsWeight = submission.getAssignment().getPitsWeight();
+		double pstiWeight = submission.getAssignment().getPstiWeight();
+		
+		double minimumCoverage = submission.getAssignment().getMinimumCoverage();
+		
+		double coverage = (((psts * pstsWeight) + (pits * pitsWeight) + (psti * pstiWeight))
+				/ pstsWeight + pitsWeight + pstiWeight);
+		
+		return (0.5 * coverage) / minimumCoverage;
 
 	}
 

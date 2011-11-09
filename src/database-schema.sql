@@ -38,7 +38,7 @@ CREATE TABLE Assignment (
 	startDate DATETIME,
 	endDate DATETIME,
 	timeout INT,
-	minimumCoverage INT,
+	minimumCoverage DOUBLE,
 	pstsVisible BOOLEAN,
 	pitsVisible BOOLEAN,
 	pstiVisible BOOLEAN,

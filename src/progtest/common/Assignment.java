@@ -33,7 +33,7 @@ public class Assignment {
 	
 	private int timeout;
 	
-	private int minimumCoverage;
+	private double minimumCoverage;
 	
 	private boolean pstsVisible;
 	
@@ -115,11 +115,11 @@ public class Assignment {
 		this.timeout = timeout;
 	}
 
-	public int getMinimumCoverage() {
+	public double getMinimumCoverage() {
 		return minimumCoverage;
 	}
 
-	public void setMinimumCoverage(int minimumCoverage) {
+	public void setMinimumCoverage(double minimumCoverage) {
 		this.minimumCoverage = minimumCoverage;
 	}
 

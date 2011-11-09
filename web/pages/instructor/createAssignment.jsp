@@ -215,18 +215,14 @@
 
 					<h:panelGrid columns="2">
 						<h:outputText value="Name*:" />
-						<h:inputText
-							value="#{instructorCreateAssignment.assignment.title}" />
+						<h:inputText value="#{instructorCreateAssignment.title}" />
 						<h:outputText value="Description*:" />
-						<h:inputTextarea
-							value="#{instructorCreateAssignment.assignment.description}" />
+						<h:inputTextarea value="#{instructorCreateAssignment.description}" />
 						<h:outputText value="Start Date*:" />
-						<t:inputDate
-							value="#{instructorCreateAssignment.assignment.startDate}"
+						<t:inputDate value="#{instructorCreateAssignment.startDate}"
 							popupCalendar="true" />
 						<h:outputText value="Deadline*:" />
-						<t:inputDate
-							value="#{instructorCreateAssignment.assignment.endDate}"
+						<t:inputDate value="#{instructorCreateAssignment.endDate}"
 							popupCalendar="true" />
 					</h:panelGrid>
 
@@ -324,7 +320,7 @@
 					<af:spacer height="20" />
 
 					<h:outputText
-						value="Step 5.1 - Define the weights for the criteria in the evaluations." />
+						value="Step 5.1 - Define the evaluation weights for each criteria." />
 
 					<af:spacer height="20" />
 
@@ -332,7 +328,6 @@
 
 					<h:dataTable value="#{instructorCreateAssignment.requisites}"
 						var="requisite"
-						binding="#{instructorCreateAssignment.requisitesTable}"
 						rendered="#{!empty instructorCreateAssignment.requisites}">
 						<h:column>
 							<h:outputText
@@ -356,77 +351,18 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText
-						value="Step 5.2 - Define the weights for the excecutions." />
+					<h:outputText value="Step 5.2 - Define what should be evaluated." />
 
 					<af:spacer height="20" />
 
-					<htm:table>
-						<htm:tr>
-							<htm:td>
-								<h:outputText
-									value="Student's Tests against Student's Program: " />
-							</htm:td>
-							<htm:td>
-								<h:selectOneMenu value="#{assignment.pstsWeight}">
-									<f:selectItem itemValue="1" />
-									<f:selectItem itemValue="2" />
-									<f:selectItem itemValue="3" />
-									<f:selectItem itemValue="4" />
-									<f:selectItem itemValue="5" />
-									<f:selectItem itemValue="6" />
-									<f:selectItem itemValue="7" />
-									<f:selectItem itemValue="8" />
-									<f:selectItem itemValue="9" />
-									<f:selectItem itemValue="10" />
-								</h:selectOneMenu>
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:outputText
-									value="Instructor's Tests against Student's Program: " />
-							</htm:td>
-							<htm:td>
-								<h:selectOneMenu value="#{assignment.pitsWeight}">
-									<f:selectItem itemValue="1" />
-									<f:selectItem itemValue="2" />
-									<f:selectItem itemValue="3" />
-									<f:selectItem itemValue="4" />
-									<f:selectItem itemValue="5" />
-									<f:selectItem itemValue="6" />
-									<f:selectItem itemValue="7" />
-									<f:selectItem itemValue="8" />
-									<f:selectItem itemValue="9" />
-									<f:selectItem itemValue="10" />
-								</h:selectOneMenu>
-							</htm:td>
-						</htm:tr>
-						<htm:tr>
-							<htm:td>
-								<h:outputText
-									value="Student's Tests against Instructor's Program: " />
-							</htm:td>
-							<htm:td>
-								<h:selectOneMenu value="#{assignment.pstiWeight}">
-									<f:selectItem itemValue="1" />
-									<f:selectItem itemValue="2" />
-									<f:selectItem itemValue="3" />
-									<f:selectItem itemValue="4" />
-									<f:selectItem itemValue="5" />
-									<f:selectItem itemValue="6" />
-									<f:selectItem itemValue="7" />
-									<f:selectItem itemValue="8" />
-									<f:selectItem itemValue="9" />
-									<f:selectItem itemValue="10" />
-								</h:selectOneMenu>
-							</htm:td>
-						</htm:tr>
-					</htm:table>
-
-					<af:spacer height="30" />
-
-					<h:outputText value="Step 5.3 - Define which execute." />
+					<h:outputText
+						value="PSt-TSt = Student's Test against Student's Program" />
+					<af:spacer height="5" />
+					<h:outputText
+						value="PInst-TSt = Student's Test against Instructor's Program" />
+					<af:spacer height="5" />
+					<h:outputText
+						value="PSt-TInst = Instructor's Test against Student's Program" />
 
 					<af:spacer height="20" />
 
@@ -463,26 +399,143 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Step 5.4 - Define which execute." />
+					<h:outputText
+						value="Step 5.3 - Define the evaluation weights for each combination." />
+
+					<af:spacer height="20" />
+
+					<htm:table>
+						<htm:tr>
+							<htm:td>
+								<h:outputText
+									value="Student's Tests against Student's Program (PSt-TSt): " />
+							</htm:td>
+							<htm:td>
+								<h:selectOneMenu
+									value="#{instructorCreateAssignment.pstsWeight}">
+									<f:selectItem itemValue="1" />
+									<f:selectItem itemValue="2" />
+									<f:selectItem itemValue="3" />
+									<f:selectItem itemValue="4" />
+									<f:selectItem itemValue="5" />
+									<f:selectItem itemValue="6" />
+									<f:selectItem itemValue="7" />
+									<f:selectItem itemValue="8" />
+									<f:selectItem itemValue="9" />
+									<f:selectItem itemValue="10" />
+								</h:selectOneMenu>
+							</htm:td>
+						</htm:tr>
+						<htm:tr>
+							<htm:td>
+								<h:outputText
+									value="Instructor's Tests against Student's Program (PInst-TSt): " />
+							</htm:td>
+							<htm:td>
+								<h:selectOneMenu
+									value="#{instructorCreateAssignment.pitsWeight}">
+									<f:selectItem itemValue="1" />
+									<f:selectItem itemValue="2" />
+									<f:selectItem itemValue="3" />
+									<f:selectItem itemValue="4" />
+									<f:selectItem itemValue="5" />
+									<f:selectItem itemValue="6" />
+									<f:selectItem itemValue="7" />
+									<f:selectItem itemValue="8" />
+									<f:selectItem itemValue="9" />
+									<f:selectItem itemValue="10" />
+								</h:selectOneMenu>
+							</htm:td>
+						</htm:tr>
+						<htm:tr>
+							<htm:td>
+								<h:outputText
+									value="Student's Tests against Instructor's Program (PSt-TInst): " />
+							</htm:td>
+							<htm:td>
+								<h:selectOneMenu
+									value="#{instructorCreateAssignment.pstiWeight}">
+									<f:selectItem itemValue="1" />
+									<f:selectItem itemValue="2" />
+									<f:selectItem itemValue="3" />
+									<f:selectItem itemValue="4" />
+									<f:selectItem itemValue="5" />
+									<f:selectItem itemValue="6" />
+									<f:selectItem itemValue="7" />
+									<f:selectItem itemValue="8" />
+									<f:selectItem itemValue="9" />
+									<f:selectItem itemValue="10" />
+								</h:selectOneMenu>
+							</htm:td>
+						</htm:tr>
+					</htm:table>
+
+					<af:spacer height="30" />
+
+					<h:outputText
+						value="Step 5.4 - Define which reports should be visible for students." />
+
+					<af:spacer height="20" />
+
+					<h:selectBooleanCheckbox
+						value="#{instructorCreateAssignment.pstsVisible}" />
+					<h:outputText value="Turn PSt-TSt reports visible for students." />
+
+					<af:spacer height="5" />
+
+					<h:selectBooleanCheckbox
+						value="#{instructorCreateAssignment.pitsVisible}" />
+					<h:outputText value="Turn PInst-TSt reports visible for students." />
+
+					<af:spacer height="5" />
+
+					<h:selectBooleanCheckbox
+						value="#{instructorCreateAssignment.pstiVisible}" />
+					<h:outputText value="Turn PSt-TInst reports visible for students." />
+
+					<af:spacer height="30" />
+
+					<h:outputText value="Step 5.5 - Define the execution timeout." />
 
 					<af:spacer height="20" />
 
 					<h:outputText value="Timeout: " />
-					<h:selectOneMenu value="#{assignment.timeout}">
+					<h:selectOneMenu value="#{instructorCreateAssignment.timeout}">
 						<f:selectItem itemValue="30" />
 						<f:selectItem itemValue="60" />
 						<f:selectItem itemValue="90" />
 						<f:selectItem itemValue="120" />
 						<f:selectItem itemValue="150" />
 						<f:selectItem itemValue="180" />
+						<f:selectItem itemValue="210" />
+						<f:selectItem itemValue="240" />
+						<f:selectItem itemValue="270" />
+						<f:selectItem itemValue="300" />
 					</h:selectOneMenu>
-					<h:outputText value=" minutos." />
+					<h:outputText value=" segundos." />
 
 					<af:spacer height="30" />
 
-					<h:outputText value="Step 5.5 - Define which execute." />
+					<h:outputText
+						value="Step 5.6 - Define the minimum coverage that should be reached for students in order to obtain grades higher than 50.00." />
 
 					<af:spacer height="20" />
+
+					<h:outputText value="Minimum Coverage: " />
+					<h:selectOneMenu
+						value="#{instructorCreateAssignment.minimumCoverage}">
+						<f:selectItem itemValue="10" />
+						<f:selectItem itemValue="20" />
+						<f:selectItem itemValue="30" />
+						<f:selectItem itemValue="40" />
+						<f:selectItem itemValue="50" />
+						<f:selectItem itemValue="60" />
+						<f:selectItem itemValue="70" />
+						<f:selectItem itemValue="80" />
+						<f:selectItem itemValue="90" />
+						<f:selectItem itemValue="100" />
+					</h:selectOneMenu>
+					<h:outputText value="%" />
 
 					<af:spacer height="30" />
 

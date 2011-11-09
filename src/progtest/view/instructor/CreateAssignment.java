@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIData;
 import javax.faces.event.PhaseId;
 import javax.faces.event.ValueChangeEvent;
 
@@ -29,8 +28,6 @@ public class CreateAssignment {
 
 	private int step = 1;
 
-	private Assignment assignment = new Assignment();
-
 	private List<String> languages = loadLanguages();
 
 	private String language = null;
@@ -42,6 +39,14 @@ public class CreateAssignment {
 	private Integer oracle = null;
 
 	private UploadedFile uploadedFile = null;
+	
+	private String title = Constants.EMPTY;
+	
+	private String description = Constants.EMPTY;
+	
+	private Date startDate = new Date();
+	
+	private Date endDate = new Date();
 
 	private List<Tool> tools = new ArrayList<Tool>();
 
@@ -60,8 +65,22 @@ public class CreateAssignment {
 	private List<String> selectedOperators = new ArrayList<String>();
 
 	private List<Requisite> requisites = new ArrayList<Requisite>();
-
-	private UIData requisitesTable;
+	
+	private double pstsWeight = 1;
+	
+	private double pitsWeight = 1;
+	
+	private double pstiWeight = 1;
+	
+	private boolean pstsVisible = true;
+	
+	private boolean pitsVisible = true;
+	
+	private boolean pstiVisible = true;
+	
+	private int timeout = 60;
+	
+	private double minimumCoverage = 50;
 
 	public int getStep() {
 		return step;
@@ -69,14 +88,6 @@ public class CreateAssignment {
 
 	public void setStep(int step) {
 		this.step = step;
-	}
-
-	public Assignment getAssignment() {
-		return assignment;
-	}
-
-	public void setAssignment(Assignment assignment) {
-		this.assignment = assignment;
 	}
 
 	public void setLanguages(List<String> languages) {
@@ -125,6 +136,38 @@ public class CreateAssignment {
 
 	public void setOracle(Integer oracle) {
 		this.oracle = oracle;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public List<Tool> getTools() {
@@ -200,12 +243,68 @@ public class CreateAssignment {
 		this.requisites = requisites;
 	}
 
-	public UIData getRequisitesTable() {
-		return requisitesTable;
+	public double getPstsWeight() {
+		return pstsWeight;
 	}
 
-	public void setRequisitesTable(UIData requisitesTable) {
-		this.requisitesTable = requisitesTable;
+	public void setPstsWeight(double pstsWeight) {
+		this.pstsWeight = pstsWeight;
+	}
+
+	public double getPitsWeight() {
+		return pitsWeight;
+	}
+
+	public void setPitsWeight(double pitsWeight) {
+		this.pitsWeight = pitsWeight;
+	}
+
+	public double getPstiWeight() {
+		return pstiWeight;
+	}
+
+	public void setPstiWeight(double pstiWeight) {
+		this.pstiWeight = pstiWeight;
+	}
+
+	public boolean isPstsVisible() {
+		return pstsVisible;
+	}
+
+	public void setPstsVisible(boolean pstsVisible) {
+		this.pstsVisible = pstsVisible;
+	}
+
+	public boolean isPitsVisible() {
+		return pitsVisible;
+	}
+
+	public void setPitsVisible(boolean pitsVisible) {
+		this.pitsVisible = pitsVisible;
+	}
+
+	public boolean isPstiVisible() {
+		return pstiVisible;
+	}
+
+	public void setPstiVisible(boolean pstiVisible) {
+		this.pstiVisible = pstiVisible;
+	}
+
+	public int getTimeout() {
+		return timeout;
+	}
+
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
+	}
+
+	public double getMinimumCoverage() {
+		return minimumCoverage;
+	}
+
+	public void setMinimumCoverage(double minimumCoverage) {
+		this.minimumCoverage = minimumCoverage;
 	}
 
 	public String goToStep2() {
@@ -218,6 +317,13 @@ public class CreateAssignment {
 	}
 
 	public String goToStep3() {
+		
+		Assignment assignment = new Assignment();
+
+		Course course = (Course) FacesUtil
+				.getSession(Constants.SESSION_COURSE);
+		
+		assignment.setCourse(course);
 
 		if (isUpload()) {
 
@@ -228,41 +334,47 @@ public class CreateAssignment {
 
 			Oracle oracle = Querier.getOracle(this.oracle);
 			
-			assignment.setTitle(oracle.getTitle());
-			assignment.setDescription(oracle.getDescription());
-			assignment.setStartDate(new Date());
-			assignment.setEndDate(new Date());
+			title = oracle.getTitle();
+			description = oracle.getDescription();
 
 			FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
 
 			step = 3;
 
 		}
+		
+		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		return Constants.ACTION_SELECT;
 
 	}
 
 	public String goToStep4() {
+		
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 
 		if (validate()) {
-
-			Course course = (Course) FacesUtil
-					.getSession(Constants.SESSION_COURSE);
 			
-			assignment.setCourse(course);
+			assignment.setTitle(title);
+			assignment.setDescription(description);
+			assignment.setStartDate(startDate);
+			assignment.setEndDate(endDate);
 
 			criteria = Querier.getCriteria(language);
 
 			step = 4;
 
 		}
+		
+		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		return Constants.ACTION_SELECT;
 
 	}
 
 	public String goToStep5() {
+		
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 
 		requisites.clear();
 
@@ -276,6 +388,9 @@ public class CreateAssignment {
 				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
 				requisite.setExecutionParameters(generateExecInfo(criterion));
+				requisite.setPstsRequired(true);
+				requisite.setPitsRequired(true);
+				requisite.setPstiRequired(true);
 				requisites.add(requisite);
 			}
 
@@ -288,7 +403,17 @@ public class CreateAssignment {
 	}
 
 	public String conclude() {
+		
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 
+		assignment.setPstsWeight(pstsWeight);
+		assignment.setPitsWeight(pitsWeight);
+		assignment.setPstiWeight(pstiWeight);
+		assignment.setPstsVisible(pstsVisible);
+		assignment.setPitsVisible(pitsVisible);
+		assignment.setPstiVisible(pstiVisible);
+		assignment.setTimeout(timeout * 1000);
+		assignment.setMinimumCoverage((double)(minimumCoverage / 100));
 		assignment.setRequisites(requisites);
 
 		AssignmentDAO.insert(assignment);
@@ -367,7 +492,18 @@ public class CreateAssignment {
 		setLanguages(loadLanguages());
 		language = null;
 		uploadedFile = null;
-		assignment = new Assignment();
+		title = Constants.EMPTY;
+		description = Constants.EMPTY;
+		startDate = new Date();
+		endDate = new Date();
+		pstsWeight = 1;
+		pitsWeight = 1;
+		pstiWeight = 1;
+		pstsVisible = true;
+		pitsVisible = true;
+		pstiVisible = true;
+		timeout = 60;
+		minimumCoverage = 50;
 		criteria = new ArrayList<Criterion>();
 		selectedCriteria = new ArrayList<String>();
 		requisites = new ArrayList<Requisite>();
@@ -432,13 +568,13 @@ public class CreateAssignment {
 
 	private boolean validate() {
 
-		if (assignment.getTitle().equals(Constants.EMPTY)
-				|| assignment.getDescription().equals(Constants.EMPTY)) {
+		if (title.equals(Constants.EMPTY)
+				|| description.equals(Constants.EMPTY)) {
 
 			FacesUtil.addMessage(Constants.KEY_ERROR_EMPTYBLANKS,
 					FacesMessage.SEVERITY_ERROR);
 
-		} else if (assignment.getStartDate().getTime() > assignment.getEndDate().getTime()) {
+		} else if (startDate.getTime() > endDate.getTime()) {
 
 			FacesUtil.addMessage(Constants.KEY_ERROR_DATEINCONSISTENT,
 					FacesMessage.SEVERITY_ERROR);
