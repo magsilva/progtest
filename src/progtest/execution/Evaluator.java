@@ -150,7 +150,7 @@ public class Evaluator {
 		double coverage = (((psts * pstsWeight) + (pits * pitsWeight) + (psti * pstiWeight))
 				/ pstsWeight + pitsWeight + pstiWeight);
 		
-		return (0.5 * coverage) / minimumCoverage;
+		return ((double) 0.5 ) * coverage / minimumCoverage;
 
 	}
 

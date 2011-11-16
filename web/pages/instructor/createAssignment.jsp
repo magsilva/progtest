@@ -516,29 +516,6 @@
 
 					<af:spacer height="30" />
 
-					<h:outputText
-						value="Step 5.6 - Define the minimum coverage that should be reached for students in order to obtain grades higher than 50.00." />
-
-					<af:spacer height="20" />
-
-					<h:outputText value="Minimum Coverage: " />
-					<h:selectOneMenu
-						value="#{instructorCreateAssignment.minimumCoverage}">
-						<f:selectItem itemValue="10" />
-						<f:selectItem itemValue="20" />
-						<f:selectItem itemValue="30" />
-						<f:selectItem itemValue="40" />
-						<f:selectItem itemValue="50" />
-						<f:selectItem itemValue="60" />
-						<f:selectItem itemValue="70" />
-						<f:selectItem itemValue="80" />
-						<f:selectItem itemValue="90" />
-						<f:selectItem itemValue="100" />
-					</h:selectOneMenu>
-					<h:outputText value="%" />
-
-					<af:spacer height="30" />
-
 					<h:commandButton value="Cancel"
 						action="#{instructorCreateAssignment.cancel}" />
 					<h:commandButton value="Back"

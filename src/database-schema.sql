@@ -130,7 +130,7 @@ CREATE TRIGGER `insert_student_evaluations` AFTER INSERT ON `Enrollment`
 	SELECT MAX(Assignment.idCode) INTO i FROM Assignment WHERE Assignment.course = NEW.course;
 	WHILE i > 0 DO
 		IF (SELECT COUNT(*) FROM Assignment WHERE Assignment.course = NEW.course AND Assignment.idCode = i) > 0 THEN
-			INSERT INTO Submission(student, assignment, pstTst, pinstTst, pstTinst, score) VALUES(NEW.student, i, 0, 0, 0, 0);
+			INSERT INTO Submission(student, assignment, pstsCoverage, pitsCoverage, pstiCoverage, grade) VALUES(NEW.student, i, 0, 0, 0, 0);
 		END IF;
 		SET i = i - 1;
 	END WHILE;
@@ -154,7 +154,7 @@ CREATE TRIGGER `insert_students_evaluations` AFTER INSERT ON `Assignment`
 	SELECT MAX(Enrollment.student) INTO i FROM Enrollment WHERE Enrollment.course = NEW.course;
 	WHILE i > 0 DO
 		IF (SELECT COUNT(*) FROM Enrollment WHERE Enrollment.course = NEW.course AND Enrollment.student = i) > 0 THEN
-			INSERT INTO Submission(student, assignment, pstTst, pinstTst, pstTinst, score) VALUES(i, NEW.idCode, 0, 0, 0, 0);
+			INSERT INTO Submission(student, assignment, pstsCoverage, pitsCoverage, pstiCoverage, grade) VALUES(i, NEW.idCode, 0, 0, 0, 0);
 		END IF;
 		SET i = i - 1;
 	END WHILE;

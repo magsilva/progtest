@@ -511,7 +511,7 @@ public class Runner {
 				try {
 
 					Executor.execute(tool, rootDir, programDir, testsDir,
-							outputDir, parameters);
+							outputDir, parameters, assignment.getTimeout());
 
 				} catch (Throwable t) {
 
