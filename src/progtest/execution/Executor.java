@@ -149,7 +149,7 @@ public class Executor {
 
 				worker = new Worker(process, listener);
 				worker.start();
-				worker.join(60000);
+				worker.join(90000);
 
 			}
 
