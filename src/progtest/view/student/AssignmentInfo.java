@@ -27,6 +27,12 @@ public class AssignmentInfo {
 
 	private double score;
 
+	private boolean isPsTsVisible;
+
+	private boolean isPiTsVisible;
+
+	private boolean isPsTiVisible;
+
 	private boolean evaluationReport;
 
 	private List<Tool> tools;
@@ -38,8 +44,10 @@ public class AssignmentInfo {
 	private Report report;
 
 	private String downloadable = null;
-	
+
 	private boolean instructorTests = false;
+
+	private boolean instructorProgram = false;
 
 	public String getActivedReport() {
 		return activedReport;
@@ -63,6 +71,30 @@ public class AssignmentInfo {
 
 	public void setScore(double score) {
 		this.score = score;
+	}
+
+	public boolean isPsTsVisible() {
+		return isPsTsVisible;
+	}
+
+	public void setPsTsVisible(boolean isPsTsVisible) {
+		this.isPsTsVisible = isPsTsVisible;
+	}
+
+	public boolean isPiTsVisible() {
+		return isPiTsVisible;
+	}
+
+	public void setPiTsVisible(boolean isPiTsVisible) {
+		this.isPiTsVisible = isPiTsVisible;
+	}
+
+	public boolean isPsTiVisible() {
+		return isPsTiVisible;
+	}
+
+	public void setPsTiVisible(boolean isPsTiVisible) {
+		this.isPsTiVisible = isPsTiVisible;
 	}
 
 	public boolean isEvaluationReport() {
@@ -121,6 +153,14 @@ public class AssignmentInfo {
 		this.instructorTests = instructorTests;
 	}
 
+	public boolean isInstructorProgram() {
+		return instructorProgram;
+	}
+
+	public void setInstructorProgram(boolean instructorProgram) {
+		this.instructorProgram = instructorProgram;
+	}
+
 	public AssignmentInfo() {
 		init();
 	}
@@ -136,54 +176,85 @@ public class AssignmentInfo {
 
 		score = submission.getGrade();
 
-			try {
+		try {
 
-				Assignment assignment = submission.getAssignment();
+			Assignment assignment = submission.getAssignment();
 
-				User student = submission.getStudent();
+			User student = submission.getStudent();
 
-				tools = assignment.getTools();
+			isPsTsVisible = assignment.isPstsVisible();
 
-				downloadable = Runner.getDownloadable(submission);
+			isPiTsVisible = assignment.isPitsVisible();
 
-				report = null;
+			isPsTiVisible = assignment.isPstiVisible();
 
-				reports.clear();
+			tools = assignment.getTools();
 
-				List<File> reportFiles = null;
-				
-				if(instructorTests)
-					reportFiles = FileUtil.listFiles(new File(
-							Directories.getPstiDirPath(assignment, student)));
-				else
-					reportFiles = FileUtil.listFiles(new File(
-							Directories.getPstsDirPath(assignment, student)));
-					
+			downloadable = Runner.getDownloadable(submission);
 
-				Collections.sort(reportFiles);
+			report = null;
 
-				for (File file : reportFiles)
-					if (file.getName().endsWith(".xml"))
-						reports.add(XML2Report.parse(file));
+			reports.clear();
 
-			} catch (Throwable t) {
+			List<File> reportFiles = null;
 
-				t.printStackTrace();
+			if (instructorProgram)
+				reportFiles = FileUtil.listFiles(new File(Directories
+						.getPitsDirPath(assignment, student)));
+		    else if (instructorTests)
+				reportFiles = FileUtil.listFiles(new File(Directories
+						.getPstiDirPath(assignment, student)));
+		    else if (isPsTsVisible) {
+				reportFiles = FileUtil.listFiles(new File(Directories
+						.getPstsDirPath(assignment, student)));
+				instructorProgram = false;
+				instructorTests = false;
+			} else if (isPiTsVisible) {
+				reportFiles = FileUtil.listFiles(new File(Directories
+						.getPitsDirPath(assignment, student)));
+				instructorProgram = true;
+				instructorTests = false;
+			} else if (isPsTiVisible) {
+				reportFiles = FileUtil.listFiles(new File(Directories
+						.getPstsDirPath(assignment, student)));
+				instructorProgram = false;
+				instructorTests = true;
+			} else
+				reportFiles = new ArrayList<File>();
 
-			}
+			Collections.sort(reportFiles);
 
-			selectResultView();
+			for (File file : reportFiles)
+				if (file.getName().endsWith(".xml"))
+					reports.add(XML2Report.parse(file));
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+
+		selectResultView();
 
 	}
-	
+
 	public String selectPsTsReports() {
 		instructorTests = false;
+		instructorProgram = false;
 		init();
 		return Constants.ACTION_SELECT;
 	}
-	
+
+	public String selectPiTsReports() {
+		instructorTests = false;
+		instructorProgram = true;
+		init();
+		return Constants.ACTION_SELECT;
+	}
+
 	public String selectPsTiReports() {
 		instructorTests = true;
+		instructorProgram = false;
 		init();
 		return Constants.ACTION_SELECT;
 	}
@@ -194,11 +265,11 @@ public class AssignmentInfo {
 
 			Submission submission = (Submission) FacesUtil
 					.getSession(Constants.SESSION_EVALUATION);
-			
+
 			File xmlFile = new File(Directories.getReportsDirPath(
 					submission.getAssignment(), submission.getStudent())
 					+ File.separator + "Evaluation Result.xml");
-			
+
 			report = XML2Report.parse(xmlFile);
 
 		} catch (Throwable t) {
@@ -223,12 +294,12 @@ public class AssignmentInfo {
 	}
 
 	public String send() {
-		
+
 		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
-		
+
 		return Constants.ACTION_SEND;
-		
+
 	}
 
 	public String execute() {
@@ -249,7 +320,7 @@ public class AssignmentInfo {
 			t.printStackTrace();
 
 		}
-		
+
 		init();
 
 		return Constants.ACTION_SELECT;
@@ -271,7 +342,7 @@ public class AssignmentInfo {
 			t.printStackTrace();
 
 		}
-		
+
 		init();
 
 		return Constants.ACTION_SELECT;
@@ -279,12 +350,12 @@ public class AssignmentInfo {
 	}
 
 	public String back() {
-		
+
 		FacesUtil.setSession(Constants.SESSION_BACKPAGE,
 				Constants.BACKPAGE_ASSIGNMENT);
-		
+
 		return Constants.ACTION_BACK;
-		
+
 	}
 
 }

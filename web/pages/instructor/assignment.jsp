@@ -200,7 +200,7 @@
 							<f:facet name="header">
 								<h:outputText value="Grade" />
 							</f:facet>
-							<h:outputText value="#{submission.score}" />
+							<h:outputText value="#{submission.grade}" />
 						</h:column>
 					</h:dataTable>
 

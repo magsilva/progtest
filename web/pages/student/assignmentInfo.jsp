@@ -18,8 +18,8 @@
 
 				<af:spacer width="5" />
 
-				<h:commandLink
-					action="#{studentAssignmentInfo.back}" styleClass="topmenu_link">
+				<h:commandLink action="#{studentAssignmentInfo.back}"
+					styleClass="topmenu_link">
 					<h:outputText value="&lt;&lt; Back to Assignments"
 						styleClass="topmenu_link" />
 				</h:commandLink>
@@ -33,38 +33,47 @@
 
 					<af:spacer height="25" />
 
-					<h:outputText value="Reports for" styleClass="menu_title" />
+					<h:outputText value="Reports for" styleClass="menu_title"
+						rendered="#{studentAssignmentInfo.psTsVisible or studentAssignmentInfo.piTsVisible or studentAssignmentInfo.psTiVisible}" />
 
 					<af:spacer height="0" />
 
-					<h:commandLink
-						action="#{studentAssignmentInfo.selectPsTsReports}"
-						styleClass="link">
+					<h:commandLink action="#{studentAssignmentInfo.selectPsTsReports}"
+						styleClass="link" rendered="#{studentAssignmentInfo.psTsVisible}">
 						<h:outputText value="Student Tests" styleClass="link"
-							rendered="#{studentAssignmentInfo.instructorTests}" />
+							rendered="#{studentAssignmentInfo.instructorTests or studentAssignmentInfo.instructorProgram}" />
 						<h:outputText value="Student Tests" styleClass="link_hover"
-							rendered="#{!studentAssignmentInfo.instructorTests}" />
+							rendered="#{!studentAssignmentInfo.instructorTests and !studentAssignmentInfo.instructorProgram}" />
 					</h:commandLink>
 
 					<af:spacer height="0" />
 
-					<h:commandLink
-						action="#{studentAssignmentInfo.selectPsTiReports}"
-						styleClass="link">
+					<h:commandLink action="#{studentAssignmentInfo.selectPiTsReports}"
+						styleClass="link" rendered="#{studentAssignmentInfo.piTsVisible}">
+						<h:outputText value="Instructor Program" styleClass="link"
+							rendered="#{!studentAssignmentInfo.instructorProgram}" />
+						<h:outputText value="Instructor Program" styleClass="link_hover"
+							rendered="#{studentAssignmentInfo.instructorProgram}" />
+					</h:commandLink>
+
+					<af:spacer height="0" />
+
+					<h:commandLink action="#{studentAssignmentInfo.selectPsTiReports}"
+						styleClass="link" rendered="#{studentAssignmentInfo.psTiVisible}">
 						<h:outputText value="Instructor Tests" styleClass="link"
 							rendered="#{!studentAssignmentInfo.instructorTests}" />
 						<h:outputText value="Instructor Tests" styleClass="link_hover"
 							rendered="#{studentAssignmentInfo.instructorTests}" />
 					</h:commandLink>
 
-					<af:spacer height="20" />
+					<af:spacer height="20"
+						rendered="#{studentAssignmentInfo.psTsVisible or studentAssignmentInfo.piTsVisible or studentAssignmentInfo.psTiVisible}" />
 
 					<h:outputText value="ProgTest Reports" styleClass="menu_title" />
 
 					<af:spacer height="0" />
 
-					<h:commandLink
-						action="#{studentAssignmentInfo.selectResultView}"
+					<h:commandLink action="#{studentAssignmentInfo.selectResultView}"
 						styleClass="link">
 						<h:outputText value="Evaluation Result" styleClass="link"
 							rendered="#{!studentAssignmentInfo.evaluationReport}" />
@@ -111,8 +120,8 @@
 
 					<h:panelGrid columns="2">
 						<af:image source="/images/upload.png" />
-						<h:commandLink
-							action="#{studentAssignmentInfo.send}" styleClass="link">
+						<h:commandLink action="#{studentAssignmentInfo.send}"
+							styleClass="link">
 							<h:outputText value="Submit Again" styleClass="topmenu_link" />
 						</h:commandLink>
 					</h:panelGrid>
