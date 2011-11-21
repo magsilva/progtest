@@ -488,7 +488,7 @@ public class CreateAssignment {
 
 	private void refresh() {
 		step = 1;
-		upload = false;
+		upload = true;
 		setLanguages(loadLanguages());
 		language = null;
 		uploadedFile = null;
