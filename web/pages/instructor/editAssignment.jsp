@@ -194,7 +194,7 @@
 					<af:spacer height="25" />
 
 					<h:panelGrid columns="2"
-						rendered="#{!empty instructorEditAssignment.oracles}">
+						rendered="#{!empty instructorEditAssignment.oracles and !instructorEditAssignment.current}">
 						<h:outputText value="ProgTest's Oracle Assignment: "
 							rendered="#{!instructorEditAssignment.upload}" />
 						<h:selectOneMenu value="#{instructorEditAssignment.oracle}"
@@ -205,9 +205,9 @@
 					</h:panelGrid>
 
 					<h:outputText value="Any ProgTest's oracle assignment avaible!"
-						rendered="#{empty instructorEditAssignment.oracles and !instructorEditAssignment.upload}" />
+						rendered="#{empty instructorEditAssignment.oracles and !instructorEditAssignment.upload and !instructorEditAssignment.current}" />
 
-					<af:spacer height="25" />
+					<af:spacer height="30" />
 
 					<h:commandButton value="Cancel"
 						action="#{instructorEditAssignment.cancel}" />

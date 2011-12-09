@@ -12,7 +12,6 @@ import javax.faces.event.ValueChangeEvent;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import progtest.common.Assignment;
-import progtest.common.Course;
 import progtest.common.Criterion;
 import progtest.common.Operator;
 import progtest.common.Oracle;
@@ -33,23 +32,23 @@ public class EditAssignment {
 	private String language;
 
 	private List<Oracle> oracles;
-	
+
 	private boolean current;
 
 	private boolean upload;
-	
+
 	private String downloadable;
 
 	private Integer oracle;
 
 	private UploadedFile uploadedFile;
-	
+
 	private String title;
-	
+
 	private String description;
-	
+
 	private Date startDate;
-	
+
 	private Date endDate;
 
 	private List<Tool> tools;
@@ -69,21 +68,21 @@ public class EditAssignment {
 	private List<String> selectedOperators;
 
 	private List<Requisite> requisites;
-	
+
 	private double pstsWeight;
-	
+
 	private double pitsWeight;
-	
+
 	private double pstiWeight;
-	
+
 	private boolean pstsVisible;
-	
+
 	private boolean pitsVisible;
-	
+
 	private boolean pstiVisible;
-	
+
 	private int timeout;
-	
+
 	private double minimumCoverage;
 
 	public int getStep() {
@@ -326,7 +325,7 @@ public class EditAssignment {
 	public void setMinimumCoverage(double minimumCoverage) {
 		this.minimumCoverage = minimumCoverage;
 	}
-	
+
 	public EditAssignment() {
 		refresh();
 	}
@@ -341,13 +340,12 @@ public class EditAssignment {
 	}
 
 	public String goToStep3() {
-		
-		Assignment assignment = new Assignment();
 
-		Course course = (Course) FacesUtil
-				.getSession(Constants.SESSION_COURSE);
-		
-		assignment.setCourse(course);
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
+		title = assignment.getTitle();
+		description = assignment.getDescription();
 
 		if (isUpload()) {
 
@@ -356,17 +354,17 @@ public class EditAssignment {
 
 		} else {
 
-			Oracle oracle = Querier.getOracle(this.oracle);
-			
-			title = oracle.getTitle();
-			description = oracle.getDescription();
-
-			FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
+			if (!isCurrent()) {
+				Oracle oracle = Querier.getOracle(this.oracle);
+				title = oracle.getTitle();
+				description = oracle.getDescription();
+				FacesUtil.setSession(Constants.SESSION_ORACLE, oracle);
+			}
 
 			step = 3;
 
 		}
-		
+
 		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		return Constants.ACTION_SELECT;
@@ -374,22 +372,28 @@ public class EditAssignment {
 	}
 
 	public String goToStep4() {
-		
-		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
+
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
 
 		if (validate()) {
-			
+
 			assignment.setTitle(title);
 			assignment.setDescription(description);
 			assignment.setStartDate(startDate);
 			assignment.setEndDate(endDate);
 
 			criteria = Querier.getCriteria(language);
+			
+			for (Criterion criterion : criteria)
+				for (int i = 0; i < assignment.getRequisites().size(); i++)
+					if(assignment.getRequisites().get(i).getCriterion().equals(criterion))
+						selectedCriteria.add(criterion.getTool().getIdCode() + "/" + criterion.getIdCode());
 
 			step = 4;
 
 		}
-		
+
 		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		return Constants.ACTION_SELECT;
@@ -397,8 +401,9 @@ public class EditAssignment {
 	}
 
 	public String goToStep5() {
-		
-		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
+
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
 
 		requisites.clear();
 
@@ -427,8 +432,9 @@ public class EditAssignment {
 	}
 
 	public String conclude() {
-		
-		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
+
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
 
 		assignment.setPstsWeight(pstsWeight);
 		assignment.setPitsWeight(pitsWeight);
@@ -437,7 +443,7 @@ public class EditAssignment {
 		assignment.setPitsVisible(pitsVisible);
 		assignment.setPstiVisible(pstiVisible);
 		assignment.setTimeout(timeout * 1000);
-		assignment.setMinimumCoverage((double)(minimumCoverage / 100));
+		assignment.setMinimumCoverage((double) (minimumCoverage / 100));
 		assignment.setRequisites(requisites);
 
 		AssignmentDAO.insert(assignment);
@@ -469,11 +475,11 @@ public class EditAssignment {
 		}
 
 		AssignmentDAO.update(assignment);
-		
+
 		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		refresh();
-		
+
 		FacesUtil.removeSession("instructorAssignment");
 
 		return Constants.ACTION_SUCCESS;
@@ -511,26 +517,27 @@ public class EditAssignment {
 	}
 
 	private void refresh() {
-		
-		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
-		
+
+		Assignment assignment = (Assignment) FacesUtil
+				.getSession(Constants.SESSION_ASSIGNMENT);
+
 		step = 1;
 		current = true;
 		upload = false;
-		
+
 		try {
 			downloadable = Runner.getDownloadable(assignment);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-		
+
 		setLanguages(loadLanguages());
 		language = assignment.getTools().get(0).getLanguage();
 		uploadedFile = null;
-		title = Constants.EMPTY;
-		description = Constants.EMPTY;
-		startDate = new Date();
-		endDate = new Date();
+		title = assignment.getTitle();
+		description = assignment.getDescription();
+		startDate = assignment.getStartDate();
+		endDate = assignment.getEndDate();
 		pstsWeight = 1;
 		pitsWeight = 1;
 		pstiWeight = 1;
@@ -682,7 +689,7 @@ public class EditAssignment {
 			int toolId = Integer.parseInt(selectedOperator.split("/")[0]);
 			int criterionId = Integer.parseInt(selectedOperator.split("/")[1]);
 			int idCode = Integer.parseInt(selectedOperator.split("/")[2]);
-			
+
 			if (toolId == criterion.getTool().getIdCode()
 					&& criterionId == criterion.getIdCode()) {
 
