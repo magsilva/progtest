@@ -349,7 +349,7 @@ public class EditAssignment {
 
 		if (isUpload()) {
 
-			if (uploaded())
+			if (isCurrent() || uploaded())
 				step = 3;
 
 		} else {
@@ -384,11 +384,43 @@ public class EditAssignment {
 			assignment.setEndDate(endDate);
 
 			criteria = Querier.getCriteria(language);
-			
+
 			for (Criterion criterion : criteria)
 				for (int i = 0; i < assignment.getRequisites().size(); i++)
-					if(assignment.getRequisites().get(i).getCriterion().equals(criterion))
-						selectedCriteria.add(criterion.getTool().getIdCode() + "/" + criterion.getIdCode());
+					if (assignment.getRequisites().get(i).getCriterion()
+							.equals(criterion)) {
+						selectedCriteria.add(criterion.getTool().getIdCode()
+								+ "/" + criterion.getIdCode());
+						if (!Querier.getOperators(criterion).isEmpty()) {
+							operators.addAll(Querier.getOperators(criterion));
+							for (Operator operator : Querier
+									.getOperators(criterion)) {
+								String[] parameters = assignment
+										.getRequisites().get(i)
+										.getExecutionParameters().split(" ");
+								for (int j = 1; j < parameters.length; j++)
+									if (operator.getParameter() == null)
+										selectedRequiredOperators.add(operator
+												.getCriterion().getTool()
+												.getIdCode()
+												+ "/"
+												+ operator.getCriterion()
+														.getIdCode()
+												+ "/"
+												+ operator.getIdCode());
+									else if (operator.getParameter()
+											.startsWith(parameters[j]))
+										selectedOperators.add(operator
+												.getCriterion().getTool()
+												.getIdCode()
+												+ "/"
+												+ operator.getCriterion()
+														.getIdCode()
+												+ "/"
+												+ operator.getIdCode());
+							}
+						}
+					}
 
 			step = 4;
 
@@ -405,9 +437,24 @@ public class EditAssignment {
 		Assignment assignment = (Assignment) FacesUtil
 				.getSession(Constants.SESSION_ASSIGNMENT);
 
-		requisites.clear();
-
 		if (hasCriteria()) {
+			
+			List<Requisite> requisites = new ArrayList<Requisite>();
+			
+			for(Requisite requisite : this.requisites) {
+				boolean add = false;
+				for (String selectedCriterion : selectedCriteria) {
+					String ids[] = selectedCriterion.split("/");
+					Criterion criterion = Querier.getCriterion(
+							Integer.parseInt(ids[0]), Integer.parseInt(ids[1]));
+					if(requisite.getCriterion().equals(criterion)) {
+						requisite.setExecutionParameters(generateExecInfo(criterion));
+						add = true;
+					}
+				}
+				if(add)
+					requisites.add(requisite);
+			}
 
 			for (String selectedCriterion : selectedCriteria) {
 				String ids[] = selectedCriterion.split("/");
@@ -420,8 +467,11 @@ public class EditAssignment {
 				requisite.setPstsRequired(true);
 				requisite.setPitsRequired(true);
 				requisite.setPstiRequired(true);
-				requisites.add(requisite);
+				if(!requisites.contains(requisite))
+					requisites.add(requisite);
 			}
+			
+			this.requisites = requisites;
 
 			step = 5;
 
@@ -446,22 +496,24 @@ public class EditAssignment {
 		assignment.setMinimumCoverage((double) (minimumCoverage / 100));
 		assignment.setRequisites(requisites);
 
-		AssignmentDAO.insert(assignment);
-
 		try {
 
-			Runner.makeDirectories(assignment);
+			// Runner.makeDirectories(assignment);
 
-			if (isUpload()) {
+			if (!isCurrent()) {
 
-				Runner.upload(assignment, uploadedFile);
+				if (isUpload()) {
 
-			} else {
+					Runner.upload(assignment, uploadedFile);
 
-				Oracle oracle = (Oracle) FacesUtil
-						.getSession(Constants.SESSION_ORACLE);
+				} else {
 
-				Runner.useOracle(assignment, oracle);
+					Oracle oracle = (Oracle) FacesUtil
+							.getSession(Constants.SESSION_ORACLE);
+
+					Runner.useOracle(assignment, oracle);
+
+				}
 
 			}
 
@@ -538,17 +590,17 @@ public class EditAssignment {
 		description = assignment.getDescription();
 		startDate = assignment.getStartDate();
 		endDate = assignment.getEndDate();
-		pstsWeight = 1;
-		pitsWeight = 1;
-		pstiWeight = 1;
-		pstsVisible = true;
-		pitsVisible = true;
-		pstiVisible = true;
-		timeout = 60;
-		minimumCoverage = 50;
+		pstsWeight = assignment.getPstsWeight();
+		pitsWeight = assignment.getPitsWeight();
+		pstiWeight = assignment.getPstiWeight();
+		pstsVisible = assignment.isPstsVisible();
+		pitsVisible = assignment.isPitsVisible();
+		pstiVisible = assignment.isPstiVisible();
+		timeout = assignment.getTimeout() / 1000;
+		minimumCoverage = assignment.getMinimumCoverage();
 		criteria = new ArrayList<Criterion>();
 		selectedCriteria = new ArrayList<String>();
-		requisites = new ArrayList<Requisite>();
+		requisites = assignment.getRequisites();
 		operators = new ArrayList<Operator>();
 		requiredOperators = new ArrayList<Operator>();
 		selectedOperators = new ArrayList<String>();
