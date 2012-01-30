@@ -128,6 +128,11 @@ public class Evaluator {
 		double psts = submission.getPstTst();
 		double pits = submission.getPinstTst();
 		double psti = submission.getPstTinst();
+		
+		pits = pits / submission.getAssignment().getPinstTinst();
+		
+		if(pits > 1)
+			pits = 1;
 
 		return (psts + pits + psti) / 3;
 
