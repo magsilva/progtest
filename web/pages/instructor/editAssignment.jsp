@@ -18,9 +18,9 @@
 
 				<af:spacer width="5" />
 
-				<h:commandLink action="#{instructorAssignment.back}"
+				<h:commandLink action="#{instructorEditAssignment.cancel}"
 					styleClass="topmenu_link">
-					<h:outputText value="&lt;&lt; Back to Courses"
+					<h:outputText value="&lt;&lt; Back to Assignment"
 						styleClass="topmenu_link" />
 				</h:commandLink>
 
@@ -531,6 +531,19 @@
 						<f:selectItem itemValue="300" />
 					</h:selectOneMenu>
 					<h:outputText value=" segundos." />
+
+					<af:spacer height="30" />
+
+					<h:outputText value="Step 5.6 - Define the minimum coverage required." />
+
+					<af:spacer height="20" />
+
+					<h:outputText value="Minimum Coverage: " />
+					<h:selectOneMenu value="#{instructorEditAssignment.minimumCoverage}">
+						<f:selectItem itemValue="50" />
+						<f:selectItem itemValue="75" />
+					</h:selectOneMenu>
+					<h:outputText value="%" />
 
 					<af:spacer height="30" />
 

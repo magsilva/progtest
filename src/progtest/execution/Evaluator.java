@@ -148,7 +148,7 @@ public class Evaluator {
 		double minimumCoverage = submission.getAssignment().getMinimumCoverage();
 		
 		double coverage = (((psts * pstsWeight) + (pits * pitsWeight) + (psti * pstiWeight))
-				/ pstsWeight + pitsWeight + pstiWeight);
+				/ (pstsWeight + pitsWeight + pstiWeight));
 		
 		return ((double) 0.5 ) * coverage / minimumCoverage;
 

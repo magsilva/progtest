@@ -516,6 +516,19 @@
 
 					<af:spacer height="30" />
 
+					<h:outputText value="Step 5.6 - Define the minimum coverage required." />
+
+					<af:spacer height="20" />
+
+					<h:outputText value="Minimum Coverage: " />
+					<h:selectOneMenu value="#{instructorCreateAssignment.minimumCoverage}">
+						<f:selectItem itemValue="50" />
+						<f:selectItem itemValue="75" />
+					</h:selectOneMenu>
+					<h:outputText value="%" />
+
+					<af:spacer height="30" />
+
 					<h:commandButton value="Cancel"
 						action="#{instructorCreateAssignment.cancel}" />
 					<h:commandButton value="Back"
