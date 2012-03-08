@@ -406,3 +406,23 @@ INSERT INTO Oracle VALUES(18, 'Prim Algorithm', 'Implementation of the Prim algo
 INSERT INTO Oracle VALUES(19, 'Hash Table', 'Implementation of a hash table.', 'Java');
 
 INSERT INTO Oracle VALUES(20, 'Matrix Multiplication', 'Gets the result of multiplying two matrices.', 'Java');
+
+INSERT INTO Oracle VALUES(51, 'Maximum Value', 'Obtains the highest value of a sequence of integers.', 'C');
+
+INSERT INTO Oracle VALUES(52, 'Minimum Value', 'Obtains the lowest value of a sequence of integers.', 'C');
+
+INSERT INTO Oracle VALUES(53, 'Maximum and Minimum Value', 'Obtains the highest and lowest value of a sequence of integers.', 'C');
+
+INSERT INTO Oracle VALUES(54, 'Identifier', 'Verify if a string is a valid identifier.', 'C');
+
+INSERT INTO Oracle VALUES(55, 'Triangle', 'Obtains the highest value of a sequence of integers.', 'C');
+
+INSERT INTO Oracle VALUES(56, 'Factorial', 'Computes the factorial of a number.', 'C');
+
+INSERT INTO Oracle VALUES(57, 'Fibonacci', 'Computes the fibonacci sequence.', 'C');
+
+INSERT INTO Oracle VALUES(58, 'Sort', 'Sorts a sequence of integers', 'C');
+
+INSERT INTO Oracle VALUES(59, 'Cal', 'Return the day of week of a date.', 'C');
+
+INSERT INTO Oracle VALUES(60, 'Palindrome', 'Verify if a word is palindrome or not.', 'C');
