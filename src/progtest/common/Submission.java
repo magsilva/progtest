@@ -21,13 +21,13 @@ public class Submission {
 
 	private Date submissionDate;
 
-	private double pstTst;
+	private double pstsCoverage;
 
-	private double pinstTst;
+	private double pitsCoverage;
 
-	private double pstTinst;
+	private double pstiCoverage;
 
-	private double score;
+	private double grade;
 
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -59,36 +59,36 @@ public class Submission {
 		this.submissionDate = submissionDate;
 	}
 
-	public double getPstTst() {
-		return pstTst;
+	public double getPstsCoverage() {
+		return pstsCoverage;
 	}
 
-	public void setPstTst(double pstTst) {
-		this.pstTst = pstTst;
+	public void setPstsCoverage(double pstsCoverage) {
+		this.pstsCoverage = pstsCoverage;
 	}
 
-	public double getPinstTst() {
-		return pinstTst;
+	public double getPitsCoverage() {
+		return pitsCoverage;
 	}
 
-	public void setPinstTst(double pinstTst) {
-		this.pinstTst = pinstTst;
+	public void setPitsCoverage(double pitsCoverage) {
+		this.pitsCoverage = pitsCoverage;
 	}
 
-	public double getPstTinst() {
-		return pstTinst;
+	public double getPstiCoverage() {
+		return pstiCoverage;
 	}
 
-	public void setPstTinst(double pstTinst) {
-		this.pstTinst = pstTinst;
+	public void setPstiCoverage(double pstiCoverage) {
+		this.pstiCoverage = pstiCoverage;
 	}
 
-	public double getScore() {
-		return score;
+	public double getGrade() {
+		return grade;
 	}
 
-	public void setScore(double score) {
-		this.score = score;
+	public void setGrade(double grade) {
+		this.grade = grade;
 	}
 
 	@Override
@@ -97,18 +97,7 @@ public class Submission {
 		int result = 1;
 		result = prime * result
 				+ ((assignment == null) ? 0 : assignment.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(pinstTst);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(pstTinst);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(pstTst);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(score);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((student == null) ? 0 : student.hashCode());
-		result = prime * result
-				+ ((submissionDate == null) ? 0 : submissionDate.hashCode());
 		return result;
 	}
 
@@ -126,27 +115,10 @@ public class Submission {
 				return false;
 		} else if (!assignment.equals(other.assignment))
 			return false;
-		if (Double.doubleToLongBits(pinstTst) != Double
-				.doubleToLongBits(other.pinstTst))
-			return false;
-		if (Double.doubleToLongBits(pstTinst) != Double
-				.doubleToLongBits(other.pstTinst))
-			return false;
-		if (Double.doubleToLongBits(pstTst) != Double
-				.doubleToLongBits(other.pstTst))
-			return false;
-		if (Double.doubleToLongBits(score) != Double
-				.doubleToLongBits(other.score))
-			return false;
 		if (student == null) {
 			if (other.student != null)
 				return false;
 		} else if (!student.equals(other.student))
-			return false;
-		if (submissionDate == null) {
-			if (other.submissionDate != null)
-				return false;
-		} else if (!submissionDate.equals(other.submissionDate))
 			return false;
 		return true;
 	}

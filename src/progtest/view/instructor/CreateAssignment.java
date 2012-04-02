@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIData;
 import javax.faces.event.PhaseId;
 import javax.faces.event.ValueChangeEvent;
 
@@ -40,13 +39,13 @@ public class CreateAssignment {
 	private Integer oracle = null;
 
 	private UploadedFile uploadedFile = null;
-
+	
 	private String title = Constants.EMPTY;
-
+	
 	private String description = Constants.EMPTY;
-
+	
 	private Date startDate = new Date();
-
+	
 	private Date endDate = new Date();
 
 	private List<Tool> tools = new ArrayList<Tool>();
@@ -66,8 +65,22 @@ public class CreateAssignment {
 	private List<String> selectedOperators = new ArrayList<String>();
 
 	private List<Requisite> requisites = new ArrayList<Requisite>();
-
-	private UIData requisitesTable;
+	
+	private double pstsWeight = 1;
+	
+	private double pitsWeight = 1;
+	
+	private double pstiWeight = 1;
+	
+	private boolean pstsVisible = true;
+	
+	private boolean pitsVisible = true;
+	
+	private boolean pstiVisible = true;
+	
+	private int timeout = 60;
+	
+	private double minimumCoverage = 50;
 
 	public int getStep() {
 		return step;
@@ -230,12 +243,68 @@ public class CreateAssignment {
 		this.requisites = requisites;
 	}
 
-	public UIData getRequisitesTable() {
-		return requisitesTable;
+	public double getPstsWeight() {
+		return pstsWeight;
 	}
 
-	public void setRequisitesTable(UIData requisitesTable) {
-		this.requisitesTable = requisitesTable;
+	public void setPstsWeight(double pstsWeight) {
+		this.pstsWeight = pstsWeight;
+	}
+
+	public double getPitsWeight() {
+		return pitsWeight;
+	}
+
+	public void setPitsWeight(double pitsWeight) {
+		this.pitsWeight = pitsWeight;
+	}
+
+	public double getPstiWeight() {
+		return pstiWeight;
+	}
+
+	public void setPstiWeight(double pstiWeight) {
+		this.pstiWeight = pstiWeight;
+	}
+
+	public boolean isPstsVisible() {
+		return pstsVisible;
+	}
+
+	public void setPstsVisible(boolean pstsVisible) {
+		this.pstsVisible = pstsVisible;
+	}
+
+	public boolean isPitsVisible() {
+		return pitsVisible;
+	}
+
+	public void setPitsVisible(boolean pitsVisible) {
+		this.pitsVisible = pitsVisible;
+	}
+
+	public boolean isPstiVisible() {
+		return pstiVisible;
+	}
+
+	public void setPstiVisible(boolean pstiVisible) {
+		this.pstiVisible = pstiVisible;
+	}
+
+	public int getTimeout() {
+		return timeout;
+	}
+
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
+	}
+
+	public double getMinimumCoverage() {
+		return minimumCoverage;
+	}
+
+	public void setMinimumCoverage(double minimumCoverage) {
+		this.minimumCoverage = minimumCoverage;
 	}
 
 	public String goToStep2() {
@@ -248,6 +317,13 @@ public class CreateAssignment {
 	}
 
 	public String goToStep3() {
+		
+		Assignment assignment = new Assignment();
+
+		Course course = (Course) FacesUtil
+				.getSession(Constants.SESSION_COURSE);
+		
+		assignment.setCourse(course);
 
 		if (isUpload()) {
 
@@ -257,7 +333,7 @@ public class CreateAssignment {
 		} else {
 
 			Oracle oracle = Querier.getOracle(this.oracle);
-
+			
 			title = oracle.getTitle();
 			description = oracle.getDescription();
 
@@ -266,41 +342,39 @@ public class CreateAssignment {
 			step = 3;
 
 		}
+		
+		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		return Constants.ACTION_SELECT;
 
 	}
 
 	public String goToStep4() {
+		
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 
 		if (validate()) {
-
-			Course course = (Course) FacesUtil
-					.getSession(Constants.SESSION_COURSE);
-
-			Assignment assignment = new Assignment();
-			assignment.setCourse(course);
+			
 			assignment.setTitle(title);
 			assignment.setDescription(description);
 			assignment.setStartDate(startDate);
 			assignment.setEndDate(endDate);
-
-			FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 			criteria = Querier.getCriteria(language);
 
 			step = 4;
 
 		}
+		
+		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		return Constants.ACTION_SELECT;
 
 	}
 
 	public String goToStep5() {
-
-		Assignment assignment = (Assignment) FacesUtil
-				.getSession(Constants.SESSION_ASSIGNMENT);
+		
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 
 		requisites.clear();
 
@@ -313,7 +387,10 @@ public class CreateAssignment {
 				Requisite requisite = new Requisite();
 				requisite.setAssignment(assignment);
 				requisite.setCriterion(criterion);
-				requisite.setExecInfo(generateExecInfo(criterion));
+				requisite.setExecutionParameters(generateExecInfo(criterion));
+				requisite.setPstsRequired(true);
+				requisite.setPitsRequired(true);
+				requisite.setPstiRequired(true);
 				requisites.add(requisite);
 			}
 
@@ -326,10 +403,17 @@ public class CreateAssignment {
 	}
 
 	public String conclude() {
+		
+		Assignment assignment = (Assignment) FacesUtil.getSession(Constants.SESSION_ASSIGNMENT);
 
-		Assignment assignment = (Assignment) FacesUtil
-				.getSession(Constants.SESSION_ASSIGNMENT);
-
+		assignment.setPstsWeight(pstsWeight);
+		assignment.setPitsWeight(pitsWeight);
+		assignment.setPstiWeight(pstiWeight);
+		assignment.setPstsVisible(pstsVisible);
+		assignment.setPitsVisible(pitsVisible);
+		assignment.setPstiVisible(pstiVisible);
+		assignment.setTimeout(timeout * 1000);
+		assignment.setMinimumCoverage((double)(minimumCoverage / 100));
 		assignment.setRequisites(requisites);
 
 		AssignmentDAO.insert(assignment);
@@ -361,6 +445,8 @@ public class CreateAssignment {
 		}
 
 		AssignmentDAO.update(assignment);
+		
+		FacesUtil.setSession(Constants.SESSION_ASSIGNMENT, assignment);
 
 		refresh();
 		
@@ -402,7 +488,7 @@ public class CreateAssignment {
 
 	private void refresh() {
 		step = 1;
-		upload = false;
+		upload = true;
 		setLanguages(loadLanguages());
 		language = null;
 		uploadedFile = null;
@@ -410,6 +496,14 @@ public class CreateAssignment {
 		description = Constants.EMPTY;
 		startDate = new Date();
 		endDate = new Date();
+		pstsWeight = 1;
+		pitsWeight = 1;
+		pstiWeight = 1;
+		pstsVisible = true;
+		pitsVisible = true;
+		pstiVisible = true;
+		timeout = 60;
+		minimumCoverage = 50;
 		criteria = new ArrayList<Criterion>();
 		selectedCriteria = new ArrayList<String>();
 		requisites = new ArrayList<Requisite>();

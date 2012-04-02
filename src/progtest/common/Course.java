@@ -95,22 +95,12 @@ public class Course {
 	public void setAssignments(List<Assignment> assignments) {
 		this.assignments = assignments;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((assignments == null) ? 0 : assignments.hashCode());
-		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCode;
-		result = prime * result
-				+ ((instructor == null) ? 0 : instructor.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((startDate == null) ? 0 : startDate.hashCode());
-		result = prime * result
-				+ ((students == null) ? 0 : students.hashCode());
 		return result;
 	}
 
@@ -123,37 +113,7 @@ public class Course {
 		if (getClass() != obj.getClass())
 			return false;
 		Course other = (Course) obj;
-		if (assignments == null) {
-			if (other.assignments != null)
-				return false;
-		} else if (!assignments.equals(other.assignments))
-			return false;
-		if (endDate == null) {
-			if (other.endDate != null)
-				return false;
-		} else if (!endDate.equals(other.endDate))
-			return false;
 		if (idCode != other.idCode)
-			return false;
-		if (instructor == null) {
-			if (other.instructor != null)
-				return false;
-		} else if (!instructor.equals(other.instructor))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
-			return false;
-		if (students == null) {
-			if (other.students != null)
-				return false;
-		} else if (!students.equals(other.students))
 			return false;
 		return true;
 	}

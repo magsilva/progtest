@@ -25,7 +25,7 @@ public class Executor {
 	private static final String FILE_SEPARATOR = "/";
 
 	public static void execute(Tool tool, File rootDir, File programDir,
-			File testsDir, File reportsDir, String additionals)
+			File testsDir, File reportsDir, String additionals, int timeout)
 			throws IOException, InterruptedException {
 
 		File toolFile = new File(Directories.getToolFilePath(tool));
@@ -47,7 +47,7 @@ public class Executor {
 				tmpDir, rptDir, toolFile, programDir, testsDir);
 
 		process(toolDir, srcDir, binDir, progDir, testDir, instDir, libDir,
-				tmpDir, rptDir, tool.getName(), tool.getCmdfile(), additionals);
+				tmpDir, rptDir, tool.getName(), tool.getCommandFile(), additionals, timeout);
 
 		finalize(toolDir, rptDir, toolReportsDir);
 
@@ -109,7 +109,7 @@ public class Executor {
 
 	private static void process(File toolDir, File srcDir, File binDir,
 			File progDir, File testDir, File instDir, File libDir, File tmpDir,
-			File rptDir, String toolName, String cmdFileName, String additionals)
+			File rptDir, String toolName, String cmdFileName, String additionals, int timeout)
 			throws IOException, InterruptedException {
 
 		ProcessBuilder processBuilder = null;
@@ -149,7 +149,7 @@ public class Executor {
 
 				worker = new Worker(process, listener);
 				worker.start();
-				worker.join(90000);
+				worker.join(timeout);
 
 			}
 

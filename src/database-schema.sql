@@ -37,7 +37,15 @@ CREATE TABLE Assignment (
 	description VARCHAR(500),
 	startDate DATETIME,
 	endDate DATETIME,
-	pinstTinst DOUBLE,
+	timeout INT,
+	minimumCoverage DOUBLE,
+	pstsVisible BOOLEAN,
+	pitsVisible BOOLEAN,
+	pstiVisible BOOLEAN,
+	pstsWeight DOUBLE,
+	pitsWeight DOUBLE,
+	pstiWeight DOUBLE,
+	pitiCoverage DOUBLE,
 	CONSTRAINT PK_assignment PRIMARY KEY (idCode),
 	CONSTRAINT FK_assignment_course FOREIGN KEY (course) REFERENCES Course (idCode) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -56,8 +64,8 @@ CREATE TABLE Tool (
 	language VARCHAR(50),
 	compiler VARCHAR(50),
 	testFormat VARCHAR(50),
-	cmdfile VARCHAR(50),
-	outputfile VARCHAR(50),
+	commandFile VARCHAR(50),
+	outputFile VARCHAR(50),
 	CONSTRAINT PK_tool PRIMARY KEY (idCode)
 );
 
@@ -86,7 +94,10 @@ CREATE TABLE Requisite (
 	tool INT NOT NULL,
 	criterion INT NOT NULL,
 	weight DOUBLE,
-	execInfo VARCHAR(2000),
+	pstsRequired BOOLEAN,
+	pitsRequired BOOLEAN,
+	pstiRequired BOOLEAN,
+	executionParameters VARCHAR(5000),
 	CONSTRAINT PK_requisite PRIMARY KEY (assignment, tool, criterion),
 	CONSTRAINT FK_requisite_assignment FOREIGN KEY (assignment) REFERENCES Assignment (idCode),
 	CONSTRAINT FK_requisite_criterion FOREIGN KEY (tool, criterion) REFERENCES Criterion (tool, idCode)
@@ -96,10 +107,10 @@ CREATE TABLE Submission (
 	student INT NOT NULL,
 	assignment INT NOT NULL,
 	submissionDate DATETIME,
-	pstTst DOUBLE,
-	pinstTst DOUBLE,
-	pstTinst DOUBLE,
-	score DOUBLE,
+	pstsCoverage DOUBLE,
+	pitsCoverage DOUBLE,
+	pstiCoverage DOUBLE,
+	grade DOUBLE,
 	CONSTRAINT PK_evaluation PRIMARY KEY (student, assignment),
 	CONSTRAINT FK_evaluation_student FOREIGN KEY (student) REFERENCES User (idCode) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT FK_evaluation_assignment FOREIGN KEY (assignment) REFERENCES Assignment (idCode) ON UPDATE CASCADE ON DELETE CASCADE
@@ -119,7 +130,7 @@ CREATE TRIGGER `insert_student_evaluations` AFTER INSERT ON `Enrollment`
 	SELECT MAX(Assignment.idCode) INTO i FROM Assignment WHERE Assignment.course = NEW.course;
 	WHILE i > 0 DO
 		IF (SELECT COUNT(*) FROM Assignment WHERE Assignment.course = NEW.course AND Assignment.idCode = i) > 0 THEN
-			INSERT INTO Submission(student, assignment, pstTst, pinstTst, pstTinst, score) VALUES(NEW.student, i, 0, 0, 0, 0);
+			INSERT INTO Submission(student, assignment, pstsCoverage, pitsCoverage, pstiCoverage, grade) VALUES(NEW.student, i, 0, 0, 0, 0);
 		END IF;
 		SET i = i - 1;
 	END WHILE;
@@ -143,7 +154,7 @@ CREATE TRIGGER `insert_students_evaluations` AFTER INSERT ON `Assignment`
 	SELECT MAX(Enrollment.student) INTO i FROM Enrollment WHERE Enrollment.course = NEW.course;
 	WHILE i > 0 DO
 		IF (SELECT COUNT(*) FROM Enrollment WHERE Enrollment.course = NEW.course AND Enrollment.student = i) > 0 THEN
-			INSERT INTO Submission(student, assignment, pstTst, pinstTst, pstTinst, score) VALUES(i, NEW.idCode, 0, 0, 0, 0);
+			INSERT INTO Submission(student, assignment, pstsCoverage, pitsCoverage, pstiCoverage, grade) VALUES(i, NEW.idCode, 0, 0, 0, 0);
 		END IF;
 		SET i = i - 1;
 	END WHILE;

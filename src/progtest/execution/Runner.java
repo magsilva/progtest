@@ -502,16 +502,16 @@ public class Runner {
 
 			for (Tool tool : assignment.getTools()) {
 
-				String execInfo = "";
+				String parameters = "";
 
 				for (Requisite requisite : Querier
 						.getAssignmentCriteria(assignment))
-					execInfo += requisite.getExecInfo();
+					parameters += requisite.getExecutionParameters();
 
 				try {
 
 					Executor.execute(tool, rootDir, programDir, testsDir,
-							outputDir, execInfo);
+							outputDir, parameters, assignment.getTimeout());
 
 				} catch (Throwable t) {
 
