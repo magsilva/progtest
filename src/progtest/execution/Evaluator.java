@@ -86,12 +86,7 @@ public class Evaluator {
 			if (requisite.isPitsRequired()) {
 
 				pinstTst += Reader.readPiTs(requisite, submission.getStudent())
-						/ submission.getAssignment().getPitiCoverage();
-
-				if (pinstTst > 1)
-					pinstTst = 1;
-
-				pinstTst *= requisite.getWeight();
+						* requisite.getWeight();
 
 				quotient += requisite.getWeight();
 
@@ -102,6 +97,11 @@ public class Evaluator {
 		if (quotient != 0) {
 			pinstTst /= quotient;
 		}
+		
+		if (pinstTst > 1)
+			pinstTst = 1;
+
+		pinstTst /= submission.getAssignment().getPitiCoverage();
 
 		return pinstTst;
 	}
@@ -144,13 +144,14 @@ public class Evaluator {
 		double pstsWeight = submission.getAssignment().getPstsWeight();
 		double pitsWeight = submission.getAssignment().getPitsWeight();
 		double pstiWeight = submission.getAssignment().getPstiWeight();
-		
-		double minimumCoverage = submission.getAssignment().getMinimumCoverage();
-		
-		double coverage = (((psts * pstsWeight) + (pits * pitsWeight) + (psti * pstiWeight))
-				/ (pstsWeight + pitsWeight + pstiWeight));
-		
-		return ((double) 0.5 ) * coverage / minimumCoverage;
+
+		double minimumCoverage = submission.getAssignment()
+				.getMinimumCoverage();
+
+		double coverage = (((psts * pstsWeight) + (pits * pitsWeight) + (psti * pstiWeight)) / (pstsWeight
+				+ pitsWeight + pstiWeight));
+
+		return ((double) 0.5) * coverage / minimumCoverage;
 
 	}
 
