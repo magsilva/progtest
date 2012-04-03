@@ -1,0 +1,5 @@
+<progtest-addon>
+	<tool name="Jumble" language="Java" compiler="Javac" test-format="JUnit" cmdfile="cmdlines.txt" outfile="output.properties">
+		<criterion id="1" name="Analysis of Mutants" key="score"/>
+	</tool>
+</progtest-addon>

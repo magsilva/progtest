@@ -1,0 +1,275 @@
+package progtest.addons.proteum;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.Map;
+
+public class Executor {
+
+	private final String OUTFILENAME = "out";
+
+	private final boolean is64 = System.getProperty("os.arch").contains("64");
+	
+	private File bin;
+
+	private File lib;
+
+	private File include;
+
+	public Executor(File tmpDir) throws IOException {
+
+		bin = new File(tmpDir + File.separator + "bin");
+		include = new File(tmpDir + File.separator + "include");
+		lib = new File(tmpDir + File.separator + "lib");
+
+		File binDir = new File(Constants.PROTEUM_BIN_FILE);
+		File includeDir = new File(Constants.CUNIT_INCLUDE_FILE);
+		File libDir = null;
+
+		if (is64)
+			libDir = new File(Constants.CUNIT_LIB64_FILE);
+		else
+			libDir = new File(Constants.CUNIT_LIB_FILE);
+
+		FileUtil.unzip(binDir, bin);
+		FileUtil.unzip(includeDir, include);
+		FileUtil.unzip(libDir, lib);
+		
+		chmod();
+
+	}
+
+	public void compile(File srcDir) {
+
+		String[] args = new String[9];
+		args[0] = "gcc";
+		args[1] = "-L";
+		args[2] = lib.getPath();
+		args[3] = "-I";
+		args[4] = include.getPath();
+		args[5] = "-c";
+		args[7] = "-o";
+
+		List<File> cFiles = FileUtil.list(srcDir, ".c");
+
+		for (File cFile : cFiles) {
+			args[6] = cFile.getPath();
+			args[8] = cFile.getPath().replace(".c", ".o");
+			cmd(args);
+		}
+
+	}
+
+	public void link(File srcDir) {
+
+		List<File> oFiles = FileUtil.list(srcDir, ".o");
+
+		int n = oFiles.size();
+
+		String[] args = new String[8 + n];
+
+		args[0] = "gcc";
+		args[1] = "-L";
+		args[2] = lib.getPath();
+		args[3] = "-I";
+		args[4] = include.getPath();
+
+		for (int i = 5; i < 5 + n; i++) {
+			args[i] = oFiles.get(i - 5).getPath();
+		}
+
+		args[n + 5] = "-lcunit";
+		args[n + 6] = "-o";
+		args[n + 7] = srcDir.getPath() + File.separator + OUTFILENAME;
+
+		cmd(args);
+
+	}
+
+	public void execute(File srcDir) {
+
+		try {
+
+			List<File> cFiles = FileUtil.list(srcDir, ".c");
+			
+			List<File> cFiles2 = FileUtil.list(srcDir, ".c");
+
+			for (File cFile : cFiles) {
+
+				if (!CUnitUtil.isCUnitTest(cFile)) {
+					
+					String command = "gcc -I " + include + " -L " + lib + " -o " + OUTFILENAME + " " + cFile.getName();
+					
+					for(File cFile2 : cFiles2)
+						if(!cFile.getName().equals(cFile2.getName()))
+							command += " " + cFile2.getPath();
+					
+					command += " -w -lcunit";
+					
+					String filename = cFile.getName().replace(".c", "");
+					
+					proteum(srcDir, filename, command);
+
+				}
+
+			}
+
+		} catch (Throwable e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+	
+	private void proteum(File srcDir, String filename, String command) {
+		
+		String[] args = new String[5];
+
+		args[0] = "xvfb-run";
+		args[1] = "-a";
+		args[2] = "xterm";
+		args[3] = "-e";
+		args[4] = bin + File.separator + "proteum" + " " + srcDir.getPath() + " " + filename + " " + OUTFILENAME + " \"" + command + "\"";
+
+		cmd(args);
+		
+	}
+	
+	private void chmod() {
+		
+		String args[] = new String[3];
+		
+		args[0] = "chmod";
+		args[1] = "+x";
+		
+		args[2] = bin + File.separator + "bac";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "ccc";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "check-equiv";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "clean";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "exemuta";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "extimout";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "headtail";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "instrum";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "li";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "list-good";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "makezip";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "muta";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "muta-gen";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "muta-view";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "opmuta";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "proteuIMcpp";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "proteum";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "proteumim";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "pteste";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "recinput";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "report";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "splitarg";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "tcase";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "tcase-add";
+		cmd(args);
+		
+		args[2] = bin + File.separator + "test-new";
+		cmd(args);
+		
+	}
+
+	private void cmd(String[] args) {
+
+		try {
+			
+			ProcessBuilder pb = new ProcessBuilder(args);
+			
+			Map<String, String> env = pb.environment();
+			String path = env.get("PATH");
+			env.put("PATH", path + File.pathSeparator
+			    + bin.getPath());
+			env.put("PROTEUMIMHOME", bin.getPath());
+
+			Process p = pb.start();
+
+			InputStream st = p.getInputStream();
+			InputStreamReader isr = new InputStreamReader(st);
+			BufferedReader br = new BufferedReader(isr);
+			while (br.ready())
+				System.out.println(br.readLine());
+
+			st = p.getErrorStream();
+			isr = new InputStreamReader(st);
+			br = new BufferedReader(isr);
+			while (br.ready())
+				System.err.println(br.readLine());
+
+			p.waitFor();
+
+			st = p.getInputStream();
+			isr = new InputStreamReader(st);
+			br = new BufferedReader(isr);
+			while (br.ready())
+				System.out.println(br.readLine());
+
+			st = p.getErrorStream();
+			isr = new InputStreamReader(st);
+			br = new BufferedReader(isr);
+			while (br.ready())
+				System.err.println(br.readLine());
+
+		} catch (Throwable t) {
+
+			t.printStackTrace();
+
+		}
+
+	}
+
+}

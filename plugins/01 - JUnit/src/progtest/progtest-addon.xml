@@ -1,0 +1,5 @@
+<progtest-addon>
+	<tool name="JUnit" language="Java" compiler="Javac" test-format="JUnit" cmdfile="cmdline.txt" outfile="output.properties">
+		<criterion id="1" name="Pass Rate" key="passrate"/>
+	</tool>
+</progtest-addon>
