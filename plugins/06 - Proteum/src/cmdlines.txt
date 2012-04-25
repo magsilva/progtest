@@ -1,0 +1,1 @@
+java -cp <root> progtest.addons.proteum.Proteum <source> <binaries> <temporaries> <reports>

@@ -1,0 +1,1 @@
+java -cp <root>:<root>/junit-4.8.2.jar:<root>/ant-launcher.jar:<root>/ant.jar:<root>/mapping-1.0.1-jar-with-dependencies.jar progtest.addons.jumble.Jumble <root>/jumble.jar <source> <binaries> <program> <tests> <reports>

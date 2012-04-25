@@ -1,0 +1,1 @@
+java -cp <root> progtest.addons.gcov.GCov <source> <binaries> <temporaries> <reports>

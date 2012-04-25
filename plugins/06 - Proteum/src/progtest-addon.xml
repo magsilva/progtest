@@ -1,0 +1,5 @@
+<progtest-addon>
+	<tool name="CUnit" language="C" compiler="GCC" test-format="CUnit" cmdfile="cmdlines.txt" outfile="output.properties">
+		<criterion id="1" name="Mutation Analisys" key="score"/>
+	</tool>
+</progtest-addon>
