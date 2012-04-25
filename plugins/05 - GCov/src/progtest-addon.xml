@@ -1,6 +1,0 @@
-<progtest-addon>
-	<tool name="CUnit" language="C" compiler="GCC" test-format="CUnit" cmdfile="cmdlines.txt" outfile="output.properties">
-		<criterion id="1" name="All-Nodes" key="allnodes"/>
-		<criterion id="2" name="All-Edges" key="alledges"/>
-	</tool>
-</progtest-addon>

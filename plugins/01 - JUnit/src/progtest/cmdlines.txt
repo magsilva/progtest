@@ -1,2 +1,0 @@
-java -cp <root>:<root>/ant.jar:<root>/ant-launcher.jar:<root>/junit-4.8.2.jar:<root>/mapping-1.0.1-jar-with-dependencies.jar progtest.addons.junit.Javac <source> <binaries>
-java -cp <root>:<root>/junit-4.8.2.jar progtest.addons.junit.JUnit <binaries> <reports>

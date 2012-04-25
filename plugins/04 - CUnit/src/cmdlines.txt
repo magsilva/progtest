@@ -1,1 +1,0 @@
-java -cp <root> progtest.addons.cunit.CUnit <source> <binaries> <temporaries> <reports>
