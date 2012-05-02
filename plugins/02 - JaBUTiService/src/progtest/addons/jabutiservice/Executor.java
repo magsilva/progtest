@@ -192,8 +192,9 @@ public class Executor {
 
 		compileTestSuite();
 
-		//if(!executeTestSuite(testSuiteClassFile))
-		//	throw new Throwable("Error while executing test suite. Make sure that don't have failing tests in your test classes!");
+		// if(!executeTestSuite(testSuiteClassFile))
+		// throw new
+		// Throwable("Error while executing test suite. Make sure that don't have failing tests in your test classes!");
 
 		System.out.println("");
 		System.out.println("Preparing packages to be sent to the service ...");
@@ -443,38 +444,39 @@ public class Executor {
 
 	private boolean executeTestSuite(File testSuiteFile) {
 
-			try {
+		try {
 
-				String clazzName = testSuiteFile.getName().replace(".class", "");
-				File root = testSuiteFile.getParentFile();
-				
-				URL urls[] = new URL[1];
+			String clazzName = testSuiteFile.getName().replace(".class", "");
+			File root = testSuiteFile.getParentFile();
 
-				urls[0] = new URL("file://" + root.getPath().replace("\\", "/")
-						+ "/");
+			URL urls[] = new URL[1];
 
-				URLClassLoader loader = new URLClassLoader(urls);
+			urls[0] = new URL("file://" + root.getPath().replace("\\", "/")
+					+ "/");
 
-				Class<?> clazz = loader.loadClass(clazzName);
+			URLClassLoader loader = new URLClassLoader(urls);
 
-				org.junit.runner.Result result = JUnitCore.runClasses(clazz);
-				
-				if(result.getFailureCount() == 0)
-					return true;
+			Class<?> clazz = loader.loadClass(clazzName);
 
-			} catch (MalformedURLException e) {
+			org.junit.runner.Result result = JUnitCore.runClasses(clazz);
 
-				System.err.println("Warnning: Invalid URL: " + "file://"
-						+ testSuiteFile.getParentFile().getPath().replace("\\", "/")
-						+ "/");
+			if (result.getFailureCount() == 0)
+				return true;
 
-			} catch (ClassNotFoundException e) {
+		} catch (MalformedURLException e) {
 
-				System.err.println("Class not found: " + testSuiteFile);
+			System.err.println("Warnning: Invalid URL: "
+					+ "file://"
+					+ testSuiteFile.getParentFile().getPath()
+							.replace("\\", "/") + "/");
 
-			}
-			
-			return false;
+		} catch (ClassNotFoundException e) {
+
+			System.err.println("Class not found: " + testSuiteFile);
+
+		}
+
+		return false;
 
 	}
 
@@ -573,16 +575,34 @@ public class Executor {
 		File tmpDir = new File(instrumentedFile.getParentFile().getPath()
 				+ File.separator + "tmp");
 
-		FileUtil.unzip(instrumentedFile, tmpDir);
+		boolean ok = false;
 
-		FileUtil.delete(new File(tmpDir.getPath() + File.separator + "br"));
+		while (!ok) {
 
-		FileUtil.unzip(patchPackage, tmpDir);
+			try {
 
-		FileUtil.delete(instrumentedFile);
-		FileUtil.zip(tmpDir.listFiles(), instrumentedFile);
+				FileUtil.unzip(instrumentedFile, tmpDir);
 
-		FileUtil.delete(tmpDir);
+				FileUtil.delete(new File(tmpDir.getPath() + File.separator
+						+ "br"));
+
+				FileUtil.unzip(patchPackage, tmpDir);
+
+				FileUtil.delete(instrumentedFile);
+				FileUtil.zip(tmpDir.listFiles(), instrumentedFile);
+
+				ok = true;
+
+			} catch (Throwable t) {
+
+				ok = false;
+
+			} finally {
+
+				FileUtil.delete(tmpDir);
+
+			}
+		}
 
 	}
 
