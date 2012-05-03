@@ -303,4 +303,9 @@ public class Directories {
 				+ assignment.getIdCode() + "s" + student.getIdCode();
 	}
 
+	public static File getFiguresDir(User user) {
+		return new File(Constants.PATH_FIGURES
+				+ File.separator + user.getIdCode());
+	}
+
 }

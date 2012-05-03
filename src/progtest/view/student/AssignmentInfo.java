@@ -201,10 +201,10 @@ public class AssignmentInfo {
 			if (instructorProgram)
 				reportFiles = FileUtil.listFiles(new File(Directories
 						.getPitsDirPath(assignment, student)));
-		    else if (instructorTests)
+			else if (instructorTests)
 				reportFiles = FileUtil.listFiles(new File(Directories
 						.getPstiDirPath(assignment, student)));
-		    else if (isPsTsVisible) {
+			else if (isPsTsVisible) {
 				reportFiles = FileUtil.listFiles(new File(Directories
 						.getPstsDirPath(assignment, student)));
 				instructorProgram = false;
@@ -226,7 +226,8 @@ public class AssignmentInfo {
 
 			for (File file : reportFiles)
 				if (file.getName().endsWith(".xml"))
-					reports.add(XML2Report.parse(file));
+					reports.add(XML2Report.parse(file,
+							Directories.getFiguresDir(student)));
 
 		} catch (Throwable t) {
 
@@ -270,7 +271,15 @@ public class AssignmentInfo {
 					submission.getAssignment(), submission.getStudent())
 					+ File.separator + "Evaluation Result.xml");
 
-			report = XML2Report.parse(xmlFile);
+			int i = 1;
+
+			File destDir = new File(Constants.PATH_FIGURES + File.separator + i);
+
+			for (i = 2; destDir.exists(); i++)
+				destDir = new File(Constants.PATH_FIGURES + File.separator + i);
+
+			report = XML2Report.parse(xmlFile, Directories.getFiguresDir(
+					submission.getStudent()));
 
 		} catch (Throwable t) {
 

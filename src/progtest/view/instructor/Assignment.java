@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import progtest.common.Submission;
 import progtest.common.Tool;
+import progtest.common.User;
 import progtest.database.Querier;
 import progtest.execution.Directories;
 import progtest.execution.Runner;
@@ -175,6 +176,8 @@ public class Assignment {
 			progtest.common.Assignment assignment = (progtest.common.Assignment) FacesUtil
 					.getSession(Constants.SESSION_ASSIGNMENT);
 
+			User user = (User) FacesUtil.getSession(Constants.SESSION_USER);
+
 			title = assignment.getTitle();
 
 			description = assignment.getDescription();
@@ -202,7 +205,8 @@ public class Assignment {
 
 			for (File file : reportFiles)
 				if (file.getName().endsWith(".xml"))
-					reports.add(XML2Report.parse(file));
+					reports.add(XML2Report.parse(file,
+							Directories.getFiguresDir(user)));
 
 		} catch (Throwable t) {
 

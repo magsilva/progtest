@@ -14,7 +14,6 @@ import progtest.reports.Object;
 import progtest.reports.Report;
 import progtest.reports.Row;
 import progtest.reports.Section;
-import progtest.util.Constants;
 import progtest.util.FileUtil;
 
 public class XML2Report {
@@ -49,9 +48,7 @@ public class XML2Report {
 
 	private static final String ATTR_FILENAME = "filename";
 
-	private static final String DIR_FIGURES = Constants.PATH_FIGURES;
-
-	public static Report parse(File xmlFile) throws Throwable {
+	public static Report parse(File xmlFile, File figuresDir) throws Throwable {
 
 		Report report = null;
 
@@ -303,16 +300,10 @@ public class XML2Report {
 
 									if (figure.exists()) {
 
-										File destDir = new File(DIR_FIGURES
-												+ File.separator + "1");
-										for (int l = 2; destDir.exists(); l++)
-											destDir = new File(DIR_FIGURES
-													+ File.separator + l);
-
-										FileUtil.copy(figure, destDir);
+										FileUtil.copy(figure, figuresDir);
 
 										object.setFigurePath("/figures/"
-												+ destDir.getName() + "/"
+												+ figuresDir.getName() + "/"
 												+ figure.getName());
 
 									}
