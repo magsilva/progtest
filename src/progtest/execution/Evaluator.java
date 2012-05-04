@@ -97,11 +97,12 @@ public class Evaluator {
 		if (quotient != 0) {
 			pinstTst /= quotient;
 		}
-		
+
+		if (submission.getAssignment().getPitiCoverage() != 0)
+			pinstTst /= submission.getAssignment().getPitiCoverage();
+
 		if (pinstTst > 1)
 			pinstTst = 1;
-
-		pinstTst /= submission.getAssignment().getPitiCoverage();
 
 		return pinstTst;
 	}
