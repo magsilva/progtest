@@ -26,7 +26,6 @@ import org.apache.axis2.Constants;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.types.Path;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 import br.icmc.usp.jabuti.service.ClassNotFoundFaultException3;
 import br.icmc.usp.jabuti.service.InvalidExpressionFaultException4;
@@ -235,12 +234,31 @@ public class Executor {
 		System.out.println("Executing instrumented file ...");
 		System.out.println("");
 
-		getInstrumentedFile(stub, projectId, USER, instrumentedFile);
+		boolean ok = false;
 
-		applyPatch(instrumentedFile, patchPackage);
+		while (!ok) {
 
-		executeInstrumentedFile(instrumentedFile, traceFile,
-				TEST_SUITE_CLASS_FILE_NAME);
+			try {
+
+				getInstrumentedFile(stub, projectId, USER, instrumentedFile);
+				Thread.sleep(1000);
+
+				applyPatch(instrumentedFile, patchPackage);
+				Thread.sleep(1000);
+
+				executeInstrumentedFile(instrumentedFile, traceFile,
+						TEST_SUITE_CLASS_FILE_NAME);
+
+				ok = true;
+
+			} catch (Throwable t) {
+
+				ok = false;
+				Thread.sleep(1000);
+
+			}
+
+		}
 
 		System.out.println("");
 		System.out.println("Analysing trace generated ...");
@@ -442,7 +460,7 @@ public class Executor {
 
 	}
 
-	private boolean executeTestSuite(File testSuiteFile) {
+	/*private boolean executeTestSuite(File testSuiteFile) {
 
 		try {
 
@@ -478,7 +496,7 @@ public class Executor {
 
 		return false;
 
-	}
+	}*/
 
 	private JaBUTiService1_0Stub connect(String endPoint) throws AxisFault {
 
@@ -575,33 +593,21 @@ public class Executor {
 		File tmpDir = new File(instrumentedFile.getParentFile().getPath()
 				+ File.separator + "tmp");
 
-		boolean ok = false;
+		try {
 
-		while (!ok) {
+			FileUtil.unzip(instrumentedFile, tmpDir);
 
-			try {
+			FileUtil.delete(new File(tmpDir.getPath() + File.separator + "br"));
 
-				FileUtil.unzip(instrumentedFile, tmpDir);
+			FileUtil.unzip(patchPackage, tmpDir);
 
-				FileUtil.delete(new File(tmpDir.getPath() + File.separator
-						+ "br"));
+			FileUtil.delete(instrumentedFile);
+			FileUtil.zip(tmpDir.listFiles(), instrumentedFile);
 
-				FileUtil.unzip(patchPackage, tmpDir);
+		} finally {
 
-				FileUtil.delete(instrumentedFile);
-				FileUtil.zip(tmpDir.listFiles(), instrumentedFile);
+			FileUtil.delete(tmpDir);
 
-				ok = true;
-
-			} catch (Throwable t) {
-
-				ok = false;
-
-			} finally {
-
-				FileUtil.delete(tmpDir);
-
-			}
 		}
 
 	}
