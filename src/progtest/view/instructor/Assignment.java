@@ -2,6 +2,7 @@ package progtest.view.instructor;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,6 @@ import progtest.reports.xml.XML2Report;
 import progtest.util.Constants;
 import progtest.util.FacesUtil;
 import progtest.util.FileUtil;
-import edu.emory.mathcs.backport.java.util.Collections;
 
 public class Assignment {
 

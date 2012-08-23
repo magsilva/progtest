@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://myfaces.apache.org/trinidad" prefix="af"%>
 <%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="afh"%>
-<%@ taglib uri="http://jsftutorials.net/htmLib" prefix="htm"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@ taglib uri="http://jsftutorials.net/htmLib" prefix="htm"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <f:view>
@@ -17,7 +17,7 @@
 	</afh:head>
 	<afh:body styleClass="body">
 
-		<f:loadBundle basename="messages" var="msg" />
+		<f:loadBundle basename="messages/messages" var="msg" />
 
 		<htm:center>
 

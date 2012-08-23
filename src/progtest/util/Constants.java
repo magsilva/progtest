@@ -125,7 +125,7 @@ public class Constants {
 	public static final String ACTION_EDIT = "edit";
 	public static final String ACTION_REMOVE = "remove";
 	public static final String ACTION_SEND = "send";
-	public static final String ACTION_RECIVE = "recive";
+	public static final String ACTION_RECIVE = "receive";
 
 	/* Roles */
 

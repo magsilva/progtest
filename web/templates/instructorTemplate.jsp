@@ -17,7 +17,7 @@
 	</afh:head>
 	<afh:body styleClass="body">
 
-		<f:loadBundle basename="messages" var="msg" />
+		<f:loadBundle basename="messages/messages" var="msg" />
 		
 		<div id="hidepage"
 			style="position: absolute; left: 0px; top: 100px; text-align: center; background-color: #FFFFFF; layer-background-color: #FFFFFF; height: 100%; width: 100%; visibility: hidden">
