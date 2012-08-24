@@ -306,8 +306,8 @@
 			<version>${org.apache.myfaces.trinidad.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-        
-        <!-- Apache Tiles JSF library -->
+
+		<!-- Apache Tiles 2 JSF library (do not use Tiles 3, as it is incompatible with version 2.x) -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-api</artifactId>
@@ -328,6 +328,13 @@
 			<version>${org.apache.tiles.version}</version>
 			<scope>runtime</scope>
 		</dependency> 
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet-wildcard</artifactId>
+			<version>${org.apache.tiles.version}</version>
+			<scope>runtime</scope>
+		</dependency> 
         
         <dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -335,7 +342,58 @@
 			<version>${org.apache.tiles.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+
+        <dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-el</artifactId>
+			<version>${org.apache.tiles.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+        <dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-template</artifactId>
+			<version>${org.apache.tiles.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 		
+		<!--
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-velocity</artifactId>
+			<version>${org.apache.tiles.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		-->
+		
+		<!-- 
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-ognl</artifactId>
+			<version>${org.apache.tiles.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		-->
+
+		<!-- 
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-mvel</artifactId>
+			<version>${org.apache.tiles.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		-->
+		
+		<!-- 
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-freemaker</artifactId>
+			<version>${org.apache.tiles.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		-->
+		
+		<!-- 
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
@@ -348,7 +406,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		-->
         		
 		<!-- Exadel htmLib -->
 		<dependency>
@@ -497,6 +555,6 @@
 		<com.sun.faces.version>2.1.12</com.sun.faces.version>
 		<org.apache.myfaces.version>2.1.8</org.apache.myfaces.version>
 		<org.apache.myfaces.trinidad.version>2.0.1</org.apache.myfaces.trinidad.version>
-		<org.apache.tiles.version>3.0.1</org.apache.tiles.version>
+		<org.apache.tiles.version>2.2.2</org.apache.tiles.version>
 	</properties>
 </project>
