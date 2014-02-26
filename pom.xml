@@ -57,6 +57,7 @@
 		<url>https://code.google.com/p/progtest201004/source/browse/</url>
 	</scm>
 
+	<!--
 	<distributionManagement>
                 <repository>
                         <id>ironiacorp.com</id>
@@ -71,16 +72,12 @@
                         <url>dav:http://www.ironiacorp.com/repo/maven2/snapshot</url>
                 </snapshotRepository>
 	</distributionManagement>
+	-->
 
 	<repositories>
 		<repository>
-			<id>ironiacorp.com (stable)</id>
-			<url>dav:http://www.ironiacorp.com/repo/maven2/stable</url>
-		</repository>
-
-		<repository>
-			<id>ironiacorp.com (snapshot)</id>
-			<url>dav:http://www.ironiacorp.com/repo/maven2/snapshot</url>
+			<id>IroniaCorp</id>
+			<url>http://www.ironiacorp.com/repo/maven2</url>
 		</repository>
 
 		<repository>
@@ -109,7 +106,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>[4.10,)</version>
+			<version>[4.11,)</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>hamcrest-core</artifactId>
@@ -131,7 +128,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>[5.1.18,)</version>
+			<version>[5.1.24,)</version>
 			<scope>runtime</scope>
 		</dependency>
 	
@@ -139,7 +136,7 @@
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>[2.2.8,)</version>
+			<version>[2.2.9,)</version>
 			<scope>test</scope>
 		</dependency>
 	
@@ -169,25 +166,23 @@
 		</dependency>
 
 		<!--
-			Servlet support. You should change its scope to "provided"
-			if running within a JEE server.
+			Servlet support.
 		-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!--
-			Servlet support. You should change its scope to "provided"
-			if running within a JEE server.
+			Servlet support.
 		-->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.2</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Taglibs support -->
@@ -195,16 +190,17 @@
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!--
 			JSTL support. You should remove it if running in a JEE server.
 		-->
 		<dependency>
-			<groupId>jstl</groupId>
+			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		
 		<!--
@@ -215,6 +211,7 @@
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>el-impl</artifactId>
 			<version>2.2</version>
+			<scope>provided</scope>
 		</dependency>
 
 
@@ -228,14 +225,12 @@
 			* javax.servlet, servlet-api
 			* javax.servlet.jsp, jsp-api
 		-->
-		<!-- 
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>jsf-api</artifactId>
 			<version>[2.1,)</version>
 			<scope>provided</scope>
 		</dependency>
-		-->
 		
 		<!--
 			JSF support. You should either use SUN RI (Monjarra) or MyFaces.
@@ -279,8 +274,8 @@
 		<!-- Tomahawk JSF components -->
 		<dependency>
 			<groupId>org.apache.myfaces.tomahawk</groupId>
-			<artifactId>tomahawk20</artifactId>
-			<version>1.1.13</version>
+			<artifactId>tomahawk21</artifactId>
+			<version>1.1.14</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>commons-logging</artifactId>
@@ -336,21 +331,21 @@
 			<scope>runtime</scope>
 		</dependency> 
         
-        <dependency>
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-jsp</artifactId>
 			<version>${org.apache.tiles.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
-        <dependency>
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-el</artifactId>
 			<version>${org.apache.tiles.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
-        <dependency>
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-template</artifactId>
 			<version>${org.apache.tiles.version}</version>
@@ -416,15 +411,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		
-		
-		<!-- Dependencies added to handle version conflicts -->
-		
-		<!-- Conflict between Hibernate and Tiles -->
-		<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.16.1-GA</version>
-		</dependency>
 		
 		<!-- Several packages depends upon a version of this -->
 		<dependency>
@@ -502,21 +488,20 @@
 				</configuration>
 			</plugin>
 
-			<!--  http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin -->
+			<!--  http://www.eclipse.org/jetty/documentation/current/ -->
 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
+				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.5.v20120716</version>
+				<version>${org.eclipse.jetty.version}</version>
 				<configuration>
 					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+						<connector implementation="org.eclipse.jetty.server.ServerConnector">
 							<port>8080</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
 					<systemProperties>
 						<systemProperty>
-							<!-- optional to use the ecj compiler -->
 							<name>org.apache.jasper.compiler.disablejsr199</name>
 							<value>true</value>
 						</systemProperty>
@@ -531,7 +516,11 @@
 						</resourceBases>
 					</webApp>
 				</configuration>
-				<!-- Tld scanning only works when JSF is included as container dependency. -->
+				<!--
+					Tld scanning only works when JSF is included as container dependency.
+					Every application dependency that should be provided by the container
+					must be defined here!
+				-->
 				<dependencies>	
 					<dependency>
 						<groupId>org.apache.myfaces.core</groupId>
@@ -547,13 +536,32 @@
 					</dependency>
 				</dependencies>	
 			</plugin>
+
+			<!-- http://tomcat.apache.org/maven-plugin-2.1/executable-war-jar.html -->
+			<!--
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>tomcat-run</id>
+						<goals>
+							<goal>exec-war-only</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+			-->
 		</plugins>
 	</build>
 
 	<properties>
-		<org.hibernate.version>4.1.6.Final</org.hibernate.version>
-		<com.sun.faces.version>2.1.12</com.sun.faces.version>
-		<org.apache.myfaces.version>2.1.8</org.apache.myfaces.version>
+		<org.eclipse.jetty.version>9.0.0.v20130308</org.eclipse.jetty.version>
+		<org.hibernate.version>4.2.0.Final</org.hibernate.version>
+		<com.sun.faces.version>2.1.20</com.sun.faces.version>
+		<org.apache.myfaces.version>2.1.10</org.apache.myfaces.version>
 		<org.apache.myfaces.trinidad.version>2.0.1</org.apache.myfaces.trinidad.version>
 		<org.apache.tiles.version>2.2.2</org.apache.tiles.version>
 	</properties>

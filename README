@@ -1,0 +1,11 @@
+The easiest way to experiment ProgTest is to fire it up using:
+
+	mvn jetty:run
+
+This should execute Jetty and deploy ProgTest. The application will be
+accessible at port 8080 on the current host (localhost), at the directory
+'progtest'. Open a browser and try it out:
+
+	http://localhost:8080/progtest/
+
+
