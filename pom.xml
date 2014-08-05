@@ -172,7 +172,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
-			<scope>provided</scope>
+			<!--<scope>provided</scope>-->
 		</dependency>
 
 		<!--
@@ -487,6 +487,12 @@
                     </webResources>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>7.6.8.v20121106</version>
+            </plugin>
 
             <!--  http://www.eclipse.org/jetty/documentation/current/ -->
             <plugin>
@@ -516,6 +522,7 @@
                         </resourceBases>
                     </webApp>
                 </configuration>
+                
                 <!--
                         Tld scanning only works when JSF is included as container dependency.
                         Every application dependency that should be provided by the container
