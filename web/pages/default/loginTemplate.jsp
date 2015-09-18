@@ -6,8 +6,6 @@
 
 	<tiles:insertDefinition name="page.defaultTemplate">
 		<tiles:putAttribute name="title" value="ProgTest" />
-		<tiles:putAttribute name="content" type="template"
-			value="/pages/default/login.jsp" />
+		<tiles:putAttribute name="content" type="template" value="/pages/default/login.jsp" />
 	</tiles:insertDefinition>
-
 </jsp:root>
