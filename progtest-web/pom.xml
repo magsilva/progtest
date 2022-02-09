@@ -566,7 +566,7 @@
 
     <properties>
         <org.eclipse.jetty.version>9.0.0.v20130308</org.eclipse.jetty.version>
-        <org.hibernate.version>4.2.0.Final</org.hibernate.version>
+        <org.hibernate.version>5.4.24.Final</org.hibernate.version>
         <com.sun.faces.version>2.1.20</com.sun.faces.version>
         <org.apache.myfaces.version>2.1.10</org.apache.myfaces.version>
         <org.apache.myfaces.trinidad.version>2.0.1</org.apache.myfaces.trinidad.version>
